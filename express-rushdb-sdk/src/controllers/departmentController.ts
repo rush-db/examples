@@ -52,7 +52,6 @@ export async function getAllDepartmentsByCompany(req: Request, res: Response) {
   try {
     const { companyId } = req.params;
 
-    // @ts-expect-error
     const departments = await db.records.find({
       labels: ['DEPARTMENT', 'COMPANY'],
       where: {
@@ -94,7 +93,6 @@ export async function getDepartmentStatsById(req: Request, res: Response) {
   try {
     const { departmentId } = req.params;
 
-    // @ts-expect-error
     const department = await db.records.findUniq('DEPARTMENT', {
       where: {
         $id: departmentId,

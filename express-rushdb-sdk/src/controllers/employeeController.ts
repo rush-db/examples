@@ -50,7 +50,6 @@ export async function getAllEmployeesByDepartment(req: Request, res: Response) {
   try {
     const { departmentId } = req.params;
 
-    // @ts-expect-error
     const employees = await db.records.find({
       labels: ['EMPLOYEE'],
       where: {

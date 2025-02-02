@@ -35,7 +35,6 @@ export async function deleteCompany(req: Request, res: Response) {
     let employeeIds: string[] = [];
     let departmentsIds: string[] = [];
 
-    // @ts-expect-error
     const employeesQuery = await db.records.find(
       {
         labels: ['EMPLOYEE'],
@@ -50,7 +49,6 @@ export async function deleteCompany(req: Request, res: Response) {
       tx
     );
 
-    // @ts-expect-error
     const departmentsQuery = await db.records.find(
       {
         labels: ['DEPARTMENT'],
