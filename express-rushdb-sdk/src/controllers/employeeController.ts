@@ -54,7 +54,7 @@ export async function getAllEmployeesByDepartment(req: Request, res: Response) {
       labels: ['EMPLOYEE'],
       where: {
         DEPARTMENT: {
-          _id: departmentId,
+          $id: departmentId,
         },
       },
     });
