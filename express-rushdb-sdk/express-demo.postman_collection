@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "6f10e2c9-4c60-4b0d-8c59-f211afecefd2",
+		"name": "Express-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9923528"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"item": [
+				{
+					"name": "Create employee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"name\": \"John Doe\",\r\n    \"position\": \"Software Developer\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"dob\": \"1990-01-01T00:00:00.000Z\",\r\n    \"salary\": 75000\r\n  },\r\n  {\r\n    \"name\": \"Alice Johnson\",\r\n    \"position\": \"QA Engineer\",\r\n    \"email\": \"alice.johnson@example.com\",\r\n    \"dob\": \"1985-07-15T00:00:00.000Z\",\r\n    \"salary\": 68000\r\n  },\r\n  {\r\n    \"name\": \"Bob Smith\",\r\n    \"position\": \"Product Manager\",\r\n    \"email\": \"bob.smith@example.com\",\r\n    \"dob\": \"1980-03-20T00:00:00.000Z\",\r\n    \"salary\": 90000\r\n  },\r\n  {\r\n    \"name\": \"Eve Adams\",\r\n    \"position\": \"DevOps Engineer\",\r\n    \"email\": \"eve.adams@example.com\",\r\n    \"dob\": \"1992-11-30T00:00:00.000Z\",\r\n    \"salary\": 82000\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments/{{departmentId}}/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments",
+								"{{departmentId}}",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create dep",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tech\",\r\n  \"description\": \"Focuses on cutting-edge innovations and new product development.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create company",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tech\",\r\n  \"description\": \"Focuses on cutting-edge innovations and new product development.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3007/companies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Read",
+			"item": [
+				{
+					"name": "Get company short",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get company full details",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get departments",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get department stats",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments/{{departmentId}}/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments",
+								"{{departmentId}}",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"item": [
+				{
+					"name": "Update Employee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"name\": \"John Doe\",\r\n    \"position\": \"Software Developer\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"dob\": \"1990-01-01T00:00:00.000Z\",\r\n    \"salary\": 75000\r\n  },\r\n  {\r\n    \"name\": \"Alice Johnson\",\r\n    \"position\": \"QA Engineer\",\r\n    \"email\": \"alice.johnson@example.com\",\r\n    \"dob\": \"1985-07-15T00:00:00.000Z\",\r\n    \"salary\": 68000\r\n  },\r\n  {\r\n    \"name\": \"Bob Smith\",\r\n    \"position\": \"Product Manager\",\r\n    \"email\": \"bob.smith@example.com\",\r\n    \"dob\": \"1980-03-20T00:00:00.000Z\",\r\n    \"salary\": 90000\r\n  },\r\n  {\r\n    \"name\": \"Eve Adams\",\r\n    \"position\": \"DevOps Engineer\",\r\n    \"email\": \"eve.adams@example.com\",\r\n    \"dob\": \"1992-11-30T00:00:00.000Z\",\r\n    \"salary\": 82000\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments/{{departmentId}}/employees/{{employeeId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments",
+								"{{departmentId}}",
+								"employees",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update dep",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tech\",\r\n  \"description\": \"Focuses on cutting-edge innovations and new product development.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments/{{departmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create company Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"1007 Mountain Dr, Gotham City\",\r\n    \"foundedAt\": \"1895-03-01T00:00:00.000Z\",\r\n    \"name\": \"Wayne Enterprises\",\r\n    \"rating\": 4.8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "Delete company and nested",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete dep",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments/{{departmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete employee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3007/companies/{{companyId}}/departments/{{departmentId}}/employees/{{employeeId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3007",
+							"path": [
+								"companies",
+								"{{companyId}}",
+								"departments",
+								"{{departmentId}}",
+								"employees",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "companyId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "departmentId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "employeeId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
