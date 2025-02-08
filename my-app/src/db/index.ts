@@ -8,7 +8,7 @@ const styles = {
   null: 'color: #F44336',
 }
 
-function prettyLog(obj) {
+function prettyLog(obj: any) {
   console.group('RushDB API Request Details:')
   Object.entries(obj).forEach(([key, value]) => {
     const valueStyle =

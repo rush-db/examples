@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import {
   Card,
   CardContent,
@@ -24,6 +24,8 @@ function useRecords(query: SearchQuery = {}) {
 }
 
 export default function Catalog() {
+  const [currentRecord, setCurrentRecord] = useState()
+
   const records = useRecords()
 
   return (
@@ -39,23 +41,23 @@ export default function Catalog() {
               <p className="">{db.toInstance(product).date.toISOString()}</p>
             </CardContent>
             <CardFooter>
-              {/*<Button*/}
-              {/*  onClick={() => setSelectedProduct(product)}*/}
-              {/*  className="w-full"*/}
-              {/*>*/}
-              {/*  Details*/}
-              {/*</Button>*/}
+              <Button
+                onClick={() => setCurrentRecord(product)}
+                className="w-full"
+              >
+                Details
+              </Button>
             </CardFooter>
           </Card>
         ))}
       </div>
-      {/*{selectedProduct && (*/}
-      {/*  <ProductModal*/}
-      {/*    product={selectedProduct}*/}
-      {/*    isOpen={!!selectedProduct}*/}
-      {/*    onClose={() => setSelectedProduct(null)}*/}
-      {/*  />*/}
-      {/*)}*/}
+      {currentRecord && (
+        <ProductModal
+          product={currentRecord}
+          isOpen={!!currentRecord}
+          onClose={() => setCurrentRecord(null)}
+        />
+      )}
     </div>
   )
 }

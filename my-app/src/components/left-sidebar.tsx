@@ -14,6 +14,7 @@ import { NumberFilter } from '@/components/filters/number'
 import { StringFilter } from '@/components/filters/string'
 import { BooleanFilter } from '@/components/filters/boolean'
 import { DatetimeFilter } from '@/components/filters/datetime'
+import { useState } from 'react'
 
 function useProperties(query: SearchQuery = {}) {
   return useQuery({
@@ -27,6 +28,8 @@ function useProperties(query: SearchQuery = {}) {
 
 export default function LeftSidebar() {
   const properties = useProperties()
+
+  const [filtersState, setFiltersState] = useState({})
 
   return (
     <div className="w-64 bg-background border-r p-4 space-y-4 overflow-y-auto h-screen fixed mt-[77px]">
