@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Property } from '@rushdb/javascript-sdk'
 import { usePropertyValues } from '@/components/filters/utils'
 import { Loader } from 'lucide-react'
@@ -12,19 +12,7 @@ export const StringFilter: FC<{ property: Property }> = ({
   property: Property
 }) => {
   const { filters, updateFilter } = useFilters()
-
-  const [options, setOptions] = useState<string[]>(
-    filters[property.name]?.value || []
-  )
-  const [isDirty, setIsDirty] = useState(false)
-
   const { data, isLoading } = usePropertyValues(property.id)
-
-  useEffect(() => {
-    if (isDirty) {
-      updateFilter(property, options)
-    }
-  }, [options, property, updateFilter, isDirty])
 
   if (isLoading) {
     return <Loader />
@@ -38,14 +26,9 @@ export const StringFilter: FC<{ property: Property }> = ({
             <div key={category} className="flex items-center space-x-2">
               <Checkbox
                 id={category}
-                checked={options.includes(category)}
+                checked={filters[property.name]?.value.includes(category)}
                 onCheckedChange={(checked) => {
-                  setOptions(
-                    checked
-                      ? [...options, category]
-                      : options.filter((c) => c !== category)
-                  )
-                  setIsDirty(true)
+                  updateFilter(property, checked)
                 }}
               />
               <Label htmlFor={category}>{category}</Label>

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Property } from '@rushdb/javascript-sdk'
 import { usePropertyValues } from '@/components/filters/utils'
 import { Loader } from 'lucide-react'
@@ -12,15 +12,7 @@ export const BooleanFilter: FC<{ property: Property }> = ({
   property: Property
 }) => {
   const { filters, updateFilter } = useFilters()
-  const [checked, setChecked] = useState(filters[property.name]?.value || false)
-  const [isDirty, setIsDirty] = useState(false)
-
   const { data, isLoading } = usePropertyValues(property.id)
-  useEffect(() => {
-    if (isDirty) {
-      updateFilter(property, checked)
-    }
-  }, [checked, property, updateFilter, isDirty])
 
   if (isLoading) {
     return <Loader />
@@ -32,10 +24,9 @@ export const BooleanFilter: FC<{ property: Property }> = ({
         <Label htmlFor={property.name + property.type}>{property.name}</Label>
         <Switch
           id={property.name + property.type}
-          checked={checked}
+          checked={filters[property.name]?.value ?? false}
           onCheckedChange={(newValue) => {
-            setChecked(newValue)
-            setIsDirty(true)
+            updateFilter(property, newValue)
           }}
         />
       </div>

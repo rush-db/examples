@@ -1,5 +1,5 @@
 import { Slider } from '@/components/ui/slider'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Property } from '@rushdb/javascript-sdk'
 import {
   calculateMinimalStep,
@@ -14,24 +14,7 @@ export const NumberFilter: FC<{ property: Property }> = ({
   property: Property
 }) => {
   const { filters, updateFilter } = useFilters()
-  const [priceRange, setPriceRange] = useState<number[]>(
-    filters[property.name]?.value || [0, 0]
-  )
-  const [isDirty, setIsDirty] = useState(false)
-
   const { data, isLoading } = usePropertyValues(property.id)
-
-  useEffect(() => {
-    if (data) {
-      setPriceRange([data!.min!, data!.max!])
-    }
-  }, [data])
-
-  useEffect(() => {
-    if (isDirty) {
-      updateFilter(property, priceRange)
-    }
-  }, [priceRange, property, updateFilter, isDirty])
 
   if (isLoading) {
     return <Loader />
@@ -45,16 +28,15 @@ export const NumberFilter: FC<{ property: Property }> = ({
           min={data!.min}
           max={data!.max}
           step={calculateMinimalStep(data!.min!, data!.max!)}
-          value={priceRange}
+          value={filters[property.name]?.value}
           onValueChange={(newRange) => {
-            setPriceRange(newRange)
-            setIsDirty(true)
+            updateFilter(property, newRange)
           }}
           className="mt-2"
         />
         <div className="flex justify-between mt-2 text-sm text-muted-foreground">
-          <span>{priceRange[0]}</span>
-          <span>{priceRange[1]}</span>
+          <span>{filters[property.name]?.value?.[0] ?? data!.min!}</span>
+          <span>{filters[property.name]?.value?.[1] ?? data!.max!}</span>
         </div>
       </>
     )

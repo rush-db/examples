@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Property } from '@rushdb/javascript-sdk'
 import { usePropertyValues } from '@/components/filters/utils'
 import { Loader } from 'lucide-react'
@@ -19,18 +19,7 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
   property: Property
 }) => {
   const { filters, updateFilter } = useFilters()
-  const [date, setDate] = useState<Date>(
-    filters[property.name]?.value || undefined
-  )
-  const [isDirty, setIsDirty] = useState(false)
-
   const { data, isLoading } = usePropertyValues(property.id)
-
-  useEffect(() => {
-    if (isDirty) {
-      updateFilter(property, date ? date.toISOString() : null)
-    }
-  }, [date, property, updateFilter, isDirty])
 
   if (isLoading) {
     return <Loader />
@@ -43,20 +32,27 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
         <PopoverTrigger asChild>
           <Button
             variant={'outline'}
-            className={`w-full justify-start text-left font-normal ${!date && 'text-muted-foreground'}`}
+            className={`w-full justify-start text-left font-normal ${!filters[property.name]?.value && 'text-muted-foreground'}`}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
-            {date ? format(date, 'PPP') : <span>Pick a date</span>}
+            {filters[property.name]?.value ? (
+              format(filters[property.name]?.value, 'PPP')
+            ) : (
+              <span>Pick a date</span>
+            )}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
           {/* @TODO: allow to pick year from select */}
           <Calendar
             mode="single"
-            selected={date}
+            selected={
+              filters[property.name]?.value
+                ? new Date(filters[property.name].value)
+                : undefined
+            }
             onSelect={(newValue) => {
-              setDate(newValue)
-              setIsDirty(true)
+              updateFilter(property, newValue ? newValue.toISOString() : null)
             }}
             initialFocus
           />
