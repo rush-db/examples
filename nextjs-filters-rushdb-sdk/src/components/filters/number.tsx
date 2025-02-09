@@ -6,7 +6,7 @@ import {
   usePropertyValues,
 } from '@/components/filters/utils'
 import { Loader } from 'lucide-react'
-import { useFilters } from '@/context/FiltersContext'
+import { useFilters } from '@/context/filter-context'
 
 export const NumberFilter: FC<{ property: Property }> = ({
   property,

@@ -1,62 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { db } from '@/db'
 import { SearchQuery } from '@rushdb/javascript-sdk'
-import { useFilters } from '@/context/FiltersContext'
-
-// @TODO: refactor: normalize single pair filters with $gte && $lte
-function processStringValuePart(value: string | string[]) {
-  if (Array.isArray(value)) {
-    return {
-      $in: value,
-    }
-  }
-
-  return {
-    $contains: value,
-  }
-}
-
-function processNumberValuePart(value: number | number[]) {
-  if (Array.isArray(value)) {
-    const [min, max] = value
-
-    return {
-      $gte: min,
-      $lte: max,
-    }
-  }
-
-  return {
-    $gte: value,
-  }
-}
-
-function processDatetimeValuePart(value: string | string[]) {
-  if (Array.isArray(value)) {
-    const [min, max] = value
-
-    return {
-      $gte: min,
-      $lte: max,
-    }
-  }
-
-  return {
-    $gte: value,
-  }
-}
-
-function canProcessValuePart(value: any) {
-  if (!value) {
-    return
-  }
-
-  if (Array.isArray(value) && !value.length) {
-    return
-  }
-
-  return true
-}
+import { useFilters } from '@/context/filter-context'
+import {
+  processStringValuePart,
+  processNumberValuePart,
+  processDatetimeValuePart,
+  canProcessValuePart,
+} from '@/utils/filter-utils'
 
 export function useRecords() {
   const { filters } = useFilters()
@@ -94,11 +45,24 @@ export function useRecords() {
           break
         }
         case 'datetime': {
+          const date = processDatetimeValuePart(
+            propertyData.value as {
+              from?: string
+              to?: string
+            }
+          )
+          const hasDateFilters = Object.keys(date).length > 0
+
           query.where = {
             ...query.where,
-            [key]: processDatetimeValuePart(
-              propertyData.value as string | string[]
-            ),
+            ...(hasDateFilters && {
+              [key]: processDatetimeValuePart(
+                propertyData.value as {
+                  from?: string
+                  to?: string
+                }
+              ),
+            }),
           }
           break
         }

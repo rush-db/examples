@@ -4,7 +4,7 @@ import { usePropertyValues } from '@/components/filters/utils'
 import { Loader } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
-import { useFilters } from '@/context/FiltersContext'
+import { useFilters } from '@/context/filter-context'
 
 export const BooleanFilter: FC<{ property: Property }> = ({
   property,

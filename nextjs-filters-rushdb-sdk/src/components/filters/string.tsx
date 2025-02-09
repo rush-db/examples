@@ -4,7 +4,7 @@ import { usePropertyValues } from '@/components/filters/utils'
 import { Loader } from 'lucide-react'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
-import { useFilters } from '@/context/FiltersContext'
+import { useFilters } from '@/context/filter-context'
 
 export const StringFilter: FC<{ property: Property }> = ({
   property,

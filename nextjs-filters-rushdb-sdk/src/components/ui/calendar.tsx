@@ -2,21 +2,24 @@
 
 import * as React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { DayPicker } from 'react-day-picker'
+import { DayPicker, DateRange } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+export type RangeCalendarProps = React.ComponentProps<typeof DayPicker> & {
+  selected?: DateRange
+}
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: RangeCalendarProps) {
   return (
     <DayPicker
+      mode="range"
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       classNames={{
@@ -41,8 +44,11 @@ function Calendar({
           buttonVariants({ variant: 'ghost' }),
           'h-9 w-9 p-0 font-normal aria-selected:opacity-100'
         ),
-        day_range_end: 'day-range-end',
+        day_range_end:
+          'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
         day_selected:
+          'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
+        day_range_start:
           'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
         day_today: 'bg-accent text-accent-foreground',
         day_outside:
