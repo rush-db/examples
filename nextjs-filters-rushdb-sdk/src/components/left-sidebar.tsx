@@ -14,7 +14,8 @@ import { NumberFilter } from '@/components/filters/number'
 import { StringFilter } from '@/components/filters/string'
 import { BooleanFilter } from '@/components/filters/boolean'
 import { DatetimeFilter } from '@/components/filters/datetime'
-import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { useFilters } from '@/context/filter-context'
 
 function useProperties(query: SearchQuery = {}) {
   return useQuery({
@@ -28,6 +29,7 @@ function useProperties(query: SearchQuery = {}) {
 
 export default function LeftSidebar() {
   const properties = useProperties()
+  const { clearFilters } = useFilters()
 
   return (
     <div className="w-64 bg-background border-r p-4 space-y-4 overflow-y-auto h-screen fixed mt-[77px]">
@@ -35,6 +37,16 @@ export default function LeftSidebar() {
       <p className="text-xs text-gray-500 mb-4">
         [Dynamically built from any input data]
       </p>
+
+      <Button
+        className="mt-4"
+        variant="outline"
+        size="sm"
+        onClick={clearFilters}
+      >
+        Reset Filters
+      </Button>
+
       <hr />
 
       <ScrollArea>
