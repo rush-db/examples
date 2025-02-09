@@ -29,12 +29,12 @@ function prettyLog(obj: any) {
 }
 
 export const db = new RushDB(
-  'd8540447a152739eea25f4c642208d3cS54i7mw0VIZ++cSQUBZkXXfeXSVV7g6XASqYyrp5dGtxYUrBpHCO7wfEHJ8akf5v',
+  '45f93e7acc299734e1b72904d90a9e00gGblPzS0FsUNzVpt2xBT6GbKpDFDy6se9bUbsGWPVoL6lkZm5aSsuH3CxkYM7Om5',
   {
     logger: (payload) => {
       prettyLog(payload)
       pushLog(payload.requestData)
     },
-    url: 'http://localhost:3000',
+    url: 'https://api.rushdb.com',
   }
 )

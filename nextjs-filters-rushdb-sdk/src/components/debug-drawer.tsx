@@ -40,13 +40,16 @@ export default function DebugDrawer() {
         <ScrollArea className="h-full p-4 flex flex-col scrollable-content">
           <h2 className="text-lg font-semibold mb-4">Debug Information</h2>
 
-          {logs?.map((log, index) => {
+          {logs?.reverse().map((log, index) => {
             return (
               <div key={index} className={'mb-4'}>
-                <h3 className="font-semibold mb-2">Request Data</h3>
+                <h3 className="font-semibold mb-2">
+                  {log.responseData ? 'Response Data' : 'Request Data'}
+                </h3>
                 <div className="overflow-x-auto">
                   <JsonViewer data={log} />
                 </div>
+                {log.responseData ? <hr /> : null}
               </div>
             )
           })}
