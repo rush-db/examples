@@ -58,6 +58,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
+    "react-syntax-highlighter": "^15.6.1",
     "recharts": "2.15.0",
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.6.0",
@@ -70,6 +71,7 @@
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "postcss": "^8",
     "prettier": "^3.4.2",
     "typescript": "^5"

@@ -5,6 +5,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog'
+import { JsonViewer } from '@/components/ui/json-viewer'
 
 interface Product {
   id: number
@@ -28,10 +29,8 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
           <DialogTitle>{product.__label}</DialogTitle>
           <DialogDescription>{product.__id}</DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            {JSON.stringify(product)}
-          </div>
+        <div className={'max-w-full overflow-auto'}>
+          <JsonViewer data={product} />
         </div>
       </DialogContent>
     </Dialog>
