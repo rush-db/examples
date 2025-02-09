@@ -1,4 +1,5 @@
 import RushDB from '@rushdb/javascript-sdk'
+import { pushLog } from '@/lib/log-store'
 
 const styles = {
   key: 'color: #2196F3; font-weight: bold',
@@ -30,7 +31,10 @@ function prettyLog(obj: any) {
 export const db = new RushDB(
   'd8540447a152739eea25f4c642208d3cS54i7mw0VIZ++cSQUBZkXXfeXSVV7g6XASqYyrp5dGtxYUrBpHCO7wfEHJ8akf5v',
   {
-    logger: (payload) => prettyLog(payload),
+    logger: (payload) => {
+      prettyLog(payload)
+      pushLog(payload.requestData)
+    },
     url: 'http://localhost:3000',
   }
 )

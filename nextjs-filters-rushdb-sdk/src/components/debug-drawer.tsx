@@ -1,12 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Code } from 'lucide-react'
+import { JsonViewer } from '@/components/ui/json-viewer'
+import { getLogs, subscribeLogs } from '@/lib/log-store'
 
 export default function DebugDrawer() {
   const [isOpen, setIsOpen] = useState(false)
+  const [logs, setLogs] = useState<any[]>(getLogs())
+
+  useEffect(() => {
+    const unsubscribe = subscribeLogs((newLog) => {
+      setLogs((prev) => [...prev, newLog])
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
 
   return (
     <>
@@ -24,17 +37,19 @@ export default function DebugDrawer() {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <ScrollArea className="h-full p-4">
+        <ScrollArea className="h-full p-4 flex flex-col scrollable-content">
           <h2 className="text-lg font-semibold mb-4">Debug Information</h2>
-          <pre className="text-sm whitespace-pre-wrap">
-            {JSON.stringify(
-              {
-                timestamp: 123,
-              },
-              null,
-              2
-            )}
-          </pre>
+
+          {logs?.map((log, index) => {
+            return (
+              <div key={index} className={'mb-4'}>
+                <h3 className="font-semibold mb-2">Request Data</h3>
+                <div className="overflow-x-auto">
+                  <JsonViewer data={log} />
+                </div>
+              </div>
+            )
+          })}
         </ScrollArea>
       </div>
     </>

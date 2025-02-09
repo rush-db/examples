@@ -7,7 +7,7 @@ import {
   processNumberValuePart,
   processDatetimeValuePart,
   canProcessValuePart,
-} from '@/utils/filter-utils'
+} from '@/lib/filter-utils'
 
 export function useRecords() {
   const { filters } = useFilters()

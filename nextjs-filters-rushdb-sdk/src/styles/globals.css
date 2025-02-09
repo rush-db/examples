@@ -79,6 +79,10 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  .scrollable-content [data-radix-scroll-area-viewport] > div {
+    display: block !important;
+  }
 }
 
 @layer base {

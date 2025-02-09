@@ -34,8 +34,6 @@ export function canProcessValuePart(value: any): boolean {
   if (!value) {
     return false
   }
-  if (Array.isArray(value) && value.length === 0) {
-    return false
-  }
-  return true
+
+  return !(Array.isArray(value) && value.length === 0);
 }
