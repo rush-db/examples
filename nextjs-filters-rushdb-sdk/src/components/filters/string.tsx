@@ -26,9 +26,15 @@ export const StringFilter: FC<{ property: Property }> = ({
             <div key={category} className="flex items-center space-x-2">
               <Checkbox
                 id={category}
-                checked={filters[property.name]?.value.includes(category)}
+                checked={filters[property.name]?.value?.includes(category)}
                 onCheckedChange={(checked) => {
-                  updateFilter(property, checked)
+                  const value = checked
+                    ? [...(filters[property.name]?.value || []), category]
+                    : (filters[property.name]?.value || []).filter(
+                        (c) => c !== category
+                      )
+
+                  updateFilter(property, value)
                 }}
               />
               <Label htmlFor={category}>{category}</Label>

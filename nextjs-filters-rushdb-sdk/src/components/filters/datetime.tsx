@@ -26,6 +26,10 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
   }
 
   if (data) {
+    const humanizedValue = filters[property.name]?.value
+      ? new Date(filters[property.name].value)
+      : undefined
+
     return (
       // @TODO: add support for daterange
       <Popover>
@@ -46,11 +50,7 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
           {/* @TODO: allow to pick year from select */}
           <Calendar
             mode="single"
-            selected={
-              filters[property.name]?.value
-                ? new Date(filters[property.name].value)
-                : undefined
-            }
+            selected={humanizedValue}
             onSelect={(newValue) => {
               updateFilter(property, newValue ? newValue.toISOString() : null)
             }}

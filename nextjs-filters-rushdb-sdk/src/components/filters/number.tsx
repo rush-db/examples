@@ -13,14 +13,16 @@ export const NumberFilter: FC<{ property: Property }> = ({
 }: {
   property: Property
 }) => {
-  const { filters, updateFilter } = useFilters()
   const { data, isLoading } = usePropertyValues(property.id)
+  const { filters, updateFilter } = useFilters()
 
   if (isLoading) {
     return <Loader />
   }
 
   if (data && typeof data.min === 'number' && typeof data.max === 'number') {
+    const currentRange = filters[property.name]?.value || [data.min, data.max]
+
     return (
       <>
         <Slider
@@ -28,15 +30,15 @@ export const NumberFilter: FC<{ property: Property }> = ({
           min={data!.min}
           max={data!.max}
           step={calculateMinimalStep(data!.min!, data!.max!)}
-          value={filters[property.name]?.value}
+          value={currentRange}
           onValueChange={(newRange) => {
             updateFilter(property, newRange)
           }}
           className="mt-2"
         />
         <div className="flex justify-between mt-2 text-sm text-muted-foreground">
-          <span>{filters[property.name]?.value?.[0] ?? data!.min!}</span>
-          <span>{filters[property.name]?.value?.[1] ?? data!.max!}</span>
+          <span>{currentRange[0]}</span>
+          <span>{currentRange[1]}</span>
         </div>
       </>
     )
