@@ -1,20 +1,18 @@
 'use client'
 
 import { QueryClient, dehydrate } from '@tanstack/react-query'
-import Catalog from '@/components/catalog'
+import RecordsGrid from '@/components/records-grid'
 import LeftSidebar from '@/components/left-sidebar'
-import DebugDrawer from '@/components/debug-drawer'
-import { Header } from '@/components/header'
 import { Layout } from '@/components/layout'
+import DebugDrawer from '@/components/debug-drawer'
 
 function Home() {
   return (
     <Layout>
       <div className="flex flex-col min-h-screen">
-        <Header />
         <main className="flex flex-1">
           <LeftSidebar />
-          <Catalog />
+          <RecordsGrid />
           <DebugDrawer />
         </main>
       </div>

@@ -1,125 +1,176 @@
 'use client'
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
-import { SearchQuery } from '@rushdb/javascript-sdk'
-import { useQuery } from '@tanstack/react-query'
-import { db } from '@/db'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import { NumberFilter } from '@/components/filters/number'
 import { StringFilter } from '@/components/filters/string'
 import { BooleanFilter } from '@/components/filters/boolean'
 import { DatetimeFilter } from '@/components/filters/datetime'
 import { Button } from '@/components/ui/button'
-import { useFilters } from '@/context/filter-context'
+import { useSearchQuery } from '@/context/search-query-context'
+import { useProperties } from '@/hooks/use-properties'
+import { LabelsSelect } from '@/components/labels/labels-select'
 
-function useProperties(query: SearchQuery = {}) {
-  return useQuery({
-    queryKey: ['properties', query],
-    queryFn: () => db.properties.find(query),
-    select: (data) => {
-      return data.data
-    },
-  })
-}
+import { pickValue } from '@/components/filters/utils'
+import { Logo } from '@/components/logo'
+import { useMemo } from 'react'
 
 export default function LeftSidebar() {
+  const { clearFilters, where = {}, updateFilter } = useSearchQuery()
   const properties = useProperties()
-  const { clearFilters } = useFilters()
+
+  const hasAnyFiltersApplied = useMemo(
+    () => Boolean(Object.keys(where).length),
+    [where]
+  )
 
   return (
-    <div className="w-64 bg-background border-r p-4 space-y-4 overflow-y-auto h-screen fixed mt-[77px]">
-      <h2 className="text-xl font-bold">Filters</h2>
-      <p className="text-xs text-gray-500 mb-4">
-        [Dynamically built from any input data]
-      </p>
+    <div className="w-80 bg-background border-r space-y-4 overflow-y-auto h-screen fixed pb-32">
+      <div className="border-b">
+        <div className="p-4 flex items-center justify-between">
+          <Logo />
+          <h1 className="text-2xl font-bold">RushDB Demo App</h1>
+        </div>
+      </div>
+      <div className="border-b">
+        <div className="px-4 pb-4">
+          <h2 className="text-xl font-bold">Labels</h2>
+          <p className="text-xs text-gray-500 mb-4">
+            [Dynamically assigned from any input data]
+          </p>
+          <LabelsSelect />
+        </div>
+      </div>
 
-      <Button
-        className="mt-4"
-        variant="outline"
-        size="sm"
-        onClick={clearFilters}
-      >
-        Reset Filters
-      </Button>
+      <div className="px-4">
+        <h2 className="text-xl font-bold">Filters</h2>
+        <p className="text-xs text-gray-500">
+          [Dynamically built from any input data]
+        </p>
+        {hasAnyFiltersApplied ? (
+          <Button
+            className="mt-4 "
+            variant="outline"
+            size="sm"
+            onClick={() => clearFilters()}
+          >
+            Reset Filters
+          </Button>
+        ) : null}
+      </div>
 
-      <hr />
+      {properties.data?.map((property) => {
+        switch (property.type) {
+          case 'number': {
+            return (
+              <div className="border-b" key={property.id}>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="capitalize mb-2">{property.name}</p>
 
-      <ScrollArea>
-        <Accordion type="single" collapsible className="w-full">
-          {properties.data?.map((property) => {
-            switch (property.type) {
-              case 'number': {
-                return (
-                  <AccordionItem
-                    value={property.name + property.type}
-                    key={property.id}
-                  >
-                    <AccordionTrigger>
-                      <p className="capitalize">{property.name}</p>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <NumberFilter property={property} />
-                    </AccordionContent>
-                  </AccordionItem>
-                )
-              }
-              case 'string': {
-                return (
-                  <AccordionItem
-                    value={property.name + property.type}
-                    key={property.id}
-                  >
-                    <AccordionTrigger>
-                      <p className="capitalize">{property.name}</p>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <StringFilter property={property} />
-                    </AccordionContent>
-                  </AccordionItem>
-                )
-              }
-              case 'boolean': {
-                return (
-                  <AccordionItem
-                    value={property.name + property.type}
-                    key={property.id}
-                  >
-                    <AccordionTrigger>
-                      <p className="capitalize">{property.name}</p>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <BooleanFilter property={property} />
-                    </AccordionContent>
-                  </AccordionItem>
-                )
-              }
-              case 'datetime': {
-                return (
-                  <AccordionItem
-                    value={property.name + property.type}
-                    key={property.id}
-                  >
-                    <AccordionTrigger>
-                      <p className="capitalize">{property.name}</p>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <DatetimeFilter property={property} />
-                    </AccordionContent>
-                  </AccordionItem>
-                )
-              }
-              default: {
-                break
-              }
-            }
-          })}
-        </Accordion>
-      </ScrollArea>
+                    {typeof pickValue(where, property.name) !== 'undefined' ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => clearFilters(property.name)}
+                      >
+                        Clear
+                      </Button>
+                    ) : null}
+                  </div>
+                  <NumberFilter
+                    property={property}
+                    value={pickValue(where, property.name)}
+                    onChange={(value) => updateFilter(property, value)}
+                  />
+                </div>
+              </div>
+            )
+          }
+          case 'string': {
+            return (
+              <div className="border-b" key={property.id}>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="capitalize mb-2">{property.name}</p>
+
+                    {typeof pickValue(where, property.name) !== 'undefined' ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => clearFilters(property.name)}
+                      >
+                        Clear
+                      </Button>
+                    ) : null}
+                  </div>
+                  <StringFilter
+                    property={property}
+                    value={pickValue(where, property.name)}
+                    onChange={(value) => updateFilter(property, value)}
+                  />
+                </div>
+              </div>
+            )
+          }
+          case 'boolean': {
+            return (
+              <div className="border-b" key={property.id}>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="capitalize mb-2">{property.name}</p>
+
+                    {typeof pickValue(where, property.name) !== 'undefined' ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => clearFilters(property.name)}
+                      >
+                        Clear
+                      </Button>
+                    ) : null}
+                  </div>
+                  <BooleanFilter
+                    property={property}
+                    value={pickValue(where, property.name)}
+                    onChange={(value) => updateFilter(property, value)}
+                  />
+                </div>
+              </div>
+            )
+          }
+          case 'datetime': {
+            return (
+              <div className="border-b" key={property.id}>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="capitalize mb-2">{property.name}</p>
+
+                    {typeof pickValue(where, property.name) !== 'undefined' ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => clearFilters(property.name)}
+                      >
+                        Clear
+                      </Button>
+                    ) : null}
+                  </div>
+                  <DatetimeFilter
+                    property={property}
+                    value={pickValue<{
+                      from: string
+                      to: string
+                    }>(where, property.name)}
+                    onChange={(range) => updateFilter(property, range)}
+                  />
+                </div>
+              </div>
+            )
+          }
+          default: {
+            break
+          }
+        }
+      })}
     </div>
   )
 }

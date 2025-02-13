@@ -6,31 +6,24 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog'
 import { JsonViewer } from '@/components/ui/json-viewer'
+import { DBRecord } from '@rushdb/javascript-sdk'
 
-interface Product {
-  id: number
-  name: string
-  description: string
-  price: number
-  category: string
-}
-
-interface ProductModalProps {
-  product: Product
+interface RecordModalProps {
+  record: DBRecord
   isOpen: boolean
   onClose: () => void
 }
 
-export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
+export function RecordModal({ record, isOpen, onClose }: RecordModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{product.__label}</DialogTitle>
-          <DialogDescription>{product.__id}</DialogDescription>
+          <DialogTitle>{record.__label}</DialogTitle>
+          <DialogDescription>{record.__id}</DialogDescription>
         </DialogHeader>
         <div className={'max-w-full overflow-auto'}>
-          <JsonViewer data={product} />
+          <JsonViewer data={record} />
         </div>
       </DialogContent>
     </Dialog>

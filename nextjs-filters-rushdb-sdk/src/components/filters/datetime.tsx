@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { Property } from '@rushdb/javascript-sdk'
-import { usePropertyValues } from '@/components/filters/utils'
 import { Loader } from 'lucide-react'
 import {
   Popover,
@@ -11,32 +10,32 @@ import { Button } from '@/components/ui/button'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import { isValid } from 'date-fns'
 import { Calendar } from '@/components/ui/calendar'
-import { useFilters } from '@/context/filter-context'
 import { CalendarPlaceholder } from '@/components/ui/calendar-placeholder'
+import { usePropertyValues } from '@/hooks/use-property-values'
 
-export const DatetimeFilter: FC<{ property: Property }> = ({
-  property,
-}: {
+export const DatetimeFilter: FC<{
   property: Property
-}) => {
-  const { filters, updateFilter } = useFilters()
+  onChange: (value: { from?: string; to?: string }) => void
+  value: { from?: string; to?: string }
+}> = ({ property, onChange, value }) => {
   const { data, isLoading } = usePropertyValues(property.id)
 
-  function applyDateFilter(range: { from?: Date; to?: Date }) {
+  function applyDateFilter(range?: { from?: Date; to?: Date }) {
     if (range && (range.from || range.to)) {
       const isFromValid = isValid(range.from)
       const isToValid = isValid(range.to)
       const toDateString = isValid(range.to)
         ? range.to?.toISOString()
         : undefined
+
       const fromDateString = isFromValid ? range.from?.toISOString() : undefined
 
-      updateFilter(property, {
+      onChange({
         from: isFromValid ? fromDateString : toDateString,
         to: isToValid ? (isFromValid ? toDateString : undefined) : undefined,
       })
     } else {
-      updateFilter(property, { from: undefined, to: undefined })
+      onChange({ from: undefined, to: undefined })
     }
   }
 
@@ -45,22 +44,22 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
   }
 
   if (data) {
-    const rangeValue = filters[property.name]?.value
+    const rangeValue = value
       ? {
-          from: filters[property.name].value.from,
-          to: filters[property.name].value.to,
+          from: value.from,
+          to: value.to,
         }
       : undefined
 
     const humanizedValue = rangeValue
       ? {
-          from: new Date(rangeValue.from),
+          from: new Date(rangeValue.from!),
           to: rangeValue.to ? new Date(rangeValue.to) : undefined,
         }
       : undefined
 
     const defaultMonth = new Date(
-      (new Date(data.min).getTime() + new Date(data.max).getTime()) / 2
+      (new Date(data.min!).getTime() + new Date(data.max!).getTime()) / 2
     )
 
     return (
@@ -68,7 +67,7 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
         <PopoverTrigger asChild>
           <Button
             variant={'outline'}
-            className={`w-full justify-start text-left font-normal ${!filters[property.name]?.value && 'text-muted-foreground'}`}
+            className={`w-full justify-start text-left font-normal ${!value && 'text-muted-foreground'}`}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             <CalendarPlaceholder range={rangeValue} />
@@ -79,8 +78,8 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
             defaultMonth={defaultMonth}
             selected={humanizedValue}
             disabled={{
-              before: new Date(data.min),
-              after: new Date(data.max),
+              before: new Date(data.min!),
+              after: new Date(data.max!),
             }}
             onSelect={applyDateFilter}
             initialFocus
@@ -90,7 +89,7 @@ export const DatetimeFilter: FC<{ property: Property }> = ({
               variant="outline"
               size="sm"
               onClick={() => {
-                updateFilter(property, { from: undefined, to: undefined })
+                onChange({ from: undefined, to: undefined })
               }}
             >
               Reset Date
