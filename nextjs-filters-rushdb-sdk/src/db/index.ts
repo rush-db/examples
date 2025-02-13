@@ -33,7 +33,7 @@ export const db = new RushDB(
   {
     logger: (payload) => {
       prettyLog(payload)
-      pushLog(payload.requestData)
+      pushLog(payload)
     },
     url: 'https://api.rushdb.com',
   }

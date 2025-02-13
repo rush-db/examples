@@ -1,6 +1,6 @@
 import React from 'react'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import JsonView from '@uiw/react-json-view'
+import { nordTheme } from '@uiw/react-json-view/nord'
 
 type JsonViewerProps = {
   data: any
@@ -8,8 +8,29 @@ type JsonViewerProps = {
 
 export const JsonViewer: React.FC<JsonViewerProps> = ({ data }) => {
   return (
-    <SyntaxHighlighter language="json" style={a11yDark}>
-      {JSON.stringify(data, null, 2)}
-    </SyntaxHighlighter>
+    <JsonView
+      value={data}
+      style={nordTheme}
+      displayObjectSize={false}
+      displayDataTypes={false}
+      enableClipboard={false}
+    >
+      <JsonView.Colon
+        render={(props, { parentValue, value, keyName }) => {
+          if (Array.isArray(parentValue) && props.children == ':') {
+            return <span />
+          }
+          return <span {...props} />
+        }}
+      />
+      <JsonView.KeyName
+        render={({ ...props }, { parentValue, value, keyName }) => {
+          if (Array.isArray(parentValue) && Number.isFinite(props.children)) {
+            return <span />
+          }
+          return <span {...props} />
+        }}
+      />
+    </JsonView>
   )
 }

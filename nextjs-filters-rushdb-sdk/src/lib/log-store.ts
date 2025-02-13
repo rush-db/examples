@@ -2,11 +2,22 @@ import { EventEmitter } from 'events'
 
 const logEmitter = new EventEmitter()
 
-let logs: any[] = []
+let logs: Record<string, any> = {}
 
 export function pushLog(log: any) {
   if (log && Object.keys(log).length > 0) {
-    logs.push(log)
+    if (!log.responseData) {
+      logs[log.requestId] = {
+        ...(logs[log.requestId] || {}),
+        ...log,
+      }
+    } else {
+      logs[log.requestId] = {
+        ...(logs[log.requestId] || {}),
+        responseData: log.responseData,
+      }
+    }
+
     logEmitter.emit('log', log)
   }
 }
