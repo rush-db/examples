@@ -29,15 +29,16 @@ function prettyLog(obj: any) {
 }
 
 export const db = new RushDB(
-  '45f93e7acc299734e1b72904d90a9e00gGblPzS0FsUNzVpt2xBT6GbKpDFDy6se9bUbsGWPVoL6lkZm5aSsuH3CxkYM7Om5',
+  // '45f93e7acc299734e1b72904d90a9e00gGblPzS0FsUNzVpt2xBT6GbKpDFDy6se9bUbsGWPVoL6lkZm5aSsuH3CxkYM7Om5',
+  '58ddef9d5b13c3b452327da7927e483eWN37lWaYhvkL/qAjpHashUyHGrLkEHxQxSNnbxIYRW0PB4rpC+6ixKRtsCf6XFC3',
   {
     logger: (payload) => {
-      prettyLog(payload)
+      // prettyLog(payload)
       pushLog(payload)
     },
     options: {
       allowForceDelete: true,
     },
-    url: 'https://api.rushdb.com',
+    url: 'http://localhost:3000',
   }
 )

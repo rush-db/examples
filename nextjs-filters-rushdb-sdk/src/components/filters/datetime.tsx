@@ -16,7 +16,7 @@ import { usePropertyValues } from '@/hooks/use-property-values'
 export const DatetimeFilter: FC<{
   property: Property
   onChange: (value: { from?: string; to?: string }) => void
-  value: { from?: string; to?: string }
+  value: { $gte?: string; $lte?: string }
 }> = ({ property, onChange, value }) => {
   const { data, isLoading } = usePropertyValues(property.id)
 
@@ -46,8 +46,8 @@ export const DatetimeFilter: FC<{
   if (data) {
     const rangeValue = value
       ? {
-          from: value.from,
-          to: value.to,
+          from: value.$gte,
+          to: value.$lte,
         }
       : undefined
 
