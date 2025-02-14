@@ -5,6 +5,7 @@ import RecordsGrid from '@/components/records-grid'
 import LeftSidebar from '@/components/left-sidebar'
 import { Layout } from '@/components/layout'
 import DebugDrawer from '@/components/debug-drawer'
+import { ControlPanel } from '@/components/control-panel'
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
           <DebugDrawer />
         </main>
       </div>
+      <ControlPanel />
     </Layout>
   )
 }

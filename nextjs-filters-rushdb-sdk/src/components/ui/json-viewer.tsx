@@ -11,6 +11,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({ data }) => {
     <JsonView
       value={data}
       style={nordTheme}
+      collapsed={1}
       displayObjectSize={false}
       displayDataTypes={false}
       enableClipboard={false}
@@ -28,6 +29,7 @@ export const JsonViewer: React.FC<JsonViewerProps> = ({ data }) => {
           if (Array.isArray(parentValue) && Number.isFinite(props.children)) {
             return <span />
           }
+          // @ts-ignore
           return <span {...props} />
         }}
       />

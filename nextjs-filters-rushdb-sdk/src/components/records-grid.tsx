@@ -19,9 +19,9 @@ import { DBRecord } from '@rushdb/javascript-sdk'
 export default function RecordsGrid() {
   const [currentRecord, setCurrentRecord] = useState<DBRecord | undefined>()
 
-  const { data: records, isLoading, isFetching, isRefetching } = useRecords()
+  const { data: records, isLoading, isFetching } = useRecords()
 
-  if (isLoading || isFetching || isRefetching) {
+  if (isLoading || isFetching) {
     return (
       <div className="flex-1 p-6 pl-80">
         <div className="pl-4 items-center grid w-full h-full animate-pulse text-center justify-center">

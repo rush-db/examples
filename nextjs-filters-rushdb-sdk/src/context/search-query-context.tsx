@@ -14,7 +14,11 @@ type SearchQueryContextType = {
   updateFilter: (property: Property, value: any) => void
   setLabels: (labels: string[]) => void
   clearFilters: (key?: string) => void
+  setSkip: (skip: number) => void
+  setLimit: (limit: number) => void
   where: SearchQuery['where']
+  skip: number
+  limit: number
 } & SearchQuery
 
 const SearchQueryContext = createContext<SearchQueryContextType | undefined>(
@@ -26,6 +30,8 @@ export const SearchQueryContextProvider: FC<{ children: ReactNode }> = ({
 }) => {
   const [where, setWhere] = useState<SearchQuery['where']>({})
   const [labels, setLabels] = useState<SearchQuery['labels']>([])
+  const [skip, setSkip] = useState(0)
+  const [limit, setLimit] = useState(100)
 
   const updateFilter = useCallback(
     (property: Property, value: PropertyValue) => {
@@ -63,7 +69,17 @@ export const SearchQueryContextProvider: FC<{ children: ReactNode }> = ({
 
   return (
     <SearchQueryContext.Provider
-      value={{ where, updateFilter, clearFilters, labels, setLabels }}
+      value={{
+        where,
+        updateFilter,
+        clearFilters,
+        labels,
+        setLabels,
+        skip,
+        setSkip,
+        limit,
+        setLimit,
+      }}
     >
       {children}
     </SearchQueryContext.Provider>

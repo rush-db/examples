@@ -10,6 +10,6 @@ export function usePropertyValues(propertyId: string, query?: string) {
     queryFn: () => db.properties.values(propertyId, { query }),
     select: (data) => data.data,
     staleTime: 30000,
-    placeholderData: (previousData, previousQuery) => previousData,
+    placeholderData: keepPreviousData,
   })
 }

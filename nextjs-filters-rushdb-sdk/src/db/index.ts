@@ -35,6 +35,9 @@ export const db = new RushDB(
       prettyLog(payload)
       pushLog(payload)
     },
+    options: {
+      allowForceDelete: true,
+    },
     url: 'https://api.rushdb.com',
   }
 )

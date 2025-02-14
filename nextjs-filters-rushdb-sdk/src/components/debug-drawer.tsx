@@ -13,7 +13,11 @@ export default function DebugDrawer() {
 
   useEffect(() => {
     const unsubscribe = subscribeLogs((newLog) => {
-      setLogs((prev) => ({ ...prev, [newLog.requestId]: newLog }))
+      setLogs((prev) => {
+        const updatedLogs = { ...prev, [newLog.requestId]: newLog }
+
+        return Object.fromEntries(Object.entries(updatedLogs).slice(-100))
+      })
     })
 
     return () => {
@@ -24,10 +28,14 @@ export default function DebugDrawer() {
   return (
     <>
       <Button
-        variant="outline"
+        variant="default"
         size="icon"
-        className="fixed bottom-4 right-4 z-50 rounded-full"
-        onClick={() => setIsOpen(!isOpen)}
+        className="fixed bottom-4 right-4 z-[999] rounded-full"
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          setIsOpen(!isOpen)
+        }}
       >
         <Code className="h-4 w-4" />
         <span className="sr-only">Toggle Debug Info</span>
@@ -51,7 +59,9 @@ export default function DebugDrawer() {
                   <div className="font-semibold py-2 pt-3 flex items-center justify-between w-full">
                     <pre>
                       {method}
-                      <span className="text-blue-500 text-wrap">{path}</span>
+                      <span className="text-blue-500 text-wrap">
+                        {decodeURI(path)}
+                      </span>
                     </pre>
                     {!log.responseData ? (
                       <Loader className="animate-spin inline" />
