@@ -18,8 +18,9 @@ export function LabelsSelect() {
 
   return (
     <div className="flex flex-wrap gap-2">
-      {data?.map(({ color, label, value }) => (
+      {data?.map(({ color, label, value }, index) => (
         <Label
+          key={index}
           active={labels.includes(label)}
           variant={color}
           onClick={() => toggleTag(label)}

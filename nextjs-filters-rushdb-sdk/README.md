@@ -1,5 +1,42 @@
+# Next.js RushDB Dynamic Filters Demo
+
+This demo application showcases how to build a dynamic UI with Next.js and the RushDB SDK. 
+Our UI consists of a data grid and dynamic filters generated from the dataset. 
+When filters change, the application re-queries the backend for records matching the constructed SearchQuery. 
+Server-side pagination is also implemented using the RushDB SDK.
+
+## Technology Stack
+
+- **Next.js**
+- **RushDB SDK**
+- **React & TanStack Query**
+- **Tailwind CSS**
+- **Radix UI & Lucide**
+
+## About the Project
+Using the RushDB SDK and Next.js, we built a UI example that displays data in a grid and provides dynamic filters derived from the dataset. 
+When filters change, a new SearchQuery is issued to the backend, and matching records are fetched. 
+Additionally, we integrated server-side pagination using RushDB SDK for efficient data handling.
+
+![Demo preview image](./example-assets/demo-preview.png)
+
+## Dataset
+As a test dataset, we used a JSON file containing a three-level nested array. You can view the original dataset in the file [test-data-example.json](./src/dataset/test-data-example.json).
+
+## UI Utilities & Logging
+To help track all operations performed by RushDB, we implemented:
+- **Custom Logging**: Every RushDB API call is logged to the developer console.
+- **Debug Drawer**: A dedicated UI drawer displays these logs, allowing you to inspect all operations with the RushDB core.
+
+![Debug drawer](./example-assets/debug-drawer.png)
+
+## Package.json
+
+Below is the project's package.json configuration:
+
+```json
 {
-  "name": "RushDB && Nextjs Example",
+  "name": "RushDB nextjs example",
   "version": "0.1.0",
   "private": true,
   "scripts": {

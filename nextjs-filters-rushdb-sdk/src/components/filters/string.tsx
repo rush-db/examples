@@ -1,8 +1,6 @@
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useMemo, useState } from 'react'
 import { Property } from '@rushdb/javascript-sdk'
 import { Loader } from 'lucide-react'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Label } from '@/components/ui/label'
 import MultipleSelector, { Option } from '@/components/ui/multiple-selector'
 import { usePropertyValues } from '@/hooks/use-property-values'
 
@@ -16,10 +14,6 @@ export const StringFilter: FC<{
     property.id,
     searchValue
   )
-
-  useEffect(() => {
-    console.log(data)
-  }, [data])
 
   const getValue = (value: { $in: string[] } | { $contains: string }) => {
     if (value) {
