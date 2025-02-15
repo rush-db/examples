@@ -10,13 +10,10 @@ import {
 } from '@/components/ui/select'
 import { useRecords } from '@/hooks/use-records'
 import { useSearchQuery } from '@/context/search-query-context'
-import { useDeleteAllRecords } from '@/hooks/use-delete-all-records'
 
 const ITEMS_PER_PAGE_OPTIONS = [50, 100, 500, 1000]
 
 export function ControlPanel() {
-  const deleteAllRecords = useDeleteAllRecords()
-
   const { data: records, isLoading, isFetching } = useRecords()
   const { skip, limit, setSkip, setLimit } = useSearchQuery()
 
@@ -78,16 +75,6 @@ export function ControlPanel() {
               ))}
             </SelectContent>
           </Select>
-          <div className="h-6 w-px bg-border mx-2" />
-          <Button
-            variant="destructive"
-            size="sm"
-            className="rounded-full"
-            onClick={() => deleteAllRecords.mutateAsync()}
-          >
-            <Trash2 className="h-4 w-4 mr-2" />
-            Delete All
-          </Button>
         </div>
       </div>
     )
