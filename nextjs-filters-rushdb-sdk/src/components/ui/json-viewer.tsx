@@ -4,14 +4,18 @@ import { nordTheme } from '@uiw/react-json-view/nord'
 
 type JsonViewerProps = {
   data: any
+  collapsedRow?: number
 }
 
-export const JsonViewer: React.FC<JsonViewerProps> = ({ data }) => {
+export const JsonViewer: React.FC<JsonViewerProps> = ({
+  data,
+  collapsedRow,
+}) => {
   return (
     <JsonView
       value={data}
       style={nordTheme}
-      collapsed={1}
+      collapsed={collapsedRow ?? 1}
       displayObjectSize={false}
       displayDataTypes={false}
       enableClipboard={false}

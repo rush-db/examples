@@ -6,6 +6,7 @@ import LeftSidebar from '@/components/left-sidebar'
 import { Layout } from '@/components/layout'
 import DebugDrawer from '@/components/debug-drawer'
 import { ControlPanel } from '@/components/control-panel'
+import { WelcomeModal } from '@/components/welcome-modal'
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
           <LeftSidebar />
           <RecordsGrid />
           <DebugDrawer />
+          <WelcomeModal />
         </main>
       </div>
       <ControlPanel />
