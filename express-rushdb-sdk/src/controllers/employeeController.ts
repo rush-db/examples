@@ -10,8 +10,11 @@ export async function createEmployee(req: Request, res: Response) {
 
     const employeeData: EmployeeDto[] = req.body;
 
-    const result = await db.records.createMany('EMPLOYEE', employeeData);
-    await db.records.attach(departmentId, result, {}, tx);
+    const result = await db.records.createMany({
+      label: 'EMPLOYEE',
+      data: employeeData,
+    });
+    await db.records.attach({ source: departmentId, target: result }, tx);
     await tx.commit();
 
     return res.json(result.data);
@@ -27,7 +30,11 @@ export async function updateEmployee(req: Request, res: Response) {
     const { employeeId } = req.params;
     const updateData: EmployeeDto = req.body;
 
-    const result = await db.records.update(employeeId, updateData);
+    const result = await db.records.update({
+      target: employeeId,
+      label: 'EMPLOYEE',
+      data: updateData,
+    });
     return res.json(result.data);
   } catch (error) {
     console.error('Error updating employee:', error);
@@ -70,7 +77,8 @@ export async function getEmployeeById(req: Request, res: Response) {
   try {
     const { employeeId } = req.params;
 
-    const employee = await db.records.findUniq('EMPLOYEE', {
+    const employee = await db.records.findUniq({
+      labels: ['EMPLOYEE'],
       where: {
         $id: employeeId,
       },
@@ -109,7 +117,7 @@ export async function searchEmployee(
       }
     }
 
-    const result = await db.records.find('EMPLOYEE', {
+    const result = await db.records.find({
       labels: ['EMPLOYEE'],
       where: whereClause,
     });

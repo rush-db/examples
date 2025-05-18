@@ -90,7 +90,9 @@ export const useSearchQuery = (): SearchQueryContextType => {
   const context = useContext(SearchQueryContext)
 
   if (!context) {
-    throw new Error('useFilters must be used within a FiltersProvider')
+    throw new Error(
+      'useFilters must be used within a SearchQueryContextProvider'
+    )
   }
 
   return context

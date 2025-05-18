@@ -11,13 +11,14 @@ import {
 } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { RecordModal } from '@/components/record-modal'
-import { db } from '@/db'
 import { useRecords } from '@/hooks/use-records'
 import { Loader } from 'lucide-react'
-import { DBRecord } from '@rushdb/javascript-sdk'
+import { DBRecordInstance } from '@rushdb/javascript-sdk'
 
 export default function RecordsGrid() {
-  const [currentRecord, setCurrentRecord] = useState<DBRecord | undefined>()
+  const [currentRecord, setCurrentRecord] = useState<
+    DBRecordInstance | undefined
+  >()
 
   const { data: records, isLoading, isFetching } = useRecords()
 
@@ -35,13 +36,13 @@ export default function RecordsGrid() {
     <div className="flex-1 p-6 pl-80">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pl-4">
         {records?.data?.map((record) => (
-          <Card key={record.__id} className="flex flex-col shadow-none">
+          <Card key={record.id()} className="flex flex-col shadow-none">
             <CardHeader>
-              <CardTitle>{record.__label}</CardTitle>
-              <CardDescription>{record.__id}</CardDescription>
+              <CardTitle>{record.label()}</CardTitle>
+              <CardDescription>{record.id()}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <p className="">{db.toInstance(record).date.toISOString()}</p>
+              <p className="">{record.date().toISOString()}</p>
             </CardContent>
             <CardFooter>
               <Button

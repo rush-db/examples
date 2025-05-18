@@ -11,8 +11,11 @@ export async function createDepartment(req: Request, res: Response) {
     const departmentData: DepartmentDto = req.body;
 
     console.log(req.params);
-    const result = await db.records.create('DEPARTMENT', departmentData, tx);
-    await db.records.attach(companyId, result, {}, tx);
+    const result = await db.records.create(
+      { label: 'DEPARTMENT', data: departmentData },
+      tx
+    );
+    await db.records.attach({ source: companyId, target: result }, tx);
 
     await tx.commit();
 
@@ -29,7 +32,11 @@ export async function updateDepartment(req: Request, res: Response) {
     const { departmentId } = req.params;
     const updateData: DepartmentDto = req.body;
 
-    const result = await db.records.update(departmentId, updateData);
+    const result = await db.records.update({
+      target: departmentId,
+      data: updateData,
+      label: 'DEPARTMENT',
+    });
     return res.json(result.data);
   } catch (error) {
     console.error('Error updating department:', error);
@@ -72,7 +79,8 @@ export async function getDepartmentById(req: Request, res: Response) {
   try {
     const { departmentId } = req.params;
 
-    const department = await db.records.findUniq('DEPARTMENT', {
+    const department = await db.records.findUniq({
+      labels: ['DEPARTMENT'],
       where: {
         $id: departmentId,
       },
@@ -93,7 +101,8 @@ export async function getDepartmentStatsById(req: Request, res: Response) {
   try {
     const { departmentId } = req.params;
 
-    const department = await db.records.findUniq('DEPARTMENT', {
+    const department = await db.records.findUniq({
+      labels: ['DEPARTMENT'],
       where: {
         $id: departmentId,
         EMPLOYEE: {

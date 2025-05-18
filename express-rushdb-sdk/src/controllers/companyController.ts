@@ -6,7 +6,7 @@ export async function createCompany(req: Request, res: Response) {
   try {
     const company: CompanyDto = req.body;
 
-    const result = await db.records.create('COMPANY', company);
+    const result = await db.records.create({ label: 'COMPANY', data: company });
 
     return res.json(result.data);
   } catch (error) {
@@ -20,7 +20,11 @@ export async function updateCompany(req: Request, res: Response) {
     const { companyId } = req.params;
     const updateData: CompanyDto = req.body;
 
-    const result = await db.records.update(companyId, updateData);
+    const result = await db.records.update({
+      target: companyId,
+      label: 'COMPANY',
+      data: updateData,
+    });
     return res.json(result.data);
   } catch (error) {
     console.error('Error updating company:', error);
@@ -62,11 +66,13 @@ export async function deleteCompany(req: Request, res: Response) {
     );
 
     if (employeesQuery.data?.length) {
-      employeeIds = employeesQuery.data.map(({ __id }) => __id);
+      employeeIds = employeesQuery.data.map((employee) => employee.id());
     }
 
     if (departmentsQuery.data?.length) {
-      departmentsIds = departmentsQuery.data.map(({ __id }) => __id);
+      departmentsIds = departmentsQuery.data.map((department) =>
+        department.id()
+      );
     }
 
     const resultToDelete = [
@@ -90,7 +96,8 @@ export async function getCompanyById(req: Request, res: Response) {
   try {
     const { companyId } = req.params;
 
-    const result = await db.records.findUniq('COMPANY', {
+    const result = await db.records.findUniq({
+      labels: ['COMPANY'],
       where: {
         $id: companyId,
       },
