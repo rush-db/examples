@@ -7,7 +7,7 @@ export function usePropertyValues(propertyId: string, query?: string) {
 
   return useQuery({
     queryKey: ['property-values', propertyId, where, labels, query],
-    queryFn: () => db.properties.values(propertyId, { query }),
+    queryFn: () => db.properties.values(propertyId, { where, labels, query }),
     select: (data) => data.data,
     staleTime: 30000,
     placeholderData: keepPreviousData,

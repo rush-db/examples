@@ -43,7 +43,7 @@ export const StringFilter: FC<{
     <>
       <div className="space-y-2">
         <MultipleSelector
-          defaultOptions={options}
+          options={options}
           value={getValue(value).map(mapOption)}
           onChange={(newValue) => {
             onChange(newValue.map(pickValue))
