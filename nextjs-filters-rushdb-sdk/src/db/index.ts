@@ -29,7 +29,7 @@ function prettyLog(obj: any) {
 }
 
 export const db = new RushDB(
-  'feb27a87391a6325c67c1395583ca7b7eWvkm3GiAaEw8P05gc2/pMexcqubcOuRWQ3uM1aiwKSC8v5dI1LCapZhDnNZtEc2',
+  '45f93e7acc299734e1b72904d90a9e00gGblPzS0FsUNzVpt2xBT6GbKpDFDy6se9bUbsGWPVoL6lkZm5aSsuH3CxkYM7Om5',
   {
     logger: (payload) => {
       prettyLog(payload)
