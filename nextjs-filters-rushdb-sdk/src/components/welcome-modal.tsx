@@ -12,7 +12,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { JsonViewer } from '@/components/ui/json-viewer'
 import testDataset from '@/dataset/test-data-example.json'
-import { Share } from 'lucide-react'
+import { Database } from 'lucide-react'
 
 export function WelcomeModal() {
   const [isOpen, setIsOpen] = useState(false)
@@ -54,20 +54,15 @@ export function WelcomeModal() {
             <JsonViewer data={testDataset} collapsedRow={3} />
           </div>
           <DialogFooter>
-            <Button variant="default" onClick={handleClose}>
+            <Button variant="outline" onClick={handleClose}>
               Confirm &amp; Close
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      <Button
-        variant="default"
-        size="icon"
-        className="fixed bottom-16 right-4 z-[999] rounded-full"
-        onClick={() => setIsOpen(true)}
-      >
-        <Share className="h-4 w-4" />
+      <Button variant="outline" onClick={() => setIsOpen(true)}>
+        Example Dataset <Database className="w-4 h-4" />
       </Button>
     </>
   )

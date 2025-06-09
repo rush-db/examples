@@ -7,19 +7,16 @@ import { DayPicker, DateRange } from 'react-day-picker'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 
-export type RangeCalendarProps = React.ComponentProps<typeof DayPicker> & {
-  selected?: DateRange
-}
+export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
   ...props
-}: RangeCalendarProps) {
+}: CalendarProps) {
   return (
     <DayPicker
-      mode="range"
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       classNames={{

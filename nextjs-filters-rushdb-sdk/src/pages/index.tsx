@@ -2,23 +2,18 @@
 
 import { QueryClient, dehydrate } from '@tanstack/react-query'
 import RecordsGrid from '@/components/records-grid'
-import LeftSidebar from '@/components/left-sidebar'
 import { Layout } from '@/components/layout'
-import DebugDrawer from '@/components/debug-drawer'
 import { ControlPanel } from '@/components/control-panel'
-import { WelcomeModal } from '@/components/welcome-modal'
+import { SidebarLayout } from '@/components/sidebar-layout'
 
 function Home() {
   return (
     <Layout>
-      <div className="flex flex-col min-h-screen">
-        <main className="flex flex-1">
-          <LeftSidebar />
+      <SidebarLayout>
+        <div className="flex flex-1 overflow-hidden">
           <RecordsGrid />
-          <DebugDrawer />
-          <WelcomeModal />
-        </main>
-      </div>
+        </div>
+      </SidebarLayout>
       <ControlPanel />
     </Layout>
   )

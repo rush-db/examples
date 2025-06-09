@@ -13,7 +13,11 @@ export const BooleanFilter: FC<{
   const { data, isLoading } = usePropertyValues(property.id)
 
   if (isLoading) {
-    return <Loader />
+    return (
+      <div className="flex items-center justify-center p-4">
+        <Loader className="h-4 w-4 animate-spin" />
+      </div>
+    )
   }
 
   if (data && Array.isArray(data.values)) {

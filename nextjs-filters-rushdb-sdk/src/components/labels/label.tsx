@@ -1,18 +1,21 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { FC, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
-import { labelVariants } from '@/components/labels/constants'
+import {
+  labelVariants,
+  labelOutlineVariants,
+} from '@/components/labels/constants'
 
 export const label = cva<{
   size: Record<string, string>
   variant: Record<string, string>
 }>(
-  'inline-grid shrink-0 grid-flow-col place-items-center max-w-[180px] truncate',
+  'inline-grid shrink-0 grid-flow-col place-items-center max-w-[120px] truncate border rounded-full',
   {
     variants: {
-      variant: labelVariants,
+      variant: { ...labelVariants, ...labelOutlineVariants },
       size: {
-        medium: 'rounded gap-2.5 p-2 text-xs font-bold',
+        medium: 'gap-1.5 px-3 py-1 text-xs font-medium',
       },
     },
     defaultVariants: {
@@ -32,7 +35,7 @@ export const Label: FC<
     onClick?: () => void
   } & VariantProps<typeof label>
 > = ({
-  active,
+  active = true,
   children,
   className,
   quantity,
@@ -41,17 +44,27 @@ export const Label: FC<
   variant,
   ...props
 }) => {
+  // Determine which variant to use based on active state
+  const getVariantClasses = () => {
+    if (!variant || variant === 'blank')
+      return active ? labelVariants.blank : labelOutlineVariants.blank
+
+    const colorKey = variant as keyof typeof labelVariants
+    return active ? labelVariants[colorKey] : labelOutlineVariants[colorKey]
+  }
+
   return (
     <button
       className={cn(
-        label({ size, variant, className }),
-        !active && 'opacity-50'
+        'inline-grid shrink-0 grid-flow-col place-items-center max-w-[120px] truncate border rounded-full gap-1.5 px-3 py-1 text-xs font-medium',
+        getVariantClasses(),
+        className
       )}
       type={type}
       {...props}
     >
       <span>{children}</span>
-      {quantity && <span className="text-content-secondary">{quantity}</span>}
+      {quantity && <span className="opacity-75">{quantity}</span>}
     </button>
   )
 }

@@ -77,7 +77,7 @@ Below is the project's package.json configuration:
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.6",
-    "@rushdb/javascript-sdk": "^0.13.0",
+    "@rushdb/javascript-sdk": "^1.4.0",
     "@tanstack/react-query": "^5.66.0",
     "@uiw/react-json-view": "^2.0.0-alpha.30",
     "@uiw/react-textarea-code-editor": "latest",

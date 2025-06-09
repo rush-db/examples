@@ -14,11 +14,12 @@ export function pushLog(log: any) {
     } else {
       logs[log.requestId] = {
         ...(logs[log.requestId] || {}),
-        responseData: log.responseData,
+        ...log,
+        responseTime: Date.now(),
       }
     }
 
-    logEmitter.emit('log', log)
+    logEmitter.emit('log', logs[log.requestId])
   }
 }
 

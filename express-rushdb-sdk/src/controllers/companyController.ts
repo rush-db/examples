@@ -118,28 +118,37 @@ export async function getCompanyStructureById(req: Request, res: Response) {
   try {
     const { companyId } = req.params;
 
-    // @ts-expect-error
-    const result = await db.records.findUniq('COMPANY', {
+    const result = await db.records.findUniq({
       labels: ['COMPANY'],
       where: {
         $id: companyId,
         DEPARTMENT: {
-          $alias: '$dept',
-          EMPLOYEE: {
-            $alias: '$emp',
+          $alias: '$department',
+          PROJECT: {
+            $alias: '$project',
+            EMPLOYEE: {
+              $alias: '$employee',
+            },
           },
         },
       },
       aggregate: {
-        DEPARTMENT: {
+        departments: {
           fn: 'collect',
-          alias: '$dept',
+          alias: '$department',
           aggregate: {
-            EMPLOYEE: {
+            projects: {
               fn: 'collect',
-              alias: '$emp',
-              orderBy: {
-                salary: 'desc',
+              alias: '$project',
+              aggregate: {
+                employees: {
+                  fn: 'collect',
+                  orderBy: {
+                    salary: 'desc',
+                  },
+                  alias: '$employee',
+                  limit: 3,
+                },
               },
             },
           },
@@ -147,7 +156,7 @@ export async function getCompanyStructureById(req: Request, res: Response) {
       },
     });
 
-    if (!result.data) {
+    if (!result.id()) {
       return res.status(404).json({ error: 'Company not found' });
     }
 

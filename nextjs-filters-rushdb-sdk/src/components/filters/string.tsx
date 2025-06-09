@@ -2,7 +2,7 @@ import { FC, useMemo, useState } from 'react'
 import { Property } from '@rushdb/javascript-sdk'
 import { Loader } from 'lucide-react'
 import MultipleSelector, { Option } from '@/components/ui/multiple-selector'
-import { usePropertyValues } from '@/hooks/use-property-values'
+import { usePropertyValuesLazy } from '@/hooks/use-property-values-lazy'
 
 export const StringFilter: FC<{
   property: Property
@@ -10,8 +10,10 @@ export const StringFilter: FC<{
   value: { $in: string[] } | { $contains: string }
 }> = ({ property, value, onChange }) => {
   const [searchValue, setSearchValue] = useState<string | undefined>()
-  const { data, isLoading, refetch } = usePropertyValues(
+  const [isOpen, setIsOpen] = useState(false)
+  const { data, isLoading, refetch } = usePropertyValuesLazy(
     property.id,
+    isOpen, // Only fetch when dropdown is open
     searchValue
   )
 
@@ -36,9 +38,6 @@ export const StringFilter: FC<{
     [data]
   )
 
-  if (isLoading) {
-    return <Loader />
-  }
   return (
     <>
       <div className="space-y-2">
@@ -57,12 +56,24 @@ export const StringFilter: FC<{
                 setSearchValue(undefined)
               }
             },
+            onFocus: () => {
+              setIsOpen(true)
+            },
+            onBlur: () => {
+              setIsOpen(false)
+            },
           }}
           placeholder="Pick options..."
           emptyIndicator={
-            <p className="text-center text-lg leading-10 text-gray-600 dark:text-gray-400">
-              no results found.
-            </p>
+            isLoading && isOpen ? (
+              <div className="flex items-center justify-center p-4">
+                <Loader className="h-4 w-4 animate-spin" />
+              </div>
+            ) : !isLoading && options.length === 0 ? (
+              <p className="text-center text-lg leading-10 text-muted-foreground">
+                no results found.
+              </p>
+            ) : undefined
           }
         />
         {/*{(data.values as string[]).map((category) => (*/}
