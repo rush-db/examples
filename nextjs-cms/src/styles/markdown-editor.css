@@ -1,0 +1,75 @@
+/* Dark mode improvements for @uiw/react-md-editor */
+
+/* Ensure proper theming for dark mode */
+[data-color-mode='dark'] .w-md-editor {
+  background-color: hsl(var(--background));
+  border-color: hsl(var(--border));
+}
+
+[data-color-mode='dark'] .w-md-editor-text-pre,
+[data-color-mode='dark'] .w-md-editor-text-input {
+  background-color: transparent !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+[data-color-mode='dark'] .w-md-editor-text-input::placeholder {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Toolbar styling for dark mode */
+[data-color-mode='dark'] .w-md-editor-toolbar {
+  background-color: hsl(var(--background));
+  border-color: hsl(var(--border));
+}
+
+[data-color-mode='dark'] .w-md-editor-toolbar button {
+  color: hsl(var(--foreground));
+}
+
+[data-color-mode='dark'] .w-md-editor-toolbar button:hover {
+  background-color: hsl(var(--accent));
+}
+
+/* Preview area styling */
+[data-color-mode='dark'] .w-md-editor-preview {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Ensure proper contrast for selection in both modes */
+.w-md-editor-text-input::selection {
+  background-color: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+
+/* Light mode - ensure proper contrast */
+[data-color-mode='light'] .w-md-editor-text-pre,
+[data-color-mode='light'] .w-md-editor-text-input {
+  background-color: transparent !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+[data-color-mode='light'] .w-md-editor-text-input::placeholder {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Focus states */
+.w-md-editor-text-input:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px hsl(var(--ring)) !important;
+}
+
+/* Ensure syntax highlighting works in both modes */
+[data-color-mode='dark'] .w-md-editor-text-pre .token.title {
+  color: hsl(var(--primary));
+}
+
+[data-color-mode='dark'] .w-md-editor-text-pre .token.bold {
+  color: hsl(var(--foreground));
+  font-weight: bold;
+}
+
+[data-color-mode='dark'] .w-md-editor-text-pre .token.code {
+  color: hsl(var(--muted-foreground));
+  background-color: hsl(var(--muted));
+}
