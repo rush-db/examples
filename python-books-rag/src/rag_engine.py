@@ -172,30 +172,6 @@ class RagService:
                 "limit": search_query.get("limit", 10)
             })
 
-            print({
-                **search_query,
-                "where": {
-                    **search_query.get('where', {}),
-                    "embedding": {
-                        "$vector": {
-                            "fn": "gds.similarity.cosine",
-                            "query": query_vector,
-                            "threshold": 0.7
-                        }
-                    }
-                },
-                "aggregate": {
-                    "score": {
-                        "alias": "$record",
-                        "field": "embedding",
-                        "fn": "gds.similarity.cosine",
-                        "query": query_vector
-                    }
-                },
-                "orderBy": {"score": "desc"},
-                "limit": search_query.get("limit", 10)
-            })
-
             return {
                 "success": True,
                 "total": raw_results.total,
