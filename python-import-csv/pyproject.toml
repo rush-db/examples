@@ -1,0 +1,29 @@
+[project]
+name = "rushdb-import-csv"
+version = "0.2.0"
+description = "Generic RAG API using RushDB and FastAPI"
+requires-python = ">=3.9"
+dependencies = [
+    "rushdb>=1.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"

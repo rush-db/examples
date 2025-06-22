@@ -66,11 +66,11 @@ class DocumentProcessor:
 class RAGDatabase:
     """Handles RushDB operations for document storage and retrieval."""
 
-    def __init__(self, api_token: str, base_url: str = None):
+    def __init__(self, api_key: str, base_url: str = None):
         if base_url:
-            self.db = RushDB(api_token, base_url=base_url)
+            self.db = RushDB(api_key, base_url=base_url)
         else:
-            self.db = RushDB(api_token)
+            self.db = RushDB(api_key)
 
     def store_document(self, document: Dict[str, Any], chunks_data: List[Dict[str, Any]]):
         """Store document with its chunks in RushDB."""
@@ -135,9 +135,9 @@ class RAGDatabase:
 class SimpleRAG:
     """Main RAG implementation class."""
 
-    def __init__(self, api_token: str, base_url: str = None, model_name: str = "all-MiniLM-L6-v2"):
+    def __init__(self, api_key: str, base_url: str = None, model_name: str = "all-MiniLM-L6-v2"):
         self.processor = DocumentProcessor(model_name=model_name)
-        self.database = RAGDatabase(api_token, base_url)
+        self.database = RAGDatabase(api_key, base_url)
 
     def ingest_documents(self, docs_path: str):
         """Load and process documents from directory."""

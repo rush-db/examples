@@ -145,3 +145,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Search Field Styles */
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  padding-left: 2.5rem;
+  background-color: hsl(var(--background));
+  border-color: hsl(var(--border));
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 1px hsla(var(--primary), 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: hsl(var(--muted-foreground));
+}
+
+.search-clear {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}

@@ -21,8 +21,6 @@ def get_config():
         'api_key': os.getenv('RUSHDB_API_TOKEN'),
         'base_url': os.getenv('RUSHDB_BASE_URL'),
         'embedding_model': os.getenv('EMBEDDING_MODEL', 'all-MiniLM-L6-v2'),
-        'chunk_size': int(os.getenv('CHUNK_SIZE', 500)),
-        'similarity_threshold': float(os.getenv('SIMILARITY_THRESHOLD', 0.7)),
         'api_host': os.getenv('API_HOST', '0.0.0.0'),
         'api_port': int(os.getenv('API_PORT', 8000))
     }

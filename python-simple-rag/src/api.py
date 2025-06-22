@@ -43,12 +43,12 @@ def initialize_rag_from_config():
     try:
         config = get_config()
 
-        if not config['api_token']:
+        if not config['api_key']:
             initialization_error = "RushDB API token not found in environment variables or .env file"
             return
 
         rag_instance = SimpleRAG(
-            api_token=config['api_token'],
+            api_key=config['api_key'],
             base_url=config['base_url'],
             model_name=config['embedding_model']
         )

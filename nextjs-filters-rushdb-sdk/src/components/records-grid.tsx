@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Card,
   CardContent,
@@ -19,18 +19,27 @@ import { Loader, Calendar, Eye } from 'lucide-react'
 import { DBRecordInstance } from '@rushdb/javascript-sdk'
 import { cn } from '@/lib/utils'
 import { useSidebar } from '@/context/sidebar-context'
+import { useSearchContext } from '@/context/search-context'
 
 export default function RecordsGrid() {
   const [currentRecord, setCurrentRecord] = useState<
     DBRecordInstance | undefined
   >()
 
-  const { rightSidebarOpen } = useSidebar()
+  const sidebarContext = useSidebar()
+  const { searchText, searchResults, isSearching, isSearchEnabled } =
+    useSearchContext()
 
+  // Use regular records when no search is active
   const { data: records, isLoading, isFetching } = useRecords()
+
+  // Determine which data source to use
+  const isSearchActive = isSearchEnabled && !!searchText.trim()
+  const activeRecords = isSearchActive ? searchResults : records
+  const isActiveLoading = isSearchActive ? isSearching : isLoading || isFetching
   const { getLabelColor } = useLabelColors()
 
-  if (isLoading || isFetching) {
+  if (isActiveLoading) {
     return (
       <div className="flex-1 p-6 overflow-auto">
         <div className="mb-8">
@@ -40,7 +49,7 @@ export default function RecordsGrid() {
         <div
           className={cn(
             'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6',
-            { 'grid-cols-3!': rightSidebarOpen }
+            { 'grid-cols-3!': sidebarContext?.rightSidebarOpen }
           )}
         >
           {Array.from({ length: 8 }).map((_, i) => (
@@ -81,10 +90,10 @@ export default function RecordsGrid() {
       <div
         className={cn(
           'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6',
-          { 'lg:grid-cols-3': rightSidebarOpen }
+          { 'lg:grid-cols-3': sidebarContext?.rightSidebarOpen }
         )}
       >
-        {records?.data?.length === 0 ? (
+        {activeRecords?.data?.length === 0 ? (
           <div className="col-span-full flex flex-col items-center justify-center py-16 text-center">
             <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
               <svg
@@ -102,14 +111,16 @@ export default function RecordsGrid() {
               </svg>
             </div>
             <h3 className="text-lg font-medium text-foreground mb-2">
-              No records found
+              {isSearchActive ? 'No search results found' : 'No records found'}
             </h3>
             <p className="text-muted-foreground max-w-sm">
-              Try adjusting your filters or check back later for new records.
+              {isSearchActive
+                ? 'Try adjusting your search query or filters.'
+                : 'Try adjusting your filters or check back later for new records.'}
             </p>
           </div>
         ) : (
-          records?.data?.map((record) => (
+          activeRecords?.data?.map((record: DBRecordInstance) => (
             <Card
               key={record.id()}
               className="group transition-all duration-200 border border-border bg-card shadow-sm hover:shadow-md hover:border-foreground/20"
@@ -133,10 +144,27 @@ export default function RecordsGrid() {
                 <div className="space-y-3">
                   {/* Main content area */}
                   <div className="min-h-[60px] flex items-center">
-                    <p className="text-sm text-muted-foreground italic">
-                      Use the button below to explore this record's details and
-                      relationships
-                    </p>
+                    {record.data.thumbnail ? (
+                      <img
+                        src={record.data.thumbnail as string}
+                        className="w-16 h-16 rounded mr-3 object-cover"
+                      />
+                    ) : null}
+                    {record.data.title ? (
+                      <div className="flex flex-col">
+                        <p>{record.data.title}</p>
+                        <p className="text-sm text-muted-foreground italic">
+                          {(record.data.description as string)?.slice(0, 50) +
+                            '...' ||
+                            'No description available for this record.'}
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground italic">
+                        Use the button below to explore this record's details
+                        and relationships
+                      </p>
+                    )}
                   </div>
 
                   {/* Metadata */}
