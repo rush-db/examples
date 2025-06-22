@@ -1,8 +1,8 @@
 # Next.js RushDB Dynamic Filters Demo
 
-This demo application showcases how to build a dynamic UI with Next.js and the RushDB SDK. 
-Our UI consists of a data grid and dynamic filters generated from the dataset. 
-When filters change, the application re-queries the backend for records matching the constructed SearchQuery. 
+This demo application showcases how to build a dynamic UI with Next.js and the RushDB SDK.
+Our UI consists of a data grid and dynamic filters generated from the dataset.
+When filters change, the application re-queries the backend for records matching the constructed SearchQuery.
 Server-side pagination is also implemented using the RushDB SDK.
 
 ## Technology Stack
@@ -14,17 +14,21 @@ Server-side pagination is also implemented using the RushDB SDK.
 - **Radix UI & Lucide**
 
 ## About the Project
-Using the RushDB SDK and Next.js, we built a UI example that displays data in a grid and provides dynamic filters derived from the dataset. 
-When filters change, a new SearchQuery is issued to the backend, and matching records are fetched. 
+
+Using the RushDB SDK and Next.js, we built a UI example that displays data in a grid and provides dynamic filters derived from the dataset.
+When filters change, a new SearchQuery is issued to the backend, and matching records are fetched.
 Additionally, we integrated server-side pagination using RushDB SDK for efficient data handling.
 
 ![Demo preview image](./example-assets/demo-preview.png)
 
 ## Dataset
+
 As a test dataset, we used a JSON file containing a three-level nested array. You can view the original dataset in the file [test-data-example.json](./src/dataset/test-data-example.json).
 
 ## UI Utilities & Logging
+
 To help track all operations performed by RushDB, we implemented:
+
 - **Custom Logging**: Every RushDB API call is logged to the developer console.
 - **Debug Drawer**: A dedicated UI drawer displays these logs, allowing you to inspect all operations with the RushDB core.
 
@@ -77,7 +81,7 @@ Below is the project's package.json configuration:
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.6",
-    "@rushdb/javascript-sdk": "^1.4.0",
+    "@rushdb/javascript-sdk": "^1.7.0",
     "@tanstack/react-query": "^5.66.0",
     "@uiw/react-json-view": "^2.0.0-alpha.30",
     "@uiw/react-textarea-code-editor": "latest",
@@ -114,3 +118,4 @@ Below is the project's package.json configuration:
     "typescript": "^5"
   }
 }
+```
