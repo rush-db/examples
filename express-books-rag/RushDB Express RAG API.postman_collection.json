@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "4d3b8237-8bd8-4e72-b62a-fdf546950b92",
+		"name": "RushDB Express RAG API",
+		"description": "A collection for testing the RushDB Generic RAG API endpoints. This API provides record indexing and vector search functionality using RushDB for chunking and vector search operations.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9923528",
+		"_collection_link": "https://collectso.postman.co/workspace/5c5afa9e-55ff-421f-8b28-d7a488861ace/collection/9923528-4d3b8237-8bd8-4e72-b62a-fdf546950b92?action=share&source=collection_link&creator=9923528"
+	},
+	"item": [
+		{
+			"name": "Index Records",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has required properties\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('message');",
+							"    pm.expect(jsonData).to.have.property('processed_count');",
+							"    pm.expect(jsonData).to.have.property('error_count');",
+							"    pm.expect(jsonData).to.have.property('skipped_count');",
+							"    pm.expect(jsonData).to.have.property('details');",
+							"});",
+							"",
+							"pm.test(\"Processed count is a number\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.processed_count).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Set base URL if not already set",
+							"if (!pm.variables.get(\"baseUrl\")) {",
+							"    pm.variables.set(\"baseUrl\", \"http://localhost:8000\");",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"field\": \"title\",\n  \"vectorDimension\": 768\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/index",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"index"
+					]
+				},
+				"description": "Index records with specified labels and field. The 'field' parameter is required and specifies which field to index. Additional parameters can be used as search query filters."
+			},
+			"response": [
+				{
+					"name": "Successful Indexing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"field\": \"description\",\n  \"vectorDimension\": 384\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/index",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"index"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"message\": \"Indexed records\",\n  \"processed_count\": 25,\n  \"error_count\": 0,\n  \"skipped_count\": 0,\n  \"details\": \"Successfully indexed 25 records\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Search Chunks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array or object\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.satisfy(function(data) {",
+							"        return Array.isArray(data) || typeof data === 'object';",
+							"    });",
+							"});",
+							"",
+							"console.log(\"Search results:\", JSON.stringify(pm.response.json(), null, 2));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"where\": {\n        \"published_year\": {\n            \"$gte\": 1960\n        }\n    },\n    \"query\": \"History\",\n    \"vectorDimension\": 768\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/search",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"search"
+					]
+				},
+				"description": "Search for relevant chunks using vector similarity. The 'query' parameter is required. Optional parameters include 'vector_dimension' (default: 384) and 'limit' (default: 5)."
+			},
+			"response": [
+				{
+					"name": "Successful Search",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"python programming\",\n  \"vectorDimension\": 384,\n  \"limit\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/search",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"id\": \"chunk_1\",\n    \"content\": \"Python is a powerful programming language...\",\n    \"score\": 0.95,\n    \"metadata\": {\n      \"source\": \"python_guide.md\",\n      \"chapter\": \"introduction\"\n    }\n  },\n  {\n    \"id\": \"chunk_2\",\n    \"content\": \"Advanced Python programming techniques...\",\n    \"score\": 0.87,\n    \"metadata\": {\n      \"source\": \"advanced_python.md\",\n      \"chapter\": \"advanced_concepts\"\n    }\n  }\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global pre-request script",
+					"// Set default base URL if not already set",
+					"if (!pm.variables.get(\"baseUrl\")) {",
+					"    pm.variables.set(\"baseUrl\", \"http://localhost:8000\");",
+					"}",
+					"",
+					"// Log the request for debugging",
+					"console.log(\"Making request to:\", pm.request.url.toString());"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global test script",
+					"// Log response for debugging",
+					"console.log(\"Response status:\", pm.response.code);",
+					"console.log(\"Response time:\", pm.response.responseTime + \"ms\");",
+					"",
+					"// Basic response validation",
+					"pm.test(\"Response time is less than 30 seconds\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(30000);",
+					"});",
+					"",
+					"pm.test(\"Response has valid JSON\", function () {",
+					"    pm.response.to.have.jsonBody();",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3007",
+			"type": "string"
+		}
+	]
+}
