@@ -116,6 +116,11 @@ docker run -p 3000:3000 \
   Advanced RAG system for processing any text records in RushDB.
   Features generic record vectorization, embedding integration directly into existing records, vector similarity search, and scalable FastAPI architecture.
 
+- **[Express.js Generic Books RAG API](./express-books-rag)** | [📝 README](./express-books-rag/README.md)
+
+  Advanced RAG system for processing any text records in RushDB based on TypeScript & Express.js.
+  Features generic record vectorization, embedding integration directly into existing records, vector similarity search, and scalable FastAPI architecture.
+
 ### Data Import Utilities
 
 - **[Python CSV Import](./python-import-csv)** | [📝 README](./python-import-csv/README.md)
