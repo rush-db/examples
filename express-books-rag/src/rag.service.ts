@@ -26,9 +26,8 @@ export function createRagService() {
     let skip = 0;
     while (true) {
       const res = await db.records.find({
-        where: filters,
-        skip,
         limit: batchSize,
+        ...filters
       });
       if (!res?.data.length) break;
       yield* res.data;
