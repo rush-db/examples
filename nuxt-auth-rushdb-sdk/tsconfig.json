@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "jsx": "preserve",
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["@types/node", "nuxt/app"]
+  },
+  "include": [
+    "nuxt.config.ts",
+    "src/**/*.ts",
+    "src/**/*.vue",
+    ".nuxt/types.d.ts",
+    ".nuxt/types/imports.d.ts",
+    ".nuxt/types/imports.d.ts"
+  ],
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}

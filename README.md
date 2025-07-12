@@ -104,6 +104,11 @@ docker run -p 3000:3000 \
   Professional registration form built with Vite, React, and TypeScript using React Hook Form and Zod validation.
   Features comprehensive form validation, dynamic skill management, complex nested data structures, mock data filling, and seamless RushDB integration for data storage.
 
+- **[Nuxt Auth](./nuxt-auth-rushdb-sdk)** | [📝 README](./nuxt-auth-rushdb-sdk/README.md)
+
+  A minimal Nuxt 3 application demonstrating user registration, login, protected routes, and data persistence using RushDB.
+  Passwords are salted with HMAC-SHA256 (using an environment secret) and stored in RushDB. JWT tokens are set as HTTP-only cookies.
+
 ### AI & RAG Applications
 
 - **[Simple Python RAG](./python-simple-rag)** | [📝 README](./python-simple-rag/README.md)
