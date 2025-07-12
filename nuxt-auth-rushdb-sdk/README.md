@@ -66,7 +66,8 @@ nuxt-auth/
     ├── pages/
     │   ├── login.vue          # Login form
     │   ├── register.vue       # Registration form
-    │   └── users.vue          # Protected users list
+    │   ├── users.vue          # Protected users list
+    │   └── [...404].vue       # Handle 404 pages
     ├── server/
     │   └── api/
     │       ├── login.post.ts

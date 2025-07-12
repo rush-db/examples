@@ -58,8 +58,8 @@ export default defineEventHandler(async (event) => {
   });
 
   setCookie(event, 'auth_token', token, {
-    httpOnly: true,
     sameSite: 'lax',
+    secure: true,
     path: '/',
     maxAge: 60 * 60,
   });
