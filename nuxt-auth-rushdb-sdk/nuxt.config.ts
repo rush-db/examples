@@ -4,8 +4,7 @@ export default defineNuxtConfig({
     srcDir: 'src/',
     ssr: false,
     modules: [
-        '@nuxtjs/tailwindcss',
-        'radix-vue/nuxt'
+        '@nuxtjs/tailwindcss'
     ],
     runtimeConfig: {
         rushdbToken: process.env.RUSHDB_API_TOKEN,

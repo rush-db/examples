@@ -1,17 +1,17 @@
 import { defineEventHandler, readBody } from 'h3';
 import crypto from 'node:crypto';
-import { RushDB } from '@rushdb/javascript-sdk';
+import { useDb } from '~/composables/useDb';
+import { UserModel } from '~/shared/models';
 
 export default defineEventHandler(async (event) => {
-  const { rushdbToken, rushdbBaseUrl, authSecret } = useRuntimeConfig(event);
-  const db = new RushDB(rushdbToken as string, {
-    url: rushdbBaseUrl as string,
-  });
+  const { authSecret } = useRuntimeConfig(event);
+  const db = useDb(event);
 
   const { username, password } = await readBody<{
     username: string;
     password: string;
   }>(event);
+
   if (!username || !password) {
     return sendError(
       event,
@@ -22,8 +22,7 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  const exists = await db.records.find({
-    labels: ['User'],
+  const exists = await UserModel.find({
     where: { username },
     limit: 1,
   });
@@ -41,9 +40,9 @@ export default defineEventHandler(async (event) => {
     .digest('hex');
 
   try {
-    await db.records.create({
-      label: 'User',
-      data: { username, passwordHash },
+    await UserModel.create({
+      username,
+      passwordHash,
     });
 
     return { success: true };

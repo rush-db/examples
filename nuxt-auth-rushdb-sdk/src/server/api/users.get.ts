@@ -1,9 +1,11 @@
 import { defineEventHandler, getCookie, createError } from 'h3';
 import jwt from 'jsonwebtoken';
-import { RushDB } from '@rushdb/javascript-sdk';
+import { useDb } from '~/composables/useDb';
+import { UserModel } from '~/shared/models';
 
 export default defineEventHandler(async (event) => {
-  const { rushdbToken, rushdbBaseUrl, authSecret } = useRuntimeConfig(event);
+  const { authSecret } = useRuntimeConfig(event);
+  const db = useDb(event);
 
   const token = getCookie(event, 'auth_token');
   if (!token)
@@ -16,15 +18,10 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 401, statusMessage: 'Invalid token' });
   }
 
-  const db = new RushDB(rushdbToken as string, {
-    url: rushdbBaseUrl as string,
-  });
+  const res = await UserModel.find({});
 
-  const res = await db.records.find({
-    labels: ['User'],
-  });
+  const users = res.data.map((r) => r.data.username);
 
-  const users = res.data.map((r) => (r.data as any).username);
   return {
     users,
     current: payload.username,

@@ -7,13 +7,12 @@ import {
 } from 'h3';
 import crypto from 'node:crypto';
 import jwt from 'jsonwebtoken';
-import { RushDB } from '@rushdb/javascript-sdk';
+import { useDb } from '~/composables/useDb';
+import { UserModel } from '~/shared/models';
 
 export default defineEventHandler(async (event) => {
-  const { rushdbToken, rushdbBaseUrl, authSecret } = useRuntimeConfig(event);
-  const db = new RushDB(rushdbToken as string, {
-    url: rushdbBaseUrl as string,
-  });
+  const { authSecret } = useRuntimeConfig(event);
+  const db = useDb(event);
 
   const { username, password } = await readBody<{
     username: string;
@@ -29,11 +28,11 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  const res = await db.records.find({
-    labels: ['User'],
+  const res = await UserModel.find({
     where: { username },
     limit: 1,
   });
+
   if (!res.data.length) {
     return sendError(
       event,
