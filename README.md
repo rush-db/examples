@@ -104,6 +104,11 @@ docker run -p 3000:3000 \
   Professional registration form built with Vite, React, and TypeScript using React Hook Form and Zod validation.
   Features comprehensive form validation, dynamic skill management, complex nested data structures, mock data filling, and seamless RushDB integration for data storage.
 
+- **[Nuxt Auth](./nuxt-auth-rushdb-sdk)** | [📝 README](./nuxt-auth-rushdb-sdk/README.md)
+
+  A minimal Nuxt 3 application demonstrating user registration, login, protected routes, and data persistence using RushDB.
+  Passwords are salted with HMAC-SHA256 (using an environment secret) and stored in RushDB. JWT tokens are set as HTTP-only cookies.
+
 ### AI & RAG Applications
 
 - **[Simple Python RAG](./python-simple-rag)** | [📝 README](./python-simple-rag/README.md)
@@ -114,6 +119,11 @@ docker run -p 3000:3000 \
 - **[Generic Books RAG API](./python-books-rag)** | [📝 README](./python-books-rag/README.md)
 
   Advanced RAG system for processing any text records in RushDB.
+  Features generic record vectorization, embedding integration directly into existing records, vector similarity search, and scalable FastAPI architecture.
+
+- **[Express.js Generic Books RAG API](./express-books-rag)** | [📝 README](./express-books-rag/README.md)
+
+  Advanced RAG system for processing any text records in RushDB based on TypeScript & Express.js.
   Features generic record vectorization, embedding integration directly into existing records, vector similarity search, and scalable FastAPI architecture.
 
 ### Data Import Utilities
