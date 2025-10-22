@@ -23,12 +23,16 @@ export default async function handler(
     }
     const skip = typeof args?.skip === 'number' ? args.skip : 0
     const limit = typeof args?.limit === 'number' ? args.limit : 1000
+    const orderBy = args?.orderBy as
+      | Partial<Record<string, 'asc' | 'desc'>>
+      | undefined
 
     const items = await db.records.find({
       labels: ['ITEM'],
       where,
       skip,
       limit,
+      orderBy,
     })
 
     const catInstance: any = await db.records.findById(id)

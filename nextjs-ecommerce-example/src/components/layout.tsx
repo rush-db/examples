@@ -39,10 +39,16 @@ export const Layout = ({
 }: LayoutProps) => {
   const router = useRouter()
   const isHome = router.pathname === '/'
-  const { labels = [], where = {}, skip = 0, limit = 0 } = useSearchQuery()
+  const {
+    labels = [],
+    where = {},
+    skip = 0,
+    limit = 0,
+    orderBy,
+  } = useSearchQuery()
   const debugJson = React.useMemo(
-    () => JSON.stringify({ labels, where, skip, limit }, null, 2),
-    [labels, where, skip, limit]
+    () => JSON.stringify({ labels, where, skip, limit, orderBy }, null, 2),
+    [labels, where, skip, limit, orderBy]
   )
 
   function handleBackClick(e: React.MouseEvent) {

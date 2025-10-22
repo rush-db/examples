@@ -19,6 +19,8 @@ type SearchQueryContextType = {
   where: SearchQuery['where']
   skip: number
   limit: number
+  orderBy?: Partial<Record<string, 'asc' | 'desc'>>
+  setOrderBy: (order?: Partial<Record<string, 'asc' | 'desc'>>) => void
 } & SearchQuery
 
 const SearchQueryContext = createContext<SearchQueryContextType | undefined>(
@@ -31,6 +33,7 @@ type ProviderProps = {
   initialLabels?: SearchQuery['labels']
   initialSkip?: number
   initialLimit?: number
+  initialOrderBy?: Partial<Record<string, 'asc' | 'desc'>>
 }
 
 export const SearchQueryContextProvider: FC<ProviderProps> = ({
@@ -39,6 +42,7 @@ export const SearchQueryContextProvider: FC<ProviderProps> = ({
   initialLabels,
   initialSkip,
   initialLimit,
+  initialOrderBy,
 }) => {
   const [where, setWhere] = useState<SearchQuery['where']>(initialWhere || {})
   const [labels, setLabels] = useState<SearchQuery['labels']>(
@@ -46,6 +50,9 @@ export const SearchQueryContextProvider: FC<ProviderProps> = ({
   )
   const [skip, setSkip] = useState(initialSkip ?? 0)
   const [limit, setLimit] = useState(initialLimit ?? 1000)
+  const [orderBy, setOrderBy] = useState<
+    Partial<Record<string, 'asc' | 'desc'>> | undefined
+  >(initialOrderBy)
 
   const updateFilter = useCallback(
     (property: Property, value: PropertyValue) => {
@@ -93,6 +100,8 @@ export const SearchQueryContextProvider: FC<ProviderProps> = ({
         setSkip,
         limit,
         setLimit,
+        orderBy,
+        setOrderBy,
       }}
     >
       {children}
