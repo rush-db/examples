@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Layout } from '@/components/layout'
-import { SidebarLayout } from '@/components/sidebar-layout'
 import { Button } from '@/components/ui/button'
 import { useCart } from '@/context/cart-context'
 import { SearchQueryContextProvider } from '@/context/search-query-context'
@@ -13,16 +12,15 @@ function CategoryInner() {
   const router = useRouter()
   const idParam = router.query.id
   const categoryId = Array.isArray(idParam) ? idParam[0] : idParam
-  const { data, isLoading, isError } = useCategoryItems(categoryId as string)
+  const { data, isLoading, error } = useCategoryItems(categoryId as string)
   const category = data?.category
   const items = data?.items ?? []
   const { addItem } = useCart()
   if (!router.isReady || isLoading)
     return <div className="p-4">Loading category…</div>
-  if (isError || !category)
-    return <div className="p-4">Category not found.</div>
+  if (error || !category) return <div className="p-4">Category not found.</div>
   return (
-    <SidebarLayout title={category.name} recordCount={data?.total} showFilters>
+    <Layout title={category.name} recordCount={data?.total} showFilters>
       <div className="space-y-4 min-h-0">
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
           {items.map((p: any) => (
@@ -45,7 +43,7 @@ function CategoryInner() {
           ))}
         </div>
       </div>
-    </SidebarLayout>
+    </Layout>
   )
 }
 
@@ -54,7 +52,7 @@ export default function CategoryPage() {
   const idParam = router.query.id
   const categoryId = Array.isArray(idParam) ? idParam[0] : idParam
   return (
-    <Layout>
+    <>
       {router.isReady && categoryId ? (
         <SearchQueryContextProvider
           initialWhere={{ CATEGORY: { $id: categoryId as string } }}
@@ -65,6 +63,6 @@ export default function CategoryPage() {
       ) : (
         <div className="p-4">Loading…</div>
       )}
-    </Layout>
+    </>
   )
 }

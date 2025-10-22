@@ -1,10 +1,9 @@
 import React from 'react'
-import { SidebarLayout } from '@/components/sidebar-layout'
+import { Layout } from '@/components/layout'
 import { useFetchQuery } from '@/hooks/use-fetch-query'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { idToDate } from '@rushdb/javascript-sdk'
 
 interface Order {
   id: string
@@ -37,7 +36,7 @@ export default function OrdersPage() {
   })
 
   return (
-    <SidebarLayout title="Orders" showFilters={false} showCart={false}>
+    <Layout title="Orders" showFilters={false} showCart={false}>
       <div className="max-w-4xl mx-auto w-full">
         {isLoading && (
           <p className="text-sm text-muted-foreground">Loading orders…</p>
@@ -56,9 +55,6 @@ export default function OrdersPage() {
             <Card key={order.id} className="w-full">
               <CardHeader className="flex flex-row items-center justify-between space-y-0">
                 <CardTitle className="text-base">Order #{order.id}</CardTitle>
-                {/* <CardTitle className="text-base">
-                  Order | {idToDate(order.id).toISOString()}
-                </CardTitle> */}
                 {order.status ? (
                   <Badge
                     variant={order.status === 'Paid' ? 'default' : 'secondary'}
@@ -123,6 +119,6 @@ export default function OrdersPage() {
           ))}
         </div>
       </div>
-    </SidebarLayout>
+    </Layout>
   )
 }

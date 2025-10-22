@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import type { GetServerSideProps } from 'next'
 import { Layout } from '@/components/layout'
-import { SidebarLayout } from '@/components/sidebar-layout'
 import { Button } from '@/components/ui/button'
 import { useCart } from '@/context/cart-context'
 import { Input } from '@/components/ui/input'
@@ -44,7 +43,7 @@ function ItemInner({ product }: ItemPageProps) {
   const [qty, setQty] = React.useState(1)
   if (!product) return <div className="p-4">Item not found.</div>
   return (
-    <SidebarLayout title={product.name}>
+    <Layout title={product.name}>
       <div className="flex-1 p-4 space-y-4">
         <div className="border rounded-md p-4 space-y-3 max-w-2xl">
           <div className="text-2xl font-semibold">{product.name}</div>
@@ -82,14 +81,10 @@ function ItemInner({ product }: ItemPageProps) {
           </div>
         </div>
       </div>
-    </SidebarLayout>
+    </Layout>
   )
 }
 
 export default function ItemPage(props: ItemPageProps) {
-  return (
-    <Layout>
-      <ItemInner {...props} />
-    </Layout>
-  )
+  return <ItemInner {...props} />
 }

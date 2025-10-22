@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Layout } from '@/components/layout'
-import { SidebarLayout } from '@/components/sidebar-layout'
 import { useCart } from '@/context/cart-context'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { useAddresses, type Address } from '@/hooks/use-addresses'
+import { useAddresses } from '@/hooks/use-addresses'
 
 type DeliveryType = 'standard' | 'express'
 
 export default function CheckoutPage() {
   return (
-    <Layout>
-      <SidebarLayout title="Checkout" showCart={false}>
-        <CheckoutInner />
-      </SidebarLayout>
+    <Layout title="Checkout" showCart={false}>
+      <CheckoutInner />
     </Layout>
   )
 }
