@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Understanding Neural Networks",
+    "author": {"name": "Dr. Sarah Chen", "affiliation": "MIT"},
+    "tags": ["machine-learning", "neural-networks"],
+    "sections": [
+      {"heading": "Introduction", "content": "Neural networks are computing systems inspired by biological neural networks. They consist of interconnected nodes that process information using connectionist approaches."},
+      {"heading": "Architecture", "content": "A typical neural network consists of an input layer, hidden layers, and an output layer. Each connection between nodes has a weight that adjusts during learning."},
+      {"heading": "Training", "content": "Neural networks learn through backpropagation, adjusting weights to minimize the difference between predicted and actual outputs."}
+    ],
+    "content": "Neural networks are computing systems inspired by biological neural networks. They consist of interconnected nodes that process information using connectionist approaches to computation. Modern neural networks are non-linear statistical data modeling tools used to model complex relationships between inputs and outputs."
+  },
+  {
+    "title": "Introduction to Graph Databases",
+    "author": {"name": "Prof. James Miller", "affiliation": "Stanford"},
+    "tags": ["databases", "graphs"],
+    "sections": [
+      {"heading": "What is a Graph Database", "content": "A graph database stores data in terms of nodes and edges, representing entities and their relationships respectively."},
+      {"heading": "Use Cases", "content": "Graph databases excel at social networks, recommendation engines, fraud detection, and knowledge graphs."},
+      {"heading": "Query Languages", "content": "Cypher, Gremlin, and SPARQL are common query languages for graph databases, allowing traversal of complex relationships."}
+    ],
+    "content": "A graph database stores data in terms of nodes and edges, representing entities and their relationships respectively. This structure allows for efficient querying of highly connected data, making graph databases ideal for applications that require relationship analysis."
+  },
+  {
+    "title": "Machine Learning Best Practices",
+    "author": {"name": "Dr. Sarah Chen", "affiliation": "MIT"},
+    "tags": ["machine-learning", "best-practices"],
+    "sections": [
+      {"heading": "Data Preparation", "content": "Quality data is crucial. Clean, normalize, and augment your datasets before training models."},
+      {"heading": "Model Selection", "content": "Start simple. Begin with baseline models before moving to complex architectures."},
+      {"heading": "Evaluation", "content": "Use cross-validation and appropriate metrics. Avoid data leakage in your evaluation pipeline."}
+    ],
+    "content": "Successfully deploying ML models requires careful attention to data quality, model selection, and evaluation methodology. Best practices include proper data preprocessing, cross-validation, and avoiding common pitfalls like overfitting and data leakage."
+  },
+  {
+    "title": "The Rise of Vector Databases",
+    "author": {"name": "Dr. Emily Watson", "affiliation": "Google Research"},
+    "tags": ["databases", "vectors", "ai"],
+    "sections": [
+      {"heading": "Vector Similarity", "content": "Vector databases index data by semantic similarity, enabling natural language queries across large document collections."},
+      {"heading": "Embeddings", "content": "Text, images, and audio are converted to dense vectors using transformer models, capturing semantic meaning."},
+      {"heading": "Applications", "content": "Semantic search, recommendation systems, anomaly detection, and RAG (Retrieval Augmented Generation) pipelines."}
+    ],
+    "content": "Vector databases have emerged as a critical infrastructure for AI applications, enabling semantic similarity search across embeddings. They power recommendation systems, RAG pipelines, and natural language interfaces to enterprise data."
+  },
+  {
+    "title": "Graph Neural Networks Explained",
+    "author": {"name": "Dr. Emily Watson", "affiliation": "Google Research"},
+    "tags": ["deep-learning", "gnns", "graphs"],
+    "sections": [
+      {"heading": "Graph Representation", "content": "GNNs operate on graph-structured data, where nodes represent entities and edges represent relationships."},
+      {"heading": "Message Passing", "content": "GNNs learn by aggregating information from neighboring nodes, updating node representations iteratively."},
+      {"heading": "Applications", "content": "Molecular property prediction, social network analysis, knowledge graph completion, and traffic forecasting."}
+    ],
+    "content": "Graph Neural Networks (GNNs) extend deep learning to graph-structured data, enabling predictions on molecules, social networks, and knowledge graphs. They learn by propagating information between connected nodes, capturing both feature and structural information."
+  }
+]
