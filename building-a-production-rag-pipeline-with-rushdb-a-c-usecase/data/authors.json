@@ -1,0 +1,30 @@
+[
+  {
+    "id": "AUTH-001",
+    "name": "Sarah Chen",
+    "role": "HR Director",
+    "team_id": "TEAM-HR",
+    "email": "sarah.chen@company.com"
+  },
+  {
+    "id": "AUTH-002",
+    "name": "Marcus Johnson",
+    "role": "IT Manager",
+    "team_id": "TEAM-ENG",
+    "email": "marcus.johnson@company.com"
+  },
+  {
+    "id": "AUTH-003",
+    "name": "Elena Rodriguez",
+    "role": "Finance Controller",
+    "team_id": "TEAM-FIN",
+    "email": "elena.rodriguez@company.com"
+  },
+  {
+    "id": "AUTH-004",
+    "name": "David Park",
+    "role": "General Counsel",
+    "team_id": "TEAM-HR",
+    "email": "david.park@company.com"
+  }
+]
