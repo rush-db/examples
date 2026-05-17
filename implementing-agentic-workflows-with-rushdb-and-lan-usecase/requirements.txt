@@ -1,0 +1,7 @@
+rushdb>=2.0.0
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+sentence-transformers>=2.5.0
+python-dotenv>=1.0.0
+faker>=22.0.0
