@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Academic Knowledge Graph",
+  "description": "Schema for research papers, authors, and citations",
+  "type": "object",
+  "labels": {
+    "PAPER": {
+      "description": "Research paper with title, abstract, and metadata",
+      "properties": {
+        "title": {"type": "string", "description": "Paper title"},
+        "abstract": {"type": "string", "description": "Paper abstract"},
+        "publicationDate": {"type": "string", "format": "date-time", "description": "Publication date"},
+        "citations": {"type": "integer", "description": "Number of citations"}
+      },
+      "required": ["title", "abstract"]
+    },
+    "AUTHOR": {
+      "description": "Research paper author",
+      "properties": {
+        "name": {"type": "string", "description": "Author full name"},
+        "affiliation": {"type": "string", "description": "Institutional affiliation"}
+      },
+      "required": ["name"]
+    },
+    "TOPIC": {
+      "description": "Research topic or subject area",
+      "properties": {
+        "name": {"type": "string", "description": "Topic name"},
+        "field": {"type": "string", "description": "Broader research field"}
+      },
+      "required": ["name"]
+    }
+  },
+  "relationships": {
+    "WRITTEN_BY": {
+      "source": "PAPER",
+      "target": "AUTHOR",
+      "description": "Authorship relationship"
+    },
+    "CITES": {
+      "source": "PAPER",
+      "target": "PAPER",
+      "description": "Citation relationship"
+    },
+    "ABOUT": {
+      "source": "PAPER",
+      "target": "TOPIC",
+      "description": "Topic categorization"
+    }
+  }
+}
