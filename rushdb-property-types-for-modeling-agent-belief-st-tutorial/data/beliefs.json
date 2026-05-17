@@ -1,0 +1,114 @@
+[
+  {
+    "content": "User prefers dark mode interface",
+    "confidence": 0.85,
+    "status": "confirmed",
+    "is_active": true,
+    "tags": ["preference", "ui", "accessibility"],
+    "metadata": {
+      "source": "direct_feedback",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "evidence_count": 3,
+      "origin_agent": "preference_analyzer"
+    }
+  },
+  {
+    "content": "Customer is likely to churn in next 30 days",
+    "confidence": 0.72,
+    "status": "hypothesis",
+    "is_active": true,
+    "tags": ["customer", "churn", "prediction"],
+    "metadata": {
+      "source": "behavioral_analysis",
+      "timestamp": "2024-01-18T14:22:00Z",
+      "evidence_count": 5,
+      "origin_agent": "churn_predictor",
+      "risk_factors": ["decreased_engagement", "support_tickets_up"]
+    }
+  },
+  {
+    "content": "System performance degradation detected",
+    "confidence": 0.95,
+    "status": "confirmed",
+    "is_active": true,
+    "tags": ["system", "performance", "alert"],
+    "metadata": {
+      "source": "monitoring_agent",
+      "timestamp": "2024-01-20T08:15:00Z",
+      "evidence_count": 12,
+      "origin_agent": "metrics_monitor"
+    }
+  },
+  {
+    "content": "User's primary language is English",
+    "confidence": 0.98,
+    "status": "confirmed",
+    "is_active": true,
+    "tags": ["user", "language", "preference"],
+    "metadata": {
+      "source": "nlp_classifier",
+      "timestamp": "2024-01-10T09:00:00Z",
+      "evidence_count": 47,
+      "origin_agent": "language_detector"
+    }
+  },
+  {
+    "content": "Code review will require security audit",
+    "confidence": 0.45,
+    "status": "doubt",
+    "is_active": false,
+    "tags": ["code_review", "security"],
+    "metadata": {
+      "source": "heuristic",
+      "timestamp": "2024-01-19T16:45:00Z",
+      "evidence_count": 1,
+      "origin_agent": "code_safety_analyzer",
+      "reasoning": "Low confidence due to incomplete project context"
+    }
+  },
+  {
+    "content": "Email campaign will achieve >5% CTR",
+    "confidence": 0.68,
+    "status": "hypothesis",
+    "is_active": true,
+    "tags": ["marketing", "prediction", "email"],
+    "metadata": {
+      "source": "ml_model",
+      "timestamp": "2024-01-21T11:00:00Z",
+      "evidence_count": 8,
+      "origin_agent": "campaign_optimizer",
+      "model_version": "v2.3",
+      "training_data_size": 50000
+    }
+  },
+  {
+    "content": "Project deadline is achievable",
+    "confidence": 0.55,
+    "status": "hypothesis",
+    "is_active": true,
+    "tags": ["project", "timeline", "estimation"],
+    "metadata": {
+      "source": "team_analysis",
+      "timestamp": "2024-01-22T10:30:00Z",
+      "evidence_count": 4,
+      "origin_agent": "project_manager",
+      "confidence_range": [0.4, 0.7],
+      "dependent_tasks": 15
+    }
+  },
+  {
+    "content": "Database query optimization successful",
+    "confidence": 0.92,
+    "status": "confirmed",
+    "is_active": true,
+    "tags": ["database", "performance", "optimization"],
+    "metadata": {
+      "source": "benchmark_test",
+      "timestamp": "2024-01-23T15:20:00Z",
+      "evidence_count": 3,
+      "origin_agent": "dba_assistant",
+      "improvement_percent": 73,
+      "query_id": "q_88721"
+    }
+  }
+]
