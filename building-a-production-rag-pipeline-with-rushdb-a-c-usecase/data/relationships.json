@@ -1,0 +1,32 @@
+[
+  {
+    "from": "POL-001",
+    "to": "POL-002",
+    "type": "CROSS_REFERENCES",
+    "description": "Performance reviews affect remote work arrangements"
+  },
+  {
+    "from": "POL-001",
+    "to": "POL-003",
+    "type": "CROSS_REFERENCES",
+    "description": "Remote work equipment provided via IT guidelines"
+  },
+  {
+    "from": "POL-002",
+    "to": "POL-005",
+    "type": "CROSS_REFERENCES",
+    "description": "Performance reviews must follow code of conduct"
+  },
+  {
+    "from": "POL-003",
+    "to": "POL-001",
+    "type": "CROSS_REFERENCES",
+    "description": "IT equipment supports remote work policy"
+  },
+  {
+    "from": "POL-004",
+    "to": "POL-005",
+    "type": "CROSS_REFERENCES",
+    "description": "Travel expenses must comply with code of conduct"
+  }
+]
