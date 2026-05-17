@@ -1,0 +1,37 @@
+[
+  {
+    "id": "POL-001",
+    "title": "Remote Work Policy",
+    "body": "This policy outlines guidelines for remote work arrangements. Employees may work remotely up to 3 days per week with manager approval. Core hours are 10am-3pm for collaboration. Equipment stipends of $500 annually are available. VPN usage is mandatory for accessing company systems.",
+    "author_id": "AUTH-001",
+    "tags": ["hr", "remote", "work-from-home"]
+  },
+  {
+    "id": "POL-002",
+    "title": "Performance Review Process",
+    "body": "Annual performance reviews are conducted in Q4. Managers complete evaluation forms rating employees on goal achievement, teamwork, and innovation. Reviews directly impact compensation adjustments and promotion decisions. Self-assessments are due by November 15th.",
+    "author_id": "AUTH-001",
+    "tags": ["hr", "performance", "reviews"]
+  },
+  {
+    "id": "POL-003",
+    "title": "IT Equipment Guidelines",
+    "body": "Standard equipment includes a laptop, monitor, keyboard, and mouse. Macs are available for engineering roles. Equipment requests over $2000 require VP approval. Repairs are handled through the IT help desk. Personal devices cannot be used for work without security approval.",
+    "author_id": "AUTH-002",
+    "tags": ["it", "equipment", "hardware"]
+  },
+  {
+    "id": "POL-004",
+    "title": "Travel Expense Policy",
+    "body": "Travel expenses must be pre-approved for trips over $500. Economy class is required for flights under 6 hours. Hotel stays are capped at $200/night. Meals are reimbursed up to $75/day. Receipts must be submitted within 30 days. International travel requires executive sign-off.",
+    "author_id": "AUTH-003",
+    "tags": ["finance", "travel", "expenses"]
+  },
+  {
+    "id": "POL-005",
+    "title": "Code of Conduct",
+    "body": "All employees must adhere to professional standards. Harassment, discrimination, and retaliation are strictly prohibited. Conflicts of interest must be disclosed. Confidential information should never be shared externally. Social media posts about the company require approval from communications.",
+    "author_id": "AUTH-004",
+    "tags": ["hr", "compliance", "ethics"]
+  }
+]
