@@ -1,0 +1,189 @@
+{
+  "categories": [
+    {
+      "id": "cat-electronics",
+      "name": "Electronics",
+      "slug": "category-electronics",
+      "parentSlug": null
+    },
+    {
+      "id": "cat-computers",
+      "name": "Computers & Tablets",
+      "slug": "category-computers",
+      "parentSlug": "category-electronics"
+    },
+    {
+      "id": "cat-mobile",
+      "name": "Mobile Phones",
+      "slug": "category-mobile",
+      "parentSlug": "category-electronics"
+    },
+    {
+      "id": "cat-wireless",
+      "name": "Wireless & Bluetooth",
+      "slug": "category-wireless",
+      "parentSlug": "category-computers"
+    },
+    {
+      "id": "cat-gaming",
+      "name": "Gaming Peripherals",
+      "slug": "category-gaming",
+      "parentSlug": "category-computers"
+    },
+    {
+      "id": "cat-laptops",
+      "name": "Laptops",
+      "slug": "category-laptops",
+      "parentSlug": "category-computers"
+    },
+    {
+      "id": "cat-smartphones",
+      "name": "Smartphones",
+      "slug": "category-smartphones",
+      "parentSlug": "category-mobile"
+    },
+    {
+      "id": "cat-accessories",
+      "name": "Phone Accessories",
+      "slug": "category-accessories",
+      "parentSlug": "category-mobile"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-keyboard-wireless",
+      "name": "Wireless Keyboard Pro",
+      "slug": "wireless-keyboard-pro",
+      "description": "Ergonomic wireless keyboard with quiet keystrokes and long battery life for office productivity",
+      "price": 79.99,
+      "categorySlug": "category-wireless",
+      "vector": [0.72, 0.15, -0.31, 0.42, 0.88, 0.23, -0.09, 0.56]
+    },
+    {
+      "id": "prod-keyboard-mechanical",
+      "name": "Mechanical Gaming Keyboard",
+      "slug": "mechanical-gaming-keyboard",
+      "description": "RGB mechanical keyboard with customizable macros and fast actuation for competitive gaming",
+      "price": 149.99,
+      "categorySlug": "category-gaming",
+      "vector": [0.81, 0.22, -0.44, 0.35, 0.76, 0.41, 0.12, 0.63]
+    },
+    {
+      "id": "prod-mouse-wireless",
+      "name": "Wireless Ergonomic Mouse",
+      "slug": "wireless-ergonomic-mouse",
+      "description": "Comfortable wireless mouse with precision tracking for long work sessions",
+      "price": 49.99,
+      "categorySlug": "category-wireless",
+      "vector": [0.65, 0.18, -0.28, 0.55, 0.72, 0.19, -0.05, 0.48]
+    },
+    {
+      "id": "prod-mouse-gaming",
+      "name": "Pro Gaming Mouse",
+      "slug": "pro-gaming-mouse",
+      "description": "High-DPI gaming mouse with programmable buttons and adjustable weight system",
+      "price": 89.99,
+      "categorySlug": "category-gaming",
+      "vector": [0.78, 0.25, -0.38, 0.42, 0.69, 0.38, 0.08, 0.58]
+    },
+    {
+      "id": "prod-laptop-business",
+      "name": "Business Ultrabook",
+      "slug": "business-ultrabook",
+      "description": "Lightweight business laptop with security features and all-day battery life for professionals",
+      "price": 1299.99,
+      "categorySlug": "category-laptops",
+      "vector": [0.55, 0.42, -0.15, 0.62, 0.58, 0.35, -0.12, 0.72]
+    },
+    {
+      "id": "prod-laptop-developer",
+      "name": "Developer Workstation",
+      "slug": "developer-workstation",
+      "description": "Powerful developer laptop with high RAM capacity and multiple displays for software engineering",
+      "price": 1899.99,
+      "categorySlug": "category-laptops",
+      "vector": [0.48, 0.55, -0.22, 0.58, 0.65, 0.41, -0.08, 0.68]
+    },
+    {
+      "id": "prod-laptop-gaming",
+      "name": "Gaming Laptop Extreme",
+      "slug": "gaming-laptop-extreme",
+      "description": "High-performance gaming laptop with dedicated graphics and 144Hz display for immersive gaming",
+      "price": 2199.99,
+      "categorySlug": "category-laptops",
+      "vector": [0.85, 0.32, -0.45, 0.38, 0.72, 0.45, 0.15, 0.61]
+    },
+    {
+      "id": "prod-phone-flagship",
+      "name": "Flagship Smartphone Pro",
+      "slug": "flagship-smartphone-pro",
+      "description": "Premium smartphone with advanced camera system and all-day battery for power users",
+      "price": 999.99,
+      "categorySlug": "category-smartphones",
+      "vector": [0.62, 0.38, -0.18, 0.52, 0.55, 0.32, -0.06, 0.65]
+    },
+    {
+      "id": "prod-phone-budget",
+      "name": "Budget Smartphone",
+      "slug": "budget-smartphone",
+      "description": "Affordable smartphone with essential features and reliable performance for everyday tasks",
+      "price": 299.99,
+      "categorySlug": "category-smartphones",
+      "vector": [0.42, 0.28, -0.12, 0.48, 0.45, 0.25, -0.04, 0.55]
+    },
+    {
+      "id": "prod-phone-gaming",
+      "name": "Gaming Smartphone",
+      "slug": "gaming-smartphone",
+      "description": "Gaming-focused smartphone with cooling system and high refresh rate display for mobile gaming",
+      "price": 699.99,
+      "categorySlug": "category-smartphones",
+      "vector": [0.75, 0.35, -0.42, 0.45, 0.68, 0.38, 0.12, 0.58]
+    },
+    {
+      "id": "prod-tablet-kids",
+      "name": "Kids Tablet",
+      "slug": "kids-tablet",
+      "description": "Durable tablet with parental controls and educational content for children",
+      "price": 199.99,
+      "categorySlug": "category-computers",
+      "vector": [0.38, 0.22, -0.08, 0.35, 0.42, 0.18, -0.02, 0.48]
+    },
+    {
+      "id": "prod-tablet-drawing",
+      "name": "Drawing Tablet",
+      "slug": "drawing-tablet",
+      "description": "Professional drawing tablet with pressure-sensitive stylus for digital artists and designers",
+      "price": 449.99,
+      "categorySlug": "category-computers",
+      "vector": [0.52, 0.32, -0.25, 0.58, 0.65, 0.28, -0.15, 0.62]
+    },
+    {
+      "id": "prod-case-phone",
+      "name": "Protective Phone Case",
+      "slug": "protective-phone-case",
+      "description": "Shock-absorbent phone case with raised edges for drop protection",
+      "price": 29.99,
+      "categorySlug": "category-accessories",
+      "vector": [0.35, 0.18, -0.08, 0.32, 0.38, 0.15, -0.02, 0.42]
+    },
+    {
+      "id": "prod-charger-wireless",
+      "name": "Wireless Charging Pad",
+      "slug": "wireless-charging-pad",
+      "description": "Fast wireless charger compatible with all Qi-enabled devices",
+      "price": 39.99,
+      "categorySlug": "category-accessories",
+      "vector": [0.48, 0.15, -0.12, 0.38, 0.52, 0.22, -0.04, 0.45]
+    },
+    {
+      "id": "prod-speaker-bluetooth",
+      "name": "Bluetooth Speaker",
+      "slug": "bluetooth-speaker",
+      "description": "Portable Bluetooth speaker with deep bass and 20-hour battery life",
+      "price": 89.99,
+      "categorySlug": "category-wireless",
+      "vector": [0.68, 0.25, -0.35, 0.48, 0.75, 0.28, -0.08, 0.52]
+    }
+  ]
+}
