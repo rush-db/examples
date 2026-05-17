@@ -1,0 +1,32 @@
+[
+  {
+    "id": "PROD-0001",
+    "name": "Wireless Noise-Canceling Headphones",
+    "category": "Electronics",
+    "price": 299.99
+  },
+  {
+    "id": "PROD-0002",
+    "name": "Mechanical Gaming Keyboard",
+    "category": "Electronics",
+    "price": 149.99
+  },
+  {
+    "id": "PROD-0003",
+    "name": "Ultrawide Curved Monitor 34\"",
+    "category": "Electronics",
+    "price": 599.99
+  },
+  {
+    "id": "PROD-0004",
+    "name": "Ergonomic Office Chair",
+    "category": "Office Furniture",
+    "price": 449.99
+  },
+  {
+    "id": "PROD-0005",
+    "name": "Fitness Smart Watch Pro",
+    "category": "Wearables",
+    "price": 349.99
+  }
+]
