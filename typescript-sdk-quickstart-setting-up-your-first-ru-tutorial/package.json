@@ -1,0 +1,29 @@
+{
+  "name": "typescript-sdk-quickstart-setting-up-your-first-ru-tutorial",
+  "version": "1.0.0",
+  "description": "Quickstart tutorial for RushDB TypeScript SDK - Setting Up Your First RushDB Project",
+  "main": "src/main.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/main.ts",
+    "seed": "tsx src/seed.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "rushdb",
+    "typescript",
+    "sdk",
+    "quickstart",
+    "tutorial"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@rushdb/javascript-sdk": "^2.0.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
