@@ -1,0 +1,3 @@
+rushdb>=2.0.0
+python-dotenv>=1.0.0
+faker>=20.0.0
