@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Introduction to Machine Learning",
+    "content": "Machine learning is a subset of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed. It focuses on developing algorithms that can access data and use it to learn patterns and make decisions.",
+    "category": "AI",
+    "tags": ["machine learning", "AI", "fundamentals"]
+  },
+  {
+    "title": "Neural Networks Deep Dive",
+    "content": "Neural networks are computing systems inspired by biological neural networks. They consist of interconnected nodes (neurons) organized in layers that process information using connectionist approaches to computation.",
+    "category": "AI",
+    "tags": ["neural networks", "deep learning", "architecture"]
+  },
+  {
+    "title": "Data Science Fundamentals",
+    "content": "Data science combines statistical analysis, machine learning, and data visualization to extract insights from structured and unstructured data. It involves collecting, cleaning, and analyzing data to solve complex problems.",
+    "category": "Data Science",
+    "tags": ["data science", "statistics", "analytics"]
+  },
+  {
+    "title": "Natural Language Processing Overview",
+    "content": "Natural language processing (NLP) is a field of artificial intelligence that focuses on enabling computers to understand, interpret, and generate human language. It combines computational linguistics with machine learning models.",
+    "category": "AI",
+    "tags": ["NLP", "language", "text processing"]
+  },
+  {
+    "title": "Computer Vision Applications",
+    "content": "Computer vision enables machines to derive meaningful information from visual inputs including images, videos, and multi-dimensional data. It uses deep learning models to recognize objects, faces, and activities.",
+    "category": "AI",
+    "tags": ["computer vision", "image recognition", "deep learning"]
+  },
+  {
+    "title": "Reinforcement Learning Basics",
+    "content": "Reinforcement learning is a type of machine learning where an agent learns to make decisions by taking actions in an environment to maximize a reward signal. The agent learns through trial and error with feedback.",
+    "category": "AI",
+    "tags": ["reinforcement learning", "agents", "rewards"]
+  },
+  {
+    "title": "Big Data Processing Strategies",
+    "content": "Big data processing involves handling datasets that are too large or complex for traditional data processing applications. Technologies like Hadoop, Spark, and Kafka enable distributed processing of massive data volumes.",
+    "category": "Data Engineering",
+    "tags": ["big data", "distributed systems", "spark"]
+  },
+  {
+    "title": "Database Optimization Techniques",
+    "content": "Database optimization improves system performance through query optimization, indexing strategies, and proper schema design. Indexes, materialized views, and query caching are common optimization techniques.",
+    "category": "Database",
+    "tags": ["database", "optimization", "performance"]
+  },
+  {
+    "title": "Graph Databases Explained",
+    "content": "Graph databases store data as nodes and edges, making them ideal for relationship-heavy data. They excel at querying connected data and are used for social networks, recommendation engines, and fraud detection.",
+    "category": "Database",
+    "tags": ["graph database", "neo4j", "relationships"]
+  },
+  {
+    "title": "API Design Best Practices",
+    "content": "RESTful API design involves creating endpoints that are intuitive, consistent, and well-documented. Proper versioning, error handling, and authentication are essential for building robust APIs.",
+    "category": "Backend",
+    "tags": ["API", "REST", "backend"]
+  },
+  {
+    "title": "Microservices Architecture",
+    "content": "Microservices architecture structures an application as a collection of loosely coupled services. Each service is independently deployable and communicates through lightweight protocols like HTTP or message queues.",
+    "category": "Architecture",
+    "tags": ["microservices", "architecture", "distributed systems"]
+  },
+  {
+    "title": "Container Orchestration with Kubernetes",
+    "content": "Kubernetes is a container orchestration platform that automates deployment, scaling, and management of containerized applications. It provides service discovery, load balancing, and self-healing capabilities.",
+    "category": "DevOps",
+    "tags": ["kubernetes", "containers", "orchestration"]
+  },
+  {
+    "title": "Authentication and Authorization Patterns",
+    "content": "Authentication verifies user identity while authorization determines access permissions. JWT tokens, OAuth 2.0, and OpenID Connect are common patterns for implementing secure access control.",
+    "category": "Security",
+    "tags": ["authentication", "security", "OAuth"]
+  },
+  {
+    "title": "Caching Strategies for High Traffic",
+    "content": "Effective caching reduces database load and improves response times. Strategies include CDN caching, application-level caching with Redis, and database query caching. TTL configuration and cache invalidation are critical.",
+    "category": "Performance",
+    "tags": ["caching", "performance", "redis"]
+  },
+  {
+    "title": "Message Queue Patterns",
+    "content": "Message queues enable asynchronous communication between services. RabbitMQ, Kafka, and SQS provide reliable message delivery with at-least-once or exactly-once semantics for event-driven architectures.",
+    "category": "Architecture",
+    "tags": ["message queue", "async", "kafka"]
+  },
+  {
+    "title": "Testing Strategies for Distributed Systems",
+    "content": "Testing distributed systems requires multiple approaches: unit tests for individual components, integration tests for service communication, and chaos testing for failure scenarios. Contract testing ensures API compatibility.",
+    "category": "Testing",
+    "tags": ["testing", "distributed systems", "chaos engineering"]
+  },
+  {
+    "title": "Observability and Monitoring",
+    "content": "Observability combines metrics, logs, and traces to understand system behavior. Tools like Prometheus, Grafana, and Jaeger provide visibility into application performance and help diagnose issues quickly.",
+    "category": "Operations",
+    "tags": ["monitoring", "observability", "metrics"]
+  },
+  {
+    "title": "Feature Engineering Techniques",
+    "content": "Feature engineering transforms raw data into meaningful inputs for machine learning models. Techniques include normalization, encoding categorical variables, handling missing values, and creating interaction features.",
+    "category": "ML",
+    "tags": ["feature engineering", "machine learning", "data preparation"]
+  },
+  {
+    "title": "Model Deployment Strategies",
+    "content": "Deploying ML models requires careful consideration of latency, throughput, and resource constraints. Options include batch processing, real-time inference APIs, and edge deployment. Model versioning and A/B testing enable safe rollouts.",
+    "category": "ML",
+    "tags": ["model deployment", "inference", "MLOps"]
+  },
+  {
+    "title": "Vector Search Implementation",
+    "content": "Vector search enables similarity matching across high-dimensional embeddings. Techniques like approximate nearest neighbor (ANN) algorithms, HNSW indexes, and quantization optimize search speed and accuracy.",
+    "category": "AI",
+    "tags": ["vector search", "embeddings", "similarity"]
+  }
+]
