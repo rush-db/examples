@@ -1,0 +1,17 @@
+[
+  {
+    "id": "TEAM-HR",
+    "name": "HR",
+    "description": "Human Resources and People Operations"
+  },
+  {
+    "id": "TEAM-ENG",
+    "name": "Engineering",
+    "description": "Software Engineering and IT Operations"
+  },
+  {
+    "id": "TEAM-FIN",
+    "name": "Finance",
+    "description": "Finance and Accounting"
+  }
+]
