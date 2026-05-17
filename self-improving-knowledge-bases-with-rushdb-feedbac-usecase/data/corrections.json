@@ -1,0 +1,47 @@
+[
+  {
+    "user_email": "alice@example.com",
+    "user_reputation": 0.95,
+    "article_title": "Python Memory Management",
+    "correction_type": "factual",
+    "old_text": "Python uses automatic garbage collection",
+    "new_text": "Python uses reference counting with cyclic garbage collection for memory management",
+    "context": "The article omits reference counting which is a key part of Python's memory model"
+  },
+  {
+    "user_email": "bob@example.com",
+    "user_reputation": 0.88,
+    "article_title": "Python Memory Management",
+    "correction_type": "clarity",
+    "old_text": "objects are freed when reference count reaches zero",
+    "new_text": "objects are freed immediately when reference count reaches zero, but cyclic references are handled by the cyclic garbage collector",
+    "context": "The distinction between immediate deallocation and cycle collection is important"
+  },
+  {
+    "user_email": "charlie@example.com",
+    "user_reputation": 0.72,
+    "article_title": "AsyncIO Best Practices",
+    "correction_type": "factual",
+    "old_text": "async/await is single-threaded",
+    "new_text": "async/await is single-threaded but can use multiple threads via executors",
+    "context": "Clarifying that async is single-threaded but not necessarily single-process"
+  },
+  {
+    "user_email": "alice@example.com",
+    "user_reputation": 0.95,
+    "article_title": "GIL Deep Dive",
+    "correction_type": "factual",
+    "old_text": "The GIL prevents all parallel execution",
+    "new_text": "The GIL prevents CPU-bound parallel execution in CPython but allows concurrent I/O operations",
+    "context": "Common misconception about the GIL's scope"
+  },
+  {
+    "user_email": "diana@example.com",
+    "user_reputation": 0.85,
+    "article_title": "Python Performance Optimization",
+    "correction_type": "accuracy",
+    "old_text": "use lists for all collections",
+    "new_text": "use appropriate data structures - lists for ordered sequences, sets for membership testing, dicts for key-value lookups",
+    "context": "Lists are not optimal for all use cases"
+  }
+]
