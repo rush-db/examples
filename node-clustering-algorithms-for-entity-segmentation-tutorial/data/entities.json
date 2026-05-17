@@ -1,0 +1,52 @@
+[
+  {
+    "employeeId": "EMP-1000",
+    "name": "Sarah Mitchell",
+    "email": "sarah.mitchell@example.com",
+    "department": "Engineering",
+    "title": "Senior Software Engineer",
+    "hireDate": "2019-03-15",
+    "performanceScore": 4.5,
+    "salaryBand": 150000
+  },
+  {
+    "employeeId": "EMP-1001",
+    "name": "James Rodriguez",
+    "email": "james.rodriguez@example.com",
+    "department": "Engineering",
+    "title": "Staff Engineer",
+    "hireDate": "2018-07-22",
+    "performanceScore": 4.8,
+    "salaryBand": 180000
+  },
+  {
+    "employeeId": "EMP-1002",
+    "name": "Emily Chen",
+    "email": "emily.chen@example.com",
+    "department": "Marketing",
+    "title": "Marketing Manager",
+    "hireDate": "2020-01-10",
+    "performanceScore": 4.2,
+    "salaryBand": 120000
+  },
+  {
+    "employeeId": "EMP-1003",
+    "name": "Michael Thompson",
+    "email": "michael.thompson@example.com",
+    "department": "Sales",
+    "title": "Account Executive",
+    "hireDate": "2021-05-18",
+    "performanceScore": 3.9,
+    "salaryBand": 90000
+  },
+  {
+    "employeeId": "EMP-1004",
+    "name": "Lisa Anderson",
+    "email": "lisa.anderson@example.com",
+    "department": "Operations",
+    "title": "Operations Analyst",
+    "hireDate": "2019-11-03",
+    "performanceScore": 4.1,
+    "salaryBand": 85000
+  }
+]
