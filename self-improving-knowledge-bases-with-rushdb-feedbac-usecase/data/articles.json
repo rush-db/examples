@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Python Memory Management",
+    "body": "Python memory management is handled automatically through garbage collection. The garbage collector identifies and frees memory that is no longer in use. Objects are allocated on the heap and managed by the Python memory manager.",
+    "tags": ["python", "memory", "garbage-collection"],
+    "version": 1
+  },
+  {
+    "title": "Python Memory Management Deep Dive",
+    "body": "Understanding Python's memory model requires knowledge of reference counting and garbage collection. Every object in Python maintains a reference count that tracks how many references point to it. When the count reaches zero, the object is freed immediately.",
+    "tags": ["python", "memory", "internals"],
+    "version": 1
+  },
+  {
+    "title": "Garbage Collection Strategies",
+    "body": "Python employs multiple garbage collection strategies. The primary method is reference counting, which provides immediate deallocation. Additionally, a cyclic garbage collector runs periodically to identify and collect reference cycles that reference counting alone cannot handle.",
+    "tags": ["python", "gc", "memory"],
+    "version": 1
+  },
+  {
+    "title": "AsyncIO Best Practices",
+    "body": "AsyncIO is a library for writing concurrent code using async/await syntax. It provides a single-threaded cooperative multitasking environment. The event loop manages task execution, allowing multiple tasks to run without true parallelism.",
+    "tags": ["python", "async", "concurrency"],
+    "version": 1
+  },
+  {
+    "title": "GIL Deep Dive",
+    "body": "The Global Interpreter Lock (GIL) is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecode simultaneously. This means CPU-bound Python code cannot achieve true parallelism through threading.",
+    "tags": ["python", "threading", "performance"],
+    "version": 1
+  },
+  {
+    "title": "Python Performance Optimization",
+    "body": "Optimizing Python performance involves multiple strategies. Use lists for sequential data access. Profile your code to identify bottlenecks. Consider using built-in functions and libraries written in C for performance-critical sections.",
+    "tags": ["python", "performance", "optimization"],
+    "version": 1
+  },
+  {
+    "title": "Context Managers and Memory",
+    "body": "Context managers using the 'with' statement ensure proper resource cleanup. They guarantee that resources like file handles and network connections are closed even when exceptions occur. This pattern is essential for avoiding memory leaks.",
+    "tags": ["python", "memory", "resources"],
+    "version": 1
+  },
+  {
+    "title": "Python Data Structures Guide",
+    "body": "Python offers rich data structures including lists, tuples, sets, and dictionaries. Lists are ordered, mutable sequences. Sets store unique elements. Dictionaries provide key-value mappings with O(1) average-case lookup time.",
+    "tags": ["python", "data-structures", "basics"],
+    "version": 1
+  },
+  {
+    "title": "Multiprocessing vs Threading",
+    "body": "For CPU-bound tasks, multiprocessing bypasses the GIL by using separate processes. For I/O-bound tasks, threading may be sufficient. The multiprocessing module provides Process, Pool, and Queue classes for parallel execution.",
+    "tags": ["python", "concurrency", "multiprocessing"],
+    "version": 1
+  },
+  {
+    "title": "Generator Expressions and Memory",
+    "body": "Generators produce items lazily, one at a time, rather than creating entire lists in memory. This makes them memory-efficient for processing large datasets. Use generator expressions with parentheses or yield statements in functions.",
+    "tags": ["python", "generators", "memory-efficiency"],
+    "version": 1
+  }
+]
