@@ -1,0 +1,53 @@
+{
+  "USER": [
+    {
+      "externalId": "user-001",
+      "name": "Alice Chen",
+      "email": "alice@example.com",
+      "role": "developer",
+      "tags": ["early-adopter"]
+    },
+    {
+      "externalId": "user-002",
+      "name": "Bob Martinez",
+      "email": "bob@example.com",
+      "role": "designer",
+      "tags": ["beta-tester"]
+    },
+    {
+      "externalId": "user-003",
+      "name": "Carol Johnson",
+      "email": "carol@example.com",
+      "role": "product",
+      "tags": ["early-adopter", "premium"]
+    }
+  ],
+  "PROJECT": [
+    {
+      "slug": "rushdb-tutorial",
+      "title": "RushDB Tutorial Series",
+      "status": "active",
+      "priority": 1
+    },
+    {
+      "slug": "graph-concepts",
+      "title": "Understanding Graph Databases",
+      "status": "draft",
+      "priority": 2
+    }
+  ],
+  "DOCUMENT": [
+    {
+      "slug": "intro-to-rushdb",
+      "title": "Introduction to RushDB",
+      "version": 1,
+      "content": "Getting started with RushDB..."
+    },
+    {
+      "slug": "graph-modeling",
+      "title": "Graph Data Modeling Best Practices",
+      "version": 1,
+      "content": "Designing effective graph schemas..."
+    }
+  ]
+}
