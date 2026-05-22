@@ -1,0 +1,11 @@
+# RushDB Python SDK (v2.x required — v1.x has incompatible API)
+rushdb>=2.0.0
+
+# For generating mock embeddings (in production, use OpenAI/Cohere/etc.)
+numpy>=1.24.0
+
+# For realistic mock data generation
+faker>=19.0.0
+
+# Environment variable management
+python-dotenv>=1.0.0
