@@ -1,0 +1,2 @@
+# This file ensures the data directory is created
+# Run `python seed.py` to generate neo4j_export.json
