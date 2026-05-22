@@ -1,0 +1,47 @@
+[
+  {
+    "id": "usr_001",
+    "name": "Sarah Mitchell",
+    "email": "sarah.mitchell@techcorp.io",
+    "age": 34,
+    "tier": "premium",
+    "account_status": "active",
+    "preferences": {
+      "shipping": "express",
+      "language": "en-US",
+      "notifications": true,
+      "marketing_opt_in": false,
+      "payment_method": "card"
+    }
+  },
+  {
+    "id": "usr_002",
+    "name": "Marcus Chen",
+    "email": "mchen@startupventures.co",
+    "age": 28,
+    "tier": "basic",
+    "account_status": "active",
+    "preferences": {
+      "shipping": "standard",
+      "language": "en-US",
+      "notifications": true,
+      "marketing_opt_in": true,
+      "payment_method": "paypal"
+    }
+  },
+  {
+    "id": "usr_003",
+    "name": "Elena Rodriguez",
+    "email": "elena.r@globalmedia.net",
+    "age": 41,
+    "tier": "enterprise",
+    "account_status": "active",
+    "preferences": {
+      "shipping": "next_day",
+      "language": "es-ES",
+      "notifications": false,
+      "marketing_opt_in": false,
+      "payment_method": "invoice"
+    }
+  }
+]
