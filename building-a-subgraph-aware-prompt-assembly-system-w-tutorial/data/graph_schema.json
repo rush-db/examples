@@ -1,0 +1,99 @@
+{
+  "labels": [
+    {
+      "name": "TOPIC",
+      "description": "Subject areas or categories",
+      "properties": ["name", "priority", "description"]
+    },
+    {
+      "name": "CONCEPT",
+      "description": "Technical concepts or terms",
+      "properties": ["name", "domain", "definition"]
+    },
+    {
+      "name": "DOCUMENT",
+      "description": "Articles, tutorials, guides",
+      "properties": ["title", "type", "content"]
+    },
+    {
+      "name": "EXAMPLE",
+      "description": "Code examples or use cases",
+      "properties": ["title", "language", "code"]
+    }
+  ],
+  "relationship_types": [
+    {
+      "type": "BELONGS_TO",
+      "from": "CONCEPT",
+      "to": "TOPIC",
+      "description": "Concept belongs to a topic",
+      "example": "authentication BELONGS_TO security"
+    },
+    {
+      "type": "DEFINES",
+      "from": "DOCUMENT",
+      "to": "CONCEPT",
+      "description": "Document defines/explains concept",
+      "example": "'JWT Authentication Guide' DEFINES jwt-tokens"
+    },
+    {
+      "type": "RELATES_TO",
+      "from": "*",
+      "to": "*",
+      "description": "General relationship between nodes",
+      "example": "authentication RELATES_TO authorization"
+    },
+    {
+      "type": "ILLUSTRATES",
+      "from": "EXAMPLE",
+      "to": "CONCEPT",
+      "description": "Example demonstrates concept",
+      "example": "'Redis Cache Pattern' ILLUSTRATES caching"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "from": "CONCEPT",
+      "to": "CONCEPT",
+      "description": "Prerequisite dependency",
+      "example": "authorization DEPENDS_ON authentication"
+    }
+  ],
+  "usage_patterns": {
+    "prompt_assembly": {
+      "description": "Strategies for assembling prompts from subgraph context",
+      "strategies": [
+        {
+          "name": "bfs",
+          "full_name": "Breadth-First Search",
+          "use_case": "Broad overview, comprehensive context gathering"
+        },
+        {
+          "name": "dfs",
+          "full_name": "Depth-First Search",
+          "use_case": "Deep topic exploration, dependency tracing"
+        },
+        {
+          "name": "relevance",
+          "full_name": "Relevance-Weighted",
+          "use_case": "Precision-focused queries, ranked results"
+        },
+        {
+          "name": "topic",
+          "full_name": "Topic-Based",
+          "use_case": "Subject area comprehensive coverage"
+        },
+        {
+          "name": "dependency",
+          "full_name": "Dependency Chain",
+          "use_case": "Learning paths, prerequisite ordering"
+        }
+      ]
+    },
+    "query_patterns": {
+      "by_label": "db.records.find({'labels': ['CONCEPT'], 'where': {...}})",
+      "by_relationship": "db.records.find({'labels': ['DOCUMENT'], 'where': {'DEFINES': {'$id': concept_id}}})",
+      "by_property": "db.records.find({'labels': ['CONCEPT'], 'where': {'name': {'$contains': 'auth'}}})",
+      "with_limit": "db.records.find({'labels': ['CONCEPT'], 'limit': 10})"
+    }
+  }
+}
