@@ -1,0 +1,148 @@
+{
+  "documents": [
+    {
+      "title": "React Authentication Patterns",
+      "category": "Frontend",
+      "summary": "Complete guide to implementing authentication in React applications including JWT, OAuth, and session-based patterns.",
+      "chunks": [
+        "React Authentication Patterns - Part 1: This guide covers JWT-based authentication in React applications. We discuss token storage strategies, including httpOnly cookies vs localStorage trade-offs.",
+        "React Authentication Patterns - Part 2: OAuth 2.0 integration with React using PKCE flow for public clients. Implementation of providers and context for global auth state management.",
+        "React Authentication Patterns - Part 3: Session management and token refresh strategies. Handling token expiration, silent refresh, and concurrent session handling.",
+        "React Authentication Patterns - Part 4: Security best practices including CSRF protection, secure header configuration, and input sanitization for auth forms."
+      ],
+      "related": ["OAuth 2.0 Implementation Guide", "JWT Token Management", "Authentication Best Practices"]
+    },
+    {
+      "title": "OAuth 2.0 Implementation Guide",
+      "category": "Security",
+      "summary": "Deep dive into OAuth 2.0 protocol implementation, covering authorization code, PKCE, client credentials, and common security pitfalls.",
+      "chunks": [
+        "OAuth 2.0 Fundamentals - Part 1: Understanding the OAuth 2.0 authorization framework. Four grant types explained: Authorization Code, Implicit, Client Credentials, and Refresh Token flows.",
+        "OAuth 2.0 Implementation - Part 2: Setting up authorization server with Node.js. Implementing the token endpoint, introspection, and revocation endpoints according to RFC 6749.",
+        "OAuth 2.0 Security - Part 3: Common OAuth security vulnerabilities including CSRF, authorization code interception, and token leakage. Mitigation strategies and security best practices.",
+        "OAuth 2.0 Advanced - Part 4: Implementing OAuth 2.0 for single-page applications using PKCE extension. Token storage patterns and refresh token rotation strategies."
+      ],
+      "related": ["React Authentication Patterns", "JWT Token Management", "API Security Best Practices"]
+    },
+    {
+      "title": "JWT Token Management",
+      "category": "Security",
+      "summary": "Comprehensive guide to JSON Web Tokens including creation, validation, refresh strategies, and security considerations.",
+      "chunks": [
+        "JWT Basics - Part 1: Introduction to JSON Web Tokens (JWT). Structure of JWTs: Header, Payload, Signature. Understanding claims: registered, public, and private claims.",
+        "JWT Implementation - Part 2: Creating and signing JWTs in various languages. HS256 vs RS256 algorithm selection. Handling token expiration with exp claim.",
+        "JWT Security - Part 3: Security considerations for JWT usage. Token storage vulnerabilities, algorithm confusion attacks, and signature bypass techniques.",
+        "JWT Advanced - Part 4: Refresh token strategies and token rotation. Implementing blacklist/revocation for invalidating tokens before expiration."
+      ],
+      "related": ["OAuth 2.0 Implementation Guide", "React Authentication Patterns", "Token Storage Solutions"]
+    },
+    {
+      "title": "Authentication Best Practices",
+      "category": "Security",
+      "summary": "Industry-standard authentication best practices for modern web applications, covering password handling, MFA, and threat modeling.",
+      "chunks": [
+        "Auth Best Practices - Part 1: Password security fundamentals. Password hashing with bcrypt/argon2, password strength requirements, and breach detection with Have I Been Pwned API.",
+        "Auth Best Practices - Part 2: Multi-factor authentication (MFA) implementation. TOTP, SMS, and hardware key options. Choosing the right MFA method for your application.",
+        "Auth Best Practices - Part 3: Account recovery and password reset flows. Secure email-based recovery, security questions deprecation, and account takeover prevention.",
+        "Auth Best Practices - Part 4: Authentication threat modeling. Common attack vectors, rate limiting strategies, and implementing anomaly detection for login attempts."
+      ],
+      "related": ["React Authentication Patterns", "OAuth 2.0 Implementation Guide", "API Security Best Practices"]
+    },
+    {
+      "title": "API Security Best Practices",
+      "category": "Backend",
+      "summary": "Essential API security patterns including rate limiting, input validation, CORS configuration, and secure headers.",
+      "chunks": [
+        "API Security Basics - Part 1: REST API security fundamentals. Authentication vs authorization, API keys vs bearer tokens, and implementing proper CORS policies.",
+        "API Security Implementation - Part 2: Input validation and sanitization. SQL injection prevention, XSS protection, and parameter validation strategies using schema validation.",
+        "API Security Advanced - Part 3: Rate limiting and throttling implementations. Token bucket algorithm, sliding window rate limiting, and DDoS protection strategies.",
+        "API Security Production - Part 4: Security headers configuration. CSP, HSTS, X-Frame-Options, and other essential HTTP security headers for production APIs."
+      ],
+      "related": ["OAuth 2.0 Implementation Guide", "Authentication Best Practices", "GraphQL Security Guide"]
+    },
+    {
+      "title": "GraphQL Security Guide",
+      "category": "Backend",
+      "summary": "Security considerations for GraphQL APIs including query complexity analysis, depth limiting, and authorization patterns.",
+      "chunks": [
+        "GraphQL Security Intro - Part 1: GraphQL security considerations unique to GraphQL. Introspection risks, field-level security, and avoiding information leakage.",
+        "GraphQL Security Query - Part 2: Query complexity analysis and depth limiting. Preventing expensive queries that could DoS your server. Implementing query whitelisting.",
+        "GraphQL Security Auth - Part 3: Authorization patterns in GraphQL. Row-level security, field-level permissions, and implementing business logic authorization.",
+        "GraphQL Security Production - Part 4: Production GraphQL security checklist. Batching attacks, CSRF in GraphQL, and monitoring for malicious query patterns."
+      ],
+      "related": ["API Security Best Practices", "Authentication Best Practices", "OAuth 2.0 Implementation Guide"]
+    },
+    {
+      "title": "Node.js Performance Optimization",
+      "category": "Backend",
+      "summary": "Performance tuning for Node.js applications including event loop optimization, memory management, and profiling techniques.",
+      "chunks": [
+        "Node.js Performance Intro - Part 1: Understanding the Node.js event loop. Phases of the event loop, tick budget analysis, and identifying blocking operations.",
+        "Node.js Performance Memory - Part 2: Memory management and leak detection. Heap profiling, common memory leak patterns, and garbage collection tuning.",
+        "Node.js Performance Async - Part 3: Async operations optimization. Promise handling, async/await patterns, and avoiding callback hell in performance-critical code.",
+        "Node.js Performance Production - Part 4: Production profiling tools and techniques. Using clinic.js, 0x, and built-in profilers for performance debugging."
+      ],
+      "related": ["Database Performance Tuning", "Caching Strategies", "Microservices Architecture"]
+    },
+    {
+      "title": "Database Performance Tuning",
+      "category": "Database",
+      "summary": "SQL and NoSQL database performance optimization including indexing strategies, query analysis, and connection pooling.",
+      "chunks": [
+        "Database Indexing - Part 1: Index design principles. B-tree vs hash indexes, composite indexes, and index selectivity analysis for query optimization.",
+        "Database Query Analysis - Part 2: Query execution plan analysis. Understanding EXPLAIN output, identifying sequential scans, and optimizing expensive operations.",
+        "Database Connection Pooling - Part 3: Connection pool configuration. Pool sizing strategies, idle connection handling, and troubleshooting connection exhaustion.",
+        "Database Advanced - Part 4: Advanced optimization techniques. Partitioning strategies, read replicas, and implementing caching layers for high-traffic databases."
+      ],
+      "related": ["Node.js Performance Optimization", "Caching Strategies", "Redis Best Practices"]
+    },
+    {
+      "title": "Caching Strategies",
+      "category": "Architecture",
+      "summary": "Comprehensive caching patterns including cache-aside, write-through, Redis implementation, and cache invalidation strategies.",
+      "chunks": [
+        "Caching Fundamentals - Part 1: Caching principles and terminology. Cache hit ratio, TTL configuration, and choosing between cache layers.",
+        "Caching Patterns - Part 2: Cache patterns explained. Cache-aside, write-through, write-behind, and refresh-ahead patterns with use cases and trade-offs.",
+        "Caching Redis - Part 3: Redis implementation for caching. Data structure selection, memory optimization, and Redis-specific caching patterns.",
+        "Caching Invalidation - Part 4: Cache invalidation strategies. Time-based expiration, event-driven invalidation, and handling stale data gracefully."
+      ],
+      "related": ["Database Performance Tuning", "Node.js Performance Optimization", "Redis Best Practices"]
+    },
+    {
+      "title": "Redis Best Practices",
+      "category": "Database",
+      "summary": "Production Redis usage patterns including data structure selection, memory optimization, clustering, and common anti-patterns.",
+      "chunks": [
+        "Redis Data Structures - Part 1: Choosing the right Redis data structure. Strings, lists, sets, sorted sets, and hashes with practical use cases.",
+        "Redis Performance - Part 2: Redis performance optimization. Pipeline usage, Lua scripting, and avoiding common performance pitfalls.",
+        "Redis Clustering - Part 3: Redis Cluster setup and operation. Sharding strategies, failover handling, and cluster management.",
+        "Redis Production - Part 4: Production Redis checklist. Memory management, persistence strategies, and monitoring with Redis INFO and Sentinel."
+      ],
+      "related": ["Caching Strategies", "Database Performance Tuning", "Node.js Performance Optimization"]
+    },
+    {
+      "title": "Microservices Architecture",
+      "category": "Architecture",
+      "summary": "Designing and implementing microservices including service decomposition, inter-service communication, and distributed tracing.",
+      "chunks": [
+        "Microservices Intro - Part 1: Microservices architecture fundamentals. Service decomposition strategies, bounded contexts, and domain-driven design alignment.",
+        "Microservices Communication - Part 2: Inter-service communication patterns. Synchronous REST/gRPC vs asynchronous messaging, and choosing the right approach.",
+        "Microservices Data - Part 3: Data management in microservices. Database per service pattern, event sourcing, and saga pattern for distributed transactions.",
+        "Microservices Operations - Part 4: Operational concerns for microservices. Distributed tracing, service mesh, and observability in complex systems."
+      ],
+      "related": ["Node.js Performance Optimization", "Caching Strategies", "API Security Best Practices"]
+    },
+    {
+      "title": "TypeScript Best Practices",
+      "category": "Frontend",
+      "summary": "TypeScript development best practices including type design, generics, utility types, and migration strategies from JavaScript.",
+      "chunks": [
+        "TypeScript Fundamentals - Part 1: TypeScript type system fundamentals. Type inference, explicit typing, and avoiding common type pitfalls.",
+        "TypeScript Generics - Part 2: Advanced generics usage. Generic constraints, conditional types, and creating reusable generic utilities.",
+        "TypeScript Patterns - Part 3: Design patterns in TypeScript. Builder pattern, factory pattern, and dependency injection with proper typing.",
+        "TypeScript Migration - Part 4: Migrating JavaScript to TypeScript. Incremental migration strategy, handling any types, and strict mode configuration."
+      ],
+      "related": ["React Authentication Patterns", "Node.js Performance Optimization", "API Security Best Practices"]
+    }
+  ]
+}
