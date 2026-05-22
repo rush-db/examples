@@ -1,0 +1,443 @@
+[
+  {
+    "label": "TASK",
+    "data": {
+      "title": "Auth Service Refactoring",
+      "content": "Major refactor of the authentication service to support JWT tokens, improve token refresh handling, and add support for multiple auth methods including OAuth2 and API keys.",
+      "status": "in_progress",
+      "priority": "high",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "BLOCKS", "targetLabel": "TASK", "targetTitle": "Auth Service Tests"},
+      {"type": "INFORMED_BY", "targetLabel": "DECISION", "targetTitle": "Migration to JWT tokens"},
+      {"type": "PARENT_OF", "targetLabel": "TASK", "targetTitle": "Implement token refresh endpoint"},
+      {"type": "RELATES_TO", "targetLabel": "DECISION", "targetTitle": "Auth middleware decision"}
+    ]
+  },
+  {
+    "label": "TASK",
+    "data": {
+      "title": "Auth Service Tests",
+      "content": "Comprehensive test suite for the refactored auth service, covering JWT validation, token refresh flows, error handling, and edge cases for expired tokens.",
+      "status": "blocked",
+      "priority": "high",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "BLOCKED_BY", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"},
+      {"type": "RELATES_TO", "targetLabel": "BUG", "targetTitle": "Token refresh race condition"}
+    ]
+  },
+  {
+    "label": "TASK",
+    "data": {
+      "title": "Implement token refresh endpoint",
+      "content": "Add a POST /auth/refresh endpoint that accepts an expired access token and returns a new access token using the refresh token. Must handle concurrent refresh requests.",
+      "status": "pending",
+      "priority": "medium",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "PARENT_OF", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "TASK",
+    "data": {
+      "title": "Add OAuth2 support to auth service",
+      "content": "Extend the authentication service to support OAuth2 providers. Initial implementation will support Google and GitHub OAuth.",
+      "status": "pending",
+      "priority": "medium",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"},
+      {"type": "INFORMED_BY", "targetLabel": "LEARNING", "targetTitle": "OAuth2 security considerations"}
+    ]
+  },
+  {
+    "label": "DECISION",
+    "data": {
+      "title": "Migration to JWT tokens",
+      "content": "Decision to migrate from session-based authentication to JWT tokens. Rationale: better scalability, stateless authentication, support for mobile clients and API-first architecture. JWT will include user ID, roles, and expiration. Refresh tokens will be stored in Redis for quick revocation.",
+      "context": "We were using express-session with a Redis store. As we scaled to multiple instances, session affinity became an issue. JWT stateless design eliminates this. Tradeoff: token revocation is harder, mitigated by short-lived tokens and refresh token rotation.",
+      "date": "2024-01-15",
+      "decision_maker": "backend-team"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"},
+      {"type": "SUPERSEDES", "targetLabel": "DECISION", "targetTitle": "Session-based auth decision"},
+      {"type": "RELATES_TO", "targetLabel": "BUG", "targetTitle": "Token refresh race condition"}
+    ]
+  },
+  {
+    "label": "DECISION",
+    "data": {
+      "title": "Auth middleware decision",
+      "content": "Use a centralized auth middleware that validates JWT tokens and attaches user context to the request. The middleware will be a singleton that can be applied to any Express route. It will handle token extraction from Authorization header, validation, and error responses.",
+      "context": "Previously each route had its own auth logic. Centralizing ensures consistent behavior and easier auditing. Middleware will use the auth service for token validation.",
+      "date": "2024-02-01",
+      "decision_maker": "backend-team"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"},
+      {"type": "INFORMS", "targetLabel": "REFACTOR", "targetTitle": "Cookie handling in auth middleware"}
+    ]
+  },
+  {
+    "label": "DECISION",
+    "data": {
+      "title": "Token rotation strategy",
+      "content": "Implement refresh token rotation for security. Each time a refresh token is used, a new refresh token is issued and the old one is invalidated. This prevents replay attacks if a refresh token is leaked. Store refresh token hash in Redis for O(1) validation.",
+      "context": "Standard practice for JWT refresh. Rotation prevents stolen tokens from being reused. The tradeoff is handling race conditions when multiple requests try to refresh simultaneously.",
+      "date": "2024-02-10",
+      "decision_maker": "security-team"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "DECISION",
+    "data": {
+      "title": "Session-based auth decision",
+      "content": "Original decision to use session-based authentication with Redis store. Chosen for simplicity and easy revocation. This was before we understood the scaling challenges.",
+      "context": "Archival decision. Superseded by JWT migration.",
+      "date": "2023-06-01",
+      "decision_maker": "backend-team",
+      "archived": true
+    },
+    "relations": [
+      {"type": "SUPERSEDED_BY", "targetLabel": "DECISION", "targetTitle": "Migration to JWT tokens"}
+    ]
+  },
+  {
+    "label": "REFACTOR",
+    "data": {
+      "title": "Session token refactoring notes",
+      "content": "Refactored the session token handling when moving from sessions to JWT. Key changes: removed express-session middleware, added custom JWT validation middleware, updated all protected routes to use the new middleware, removed Redis session store dependency.",
+      "lessons_learned": "JWT validation is fast but token revocation requires careful planning. Short-lived tokens + refresh rotation helps.",
+      "date": "2024-02-20",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "SIMILAR_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"},
+      {"type": "RELATES_TO", "targetLabel": "BUG", "targetTitle": "Token refresh race condition"}
+    ]
+  },
+  {
+    "label": "REFACTOR",
+    "data": {
+      "title": "Cookie handling in auth middleware",
+      "content": "Refactored cookie-based auth when adding JWT support. Changed from reading session cookies to reading JWT from Authorization header. Also added support for cookies as fallback for browser clients. Cookie handling now checks for HttpOnly, Secure, and SameSite flags.",
+      "lessons_learned": "Always validate the SameSite attribute to prevent CSRF. Set Secure flag in production.",
+      "date": "2024-03-01",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "SIMILAR_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"},
+      {"type": "INFORMED_BY", "targetLabel": "DECISION", "targetTitle": "Auth middleware decision"}
+    ]
+  },
+  {
+    "label": "REFACTOR",
+    "data": {
+      "title": "Refactored payment service auth pattern",
+      "content": "Refactored payment service to use service-to-service authentication with JWT. Previously used API keys stored in environment variables. New pattern uses signed JWT tokens with audience and issuer validation.",
+      "lessons_learned": "Service-to-service JWT needs different validation than user auth. Must verify audience (aud) and issuer (iss) claims.",
+      "date": "2024-01-28",
+      "project": "payments"
+    },
+    "relations": [
+      {"type": "SIMILAR_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "REFACTOR",
+    "data": {
+      "title": "User service auth changes",
+      "content": "Refactored user service to use the new JWT-based auth system. Removed legacy session lookups, updated user context retrieval to use JWT claims, added role extraction from token payload.",
+      "lessons_learned": "Extract common user context logic into a shared utility. User ID should come from token, not from database lookup on every request.",
+      "date": "2024-03-05",
+      "project": "user-service"
+    },
+    "relations": [
+      {"type": "SIMILAR_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "REFACTOR",
+    "data": {
+      "title": "API gateway auth middleware",
+      "content": "Refactored API gateway to validate JWT tokens at the gateway level before routing to downstream services. Services no longer need to validate tokens themselves.",
+      "lessons_learned": "Centralized auth at gateway is great for consistency but creates a bottleneck for token validation. Cache token validation results where possible.",
+      "date": "2024-02-15",
+      "project": "api-gateway"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "BUG",
+    "data": {
+      "title": "Token refresh race condition",
+      "content": "Race condition in token refresh endpoint when multiple concurrent requests try to refresh the same user's token. Both requests validate the same refresh token and both issue new tokens, invalidating each other. Users would be logged out immediately after refresh.",
+      "severity": "high",
+      "status": "resolved",
+      "resolution": "Implemented distributed locking using Redis SETNX. When a refresh request starts, acquire a lock on the user's refresh token. Other concurrent requests wait for the lock to be released. Added lock timeout of 5 seconds to handle crashed processes.",
+      "date_discovered": "2024-03-10",
+      "date_resolved": "2024-03-12"
+    },
+    "relations": [
+      {"type": "RESOLVED_BY", "targetLabel": "TASK", "targetTitle": "Implement token refresh endpoint"},
+      {"type": "RELATES_TO", "targetLabel": "DECISION", "targetTitle": "Token rotation strategy"},
+      {"type": "RELATES_TO", "targetLabel": "REFACTOR", "targetTitle": "Session token refactoring notes"}
+    ]
+  },
+  {
+    "label": "BUG",
+    "data": {
+      "title": "Invalid JWT signature error after deployment",
+      "content": "After deploying new version of auth service, users with existing JWT tokens were getting 'invalid signature' errors. The new version used a different signing algorithm (RS256 vs HS256).",
+      "severity": "critical",
+      "status": "resolved",
+      "resolution": "Implemented graceful algorithm migration. New tokens use RS256, but during transition period, validate both RS256 and HS256. Eventually remove HS256 after all tokens are refreshed.",
+      "date_discovered": "2024-02-28",
+      "date_resolved": "2024-02-28"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "DECISION", "targetTitle": "Migration to JWT tokens"}
+    ]
+  },
+  {
+    "label": "BUG",
+    "data": {
+      "title": "Refresh token not being invalidated on logout",
+      "content": "When user logs out, their access token is removed from client but the refresh token was still valid. User could get new access tokens using the refresh token even after logout.",
+      "severity": "high",
+      "status": "resolved",
+      "resolution": "On logout, add refresh token to a blacklist in Redis with TTL matching the token's original expiration. Check blacklist during refresh token validation.",
+      "date_discovered": "2024-03-05",
+      "date_resolved": "2024-03-05"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "DECISION", "targetTitle": "Token rotation strategy"}
+    ]
+  },
+  {
+    "label": "BUG",
+    "data": {
+      "title": "JWT exp claim not being validated correctly",
+      "content": "JWT validation library was not correctly rejecting expired tokens. The 'exp' claim was being ignored because of timezone issues in the validation logic.",
+      "severity": "medium",
+      "status": "resolved",
+      "resolution": "Fixed timezone handling in token expiration check. Use UTC timestamps consistently. Added unit test for edge cases around token expiration.",
+      "date_discovered": "2024-03-01",
+      "date_resolved": "2024-03-01"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Tests"}
+    ]
+  },
+  {
+    "label": "LEARNING",
+    "data": {
+      "title": "OAuth2 security considerations",
+      "content": "When adding OAuth2 support, learned about several security considerations: 1) Always verify state parameter to prevent CSRF, 2) Validate redirect URIs exactly (not just domain matching), 3) Store access tokens securely, 4) Implement PKCE for public clients, 5) Use nonce parameter for OIDC, 6) Token storage should be HttpOnly cookies, not localStorage.",
+      "category": "security",
+      "date": "2024-03-15",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "TASK", "targetTitle": "Add OAuth2 support to auth service"}
+    ]
+  },
+  {
+    "label": "LEARNING",
+    "data": {
+      "title": "JWT key rotation strategy",
+      "content": "Learned that rotating signing keys for JWT requires careful planning. Best practices: 1) Use key IDs (kid) in token header, 2) Keep old public keys available for validating existing tokens, 3) Use key versioning, 4) Notify clients of upcoming key changes through well-known endpoint.",
+      "category": "security",
+      "date": "2024-02-25",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "DECISION", "targetTitle": "Migration to JWT tokens"}
+    ]
+  },
+  {
+    "label": "LEARNING",
+    "data": {
+      "title": "Token storage comparison",
+      "content": "Compared different token storage strategies: 1) localStorage - vulnerable to XSS, 2) sessionStorage - still vulnerable, cleared on tab close, 3) HttpOnly cookies - not accessible to JS, resistant to XSS, requires CSRF protection, 4) memory storage - most secure but requires re-auth on page reload. Recommendation: HttpOnly cookies with CSRF token for web apps, secure storage for mobile.",
+      "category": "security",
+      "date": "2024-03-08",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "REFACTOR", "targetTitle": "Cookie handling in auth middleware"}
+    ]
+  },
+  {
+    "label": "LEARNING",
+    "data": {
+      "title": "Performance implications of JWT validation",
+      "content": "JWT validation adds latency to every request. Measured: synchronous JWT validation adds 2-5ms per request. Strategies to mitigate: 1) Cache decoded token payload, 2) Use asymmetric keys with local caching, 3) Async validation where possible, 4) Token caching with short TTL.",
+      "category": "performance",
+      "date": "2024-03-12",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "REFACTOR", "targetTitle": "API gateway auth middleware"}
+    ]
+  },
+  {
+    "label": "LEARNING",
+    "data": {
+      "title": "Multi-instance auth consistency",
+      "content": "When scaling auth service to multiple instances, ensure consistent behavior: 1) All instances must use same signing keys (for token validation) or share key store, 2) Token blacklist/consent must be in distributed store like Redis, 3) Rate limiting must be coordinated, 4) Use sticky sessions during key rotation.",
+      "category": "architecture",
+      "date": "2024-03-10",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "DECISION", "targetTitle": "Migration to JWT tokens"}
+    ]
+  },
+  {
+    "label": "TASK",
+    "data": {
+      "title": "Database connection pooling refactor",
+      "content": "Refactor database connection handling to use connection pooling instead of creating new connections per request. This improves performance and prevents connection exhaustion under load.",
+      "status": "completed",
+      "priority": "high",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "DECISION",
+    "data": {
+      "title": "Redis caching strategy",
+      "content": "Decision to use Redis as the primary caching layer for frequently accessed data. Key patterns: user sessions, rate limiting counters, feature flags, and token validation caches. TTL strategy: short TTL for user data (5 min), longer for static config (1 hour).",
+      "context": "Needed to reduce database load and improve response times. Redis provides sub-millisecond latency and supports atomic operations for counters.",
+      "date": "2024-01-20",
+      "decision_maker": "backend-team"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "TASK", "targetTitle": "Database connection pooling refactor"}
+    ]
+  },
+  {
+    "label": "BUG",
+    "data": {
+      "title": "Connection pool exhaustion under high load",
+      "content": "Under high concurrent load, the connection pool was exhausting. Requests were timing out waiting for available connections. Root cause: connections were not being properly released on errors.",
+      "severity": "high",
+      "status": "resolved",
+      "resolution": "Added try-finally blocks to ensure connections are always returned to pool. Added connection pool monitoring and alerting. Implemented circuit breaker pattern for database calls.",
+      "date_discovered": "2024-02-05",
+      "date_resolved": "2024-02-07"
+    },
+    "relations": [
+      {"type": "RESOLVED_BY", "targetLabel": "TASK", "targetTitle": "Database connection pooling refactor"}
+    ]
+  },
+  {
+    "label": "REFACTOR",
+    "data": {
+      "title": "Error handling refactor",
+      "content": "Refactored error handling across services to use standardized error responses. All errors now return consistent JSON with code, message, and details. Added error tracking with structured logging.",
+      "lessons_learned": "Centralized error handling makes debugging easier and helps with monitoring. Include correlation IDs in errors for distributed tracing.",
+      "date": "2024-03-01",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Database connection pooling refactor"}
+    ]
+  },
+  {
+    "label": "LEARNING",
+    "data": {
+      "title": "Service mesh observability",
+      "content": "When running multiple service instances behind a load balancer, observability is critical. Learnings: 1) Distributed tracing requires instrumentation at every hop, 2) Use correlation IDs passed through headers, 3) Log aggregation must handle multiple instances, 4) Metrics should be labeled with service instance for debugging.",
+      "category": "operations",
+      "date": "2024-03-18",
+      "project": "infrastructure"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "TASK",
+    "data": {
+      "title": "API versioning implementation",
+      "content": "Implement API versioning strategy using URL path versioning (/api/v1/, /api/v2/). Ensure backward compatibility during transitions and deprecation warnings for older versions.",
+      "status": "planning",
+      "priority": "medium",
+      "project": "api-gateway"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "DECISION",
+    "data": {
+      "title": "API versioning approach",
+      "content": "Decision to use URL path versioning (e.g., /v1/users, /v2/users) rather than header-based versioning. Rationale: more explicit, easier to test, better cacheability, clearer deprecation timeline.",
+      "context": "Header versioning is more 'pure' REST but harder to test and debug. URL versioning is more practical for our use case.",
+      "date": "2024-03-01",
+      "decision_maker": "api-team"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "TASK", "targetTitle": "API versioning implementation"}
+    ]
+  },
+  {
+    "label": "BUG",
+    "data": {
+      "title": "CORS preflight not working for auth endpoints",
+      "content": "Browser OPTIONS requests for auth endpoints were failing due to missing CORS headers. This blocked legitimate cross-origin requests from our frontend.",
+      "severity": "medium",
+      "status": "resolved",
+      "resolution": "Added CORS middleware that handles OPTIONS preflight for all endpoints, including auth. Configured allowed origins, methods, and headers. Added proper Access-Control-Max-Age for caching preflight.",
+      "date_discovered": "2024-03-15",
+      "date_resolved": "2024-03-15"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "REFACTOR",
+    "data": {
+      "title": "Rate limiting implementation",
+      "content": "Implemented rate limiting for API endpoints using Redis sliding window algorithm. Limits: 100 requests per minute per user, 1000 requests per minute per IP. Returns 429 with Retry-After header when exceeded.",
+      "lessons_learned": "Rate limiting must be applied before auth validation to prevent resource exhaustion attacks. Use distributed storage for consistent limits across instances.",
+      "date": "2024-02-20",
+      "project": "api-gateway"
+    },
+    "relations": [
+      {"type": "RELATES_TO", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  },
+  {
+    "label": "LEARNING",
+    "data": {
+      "title": "Security headers best practices",
+      "content": "Learned about important security headers: 1) Content-Security-Policy for XSS prevention, 2) X-Frame-Options for clickjacking, 3) X-Content-Type-Options to prevent MIME sniffing, 4) Strict-Transport-Security for HTTPS enforcement, 5) Referrer-Policy for referrer leakage prevention. These should be applied globally.",
+      "category": "security",
+      "date": "2024-03-20",
+      "project": "backend-core"
+    },
+    "relations": [
+      {"type": "INFORMS", "targetLabel": "TASK", "targetTitle": "Auth Service Refactoring"}
+    ]
+  }
+]
