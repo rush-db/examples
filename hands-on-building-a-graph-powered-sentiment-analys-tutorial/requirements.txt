@@ -1,0 +1,4 @@
+rushdb>=2.0.0
+textblob>=0.18.0
+python-dotenv>=1.0.0
+faker>=22.0.0
