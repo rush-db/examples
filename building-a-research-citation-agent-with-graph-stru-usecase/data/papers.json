@@ -1,0 +1,194 @@
+[
+  {
+    "id": "paper_001",
+    "title": "Attention Is All You Need",
+    "authors": ["Vaswani, A.", "Shazeer, N.", "Parmar, N."],
+    "year": 2017,
+    "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train.",
+    "citations": ["paper_004", "paper_005"]
+  },
+  {
+    "id": "paper_002",
+    "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    "authors": ["Devlin, J.", "Chang, M.", "Lee, K.", "Toutanova, K."],
+    "year": 2018,
+    "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks.",
+    "citations": ["paper_001", "paper_006"]
+  },
+  {
+    "id": "paper_003",
+    "title": "Language Models are Few-Shot Learners",
+    "authors": ["Brown, T.", "Mann, B.", "Ryder, N."],
+    "year": 2020,
+    "abstract": "Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by task-specific fine-tuning. We demonstrate that scaling up language models greatly improves task-agnostic, few-shot performance. We train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting.",
+    "citations": ["paper_001", "paper_002", "paper_007"]
+  },
+  {
+    "id": "paper_004",
+    "title": "Effective Approaches to Attention-based Neural Machine Translation",
+    "authors": ["Luong, M.", "Pham, H.", "Manning, C."],
+    "year": 2015,
+    "abstract": "An attention-based neural machine translation model learns to align and translate jointly. It can achieve translation quality approaching the existing state-of-the-art phrase-based system on English-to-French translation tasks. Moreover, the attention mechanism provides a way to investigate the source-target relationships learned by the model.",
+    "citations": ["paper_008"]
+  },
+  {
+    "id": "paper_005",
+    "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+    "authors": ["Bahdanau, D.", "Cho, K.", "Bengio, Y."],
+    "year": 2014,
+    "abstract": "Neural machine translation is a recently proposed approach to machine translation. Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance. The propose model consists of an encoder that encodes a source sentence and a decoder that generates a target sentence.",
+    "citations": []
+  },
+  {
+    "id": "paper_006",
+    "title": "Attention Is All You Need: The Illustrated Transformer",
+    "authors": ["Alammar, J."],
+    "year": 2018,
+    "abstract": "Since attention mechanisms were introduced in 2014, they have become integral to many state-of-the-art NLP models. This illustrated guide explains the Transformer architecture step by step, showing how self-attention works and why it enables parallel processing of sequences.",
+    "citations": ["paper_001"]
+  },
+  {
+    "id": "paper_007",
+    "title": "In-context Learning and GPT-3",
+    "authors": ["Radford, A.", "Wu, J.", "Child, R."],
+    "year": 2021,
+    "abstract": "We demonstrate that scaling up language models greatly improves task-agnostic, few-shot performance. The GPT-3 model can perform many tasks without explicit fine-tuning, learning from the context provided in the prompt. This emergent behavior suggests that large language models develop broad capabilities through pre-training.",
+    "citations": ["paper_003"]
+  },
+  {
+    "id": "paper_008",
+    "title": "Sequence to Sequence Learning with Neural Networks",
+    "authors": ["Sutskever, I.", "Vinyals, O.", "Le, Q."],
+    "year": 2014,
+    "abstract": "Deep Neural Networks have recently shown an impressive performance on complex tasks like speech recognition and visual object recognition. We present a general method for sequence-to-sequence learning using deep LSTMs that maps an input sequence to a variable-length output sequence. Our method achieves a BLEU score of 26.5 on the WMT English to French translation task.",
+    "citations": []
+  },
+  {
+    "id": "paper_009",
+    "title": "Longformer: The Long-Document Transformer",
+    "authors": ["Beltagy, I.", "Peters, M.", "Cohan, A."],
+    "year": 2020,
+    "abstract": "Transformer models have a limitation on the maximum sequence length due to their self-attention mechanism which scales quadratically with sequence length. The Longformer addresses this by introducing a sliding window attention pattern combined with global attention. This allows processing documents of thousands of tokens efficiently.",
+    "citations": ["paper_001", "paper_010"]
+  },
+  {
+    "id": "paper_010",
+    "title": "Reformer: The Efficient Transformer",
+    "authors": ["Kitaev, N.", "Kaiser, L.", "Levskaya, A."],
+    "year": 2020,
+    "abstract": "Large Transformer models have shown remarkable success on many NLP tasks but are expensive to train and fine-tune due to the quadratic complexity of attention mechanisms. We introduce the Reformer model which combines reversible residual layers with locality-sensitive hashing to achieve efficient attention computation, reducing complexity to O(log n).",
+    "citations": ["paper_001"]
+  },
+  {
+    "id": "paper_011",
+    "title": "Efficient Attention: Attention with Linear Complexities",
+    "authors": ["Shen, Z.", "Zhang, M.", "Zhao, H."],
+    "year": 2018,
+    "abstract": "Self-attention mechanisms have shown great success in many NLP tasks but suffer from quadratic computational complexity with respect to the sequence length. We propose an efficient attention mechanism that reduces complexity to linear using kernel approximation techniques while maintaining competitive performance.",
+    "citations": ["paper_001", "paper_012"]
+  },
+  {
+    "id": "paper_012",
+    "title": "Self-Attention and Long Dependency Modeling",
+    "authors": ["Hao, J.", "Zhang, Y.", "Wang, S."],
+    "year": 2019,
+    "abstract": "Self-attention mechanisms struggle with capturing long-range dependencies in long sequences. This paper investigates modifications to the attention mechanism to better model dependencies across large distances. We propose a hybrid approach combining local and global attention patterns.",
+    "citations": ["paper_001"]
+  },
+  {
+    "id": "paper_013",
+    "title": "Graph Attention Networks",
+    "authors": ["Veličković, P.", "Cucurull, G.", "Casanova, A."],
+    "year": 2017,
+    "abstract": "We present graph attention networks, a novel architecture for graph-structured data. GATs use masked self-attention layers to compute the hidden representations of each node by attending over its neighbors. This approach allows for implicitly assigning different importance to different nodes within a neighborhood.",
+    "citations": ["paper_001", "paper_014"]
+  },
+  {
+    "id": "paper_014",
+    "title": "Semi-Supervised Classification with Graph Convolutional Networks",
+    "authors": ["Kipf, T.", "Welling, M."],
+    "year": 2016,
+    "abstract": "We present a scalable approach for semi-supervised learning on graph-structured data that is based on an efficient variant of convolutional neural networks which operate directly on graphs. Our method achieves state-of-the-art results on multiple citation network benchmarks.",
+    "citations": ["paper_015"]
+  },
+  {
+    "id": "paper_015",
+    "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering",
+    "authors": ["Defferrard, M.", "Bresson, X.", "Vandergheynst, P."],
+    "year": 2016,
+    "abstract": "We introduce a formulation of CNNs in the graph domain that can operate on arbitrarily-structured graphs. The approach generalizes the concept of localized spectral filters to graph-structured data, enabling efficient convolutions on graphs of arbitrary size and topology.",
+    "citations": []
+  },
+  {
+    "id": "paper_016",
+    "title": "Generative Adversarial Networks",
+    "authors": ["Goodfellow, I.", "Pouget-Abadie, J.", "Mirza, M."],
+    "year": 2014,
+    "abstract": "We propose a new framework for estimating generative models via an adversarial process, in which we simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G.",
+    "citations": []
+  },
+  {
+    "id": "paper_017",
+    "title": "Wasserstein GAN",
+    "authors": ["Arjovsky, M.", "Chintala, S.", "Bottou, L."],
+    "year": 2017,
+    "abstract": "We introduce a new algorithm for training generative adversarial networks that establishes a theoretical connection between GAN training and the Wasserstein distance. The proposed method minimizes the Wasserstein distance rather than the Jensen-Shannon divergence, leading to more stable training.",
+    "citations": ["paper_016"]
+  },
+  {
+    "id": "paper_018",
+    "title": "Improved Training of Wasserstein GANs",
+    "authors": ["Gulrajani, I.", "Ahmed, F.", "Arjovsky, M."],
+    "year": 2017,
+    "abstract": "Wasserstein GANs can be stabilized by gradient penalization but the penalization is difficult to tune. We propose an improved method for gradient penalization that makes training more stable and achieves better results across a range of architectures and datasets.",
+    "citations": ["paper_017"]
+  },
+  {
+    "id": "paper_019",
+    "title": "Neural Tangent Kernel: Convergent Infinite-Width Networks",
+    "authors": ["Jacot, A.", "Gabriel, F.", "Hongler, C."],
+    "year": 2018,
+    "abstract": "We study infinite-width neural networks trained with gradient descent. We show that in the infinite-width limit, the network evolves according to the Neural Tangent Kernel. This provides a new theoretical framework for understanding deep learning through kernel methods.",
+    "citations": ["paper_020"]
+  },
+  {
+    "id": "paper_020",
+    "title": "Deep Double Descent",
+    "authors": ["Belkin, M.", "Ma, S.", "Moshkovitz, D."],
+    "year": 2019,
+    "abstract": "Modern machine learning models exhibit a counter-intuitive phenomenon: as model size increases, test performance first improves, then degrades, then improves again. This phenomenon, called double descent, challenges the classical bias-variance tradeoff and has important implications for model selection.",
+    "citations": []
+  },
+  {
+    "id": "paper_021",
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "authors": ["Lewis, P.", "Perez, E.", "Piktus, A."],
+    "year": 2020,
+    "abstract": "We demonstrate that retrieval-augmented generation can improve performance on knowledge-intensive tasks. The approach combines pre-trained parametric memory (language models) with non-parametric memory (neural retrieval), enabling more accurate and up-to-date responses without catastrophic forgetting.",
+    "citations": ["paper_002", "paper_003"]
+  },
+  {
+    "id": "paper_022",
+    "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "authors": ["Karpukhin, V.", "Oguz, B.", "Min, S."],
+    "year": 2020,
+    "abstract": "We present a dense passage retrieval method that uses a bi-encoder model to encode passages and questions into embedding space. This approach enables efficient retrieval of relevant passages for open-domain QA, outperforming sparse retrieval methods like BM25 on multiple benchmarks.",
+    "citations": ["paper_021"]
+  },
+  {
+    "id": "paper_023",
+    "title": "Contrastive Learning of Semantic Embeddings",
+    "authors": ["Chen, T.", "Kornblith, S.", "Norouzi, M."],
+    "year": 2020,
+    "abstract": "We present a simple contrastive learning framework that learns representations by comparing positive and negative pairs. SimCLR achieves state-of-the-art results on image classification and is competitive with supervised pre-training, demonstrating the power of self-supervised learning.",
+    "citations": ["paper_024"]
+  },
+  {
+    "id": "paper_024",
+    "title": "Momentum Contrast for Unsupervised Visual Representation Learning",
+    "authors": ["He, K.", "Fan, H.", "Wu, Y."],
+    "year": 2019,
+    "abstract": "We propose MoCo, a contrastive learning framework that maintains a queue of negative examples for efficient unsupervised learning of visual representations. The approach achieves competitive results with supervised pre-training on multiple downstream tasks.",
+    "citations": []
+  }
+]
