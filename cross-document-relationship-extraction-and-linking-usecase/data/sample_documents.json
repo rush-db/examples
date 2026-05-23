@@ -1,0 +1,36 @@
+[
+  {
+    "id": "msa",
+    "title": "Master Service Agreement",
+    "doc_type": "MSA",
+    "content_summary": "Core agreement establishing payment terms, liability cap, confidentiality, and termination provisions"
+  },
+  {
+    "id": "sow_project_alpha",
+    "title": "Statement of Work - Project Alpha",
+    "doc_type": "SOW",
+    "content_summary": "Cloud migration project with fixed pricing, governed by MSA terms and rates from Pricing Schedule",
+    "references": ["msa", "pricing_schedule"]
+  },
+  {
+    "id": "sow_project_beta",
+    "title": "Statement of Work - Project Beta",
+    "doc_type": "SOW",
+    "content_summary": "Security audit project with liability cap implications and confidentiality requirements",
+    "references": ["msa", "pricing_schedule"]
+  },
+  {
+    "id": "pricing_schedule",
+    "title": "Pricing Schedule",
+    "doc_type": "Pricing Schedule",
+    "content_summary": "Hourly rates for engineering and management services, subject to MSA liability cap",
+    "references": ["msa"]
+  },
+  {
+    "id": "amendment_1",
+    "title": "Amendment No. 1 to MSA",
+    "doc_type": "Amendment",
+    "content_summary": "Updates liability cap from $1M to $2M, adds data protection article, extends confidentiality survival",
+    "references": ["msa"]
+  }
+]
