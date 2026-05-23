@@ -1,0 +1,107 @@
+{
+  "users": [
+    {
+      "name": "张三",
+      "email": "zhangsan@example.com",
+      "tier": "premium",
+      "joinDate": "2023-06-15"
+    },
+    {
+      "name": "李四",
+      "email": "lisi@example.com",
+      "tier": "standard",
+      "joinDate": "2023-09-20"
+    },
+    {
+      "name": "王五",
+      "email": "wangwu@example.com",
+      "tier": "standard",
+      "joinDate": "2024-01-10"
+    }
+  ],
+  "products": [
+    {
+      "name": "蓝牙耳机 Pro",
+      "category": "耳机",
+      "price": 399,
+      "features": ["主动降噪", "通透模式", "30小时续航", "蓝牙5.3", "防水IPX5"],
+      "description": "旗舰级无线蓝牙耳机，采用先进的主动降噪技术，支持LDAC高清音频，续航长达30小时"
+    },
+    {
+      "name": "入耳式耳机",
+      "category": "耳机",
+      "price": 199,
+      "features": ["被动降噪", "20小时续航", "蓝牙5.0"],
+      "description": "高性价比入耳式耳机，佩戴舒适，适合长时间使用"
+    },
+    {
+      "name": "头戴式耳机",
+      "category": "耳机",
+      "price": 599,
+      "features": ["主动降噪", "40小时续航", "Hi-Res认证", "折叠设计"],
+      "description": "专业头戴式耳机，40mm大动圈，Hi-Res认证，音质出众"
+    },
+    {
+      "name": "无线音箱",
+      "category": "音箱",
+      "price": 299,
+      "features": ["360度音效", "12小时续航", "防水IP67", "语音助手"],
+      "description": "便携式无线音箱，360度环绕音效，支持语音助手控制"
+    }
+  ],
+  "topics": [
+    {
+      "name": "降噪功能",
+      "keywords": ["降噪", "ANC", "噪音", "安静"]
+    },
+    {
+      "name": "续航问题",
+      "keywords": ["续航", "电池", "充电", "使用时间"]
+    },
+    {
+      "name": "价格咨询",
+      "keywords": ["价格", "多少钱", "优惠", "性价比"]
+    },
+    {
+      "name": "产品对比",
+      "keywords": ["对比", "区别", "哪个好", "比较"]
+    }
+  ],
+  "sampleMessages": [
+    {
+      "content": "这款蓝牙耳机音质不错，续航 30 小时",
+      "role": "assistant",
+      "intent": "product_recommendation"
+    },
+    {
+      "content": "有降噪功能吗？",
+      "role": "user",
+      "intent": "feature_inquiry"
+    },
+    {
+      "content": "是的，支持主动降噪功能ANC",
+      "role": "assistant",
+      "intent": "feature_answer"
+    },
+    {
+      "content": "和入耳式比哪个好？",
+      "role": "user",
+      "intent": "product_comparison"
+    },
+    {
+      "content": "头戴式降噪效果最好，但价格也最高",
+      "role": "assistant",
+      "intent": "product_comparison"
+    },
+    {
+      "content": "有什么推荐的无线耳机吗？",
+      "role": "user",
+      "intent": "product_recommendation"
+    },
+    {
+      "content": "续航怎么样？能用多久？",
+      "role": "user",
+      "intent": "battery_inquiry"
+    }
+  ]
+}
