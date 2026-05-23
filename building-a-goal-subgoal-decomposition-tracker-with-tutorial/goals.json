@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Learn System Design",
+    "description": "Master the fundamentals of system design including scalability, reliability, and maintainability patterns for modern distributed applications.",
+    "subgoals": [
+      {
+        "title": "Study Fundamentals",
+        "description": "Build a strong foundation in core computer science principles essential for system design, including networking, databases, and operating systems.",
+        "subgoals": [
+          {
+            "title": "Networking basics",
+            "description": "Understand TCP/IP protocols, HTTP/HTTPS, DNS resolution, load balancing concepts, and network security fundamentals."
+          },
+          {
+            "title": "Distributed systems theory",
+            "description": "Learn about CAP theorem, consensus algorithms, distributed caching, sharding strategies, and fault tolerance mechanisms."
+          }
+        ]
+      },
+      {
+        "title": "Practice Architecture Patterns",
+        "description": "Hands-on experience with proven architectural patterns and design principles used by tech companies at scale.",
+        "subgoals": [
+          {
+            "title": "Design REST APIs",
+            "description": "Learn to design clean, scalable RESTful APIs with proper versioning, authentication, rate limiting, and documentation practices."
+          },
+          {
+            "title": "Explore event-driven patterns",
+            "description": "Understand message queues, event sourcing, CQRS pattern, and how to build loosely coupled event-driven microservices."
+          }
+        ]
+      },
+      {
+        "title": "Implement Testing Strategies",
+        "description": "Develop comprehensive testing approaches covering unit tests, integration tests, and end-to-end validation for robust software quality.",
+        "subgoals": [
+          {
+            "title": "Write unit tests",
+            "description": "Master unit testing with mocking, stubbing, and test isolation techniques to verify individual component behavior."
+          },
+          {
+            "title": "Integration testing",
+            "description": "Learn to test interactions between components, API endpoints, and database operations in realistic scenarios."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Build a Web Application",
+    "description": "Develop a production-ready web application from scratch, covering frontend, backend, and deployment aspects with modern best practices.",
+    "subgoals": [
+      {
+        "title": "Design User Interface",
+        "description": "Create intuitive, accessible user interfaces using modern frontend frameworks with responsive design principles.",
+        "subgoals": [
+          {
+            "title": "Responsive layouts",
+            "description": "Build fluid layouts that adapt seamlessly across desktop, tablet, and mobile devices using CSS Grid and Flexbox."
+          },
+          {
+            "title": "State management",
+            "description": "Implement centralized state management patterns for complex application data flow and component synchronization."
+          }
+        ]
+      },
+      {
+        "title": "Backend Development",
+        "description": "Build robust server-side logic with proper authentication, authorization, and data management capabilities.",
+        "subgoals": [
+          {
+            "title": "Authentication systems",
+            "description": "Implement secure user authentication including OAuth, JWT tokens, session management, and password security best practices."
+          },
+          {
+            "title": "Database design",
+            "description": "Design normalized database schemas, write efficient queries, and implement proper indexing for optimal performance."
+          }
+        ]
+      },
+      {
+        "title": "DevOps and Deployment",
+        "description": "Set up continuous integration, deployment pipelines, and infrastructure automation for reliable software delivery.",
+        "subgoals": [
+          {
+            "title": "Container orchestration",
+            "description": "Learn Docker containerization and Kubernetes orchestration for scalable, resilient application deployments."
+          },
+          {
+            "title": "CI/CD pipelines",
+            "description": "Automate build, test, and deployment workflows using modern CI/CD tools and infrastructure as code practices."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Data Engineering Project",
+    "description": "Build a comprehensive data pipeline for processing, transforming, and analyzing large-scale datasets with proper data quality controls.",
+    "subgoals": [
+      {
+        "title": "Data Ingestion",
+        "description": "Design and implement efficient data collection strategies from multiple sources including APIs, databases, and streaming feeds.",
+        "subgoals": [
+          {
+            "title": "Batch processing",
+            "description": "Implement high-throughput batch data processing jobs for handling large volumes of historical data efficiently."
+          },
+          {
+            "title": "Stream processing",
+            "description": "Build real-time data streaming pipelines using Apache Kafka, Flink, or similar technologies for low-latency data processing."
+          }
+        ]
+      },
+      {
+        "title": "Data Transformation",
+        "description": "Create robust ETL processes that clean, normalize, and transform raw data into analytics-ready formats.",
+        "subgoals": [
+          {
+            "title": "Data cleaning",
+            "description": "Develop automated data quality checks, missing value handling, and outlier detection for maintaining data integrity."
+          },
+          {
+            "title": "Schema evolution",
+            "description": "Handle changing data schemas gracefully with backward compatibility and migration strategies."
+          }
+        ]
+      },
+      {
+        "title": "Analytics Infrastructure",
+        "description": "Set up analytics platforms and data warehousing solutions for efficient querying and business intelligence reporting.",
+        "subgoals": [
+          {
+            "title": "Data warehousing",
+            "description": "Design star and snowflake schemas, implement slowly changing dimensions, and optimize warehouse performance."
+          },
+          {
+            "title": "Query optimization",
+            "description": "Write efficient SQL queries, create appropriate indexes, and implement query caching for fast analytics."
+          }
+        ]
+      }
+    ]
+  }
+]
