@@ -1,0 +1,59 @@
+[
+  {
+    "id": "paper_001",
+    "title": "Neural Approaches to Entity Resolution in Knowledge Graphs",
+    "abstract": "We present a novel neural architecture for resolving entity mentions across distributed knowledge graphs. Our approach combines graph attention mechanisms with contextual embeddings to achieve state-of-the-art performance.",
+    "year": 2024,
+    "authors": [
+      {"name": "Dr. John Chen", "position": 1, "institution": "MIT"},
+      {"name": "Dr. Sarah Kim", "position": 2, "institution": "MIT"},
+      {"name": "Prof. Michael Torres", "position": 3, "institution": "Stanford"}
+    ],
+    "keywords": ["entity resolution", "knowledge graphs", "neural networks"]
+  },
+  {
+    "id": "paper_002",
+    "title": "Scalable Citation Graph Analysis for Research Intelligence",
+    "abstract": "This paper introduces a scalable framework for analyzing citation networks to support research intelligence applications. We demonstrate how graph traversal patterns correlate with research impact.",
+    "year": 2023,
+    "authors": [
+      {"name": "Prof. Michael Torres", "position": 1, "institution": "Stanford"},
+      {"name": "Dr. Lisa Patel", "position": 2, "institution": "Oxford"}
+    ],
+    "keywords": ["citation analysis", "research intelligence", "graph analysis"]
+  },
+  {
+    "id": "paper_003",
+    "title": "Coreference Resolution Using Transformer-based Models",
+    "abstract": "We propose a transformer-based approach to coreference resolution that leverages contextual embeddings from pre-trained language models. Our method achieves significant improvements on standard benchmarks.",
+    "year": 2024,
+    "authors": [
+      {"name": "Dr. Lisa Patel", "position": 1, "institution": "Oxford"},
+      {"name": "Dr. John Chen", "position": 2, "institution": "MIT"},
+      {"name": "Dr. Emma Wilson", "position": 3, "institution": "Cambridge"}
+    ],
+    "keywords": ["coreference", "transformers", "NLP"]
+  },
+  {
+    "id": "paper_004",
+    "title": "Vector Similarity Search in Hybrid Database Systems",
+    "abstract": "We investigate efficient methods for combining vector similarity search with traditional relational queries. Our hybrid indexing approach achieves sub-millisecond query times.",
+    "year": 2023,
+    "authors": [
+      {"name": "Dr. Emma Wilson", "position": 1, "institution": "Cambridge"},
+      {"name": "Dr. Sarah Kim", "position": 2, "institution": "MIT"}
+    ],
+    "keywords": ["vector search", "hybrid databases", "performance"]
+  },
+  {
+    "id": "paper_005",
+    "title": "Cross-Document Entity Linking via Semantic Similarity",
+    "abstract": "We present a comprehensive study of cross-document entity linking, comparing graph-based and embedding-based approaches. Our analysis reveals that hybrid methods outperform both paradigms individually.",
+    "year": 2024,
+    "authors": [
+      {"name": "Dr. Sarah Kim", "position": 1, "institution": "MIT"},
+      {"name": "Dr. John Chen", "position": 2, "institution": "MIT"}
+    ],
+    "keywords": ["entity linking", "semantic similarity", "cross-document"]
+  }
+]
