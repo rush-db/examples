@@ -1,0 +1,166 @@
+[
+  {
+    "id": "article-001",
+    "title": "Nvidia's H100 Chip Sets New Benchmark in AI Training",
+    "body": "Nvidia's H100 GPU has become the industry standard for training large language models. The chip delivers a 4x improvement in training throughput compared to its predecessor. Microsoft, Google, and Meta have each placed orders exceeding $1 billion for H100 clusters. Nvidia's market cap crossed $2 trillion in Q1 2024, driven almost entirely by AI infrastructure demand.",
+    "entities": [
+      {"type": "COMPANY", "name": "Nvidia", "summary": "American semiconductor company and leading GPU manufacturer, dominant in AI accelerator market."},
+      {"type": "PRODUCT", "name": "H100 GPU", "summary": "Nvidia's flagship data-center GPU for AI training and inference workloads."},
+      {"type": "COMPANY", "name": "Microsoft", "summary": "Technology conglomerate with major cloud and AI investments; Azure platform deploys Nvidia GPUs at scale."},
+      {"type": "COMPANY", "name": "Google", "summary": "Parent company Alphabet; operates TPU chips alongside Nvidia GPUs in its cloud infrastructure."},
+      {"type": "COMPANY", "name": "Meta", "summary": "Social media and AI research company, major buyer of AI compute for LLM training."}
+    ]
+  },
+  {
+    "id": "article-002",
+    "title": "Apple Faces EU Antitrust Action Over App Store Practices",
+    "body": "The European Commission opened a formal investigation into Apple's App Store rules, citing evidence that the company charged developers up to 30% commission on in-app purchases. The investigation could result in fines exceeding $40 billion under the Digital Markets Act. Apple responded that its fees reflect the value of its developer platform and security guarantees.",
+    "entities": [
+      {"type": "COMPANY", "name": "Apple", "summary": "Consumer electronics and software company headquartered in Cupertino, California; operator of the App Store."},
+      {"type": "ORGANIZATION", "name": "European Commission", "summary": "Executive branch of the European Union, responsible for enforcing competition law."},
+      {"type": "REGULATION", "name": "Digital Markets Act", "summary": "EU law that designates large platform companies as 'gatekeepers' and imposes interoperability and fairness obligations."}
+    ]
+  },
+  {
+    "id": "article-003",
+    "title": "OpenAI Releases GPT-5 With Improved Reasoning Capabilities",
+    "body": "OpenAI launched GPT-5, its most capable model to date, featuring chain-of-thought reasoning that outperforms human experts on standardized benchmarks in math and coding. The model was trained on a cluster of 50,000 H100 GPUs over four months. OpenAI CEO Sam Altman called it 'the most significant AI milestone of the decade.' The release intensified competition with Anthropic's Claude 4 and Google's Gemini Ultra.",
+    "entities": [
+      {"type": "COMPANY", "name": "OpenAI", "summary": "AI research company and maker of the GPT series of large language models."},
+      {"type": "PERSON", "name": "Sam Altman", "summary": "CEO of OpenAI; previously president of Y Combinator startup accelerator."},
+      {"type": "PRODUCT", "name": "GPT-5", "summary": "Fifth generation of OpenAI's Generative Pre-trained Transformer language model family."},
+      {"type": "COMPANY", "name": "Anthropic", "summary": "AI safety company and creator of Claude LLM; founded by former OpenAI researchers."},
+      {"type": "COMPANY", "name": "Google", "summary": "Parent company Alphabet; developer of the Gemini Ultra AI model."}
+    ]
+  },
+  {
+    "id": "article-004",
+    "title": "AMD EPYC Processors Gain Ground in Data Center Market",
+    "body": "AMD's EPYC Turin series processors captured 28% of the server CPU market in Q2 2024, up from 19% a year prior. The gains came at Intel's expense; Intel Xeon market share fell below 70% for the first time in a decade. Cloud providers including Amazon Web Services and Microsoft Azure have expanded EPYC deployments for general compute workloads. AMD's embedded segment also grew 35% year-over-year.",
+    "entities": [
+      {"type": "COMPANY", "name": "AMD", "summary": "American semiconductor company; second-largest x86 CPU maker behind Intel, focused on data-center and consumer GPUs."},
+      {"type": "COMPANY", "name": "Intel", "summary": "American semiconductor giant; historically dominant in x86 server and PC processors, now competing with AMD and Arm-based chips."},
+      {"type": "COMPANY", "name": "Amazon Web Services", "summary": "Cloud computing division of Amazon; largest cloud provider globally, offering EC2 compute instances."},
+      {"type": "PRODUCT", "name": "EPYC Turin", "summary": "AMD's latest generation server CPU microarchitecture based on Zen 5 cores."},
+      {"type": "PRODUCT", "name": "Xeon", "summary": "Intel's brand of server-class x86 microprocessors."}
+    ]
+  },
+  {
+    "id": "article-005",
+    "title": "EU AI Act Takes Effect: Compliance Deadlines for Tech Firms",
+    "body": "The European Union's AI Act entered into force in August 2024, establishing the world's first comprehensive legal framework for artificial intelligence. High-risk AI systems in hiring, credit scoring, and healthcare face mandatory audits. Open-source model developers are exempt from some requirements. Google, Meta, and Microsoft each published compliance roadmaps within two weeks of the Act's passage.",
+    "entities": [
+      {"type": "REGULATION", "name": "EU AI Act", "summary": "Comprehensive European Union legislation regulating artificial intelligence systems by risk category."},
+      {"type": "COMPANY", "name": "Google", "summary": "Parent company Alphabet; publisher of AI models including Gemini; subject to EU AI Act obligations."},
+      {"type": "COMPANY", "name": "Meta", "summary": "Social media company; operator of open-source LLaMA model family; faces EU compliance requirements."},
+      {"type": "COMPANY", "name": "Microsoft", "summary": "Technology conglomerate; Azure AI services subject to EU AI Act audit requirements."}
+    ]
+  },
+  {
+    "id": "article-006",
+    "title": "Qualcomm Eyes Arm Holdings Acquisition in Landmark Deal",
+    "body": "Qualcomm confirmed it is in advanced negotiations to acquire Arm Holdings for $60 billion. The deal would reshape the semiconductor industry: Arm's instruction set architecture powers virtually all mobile processors and is increasingly used in data-center servers. Nvidia previously attempted to acquire Arm but abandoned the deal in 2022 after regulatory opposition from UK and EU authorities.",
+    "entities": [
+      {"type": "COMPANY", "name": "Qualcomm", "summary": "American fabless semiconductor company; dominant in mobile modem and SoC chips."},
+      {"type": "COMPANY", "name": "Arm Holdings", "summary": "British semiconductor IP licensor; its Arm architecture is used in over 95% of mobile devices."},
+      {"type": "COMPANY", "name": "Nvidia", "summary": "American semiconductor company; previously attempted and withdrew from Arm acquisition."},
+      {"type": "PERSON", "name": "Nvidia CEO", "summary": "Jensen Huang, co-founder and CEO of Nvidia; led the company's attempted Arm acquisition."}
+    ]
+  },
+  {
+    "id": "article-007",
+    "title": "Stripe Achieves Profitability Ahead of IPO, Valuation at $95B",
+    "body": "Payment infrastructure company Stripe reported its first profitable quarter, with net income of $220 million on revenue of $2.8 billion. The San Francisco-based fintech company cut its valuation to $95 billion in a tender offer, down from a 2021 peak of $95 billion. Stripe processes over $1 trillion in payments annually for millions of merchants globally.",
+    "entities": [
+      {"type": "COMPANY", "name": "Stripe", "summary": "Financial infrastructure platform; provides payment processing APIs used by internet businesses."},
+      {"type": "PERSON", "name": "Stripe CEO", "summary": "Patrick Collison, co-founder and president of Stripe."},
+      {"type": "ORGANIZATION", "name": "San Francisco", "summary": "City in California; headquarters location for Stripe."}
+    ]
+  },
+  {
+    "id": "article-008",
+    "title": "Samsung Unveils 2nm GAA Process, Challenges TSMC Lead",
+    "body": "Samsung Foundry announced its SF2 (2nm) gate-all-around transistor process node at its annual technology symposium. The process delivers a 25% power reduction and 12% performance improvement over its 3nm GAA node. TSMC, the market leader, plans to enter 2nm volume production in late 2025. Samsung also announced a new packaging technology, X-Cube 3D, aimed at AI accelerator applications.",
+    "entities": [
+      {"type": "COMPANY", "name": "Samsung", "summary": "South Korean conglomerate; its Foundry division competes with TSMC in advanced semiconductor manufacturing."},
+      {"type": "COMPANY", "name": "TSMC", "summary": "Taiwan Semiconductor Manufacturing Company; the world's largest contract chipmaker, producing chips for Apple, Nvidia, AMD, and others."},
+      {"type": "PRODUCT", "name": "SF2", "summary": "Samsung Foundry's 2nm gate-all-around (GAA) semiconductor manufacturing process node."}
+    ]
+  },
+  {
+    "id": "article-009",
+    "title": "Anthropic Raises $4B Series E, Valuation Hits $18B",
+    "body": "Anthropic secured $4 billion in Series E funding led by Spark Capital and Google, bringing its valuation to $18 billion. The AI safety company has deployed Claude API to over 300,000 developers. Its Constitutional AI framework and focus on alignment research differentiate it from competitors. Anthropic plans to use the funds to train next-generation models and expand its enterprise sales team.",
+    "entities": [
+      {"type": "COMPANY", "name": "Anthropic", "summary": "AI safety company and maker of Claude language model; backed by Google and Spark Capital."},
+      {"type": "COMPANY", "name": "Google", "summary": "Anthropic investor and strategic partner; uses Claude in some Google Cloud integrations."},
+      {"type": "PERSON", "name": "Anthropic CEO", "summary": "Dario Amodei, co-founder and CEO of Anthropic; previously VP of research at OpenAI."},
+      {"type": "PRODUCT", "name": "Claude API", "summary": "Anthropic's programmatic interface for accessing Claude large language models."}
+    ]
+  },
+  {
+    "id": "article-010",
+    "title": "Microsoft's Copilot+ PC Initiative Faces Developer Adoption Gap",
+    "body": "Microsoft's Copilot+ PC program, launched in May 2024 with ARM-based Surface devices, has seen slower-than-expected adoption among Windows developers. Many x86 Win32 applications are not yet recompiled for ARM64 native performance. Microsoft published an emulation compatibility guide and offered incentives for ARM64 toolchain development. The initiative competes with Apple's M-series MacBooks, which have achieved near-universal x86 compatibility through Rosetta 2.",
+    "entities": [
+      {"type": "COMPANY", "name": "Microsoft", "summary": "Technology conglomerate; developer of Windows operating system and Surface hardware, operator of Copilot AI."},
+      {"type": "PRODUCT", "name": "Copilot+ PC", "summary": "Microsoft's brand for AI-capable Windows PCs running on ARM processors with integrated AI features."},
+      {"type": "COMPANY", "name": "Apple", "summary": "Consumer electronics company; maker of MacBooks with M-series chips and Rosetta 2 x86 emulation."},
+      {"type": "PRODUCT", "name": "Surface", "summary": "Microsoft's line of premium Windows tablets and laptops; Copilot+ PC launch included new Surface Pro devices."}
+    ]
+  },
+  {
+    "id": "article-011",
+    "title": "Intel Foundry Loses Qualcomm as Customer for 3nm Node",
+    "body": "Qualcomm has moved its flagship mobile processor production to TSMC's 3nm node, ending Intel's brief engagement with the Qualcomm account at its foundry business. Intel Foundry Services, the contract manufacturing arm created under CEO Pat Gelsinger, has struggled to attract non-Intel customers. Intel's 18A process node remains scheduled for 2025 but faces skepticism from analysts about yield rates.",
+    "entities": [
+      {"type": "COMPANY", "name": "Intel", "summary": "American semiconductor giant; operates Intel Foundry Services contract manufacturing division."},
+      {"type": "COMPANY", "name": "Qualcomm", "summary": "American fabless semiconductor company; moved mobile SoC production to TSMC 3nm."},
+      {"type": "COMPANY", "name": "TSMC", "summary": "Taiwan Semiconductor Manufacturing Company; dominant contract chipmaker for advanced nodes."},
+      {"type": "PERSON", "name": "Intel CEO", "summary": "Pat Gelsinger, CEO of Intel; architect of IDM 2.0 strategy and Intel Foundry Services."}
+    ]
+  },
+  {
+    "id": "article-012",
+    "title": "DeepMind's AlphaFold 3 Predicts Protein-Drug Interactions at Scale",
+    "body": "DeepMind published AlphaFold 3, an upgraded version of its protein structure prediction system that can model interactions between proteins and small-molecule drugs. The model achieves near-experimental accuracy on binding affinity prediction, enabling pharmaceutical researchers to filter drug candidates computationally before lab synthesis. AstraZeneca, Pfizer, and Roche each signed licensing agreements for commercial API access. The previous AlphaFold 2 model was cited in over 10,000 academic papers.",
+    "entities": [
+      {"type": "COMPANY", "name": "DeepMind", "summary": "London-based AI research lab owned by Alphabet; developer of AlphaFold protein structure prediction system."},
+      {"type": "COMPANY", "name": "AstraZeneca", "summary": "British-Swedish pharmaceutical company; uses AI tools for drug discovery and development."},
+      {"type": "COMPANY", "name": "Pfizer", "summary": "American multinational pharmaceutical corporation; invests in AI-driven drug discovery pipelines."},
+      {"type": "PRODUCT", "name": "AlphaFold 3", "summary": "DeepMind's third-generation protein structure and interaction prediction model."}
+    ]
+  },
+  {
+    "id": "article-013",
+    "title": "Nvidia Faces Export Restrictions, China Revenue Falls 40%",
+    "body": "US export controls on advanced AI chips to China caused Nvidia's China revenue to drop 40% year-over-year in Q2 2024. The A800 and H800 chips, designed as compliant alternatives to the A100 and H100, still require licenses for shipment to certain customers. Chinese cloud providers Baidu, Alibaba, and Tencent shifted orders to domestic chip alternatives including Huawei's Ascend 910B. Nvidia's overall revenue still grew 265% year-over-year due to non-China demand.",
+    "entities": [
+      {"type": "COMPANY", "name": "Nvidia", "summary": "American semiconductor company; leading AI GPU supplier, affected by US-China export restrictions."},
+      {"type": "COMPANY", "name": "Huawei", "summary": "Chinese telecommunications and consumer electronics company; maker of Ascend AI chips."},
+      {"type": "COMPANY", "name": "Baidu", "summary": "Chinese internet search and AI company; a major cloud provider and AI research organization."},
+      {"type": "COMPANY", "name": "Alibaba", "summary": "Chinese e-commerce and cloud computing giant; operates Alibaba Cloud, second-largest cloud provider in China."}
+    ]
+  },
+  {
+    "id": "article-014",
+    "title": "AWS Launches Trainium3 Chip, Takes Aim at Nvidia's Dominance",
+    "body": "Amazon Web Services unveiled the Trainium3 AI training chip, promising 4x the training performance of its Trainium2 predecessor and 40% lower cost-per-token than Nvidia H100 clusters. AWS claims the Trainium3 will be available in us-east-1 by Q3 2025. The chip uses a custom AWS interconnect architecture that bypasses PCIe bandwidth limitations. AWS trained its own Titan foundation models on Trainium3, reducing model training costs by an estimated 60%.",
+    "entities": [
+      {"type": "COMPANY", "name": "Amazon Web Services", "summary": "Cloud computing division of Amazon; largest cloud provider globally, maker of custom Trainium AI chips."},
+      {"type": "PRODUCT", "name": "Trainium3", "summary": "AWS's third-generation custom AI training chip; successor to Trainium2."},
+      {"type": "PRODUCT", "name": "H100 GPU", "summary": "Nvidia's flagship data-center GPU for AI training and inference; the target benchmark for Trainium3."}
+    ]
+  },
+  {
+    "id": "article-015",
+    "title": "Google Faces DOJ Antitrust Trial Over Search Advertising Monopoly",
+    "body": "The US Department of Justice concluded a 10-week antitrust trial arguing that Google illegally maintained a monopoly in general search through exclusive default agreements with device manufacturers and browser developers. Apple, Samsung, and Mozilla each received billions annually to make Google the default search engine. DOJ is seeking structural remedies including a possible break-up of Google's advertising technology business. A ruling is expected by mid-2025.",
+    "entities": [
+      {"type": "COMPANY", "name": "Google", "summary": "Alphabet subsidiary; dominant search engine with over 90% market share in general search; defendant in DOJ antitrust case."},
+      {"type": "ORGANIZATION", "name": "Department of Justice", "summary": "US federal executive department responsible for enforcing federal law; brought antitrust case against Google."},
+      {"type": "COMPANY", "name": "Apple", "summary": "Consumer electronics company; receives an estimated $20B annually from Google for default search placement on iOS devices."},
+      {"type": "COMPANY", "name": "Samsung", "summary": "South Korean electronics company; receives payment from Google for default search on Android devices."}
+    ]
+  }
+]
