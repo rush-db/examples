@@ -1,0 +1,25 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "MENTIONS",
+        "source": {
+          "label": "MESSAGE",
+          "property": "ticket_key"
+        },
+        "target": {
+          "label": "ISSUE",
+          "property": "ticket_key"
+        },
+        "direction": "out",
+        "properties": {
+          "source": "tutorial-import",
+          "method": "key-match"
+        }
+      }
+    }
+  }
+}

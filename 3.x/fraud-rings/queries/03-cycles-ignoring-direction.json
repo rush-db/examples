@@ -1,0 +1,27 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "ACCOUNT"
+        ],
+        "predicate": {
+          "$cycle": {
+            "type": "TRANSFERRED_TO",
+            "direction": "both",
+            "hops": {
+              "min": 2,
+              "max": 6
+            }
+          }
+        },
+        "order": {
+          "accountId": "asc"
+        }
+      }
+    }
+  }
+}

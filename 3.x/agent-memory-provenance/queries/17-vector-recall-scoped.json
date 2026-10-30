@@ -1,0 +1,28 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "vector",
+      "query": {
+        "labels": [
+          "MEMORY_FACT"
+        ],
+        "property": "embedding",
+        "index": "fact-embedding",
+        "vector": [
+          1.0,
+          0.05,
+          0.05
+        ],
+        "predicate": {
+          "agentId": "support-agent",
+          "profileId": "user-42",
+          "privacyScope": "private",
+          "active": true
+        },
+        "limit": 3
+      }
+    }
+  }
+}

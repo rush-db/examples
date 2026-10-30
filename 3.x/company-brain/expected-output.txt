@@ -1,0 +1,60 @@
+== Seed: HR export -> PERSON (upsert on email)
+{"count":3,"relationships":0}
+== Seed: Notion-like pages -> DOC + SECTION, linked HAS_SECTION
+{"count":4,"relationships":2}
+== Seed: Jira-like issues -> ISSUE + COMMENT, linked HAS_COMMENT
+{"count":4,"relationships":2}
+== Seed: Slack-like messages -> MESSAGE (upsert on message_id)
+{"count":3,"relationships":0}
+== Link records across sources on matching keys (existing edges are skipped)
+MESSAGE AUTHORED_BY          edges: 3
+COMMENT AUTHORED_BY          edges: 2
+DOC AUTHORED_BY              edges: 2
+ISSUE ASSIGNED_TO            edges: 2
+MESSAGE MENTIONS             edges: 3
+DOC SUPERSEDES               edges: 1
+== Catalog: labels with counts
+["COMMENT=2","DOC=2","ISSUE=2","MESSAGE=3","PERSON=3","SECTION=2"]
+== Catalog: relationship shapes
+  COMMENT -AUTHORED_BY-> PERSON (2)
+  DOC -AUTHORED_BY-> PERSON (2)
+  DOC -HAS_SECTION-> SECTION (2)
+  DOC -SUPERSEDES-> DOC (1)
+  ISSUE -ASSIGNED_TO-> PERSON (2)
+  ISSUE -HAS_COMMENT-> COMMENT (2)
+  MESSAGE -AUTHORED_BY-> PERSON (3)
+  MESSAGE -MENTIONS-> ISSUE (3)
+== Catalog: datetime properties
+["created_at","sent_at","updated_at"]
+== SearchQuery: who has discussed ENG-142?
+["Priya Shah","Tom Okafor"]
+== SearchQuery: which refund policy is current? ($not around a block that holds only $relation)
+["Refund policy v3"]
+== SearchQuery: what does the current policy say about retries?
+["Retry a failed refund once, then page the payments on-call."]
+== SearchQuery: open, high-priority issues raised in #payments-incidents
+["ENG-142"]
+== SQL: most-discussed issues and their assignees (LEFT JOIN + count)
+{"ticket_key":"ENG-142","title":"Refunds fail for EUR cards","assignee":"Priya Shah","mentions":2}
+{"ticket_key":"ENG-150","title":"Refund webhook times out","assignee":"Lena Berg","mentions":1}
+== Keyword search: BM25 text index on MESSAGE.text
+message_text: ready
+== Keyword search: 'EUR refunds'
+{"total":2}
+{"top_hit":"EUR refunds are bouncing again, see ENG-142"}
+== Follow links from the top hit to the issue it mentions
+["ENG-142"]
+== Policy: support agent sees PERSON (name, team only), ISSUE and MESSAGE
+{"enforced":true,"allowedLabels":["PERSON","ISSUE","MESSAGE"]}
+== Policy: PERSON records show only visible properties
+{"name":"Lena Berg","team":"payments"}
+{"name":"Priya Shah","team":"payments"}
+{"name":"Tom Okafor","team":"support"}
+== Policy: DOC records are not readable
+{"code":"unauthorized"}
+== Policy: the catalog names only allowed labels
+["ISSUE","MESSAGE","PERSON"]
+== Policy: SQL sees no doc table
+{"code":"not_found"}
+== Policy: switched off
+{"enforced":false}

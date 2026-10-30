@@ -1,0 +1,33 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "COMPONENT"
+        ],
+        "predicate": {
+          "SUPPLIER": {
+            "$alias": "$supplier",
+            "$relation": {
+              "type": "SUPPLIES",
+              "direction": "in"
+            }
+          }
+        },
+        "select": {
+          "component": "$record.code",
+          "name": "$record.name",
+          "suppliers": {
+            "$count": "$supplier"
+          }
+        },
+        "order": {
+          "component": "asc"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "CONTAINS",
+        "source": { "label": "PART", "property": "contains", "predicate": {} },
+        "target": { "label": "PART", "property": "code", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

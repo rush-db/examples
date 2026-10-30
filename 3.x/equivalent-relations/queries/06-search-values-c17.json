@@ -1,0 +1,11 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "searchValues",
+      "search": { "text": "C-17", "match": "exact" },
+      "labels": ["EMPLOYEE", "COMPANY", "ORDER", "INVOICE"]
+    }
+  }
+}

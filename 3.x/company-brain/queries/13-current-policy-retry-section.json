@@ -1,0 +1,31 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "SECTION"
+        ],
+        "predicate": {
+          "heading": "Retries",
+          "DOC": {
+            "$relation": {
+              "type": "HAS_SECTION",
+              "direction": "in"
+            },
+            "$not": {
+              "DOC": {
+                "$relation": {
+                  "type": "SUPERSEDES",
+                  "direction": "in"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

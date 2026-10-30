@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "USES_PHONE",
+        "source": { "label": "APPLICATION", "property": "phone", "predicate": {} },
+        "target": { "label": "PHONE", "property": "number", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

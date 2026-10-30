@@ -1,0 +1,81 @@
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Seed: 12 customers with nested orders (PLACED) and support tickets (OPENED)
+{"kind":"ingested","count":37,"relationships":25}
+
+### A. How many refunds did enterprise customers in Germany get last quarter (Q3 2026)?
+
+== Without the loop: the filter an agent guesses (status refunded, Germany, Enterprise) runs and matches nothing
+{"total":0}
+
+== Step 1, read shape: ORDER fields with stored types and counts, and how ORDER links
+label ORDER: 18 records
+  ORDER.amount (number): 18
+  ORDER.order_no (string): 18
+  ORDER.ordered_at (datetime): 18
+  ORDER.refundedAt (datetime): 5
+  ORDER.status (string): 18
+CUSTOMER -PLACED-> ORDER: 18
+
+== Step 2, narrow on existing values: stored ORDER.status values with counts
+{"values":["paid","refunded_full","pending","refunded_partial"],"counts":[10,4,2,2]}
+
+== Step 2, the customer side: every CUSTOMER field with its few values (segment, not tier; DE, not Germany)
+label CUSTOMER: 12 records
+  cancel_reason (string): 6 records, 2 distinct: price, missing_sso
+  canceled_at (datetime): 7 records, 7 distinct: 2026-02-11, 2026-03-15, 2026-03-22, 2026-04-01, 2026-04-10, 2026-05-02, 2026-06-18
+  country (string): 12 records, 4 distinct: DE, US, FR, GB
+  name (string): 12 records, 12 distinct
+  segment (string): 12 records, 3 distinct: ENTERPRISE, SMB, MID_MARKET
+  -OPENED-> TICKET: 7
+  -PLACED-> ORDER: 18
+
+== Step 3, read the shape of the matches: refunded orders of enterprise customers in DE (is refundedAt on all of them?)
+label ORDER: 4 records
+  ORDER.amount (number): 4
+  ORDER.order_no (string): 4
+  ORDER.ordered_at (datetime): 4
+  ORDER.refundedAt (datetime): 3
+  ORDER.status (string): 4
+CUSTOMER -PLACED-> ORDER: 4
+
+== Step 4, precise query: the same filter plus refundedAt in Q3 2026 (the undated refund cannot be placed in a quarter)
+{"total":3}
+{"order_no":"SO-2006","status":"refunded_full","amount":9600,"refundedAt":"2026-07-02T09:00:00.000Z"}
+{"order_no":"SO-2003","status":"refunded_partial","amount":1800,"refundedAt":"2026-08-05T10:00:00.000Z"}
+{"order_no":"SO-2005","status":"refunded_full","amount":4200,"refundedAt":"2026-09-18T15:30:00.000Z"}
+
+### B. Why did enterprise customers cancel after the March price change?
+
+== Step 1 was the CUSTOMER summary above: segment, canceled_at, cancel_reason, OPENED -> TICKET
+
+== Step 2, narrow on values that exist: enterprise customers canceled since 2026-03-01 (SQL)
+{"customers":4}
+
+== Step 3, read the shape of what matched: cancel_reason is on 3 of the 4 customers
+label CUSTOMER: 4 records
+  CUSTOMER.cancel_reason (string): 3
+  CUSTOMER.canceled_at (datetime): 4
+  CUSTOMER.country (string): 4
+  CUSTOMER.name (string): 4
+  CUSTOMER.segment (string): 4
+CUSTOMER -OPENED-> TICKET: 6
+CUSTOMER -PLACED-> ORDER: 7
+
+== Step 3, the stored cancel reasons among those customers
+{"values":["price","missing_sso"],"counts":[2,1]}
+
+== Step 4, precise question: customers and support tickets per cancel reason (SQL)
+price | customers 2 | tickets 3
+missing_sso | customers 1 | tickets 3
+(no reason recorded) | customers 1 | tickets 0
+
+== The evidence behind the numbers: the tickets themselves (SQL)
+Brandt Logistik GmbH | price | billing | New per-seat price doubles our bill
+Brandt Logistik GmbH | price | billing | Request: annual contract at old rate
+Harbor Freight Lines | price | billing | Quote for 400 seats after price change
+Vogel Retail GmbH | missing_sso | sso | SAML login with Entra ID
+Vogel Retail GmbH | missing_sso | sso | SSO still not available?
+Vogel Retail GmbH | missing_sso | sso | Security review blocked on SSO

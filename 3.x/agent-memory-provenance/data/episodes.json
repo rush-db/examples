@@ -1,0 +1,18 @@
+[
+  { "schemaVersion": 1, "agentId": "support-agent", "profileId": "user-42", "sessionId": "s-1001", "turnIndex": 1,
+    "privacyScope": "private", "participantScopeHash": "p-42", "sandboxEligible": false,
+    "summary": "Lena asked what the Team plan includes; agent quoted pricing v3.",
+    "startedAt": "2026-09-02T08:16:00Z", "citedRefIds": ["kb-pricing-v3"] },
+  { "schemaVersion": 1, "agentId": "support-agent", "profileId": "user-42", "sessionId": "s-1001", "turnIndex": 2,
+    "privacyScope": "private", "participantScopeHash": "p-42", "sandboxEligible": false,
+    "summary": "Lena asked for replies in German from now on.",
+    "startedAt": "2026-09-02T08:21:00Z", "citedRefIds": [] },
+  { "schemaVersion": 1, "agentId": "support-agent", "profileId": "user-42", "sessionId": "s-1002", "turnIndex": 1,
+    "privacyScope": "private", "participantScopeHash": "p-42", "sandboxEligible": false,
+    "summary": "Lena upgraded from Team to Business; agent explained proration.",
+    "startedAt": "2026-10-14T13:41:00Z", "citedRefIds": ["kb-plan-upgrades", "kb-pricing-v3"] },
+  { "schemaVersion": 1, "agentId": "support-agent", "profileId": "user-77", "sessionId": "s-2001", "turnIndex": 1,
+    "privacyScope": "private", "participantScopeHash": "p-77", "sandboxEligible": false,
+    "summary": "Omar asked to bill the Business plan to the EU entity.",
+    "startedAt": "2026-10-20T09:06:00Z", "citedRefIds": ["kb-eu-billing"] }
+]

@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "SUPPLIES",
+        "source": { "label": "SUPPLIER", "property": "suppliesTo", "predicate": {} },
+        "target": { "label": "COMPONENT", "property": "code", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

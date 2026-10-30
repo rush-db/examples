@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "HAS_SESSION",
+        "source": { "label": "COMPUTER", "property": "sessions", "predicate": {} },
+        "target": { "label": "USER", "property": "username", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "REFERENCE"
+        ],
+        "predicate": {
+          "EPISODE": {
+            "$relation": {
+              "type": "CITED",
+              "direction": "in"
+            },
+            "eventId": "__EVENT_ID__"
+          }
+        }
+      }
+    }
+  }
+}

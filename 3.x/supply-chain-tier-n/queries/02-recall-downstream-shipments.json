@@ -1,0 +1,38 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "SHIPMENT"
+        ],
+        "predicate": {
+          "PRODUCT": {
+            "$relation": {
+              "type": "INCLUDED_IN",
+              "direction": "in"
+            },
+            "PRODUCTION_RUN": {
+              "$relation": {
+                "type": "PRODUCED",
+                "direction": "in"
+              },
+              "BATCH": {
+                "$relation": {
+                  "type": "USED_IN",
+                  "direction": "in"
+                },
+                "lotId": "LOT-2025-001"
+              }
+            }
+          }
+        },
+        "order": {
+          "shipmentId": "asc"
+        }
+      }
+    }
+  }
+}

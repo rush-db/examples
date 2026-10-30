@@ -1,0 +1,5 @@
+[
+  { "district_id": 1, "name": "Hl.m. Praha", "region": "Prague" },
+  { "district_id": 2, "name": "Brno - mesto", "region": "south Moravia" },
+  { "district_id": 3, "name": "Ostrava - mesto", "region": "north Moravia" }
+]

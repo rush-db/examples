@@ -1,0 +1,6 @@
+[
+  {"order_no":"SO-1001","customer_id":"C-17","total":1300,"placed_at":"2026-09-02"},
+  {"order_no":"SO-1002","customer_id":"C-17","total":250,"placed_at":"2026-09-14"},
+  {"order_no":"SO-1003","customer_id":"C-21","total":480,"placed_at":"2026-09-20"},
+  {"order_no":"SO-1004","customer_id":"C-30","total":990,"placed_at":"2026-10-01"}
+]

@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "HOST"
+        ],
+        "order": {
+          "hostname": "asc"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "BINDS",
+        "source": { "label": "COMPOUND", "property": "binds", "predicate": {} },
+        "target": { "label": "GENE", "property": "symbol", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

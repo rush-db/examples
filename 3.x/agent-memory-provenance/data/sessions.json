@@ -1,0 +1,5 @@
+[
+  { "sessionId": "s-1001", "agentId": "support-agent", "profileId": "user-42", "startedAt": "2026-09-02T08:15:00Z" },
+  { "sessionId": "s-1002", "agentId": "support-agent", "profileId": "user-42", "startedAt": "2026-10-14T13:40:00Z" },
+  { "sessionId": "s-2001", "agentId": "support-agent", "profileId": "user-77", "startedAt": "2026-10-20T09:05:00Z" }
+]

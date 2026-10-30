@@ -1,0 +1,5 @@
+[
+  { "runId": "RUN-A1", "line": "A", "startedAt": "2025-02-03", "inputLots": ["LOT-2025-001", "LOT-2025-003"], "outputSku": "PROD-001" },
+  { "runId": "RUN-A2", "line": "A", "startedAt": "2025-02-10", "inputLots": ["LOT-2025-002"],                 "outputSku": "PROD-002" },
+  { "runId": "RUN-B1", "line": "B", "startedAt": "2025-02-12", "inputLots": ["LOT-2025-001"],                 "outputSku": "PROD-003" }
+]

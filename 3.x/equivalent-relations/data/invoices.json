@@ -1,0 +1,5 @@
+[
+  {"invoice_no":"INV-501","cust_id":"C-17","amount":1300,"issued_at":"2026-09-03"},
+  {"invoice_no":"INV-502","cust_id":"C-21","amount":75,"issued_at":"2026-09-21"},
+  {"invoice_no":"INV-503","cust_id":"C-99","amount":310,"issued_at":"2026-10-02"}
+]

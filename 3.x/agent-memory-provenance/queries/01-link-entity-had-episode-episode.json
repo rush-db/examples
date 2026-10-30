@@ -1,0 +1,21 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "HAD_EPISODE",
+        "source": {
+          "label": "ENTITY",
+          "property": "entityId"
+        },
+        "target": {
+          "label": "EPISODE",
+          "property": "profileId"
+        },
+        "direction": "out"
+      }
+    }
+  }
+}

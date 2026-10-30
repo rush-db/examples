@@ -1,0 +1,15 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "properties",
+      "query": {
+        "labels": [
+          "PERSON"
+        ]
+      },
+      "detail": "catalog"
+    }
+  }
+}

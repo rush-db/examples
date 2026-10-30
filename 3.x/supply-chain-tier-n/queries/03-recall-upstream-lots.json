@@ -1,0 +1,32 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "BATCH"
+        ],
+        "predicate": {
+          "PRODUCTION_RUN": {
+            "$relation": {
+              "type": "USED_IN",
+              "direction": "out"
+            },
+            "PRODUCT": {
+              "$relation": {
+                "type": "PRODUCED",
+                "direction": "out"
+              },
+              "sku": "PROD-001"
+            }
+          }
+        },
+        "order": {
+          "lotId": "asc"
+        }
+      }
+    }
+  }
+}

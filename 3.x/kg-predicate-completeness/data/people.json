@@ -1,0 +1,21 @@
+[
+  {"name":"Ada Lovelace","occupation":"mathematician","born":"1815-12-10","died":"1852-11-27","nationality":"GB"},
+  {"name":"Alan Turing","occupation":"mathematician","born":"1912-06-23","died":"1954-06-07","nationality":"GB",
+   "ORGANIZATION":{"name":"University of Manchester","type":"university",
+     "COUNTRY":{"name":"United Kingdom","iso":"GB"}}},
+  {"name":"Grace Hopper","occupation":"computer scientist","born":"1906-12-09","died":"1992-01-01","nationality":"US",
+   "ORGANIZATION":{"name":"US Navy","type":"military",
+     "COUNTRY":{"name":"United States","iso":"US"}}},
+  {"name":"Katherine Johnson","occupation":"mathematician","born":"1918-08-26","nationality":"US",
+   "ORGANIZATION":{"name":"NASA","type":"agency",
+     "COUNTRY":{"name":"United States","iso":"US"}}},
+  {"name":"Margaret Hamilton","occupation":"computer scientist","born":"1936-08-17","nationality":"US",
+   "ORGANIZATION":{"name":"MIT Instrumentation Laboratory","type":"lab","parent":"MIT"}},
+  {"name":"Barbara Liskov","occupation":"computer scientist","nationality":"US",
+   "ORGANIZATION":{"name":"MIT","type":"university",
+     "COUNTRY":{"name":"United States","iso":"US"}}},
+  {"name":"Tim Berners-Lee","occupation":"computer scientist","born":"1955-06-08","nationality":"GB",
+   "ORGANIZATION":{"name":"CERN","type":"lab",
+     "COUNTRY":{"name":"Switzerland","iso":"CH"}}},
+  {"name":"Edsger Dijkstra","occupation":"computer scientist","born":"1930-05-11","died":"2002-08-06"}
+]

@@ -1,0 +1,6 @@
+[
+  { "shipmentId": "SHP-1001", "customer": "Northwind Retail (example)", "destination": "Rotterdam", "shippedAt": "2025-02-20", "products": ["PROD-001"] },
+  { "shipmentId": "SHP-1002", "customer": "Contoso Energy (example)",   "destination": "Hamburg",   "shippedAt": "2025-02-21", "products": ["PROD-002"] },
+  { "shipmentId": "SHP-1003", "customer": "Fabrikam Solar (example)",   "destination": "Antwerp",   "shippedAt": "2025-02-24", "products": ["PROD-001", "PROD-003"] },
+  { "shipmentId": "SHP-1004", "customer": "Northwind Retail (example)", "destination": "Rotterdam", "shippedAt": "2025-03-02", "products": ["PROD-002"] }
+]

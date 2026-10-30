@@ -1,0 +1,15 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "policy",
+    "policy": {
+      "kind": "put",
+      "enforced": false,
+      "policy": {
+        "allowedLabels": [
+          "*"
+        ]
+      }
+    }
+  }
+}

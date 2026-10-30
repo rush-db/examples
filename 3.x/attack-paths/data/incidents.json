@@ -1,0 +1,4 @@
+[
+  { "incidentId": "INC-2026-031", "title": "Credential stuffing against login (example)", "severity": "high", "openedAt": "2026-10-28T09:20:00Z", "affects": ["svc-auth", "svc-payments"] },
+  { "incidentId": "INC-2026-032", "title": "Reporting job backlog (example)",             "severity": "low",  "openedAt": "2026-10-28T11:05:00Z", "affects": ["svc-reports"] }
+]

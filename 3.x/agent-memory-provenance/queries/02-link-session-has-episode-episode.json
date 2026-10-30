@@ -1,0 +1,21 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "HAS_EPISODE",
+        "source": {
+          "label": "SESSION",
+          "property": "sessionId"
+        },
+        "target": {
+          "label": "EPISODE",
+          "property": "sessionId"
+        },
+        "direction": "out"
+      }
+    }
+  }
+}

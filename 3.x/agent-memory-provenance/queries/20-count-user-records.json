@@ -1,0 +1,20 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "SESSION",
+          "EPISODE",
+          "MEMORY_FACT"
+        ],
+        "predicate": {
+          "profileId": "user-77"
+        },
+        "limit": 1
+      }
+    }
+  }
+}

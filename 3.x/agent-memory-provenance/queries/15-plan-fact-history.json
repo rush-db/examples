@@ -1,0 +1,21 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "MEMORY_FACT"
+        ],
+        "predicate": {
+          "profileId": "user-42",
+          "subject": "plan"
+        },
+        "order": {
+          "setAt": "asc"
+        }
+      }
+    }
+  }
+}

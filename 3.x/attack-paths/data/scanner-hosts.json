@@ -1,0 +1,5 @@
+[
+  { "hostname": "web-01", "ip": "10.0.1.11", "os": "Ubuntu 22.04", "cvssScore": 9.8, "openCve": "CVE-2026-0001 (example)", "scannedAt": "2026-10-28T02:00:00Z" },
+  { "hostname": "web-02", "ip": "10.0.1.12", "os": "Ubuntu 22.04", "cvssScore": 5.3, "openCve": "CVE-2026-0002 (example)", "scannedAt": "2026-10-28T02:00:00Z" },
+  { "hostname": "db-01",  "ip": "10.0.2.21", "os": "Debian 12",    "cvssScore": 7.5, "openCve": "CVE-2026-0003 (example)", "scannedAt": "2026-10-28T02:00:00Z" }
+]

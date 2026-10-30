@@ -1,0 +1,51 @@
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Seed: HR import links employees to companies with WORKS_AT
+{"kind":"ingested","count":6,"relationships":3}
+
+== Seed: CRM import of overlapping people uses EMPLOYED_BY (mergeBy name: same records)
+{"kind":"ingested","count":6,"relationships":3}
+
+== Seed: orders carry customer_id, invoices carry cust_id
+{"kind":"ingested","count":4}
+{"kind":"ingested","count":3}
+
+== 1. Same endpoint labels: relationship shapes from the catalog
+label COMPANY: 3 records
+label EMPLOYEE: 4 records
+label INVOICE: 3 records
+label ORDER: 4 records
+EMPLOYEE -EMPLOYED_BY-> COMPANY: 3
+EMPLOYEE -WORKS_AT-> COMPANY: 3
+
+== 2. Shared endpoint pairs: edges of both types joining the same employee and company
+{"same_pairs":2}
+
+== 3. Name similarity: labels and properties spelled like customer_id (whole node)
+{"label":"ORDER","property":"customer_id","score":1.0}
+{"label":"INVOICE","property":"cust_id","score":0.6}
+
+== 4. Value overlap: an identifier pair and a numeric decoy
+{"pair":"INVOICE.cust_id -> ORDER.customer_id","sourceDistinct":3,"matchedDistinct":2,"coverage":0.67,"sourceUniqueness":1.0,"targetUniqueness":0.75}
+{"pair":"INVOICE.amount -> ORDER.total","sourceDistinct":3,"matchedDistinct":1,"coverage":0.33,"sourceUniqueness":1.0,"targetUniqueness":1.0}
+
+== 5a. Values spelled differently: COMPANY.name similar to 'Initech LLC'
+{"values":["Initech"],"distinctCount":1}
+
+== 5b. One value, every property: where is 'C-17' stored?
+{"label":"ORDER","property":"customer_id","value":"C-17","count":2}
+{"label":"INVOICE","property":"cust_id","value":"C-17","count":1}
+
+== Merge: retype EMPLOYED_BY to WORKS_AT between EMPLOYEE and COMPANY
+{"kind":"mutation","affected":1}
+
+== Re-read the shapes: one type left; the 2 shared pairs did not become duplicate edges
+EMPLOYEE -WORKS_AT-> COMPANY: 4
+
+== SQL check: one WORKS_AT edge per employee after the merge
+Lena Fischer | Initech | 1
+Marco Rossi | Globex | 1
+Priya Shah | Initech | 1
+Tom Becker | Hooli | 1

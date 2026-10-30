@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "deleteRecords",
+      "query": {
+        "labels": [
+          "ENTITY"
+        ],
+        "predicate": {
+          "entityId": "user-77"
+        }
+      }
+    }
+  }
+}

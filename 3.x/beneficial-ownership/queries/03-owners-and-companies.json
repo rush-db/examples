@@ -1,0 +1,18 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "PERSON",
+          "COMPANY"
+        ],
+        "order": {
+          "code": "asc"
+        }
+      }
+    }
+  }
+}

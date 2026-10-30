@@ -1,0 +1,18 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "INCIDENT"
+        ],
+        "predicate": {
+          "incidentId": "INC-2026-031"
+        },
+        "limit": 1
+      }
+    }
+  }
+}

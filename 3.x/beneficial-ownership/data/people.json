@@ -1,0 +1,6 @@
+[
+  { "code": "P-01", "name": "Viktor Halden (example)",   "nationality": "NO", "sanctioned": true },
+  { "code": "P-02", "name": "Maria Lindqvist (example)", "nationality": "SE", "sanctioned": false },
+  { "code": "P-03", "name": "Ahmed Rahimi (example)",    "nationality": "NL", "sanctioned": false },
+  { "code": "P-04", "name": "Elena Marsh (example)",     "nationality": "GB", "sanctioned": true }
+]

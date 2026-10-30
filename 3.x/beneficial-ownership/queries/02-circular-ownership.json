@@ -1,0 +1,27 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "COMPANY"
+        ],
+        "predicate": {
+          "$cycle": {
+            "type": "OWNS",
+            "direction": "out",
+            "hops": {
+              "min": 2,
+              "max": 8
+            }
+          }
+        },
+        "order": {
+          "code": "asc"
+        }
+      }
+    }
+  }
+}

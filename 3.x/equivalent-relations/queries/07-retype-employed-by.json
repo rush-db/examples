@@ -1,0 +1,15 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "retypeRelations",
+      "command": {
+        "sourceLabel": "EMPLOYEE",
+        "targetLabel": "COMPANY",
+        "sourceType": "EMPLOYED_BY",
+        "targetType": "WORKS_AT"
+      }
+    }
+  }
+}

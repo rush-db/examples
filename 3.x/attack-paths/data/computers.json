@@ -1,0 +1,6 @@
+[
+  { "hostname": "DC-01",  "role": "domain controller", "tier": 0, "sessions": [] },
+  { "hostname": "FS-01",  "role": "file server",       "tier": 1, "sessions": ["carol.diaz"] },
+  { "hostname": "WS-114", "role": "workstation",       "tier": 2, "sessions": ["erin.walsh"] },
+  { "hostname": "WS-201", "role": "workstation",       "tier": 2, "sessions": ["bob.lin"] }
+]

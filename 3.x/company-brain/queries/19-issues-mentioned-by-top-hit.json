@@ -1,0 +1,23 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "ISSUE"
+        ],
+        "predicate": {
+          "MESSAGE": {
+            "$relation": {
+              "type": "MENTIONS",
+              "direction": "in"
+            },
+            "$id": "__HIT_ID__"
+          }
+        }
+      }
+    }
+  }
+}

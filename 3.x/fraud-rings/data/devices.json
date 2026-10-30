@@ -1,0 +1,26 @@
+[
+  {
+    "deviceId": "DEV-2C",
+    "platform": "android"
+  },
+  {
+    "deviceId": "DEV-4E",
+    "platform": "android"
+  },
+  {
+    "deviceId": "DEV-5F",
+    "platform": "android"
+  },
+  {
+    "deviceId": "DEV-6B",
+    "platform": "android"
+  },
+  {
+    "deviceId": "DEV-7D",
+    "platform": "android"
+  },
+  {
+    "deviceId": "DEV-9A",
+    "platform": "android"
+  }
+]

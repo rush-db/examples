@@ -1,0 +1,8 @@
+[
+  { "patientId": "PT-001", "age": 64, "sex": "F" },
+  { "patientId": "PT-002", "age": 23, "sex": "M" },
+  { "patientId": "PT-003", "age": 58, "sex": "M" },
+  { "patientId": "PT-004", "age": 71, "sex": "F" },
+  { "patientId": "PT-005", "age": 49, "sex": "M" },
+  { "patientId": "PT-006", "age": 33, "sex": "F" }
+]

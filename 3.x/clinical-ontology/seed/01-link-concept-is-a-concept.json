@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "IS_A",
+        "source": { "label": "CONCEPT", "property": "isA", "predicate": {} },
+        "target": { "label": "CONCEPT", "property": "code", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

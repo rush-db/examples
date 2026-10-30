@@ -1,0 +1,24 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "PART_OF",
+        "source": {
+          "label": "ORGANIZATION",
+          "property": "parent",
+          "predicate": {}
+        },
+        "target": {
+          "label": "ORGANIZATION",
+          "property": "name",
+          "predicate": {}
+        },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "propertyValues",
+      "property": "status",
+      "mode": "topK",
+      "limit": 10,
+      "query": {
+        "labels": [
+          "ORDER"
+        ]
+      }
+    }
+  }
+}

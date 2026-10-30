@@ -1,0 +1,24 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "ANALYSIS"
+        ],
+        "predicate": {
+          "outcome": "answered",
+          "STEP": {
+            "$relation": {
+              "type": "HAS_STEP",
+              "direction": "out"
+            },
+            "searchMissed": true
+          }
+        }
+      }
+    }
+  }
+}

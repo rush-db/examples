@@ -1,0 +1,5 @@
+[
+  {"name":"Priya Shah","title":"Data Engineer","source":"hr","COMPANY":{"name":"Initech","domain":"initech.example"}},
+  {"name":"Marco Rossi","title":"Account Manager","source":"hr","COMPANY":{"name":"Globex","domain":"globex.example"}},
+  {"name":"Lena Fischer","title":"Support Lead","source":"hr","COMPANY":{"name":"Initech","domain":"initech.example"}}
+]

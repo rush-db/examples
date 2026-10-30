@@ -1,0 +1,43 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "MEMORY_FACT"
+        ],
+        "predicate": {
+          "agentId": "support-agent",
+          "profileId": "user-42",
+          "privacyScope": "private",
+          "active": true,
+          "EPISODE": {
+            "$alias": "$turn",
+            "$relation": {
+              "type": "DERIVED_FROM",
+              "direction": "out"
+            }
+          }
+        },
+        "select": {
+          "text": "$record.text",
+          "source": {
+            "$collect": {
+              "from": "$turn",
+              "select": {
+                "sessionId": "$turn.sessionId",
+                "turnIndex": "$turn.turnIndex",
+                "summary": "$turn.summary"
+              }
+            }
+          }
+        },
+        "order": {
+          "text": "asc"
+        }
+      }
+    }
+  }
+}

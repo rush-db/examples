@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "TRANSFERRED_TO",
+        "source": { "label": "ACCOUNT", "property": "sendsTo", "predicate": {} },
+        "target": { "label": "ACCOUNT", "property": "accountId", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

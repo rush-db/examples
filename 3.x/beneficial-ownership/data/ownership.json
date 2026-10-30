@@ -1,0 +1,16 @@
+[
+  { "owner": "CO-200", "ownerLabel": "COMPANY", "owned": "CO-100", "percent": 60 },
+  { "owner": "P-02",   "ownerLabel": "PERSON",  "owned": "CO-100", "percent": 40 },
+  { "owner": "CO-300", "ownerLabel": "COMPANY", "owned": "CO-200", "percent": 70 },
+  { "owner": "P-03",   "ownerLabel": "PERSON",  "owned": "CO-200", "percent": 30 },
+  { "owner": "P-01",   "ownerLabel": "PERSON",  "owned": "CO-300", "percent": 100 },
+  { "owner": "P-04",   "ownerLabel": "PERSON",  "owned": "CO-110", "percent": 10 },
+  { "owner": "P-02",   "ownerLabel": "PERSON",  "owned": "CO-110", "percent": 90 },
+  { "owner": "P-03",   "ownerLabel": "PERSON",  "owned": "CO-120", "percent": 100 },
+  { "owner": "CO-400", "ownerLabel": "COMPANY", "owned": "CO-130", "percent": 80 },
+  { "owner": "P-03",   "ownerLabel": "PERSON",  "owned": "CO-130", "percent": 20 },
+  { "owner": "P-02",   "ownerLabel": "PERSON",  "owned": "CO-400", "percent": 70 },
+  { "owner": "CO-400", "ownerLabel": "COMPANY", "owned": "CO-410", "percent": 50 },
+  { "owner": "CO-410", "ownerLabel": "COMPANY", "owned": "CO-420", "percent": 60 },
+  { "owner": "CO-420", "ownerLabel": "COMPANY", "owned": "CO-400", "percent": 30 }
+]

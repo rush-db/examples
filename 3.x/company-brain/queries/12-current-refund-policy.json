@@ -1,0 +1,27 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "DOC"
+        ],
+        "predicate": {
+          "title": {
+            "$contains": "Refund"
+          },
+          "$not": {
+            "DOC": {
+              "$relation": {
+                "type": "SUPERSEDES",
+                "direction": "in"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

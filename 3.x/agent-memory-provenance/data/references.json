@@ -1,0 +1,5 @@
+[
+  { "refId": "kb-pricing-v3", "title": "Pricing v3", "uri": "kb://pricing/pricing-v3.md" },
+  { "refId": "kb-plan-upgrades", "title": "Changing your plan", "uri": "kb://billing/plan-upgrades.md" },
+  { "refId": "kb-eu-billing", "title": "EU billing entities", "uri": "kb://billing/eu-billing.md" }
+]

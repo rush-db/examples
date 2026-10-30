@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "SUPPLIED",
+        "source": { "label": "SUPPLIER", "property": "code", "predicate": {} },
+        "target": { "label": "BATCH", "property": "supplierCode", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+[
+  { "code": "S-101", "name": "Apex Components (example)",      "tier": 1, "region": "coastal-02",    "country": "DE", "suppliesTo": ["C-01"] },
+  { "code": "S-102", "name": "Brightline Electronics (example)", "tier": 1, "region": "inland-04",     "country": "PL", "suppliesTo": ["C-02", "C-03"] },
+  { "code": "S-103", "name": "Cobalt Assemblies (example)",     "tier": 1, "region": "coastal-02",    "country": "CZ", "suppliesTo": ["C-03"] },
+  { "code": "S-104", "name": "Dunmore Fasteners (example)",     "tier": 1, "region": "inland-04",     "country": "IE", "suppliesTo": ["C-04"] },
+  { "code": "S-201", "name": "Harbor Plastics (example)",       "tier": 2, "region": "coastal-02",    "country": "TH", "suppliesTo": ["S-101"] },
+  { "code": "S-202", "name": "Northfield Metals (example)",     "tier": 2, "region": "inland-04",     "country": "CL", "suppliesTo": ["S-102"] },
+  { "code": "S-203", "name": "Pacific Molding (example)",       "tier": 2, "region": "coastal-02",    "country": "MY", "suppliesTo": ["S-103"] },
+  { "code": "S-204", "name": "Granite Wire (example)",          "tier": 2, "region": "inland-04",     "country": "MX", "suppliesTo": ["S-104"] },
+  { "code": "S-301", "name": "Delta Resins (example)",          "tier": 3, "region": "flood-zone-07", "country": "VN", "suppliesTo": ["S-201"] },
+  { "code": "S-302", "name": "Kestrel Ores (example)",          "tier": 3, "region": "inland-04",     "country": "PE", "suppliesTo": ["S-202"] },
+  { "code": "S-303", "name": "Upland Polymers (example)",       "tier": 3, "region": "inland-04",     "country": "IN", "suppliesTo": ["S-203"] },
+  { "code": "S-304", "name": "Ridge Steel (example)",           "tier": 3, "region": "inland-04",     "country": "BR", "suppliesTo": ["S-204"] },
+  { "code": "S-401", "name": "Riverbend Chemicals (example)",   "tier": 4, "region": "flood-zone-07", "country": "VN", "suppliesTo": ["S-302"] },
+  { "code": "S-404", "name": "Copperfield Mining (example)",    "tier": 4, "region": "inland-04",     "country": "BO", "suppliesTo": ["S-304"] },
+  { "code": "S-504", "name": "Lowland Smelting (example)",      "tier": 5, "region": "inland-04",     "country": "BO", "suppliesTo": ["S-404"] },
+  { "code": "S-604", "name": "Estuary Minerals (example)",      "tier": 6, "region": "flood-zone-07", "country": "BD", "suppliesTo": ["S-504"] }
+]

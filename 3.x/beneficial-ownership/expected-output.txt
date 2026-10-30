@@ -1,0 +1,29 @@
+== Seeding example data
+  PERSON: 4 records
+  COMPANY: 9 records
+  OWNS: 14 relationships
+
+== Sanctions exposure: companies owned by a sanctioned person directly or through up to 5 OWNS links between companies
+  CO-100  Northgate Trading Ltd (example)
+  CO-110  Meridian Foods GmbH (example)
+  CO-200  Halden Holdings BV (example)
+  CO-300  Fjord Capital SA (example)
+
+== Circular ownership: companies on a closed OWNS path of 2-8 links
+  CO-400  Loop Ventures A Ltd (example)  CY
+  CO-410  Loop Ventures B Ltd (example)  MT
+  CO-420  Loop Ventures C Ltd (example)  CY
+
+== Effective stake per customer (computed in jq from the OWNS links; 25% threshold)
+  CO-100  Northgate Trading Ltd (example)
+    Viktor Halden (example)  42%  beneficial owner (>= 25%)  SANCTIONED  via P-01 > CO-300 > CO-200 > CO-100
+    Maria Lindqvist (example)  40%  beneficial owner (>= 25%)  via P-02 > CO-100
+    Ahmed Rahimi (example)  18%  via P-03 > CO-200 > CO-100
+  CO-110  Meridian Foods GmbH (example)
+    Maria Lindqvist (example)  90%  beneficial owner (>= 25%)  via P-02 > CO-110
+    Elena Marsh (example)  10%  SANCTIONED  via P-04 > CO-110
+  CO-120  Brightwater Services Ltd (example)
+    Ahmed Rahimi (example)  100%  beneficial owner (>= 25%)  via P-03 > CO-120
+  CO-130  Silverline Retail BV (example)
+    Maria Lindqvist (example)  56%  beneficial owner (>= 25%)  via P-02 > CO-400 > CO-130
+    Ahmed Rahimi (example)  20%  via P-03 > CO-130

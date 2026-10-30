@@ -1,0 +1,37 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "PERSON"
+        ],
+        "predicate": {
+          "$or": [
+            {
+              "ORGANIZATION": {
+                "$relation": {
+                  "type": "WORKS_AT",
+                  "direction": "out"
+                }
+              }
+            },
+            {
+              "ORGANIZATION": {
+                "$relation": {
+                  "type": "CONSULTS_FOR",
+                  "direction": "out"
+                }
+              }
+            }
+          ]
+        },
+        "select": {
+          "name": "$record.name"
+        }
+      }
+    }
+  }
+}

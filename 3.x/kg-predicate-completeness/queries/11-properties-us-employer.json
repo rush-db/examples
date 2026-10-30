@@ -1,0 +1,25 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "properties",
+      "query": {
+        "labels": [
+          "PERSON"
+        ],
+        "predicate": {
+          "ORGANIZATION": {
+            "$relation": {
+              "type": "WORKS_AT",
+              "direction": "out"
+            },
+            "COUNTRY": {
+              "iso": "US"
+            }
+          }
+        }
+      }
+    }
+  }
+}

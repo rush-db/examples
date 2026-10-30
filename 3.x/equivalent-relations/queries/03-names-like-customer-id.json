@@ -1,0 +1,7 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": { "kind": "names", "text": "customer_id", "limit": 5 }
+  }
+}

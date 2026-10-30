@@ -1,0 +1,7 @@
+[
+  { "username": "alice.hart",  "displayName": "Alice Hart (example)",   "department": "IT helpdesk", "privileged": false, "memberOf": ["g-helpdesk"] },
+  { "username": "bob.lin",     "displayName": "Bob Lin (example)",      "department": "Sales",       "privileged": false, "memberOf": ["g-sales"] },
+  { "username": "carol.diaz",  "displayName": "Carol Diaz (example)",   "department": "IT ops",      "privileged": false, "memberOf": ["g-server-ops"] },
+  { "username": "erin.walsh",  "displayName": "Erin Walsh (example)",   "department": "IT security", "privileged": true,  "memberOf": ["g-domain-admins"] },
+  { "username": "svc-backup",  "displayName": "Backup service account", "department": "IT ops",      "privileged": false, "memberOf": ["g-server-ops"] }
+]

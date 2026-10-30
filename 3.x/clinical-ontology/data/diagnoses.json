@@ -1,0 +1,9 @@
+[
+  { "diagnosisId": "DX-01", "patientId": "PT-001", "conceptCode": "C-T2DM-N",  "recordedAt": "2026-03-02" },
+  { "diagnosisId": "DX-02", "patientId": "PT-002", "conceptCode": "C-T1DM",    "recordedAt": "2025-11-19" },
+  { "diagnosisId": "DX-03", "patientId": "PT-003", "conceptCode": "C-EHTN",    "recordedAt": "2026-01-07" },
+  { "diagnosisId": "DX-04", "patientId": "PT-004", "conceptCode": "C-DM",      "recordedAt": "2024-06-30" },
+  { "diagnosisId": "DX-05", "patientId": "PT-005", "conceptCode": "C-T2DM-NR", "recordedAt": "2026-08-14" },
+  { "diagnosisId": "DX-06", "patientId": "PT-005", "conceptCode": "C-EHTN",    "recordedAt": "2026-08-14" },
+  { "diagnosisId": "DX-07", "patientId": "PT-006", "conceptCode": "C-GDM",     "recordedAt": "2026-05-21" }
+]

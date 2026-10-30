@@ -1,0 +1,9 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "indexes"
+    }
+  }
+}

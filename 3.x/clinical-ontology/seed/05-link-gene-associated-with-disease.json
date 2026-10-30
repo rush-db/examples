@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "ASSOCIATED_WITH",
+        "source": { "label": "GENE", "property": "associatedWith", "predicate": {} },
+        "target": { "label": "DISEASE", "property": "name", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

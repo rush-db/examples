@@ -1,0 +1,47 @@
+== Seeding example data
+  SUPPLIER: 16 records
+  COMPONENT: 4 records
+  PART: 11 records
+  BATCH: 3 records
+  PRODUCTION_RUN: 3 records
+  PRODUCT: 3 records
+  SHIPMENT: 4 records
+  01-link-supplier-supplies-supplier: 12 relationships
+  02-link-supplier-supplies-component: 5 relationships
+  03-link-part-contains-part: 11 relationships
+  04-link-supplier-supplied-batch: 3 relationships
+  05-link-batch-used-in-run: 4 relationships
+  06-link-run-produced-product: 3 relationships
+  07-link-product-included-in-shipment: 5 relationships
+
+== Tier-N exposure: tier-1 suppliers with a flood-zone-07 supplier up to 4 tiers behind them
+  S-101  Apex Components (example)
+  S-102  Brightline Electronics (example)
+
+== Recall downstream: shipments carrying product made from LOT-2025-001
+  SHP-1001  Northwind Retail (example) -> Rotterdam
+  SHP-1003  Fabrikam Solar (example) -> Antwerp
+
+== Recall upstream: lots that went into PROD-001
+  LOT-2025-001  polymer-Z
+  LOT-2025-003  alloy-X
+
+== Recall upstream: suppliers of the lots behind PROD-001
+  S-101  Apex Components (example)
+  S-102  Brightline Electronics (example)
+
+== BOM explosion: everything FG-100 contains, at any depth up to 6
+  A-110  Battery module (assembly)
+  A-120  Enclosure (assembly)
+  P-118  Cell connector (part)
+  P-119  Thermistor (part)
+  P-121  Gasket (part)
+
+== BOM where-used: finished goods that contain P-118 at any depth up to 6
+  FG-100  Home battery unit
+  FG-200  Wall charger
+
+== Single-source dependency: components with exactly one supplier
+  C-01  Polymer housing  suppliers=1
+  C-02  Copper busbar  suppliers=1
+  C-04  M4 fastener kit  suppliers=1

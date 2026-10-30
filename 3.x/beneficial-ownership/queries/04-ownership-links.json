@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "relationships",
+      "query": {
+        "sourceLabels": ["PERSON", "COMPANY"],
+        "targetLabels": ["COMPANY"],
+        "relationType": "OWNS",
+        "predicate": {},
+        "offset": 0,
+        "limit": 10000
+      }
+    }
+  }
+}

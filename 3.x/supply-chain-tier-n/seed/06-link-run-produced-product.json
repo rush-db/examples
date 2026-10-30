@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "PRODUCED",
+        "source": { "label": "PRODUCTION_RUN", "property": "outputSku", "predicate": {} },
+        "target": { "label": "PRODUCT", "property": "sku", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

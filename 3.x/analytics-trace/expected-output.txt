@@ -1,0 +1,23 @@
+== Seed: 40 example orders (boot token, upsert on order_id)
+{"ORDER":40}
+== Agent credential: a read-only capability token, 10 minutes
+{"sub":"analytics-agent","scope":"read"}
+== The token cannot write
+{"error":"unauthorized"}
+== Agent steps (each read with the agent token, evidence kept in the trace)
+{"order":1,"tool":"describe.schema","evidence":"amount:number, country:string, order_id:string, ordered_at:datetime, segment:string, status:string"}
+{"order":2,"tool":"propertyValues","property":"status","seen":["paid","refunded_full","refunded_partial"],"counts":[15,13,12]}
+{"order":3,"tool":"propertyValues","property":"country","searched":"Germany","searchMissed":true,"seen":["DE","NL","FR"],"counts":[22,11,7]}
+{"order":4,"tool":"propertyValues","property":"segment","searched":"enterprise","seen":["enterprise"],"counts":[20]}
+== Final query (SearchQuery), run with the agent token
+{"rowCount":5,"citations":["o-0001","o-0005","o-0008","o-0013","o-0030"],"refunded":24140}
+== Write trace.json (question, user, credential, steps, final query, rows, citations, outcome)
+{"analysisId":"37bbea827c60dcbb","steps":4,"rowCount":5,"outcome":"answered","answer":"5 refunded enterprise orders in DE (stored code for Germany), Q3 2026, 24140 in total"}
+== Store the trace as ANALYSIS + STEP records (harness writes with its own token, not the agent's)
+{"count":5,"relationships":4}
+== Query the trace store: answered analyses where a question word was mapped to a stored code
+[{"question":"Refunds for enterprise customers in Germany, Q3 2026","rowCount":5}]
+== Rerun from the trace with a fresh read-only token
+same result: 5 rows, same order_ids
+== A late order arrives; the same rerun now tells 'the data moved' from 'the agent was wrong'
+data moved: 5 rows then, 6 now; new: ["o-9999"], gone: []

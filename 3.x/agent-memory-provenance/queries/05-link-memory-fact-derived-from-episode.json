@@ -1,0 +1,21 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "DERIVED_FROM",
+        "source": {
+          "label": "MEMORY_FACT",
+          "property": "sourceEventId"
+        },
+        "target": {
+          "label": "EPISODE",
+          "property": "eventId"
+        },
+        "direction": "out"
+      }
+    }
+  }
+}

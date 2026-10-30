@@ -1,0 +1,32 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "COMPOUND"
+        ],
+        "predicate": {
+          "GENE": {
+            "$relation": {
+              "type": "BINDS",
+              "direction": "out"
+            },
+            "DISEASE": {
+              "$relation": {
+                "type": "ASSOCIATED_WITH",
+                "direction": "out"
+              },
+              "name": "multiple sclerosis"
+            }
+          }
+        },
+        "order": {
+          "code": "asc"
+        }
+      }
+    }
+  }
+}

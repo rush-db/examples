@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "MEMBER_OF",
+        "source": { "label": "USER", "property": "memberOf", "predicate": {} },
+        "target": { "label": "GROUP", "property": "name", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

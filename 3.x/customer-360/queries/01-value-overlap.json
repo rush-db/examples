@@ -1,0 +1,15 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "valueOverlap",
+      "pairs": [
+        {
+          "source": { "label": "PRODUCT_EVENT", "property": "user_email" },
+          "target": { "label": "CUSTOMER", "property": "email" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {"loan_id": 1001, "district_id": 1, "status": "A", "granted_month": "201305", "amount": 12000},
+  {"loan_id": 1002, "district_id": 1, "status": "C", "granted_month": "201306", "amount": 54000},
+  {"loan_id": 1003, "district_id": 1, "status": "D", "granted_month": "201306", "amount": 21000},
+  {"loan_id": 1004, "district_id": 1, "status": "C", "granted_month": "201307", "amount": 8000},
+  {"loan_id": 1005, "district_id": 2, "status": "A", "granted_month": "201306", "amount": 15000},
+  {"loan_id": 1006, "district_id": 2, "status": "B", "granted_month": "201306", "amount": 30000},
+  {"loan_id": 1007, "district_id": 2, "status": "C", "granted_month": "201308", "amount": 17000},
+  {"loan_id": 1008, "district_id": 3, "status": "D", "granted_month": "201306", "amount": 9000},
+  {"loan_id": 1009, "district_id": 3, "status": "A", "granted_month": "201309", "amount": 40000},
+  {"loan_id": 1010, "district_id": 3, "status": "C", "granted_month": "201306", "amount": 26000},
+  {"loan_id": 1011, "district_id": 1, "status": "B", "granted_month": "201309", "amount": 11000},
+  {"loan_id": 1012, "district_id": 2, "status": "D", "granted_month": "201307", "amount": 19000}
+]

@@ -1,0 +1,9 @@
+[
+  { "applicationId": "APP-001", "applicant": "Dana Whitfield (example)", "product": "credit-card",   "status": "confirmed_fraud", "phone": "+1-555-0101", "deviceId": "DEV-9A" },
+  { "applicationId": "APP-002", "applicant": "Lee Okafor (example)",     "product": "personal-loan", "status": "approved",        "phone": "+1-555-0101", "deviceId": "DEV-2C" },
+  { "applicationId": "APP-003", "applicant": "Sam Ortega (example)",     "product": "credit-card",   "status": "pending",         "phone": "+1-555-0199", "deviceId": "DEV-9A" },
+  { "applicationId": "APP-004", "applicant": "Ria Banerjee (example)",   "product": "credit-card",   "status": "pending",         "phone": "+1-555-0142", "deviceId": "DEV-4E" },
+  { "applicationId": "APP-005", "applicant": "Tom Vance (example)",      "product": "personal-loan", "status": "confirmed_fraud", "phone": "+1-555-0177", "deviceId": "DEV-5F" },
+  { "applicationId": "APP-006", "applicant": "Mia Chen (example)",       "product": "credit-card",   "status": "under_review",    "phone": "+1-555-0177", "deviceId": "DEV-6B" },
+  { "applicationId": "APP-007", "applicant": "Ana Ruiz (example)",       "product": "personal-loan", "status": "approved",        "phone": "+1-555-0142", "deviceId": "DEV-7D" }
+]

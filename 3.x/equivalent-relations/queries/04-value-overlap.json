@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "valueOverlap",
+      "pairs": [
+        {
+          "source": { "label": "INVOICE", "property": "cust_id" },
+          "target": { "label": "ORDER", "property": "customer_id" }
+        },
+        {
+          "source": { "label": "INVOICE", "property": "amount" },
+          "target": { "label": "ORDER", "property": "total" }
+        }
+      ]
+    }
+  }
+}

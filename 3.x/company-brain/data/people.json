@@ -1,0 +1,5 @@
+[
+  { "email": "priya@acme.example", "name": "Priya Shah", "team": "payments", "github_login": "pshah" },
+  { "email": "tom@acme.example", "name": "Tom Okafor", "team": "support", "github_login": "tokafor" },
+  { "email": "lena@acme.example", "name": "Lena Berg", "team": "payments", "github_login": "lberg" }
+]

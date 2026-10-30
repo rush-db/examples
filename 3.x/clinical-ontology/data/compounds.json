@@ -1,0 +1,5 @@
+[
+  { "code": "CMP-101", "name": "Compound X-101 (example)", "phase": "preclinical", "binds": ["IL7R"] },
+  { "code": "CMP-102", "name": "Compound X-102 (example)", "phase": "phase-1",     "binds": ["HLA-DRB1", "TNF"] },
+  { "code": "CMP-103", "name": "Compound X-103 (example)", "phase": "preclinical", "binds": ["BRCA1"] }
+]

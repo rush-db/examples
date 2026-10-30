@@ -1,0 +1,20 @@
+[
+  {
+    "ticket_key": "ENG-142",
+    "title": "Refunds fail for EUR cards",
+    "status": "open",
+    "priority": "high",
+    "assignee_email": "priya@acme.example",
+    "created_at": "2026-03-04",
+    "COMMENT": [{ "author_email": "tom@acme.example", "body": "Three enterprise customers reported this today." }]
+  },
+  {
+    "ticket_key": "ENG-150",
+    "title": "Refund webhook times out",
+    "status": "closed",
+    "priority": "medium",
+    "assignee_email": "lena@acme.example",
+    "created_at": "2026-02-20",
+    "COMMENT": [{ "author_email": "lena@acme.example", "body": "Raised the timeout and added a retry." }]
+  }
+]

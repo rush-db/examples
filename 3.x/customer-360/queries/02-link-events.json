@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "PERFORMED_BY",
+        "source": { "label": "PRODUCT_EVENT", "property": "user_email", "predicate": {} },
+        "target": { "label": "CUSTOMER", "property": "email", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

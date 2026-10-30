@@ -1,0 +1,52 @@
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Seed: 4 customers as nested JSON (subscriptions, invoices, tickets become linked records)
+{"kind":"ingested","count":12,"relationships":8}
+
+== Seed: 4 flat product events from the tracking system, not linked yet
+{"kind":"ingested","count":4,"relationships":0}
+
+== Identity check: how well does PRODUCT_EVENT.user_email match CUSTOMER.email?
+{"sourceDistinct":3,"targetDistinct":4,"matchedDistinct":2,"matchedRecords":3,"coverage":0.667,"sourceUniqueness":0.75,"targetUniqueness":1.0}
+
+== Link events to customers on the exact email (the anonymous visitor stays unlinked)
+{"kind":"linked","created":3,"skippedExisting":0}
+
+== Schema: record counts per label and relationship shapes
+label CUSTOMER: 4 records
+label INVOICE: 3 records
+label PRODUCT_EVENT: 4 records
+label SUBSCRIPTION: 3 records
+label TICKET: 2 records
+CUSTOMER -HAS_SUBSCRIPTION-> SUBSCRIPTION: 3
+CUSTOMER -OPENED-> TICKET: 2
+PRODUCT_EVENT -PERFORMED_BY-> CUSTOMER: 3
+SUBSCRIPTION -HAS_INVOICE-> INVOICE: 3
+
+== Properties of all CUSTOMER records (records carrying each one)
+email (string): 4
+name (string): 4
+phone (string): 2
+plan (string): 4
+region (string): 4
+
+== Same read filtered to plan = pro: every count narrows to the 2 pro customers
+email (string): 2
+name (string): 2
+phone (string): 2
+plan (string): 2
+region (string): 2
+
+== Facet: stored values of CUSTOMER.plan with counts
+{"values":["pro","enterprise","free"],"counts":[2,1,1],"distinctCount":3}
+
+== Customers with an overdue invoice and an open high-priority ticket
+{"total":1,"customers":[{"name":"Ana Ruiz","email":"ana@northwind.example"}]}
+
+== SQL: product events per customer through rushdb_edges.performed_by
+ana@northwind.example | pro | 2
+li@contoso.example | enterprise | 1
+jo@tailspin.example | free | 0
+sam@fabrikam.example | pro | 0

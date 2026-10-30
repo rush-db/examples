@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "AFFECTS",
+        "source": { "label": "INCIDENT", "property": "affects", "predicate": {} },
+        "target": { "label": "SERVICE", "property": "code", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

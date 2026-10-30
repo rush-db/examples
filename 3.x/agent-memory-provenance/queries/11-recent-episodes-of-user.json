@@ -1,0 +1,27 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "EPISODE"
+        ],
+        "predicate": {
+          "ENTITY": {
+            "$relation": {
+              "type": "HAD_EPISODE",
+              "direction": "in"
+            },
+            "entityId": "user-42"
+          }
+        },
+        "order": {
+          "startedAt": "desc"
+        },
+        "limit": 5
+      }
+    }
+  }
+}

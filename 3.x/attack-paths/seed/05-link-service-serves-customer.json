@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "SERVES",
+        "source": { "label": "SERVICE", "property": "serves", "predicate": {} },
+        "target": { "label": "CUSTOMER", "property": "code", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

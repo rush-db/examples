@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "putRecord",
+      "mode": "create",
+      "label": "ORDER",
+      "properties": {
+        "order_id": "o-9999",
+        "country": "DE",
+        "segment": "enterprise",
+        "status": "refunded_full",
+        "ordered_at": "2026-09-30",
+        "amount": 1200
+      }
+    }
+  }
+}

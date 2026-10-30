@@ -1,0 +1,12 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "text",
+      "index": "message_text",
+      "query": "EUR refunds",
+      "limit": 5
+    }
+  }
+}

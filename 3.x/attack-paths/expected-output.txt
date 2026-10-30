@@ -1,0 +1,44 @@
+== Seeding example data
+  USER: 5 records
+  GROUP: 6 records
+  COMPUTER: 4 records
+  SERVICE: 3 records
+  CUSTOMER: 5 records
+  INCIDENT: 2 records
+  HOST (scanner-hosts.json): 3 records
+  HOST (edr-hosts.json): 3 records
+  01-link-user-member-of-group: 5 relationships
+  02-link-group-member-of-group: 4 relationships
+  03-link-group-admin-to-computer: 4 relationships
+  04-link-computer-has-session-user: 3 relationships
+  05-link-service-serves-customer: 8 relationships
+  06-link-incident-affects-service: 3 relationships
+
+== Upsert by hostname: three HOST records carry both the scanner's and the EDR's fields
+  db-01  cvssScore=7.5  edrAgent=6.1.9  isolated=true
+  web-01  cvssScore=9.8  edrAgent=6.2.1  isolated=false
+  web-02  cvssScore=5.3  edrAgent=6.2.1  isolated=false
+
+== Transitive group membership: users whose groups (up to 6 MEMBER_OF hops) are ADMIN_TO a tier-0 computer
+  alice.hart  IT helpdesk
+  carol.diaz  IT ops
+  erin.walsh  IT security
+  svc-backup  IT ops
+
+== Effective groups of alice.hart: direct membership or up to 6 nested MEMBER_OF hops
+  g-helpdesk
+  g-it-support
+  g-server-ops
+  g-tier0-admins
+
+== Identity attack path: non-privileged users who are admin (through groups) on a computer where a privileged user has a session
+  alice.hart  IT helpdesk
+
+== Incident blast radius: customers behind the services INC-2026-031 affects (count)
+  customers=4
+
+== Incident blast radius: the same customers, listed
+  CUST-01  Northwind Retail (example)  enterprise
+  CUST-02  Contoso Energy (example)  growth
+  CUST-03  Fabrikam Solar (example)  growth
+  CUST-04  Tailspin Travel (example)  enterprise

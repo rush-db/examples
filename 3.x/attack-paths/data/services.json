@@ -1,0 +1,5 @@
+[
+  { "code": "svc-payments", "name": "Payments API",  "serves": ["CUST-01", "CUST-02", "CUST-04"] },
+  { "code": "svc-auth",     "name": "Login service", "serves": ["CUST-01", "CUST-02", "CUST-03", "CUST-04"] },
+  { "code": "svc-reports",  "name": "Reporting",     "serves": ["CUST-05"] }
+]

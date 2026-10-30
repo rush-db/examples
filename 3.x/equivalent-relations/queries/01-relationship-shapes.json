@@ -1,0 +1,10 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "schema",
+      "query": { "labels": ["EMPLOYEE", "COMPANY", "ORDER", "INVOICE"] }
+    }
+  }
+}

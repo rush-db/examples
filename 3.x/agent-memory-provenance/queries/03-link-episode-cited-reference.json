@@ -1,0 +1,21 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "CITED",
+        "source": {
+          "label": "EPISODE",
+          "property": "citedRefIds"
+        },
+        "target": {
+          "label": "REFERENCE",
+          "property": "refId"
+        },
+        "direction": "out"
+      }
+    }
+  }
+}

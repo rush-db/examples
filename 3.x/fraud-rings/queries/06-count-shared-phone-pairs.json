@@ -1,0 +1,15 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "joinPairs",
+      "left": { "label": "APPLICATION", "filter": {} },
+      "right": { "label": "APPLICATION", "filter": {} },
+      "predicate": { "kind": "propertyOverlap", "leftProperty": "phone", "rightProperty": "phone" },
+      "excludeSameRecord": true,
+      "projection": "count",
+      "limit": 10000
+    }
+  }
+}

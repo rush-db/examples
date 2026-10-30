@@ -1,0 +1,19 @@
+[
+  {
+    "doc_id": "notion-101",
+    "title": "Refund policy v2",
+    "author_email": "lena@acme.example",
+    "audience": "all-staff",
+    "updated_at": "2026-01-12",
+    "SECTION": [{ "heading": "Retries", "body": "Failed refunds are retried three times." }]
+  },
+  {
+    "doc_id": "notion-214",
+    "title": "Refund policy v3",
+    "author_email": "priya@acme.example",
+    "supersedes_doc_id": "notion-101",
+    "audience": "all-staff",
+    "updated_at": "2026-03-06",
+    "SECTION": [{ "heading": "Retries", "body": "Retry a failed refund once, then page the payments on-call." }]
+  }
+]

@@ -1,0 +1,11 @@
+[
+  { "code": "CO-100", "name": "Northgate Trading Ltd (example)",    "jurisdiction": "GB", "customer": true },
+  { "code": "CO-110", "name": "Meridian Foods GmbH (example)",      "jurisdiction": "DE", "customer": true },
+  { "code": "CO-120", "name": "Brightwater Services Ltd (example)", "jurisdiction": "IE", "customer": true },
+  { "code": "CO-130", "name": "Silverline Retail BV (example)",     "jurisdiction": "NL", "customer": true },
+  { "code": "CO-200", "name": "Halden Holdings BV (example)",       "jurisdiction": "NL", "customer": false },
+  { "code": "CO-300", "name": "Fjord Capital SA (example)",         "jurisdiction": "LU", "customer": false },
+  { "code": "CO-400", "name": "Loop Ventures A Ltd (example)",      "jurisdiction": "CY", "customer": false },
+  { "code": "CO-410", "name": "Loop Ventures B Ltd (example)",      "jurisdiction": "MT", "customer": false },
+  { "code": "CO-420", "name": "Loop Ventures C Ltd (example)",      "jurisdiction": "CY", "customer": false }
+]

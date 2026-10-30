@@ -1,0 +1,25 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "ASSIGNED_TO",
+        "source": {
+          "label": "ISSUE",
+          "property": "assignee_email"
+        },
+        "target": {
+          "label": "PERSON",
+          "property": "email"
+        },
+        "direction": "out",
+        "properties": {
+          "source": "tutorial-import",
+          "method": "key-match"
+        }
+      }
+    }
+  }
+}

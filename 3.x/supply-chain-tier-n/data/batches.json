@@ -1,0 +1,5 @@
+[
+  { "lotId": "LOT-2025-001", "material": "polymer-Z", "producedAt": "2025-01-10", "quantity": 5000, "supplierCode": "S-101" },
+  { "lotId": "LOT-2025-002", "material": "polymer-Z", "producedAt": "2025-01-17", "quantity": 4800, "supplierCode": "S-101" },
+  { "lotId": "LOT-2025-003", "material": "alloy-X",   "producedAt": "2025-01-20", "quantity": 2000, "supplierCode": "S-102" }
+]

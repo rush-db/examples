@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "USED_IN",
+        "source": { "label": "PRODUCTION_RUN", "property": "inputLots", "predicate": {} },
+        "target": { "label": "BATCH", "property": "lotId", "predicate": {} },
+        "direction": "in",
+        "properties": {}
+      }
+    }
+  }
+}

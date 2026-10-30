@@ -1,0 +1,35 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "PERSON"
+        ],
+        "select": {
+          "people": {
+            "$count": "*"
+          },
+          "withDied": {
+            "$count": "$record.died"
+          },
+          "diedCompleteness": {
+            "$divide": [
+              {
+                "$ref": "withDied"
+              },
+              {
+                "$ref": "people"
+              }
+            ]
+          }
+        },
+        "groupBy": [
+          "$record.nationality"
+        ]
+      }
+    }
+  }
+}

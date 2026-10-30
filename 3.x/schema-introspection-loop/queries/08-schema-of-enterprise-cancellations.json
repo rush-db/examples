@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "schema",
+      "query": {
+        "labels": ["CUSTOMER"],
+        "predicate": {
+          "segment": "ENTERPRISE",
+          "canceled_at": { "$gte": "2026-03-01" }
+        }
+      }
+    }
+  }
+}

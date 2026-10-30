@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "index",
+    "index": {
+      "kind": "create",
+      "definition": {
+        "name": "message_text",
+        "label": "MESSAGE",
+        "property": "text",
+        "kind": "text",
+        "consistency": "immediate"
+      }
+    }
+  }
+}

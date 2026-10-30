@@ -1,0 +1,32 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "PERSON"
+        ],
+        "predicate": {
+          "MESSAGE": {
+            "$relation": {
+              "type": "AUTHORED_BY",
+              "direction": "in"
+            },
+            "ISSUE": {
+              "$relation": {
+                "type": "MENTIONS",
+                "direction": "out"
+              },
+              "ticket_key": "ENG-142"
+            }
+          }
+        },
+        "order": {
+          "name": "asc"
+        }
+      }
+    }
+  }
+}

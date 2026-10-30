@@ -1,0 +1,6 @@
+[
+  { "symbol": "IL7R",     "associatedWith": ["multiple sclerosis"] },
+  { "symbol": "HLA-DRB1", "associatedWith": ["multiple sclerosis", "rheumatoid arthritis"] },
+  { "symbol": "TNF",      "associatedWith": ["rheumatoid arthritis"] },
+  { "symbol": "BRCA1",    "associatedWith": ["breast cancer"] }
+]

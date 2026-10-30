@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "properties",
+      "query": {
+        "labels": [
+          "PERSON"
+        ],
+        "predicate": {
+          "born": {
+            "$lt": "1920-01-01"
+          }
+        }
+      }
+    }
+  }
+}

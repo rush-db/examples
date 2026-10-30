@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "PERSON"
+        ],
+        "select": {
+          "n": {
+            "$count": "*"
+          }
+        }
+      }
+    }
+  }
+}

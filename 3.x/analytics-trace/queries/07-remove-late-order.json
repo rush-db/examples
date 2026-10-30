@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "deleteRecords",
+      "query": {
+        "labels": [
+          "ORDER"
+        ],
+        "predicate": {
+          "order_id": "o-9999"
+        }
+      }
+    }
+  }
+}

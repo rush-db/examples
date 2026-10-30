@@ -1,0 +1,6 @@
+[
+  {"user_email":"ana@northwind.example","event":"export_started","at":"2026-10-20T09:12:00Z"},
+  {"user_email":"ana@northwind.example","event":"sso_login_failed","at":"2026-10-21T08:02:00Z"},
+  {"user_email":"li@contoso.example","event":"dashboard_viewed","at":"2026-10-22T14:40:00Z"},
+  {"user_email":"visitor-7f3a@anon.example","event":"pricing_viewed","at":"2026-10-23T17:05:00Z"}
+]

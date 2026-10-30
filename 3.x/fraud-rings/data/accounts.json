@@ -1,0 +1,13 @@
+[
+  { "accountId": "acct-a", "holder": "Orion Trade Ltd (example)",    "country": "CY", "riskTier": "high",   "sendsTo": ["acct-b"] },
+  { "accountId": "acct-b", "holder": "Baltic Wave SIA (example)",    "country": "LV", "riskTier": "high",   "sendsTo": ["acct-c"] },
+  { "accountId": "acct-c", "holder": "Valletta Goods Ltd (example)", "country": "MT", "riskTier": "high",   "sendsTo": ["acct-a"] },
+  { "accountId": "acct-d", "holder": "J. Becker (example)",          "country": "DE", "riskTier": "low",    "sendsTo": ["acct-e", "acct-f"] },
+  { "accountId": "acct-e", "holder": "Rhein Bakery GmbH (example)",  "country": "DE", "riskTier": "low",    "sendsTo": ["acct-f"] },
+  { "accountId": "acct-f", "holder": "Mainz Flour AG (example)",     "country": "DE", "riskTier": "low",    "sendsTo": [] },
+  { "accountId": "acct-g", "holder": "Thames Imports (example)",     "country": "GB", "riskTier": "medium", "sendsTo": ["acct-h"] },
+  { "accountId": "acct-h", "holder": "Clyde Logistics (example)",    "country": "GB", "riskTier": "medium", "sendsTo": ["acct-i"] },
+  { "accountId": "acct-i", "holder": "Severn Holdings (example)",    "country": "GB", "riskTier": "medium", "sendsTo": ["acct-j"] },
+  { "accountId": "acct-j", "holder": "Avon Consulting (example)",    "country": "GB", "riskTier": "medium", "sendsTo": ["acct-g"] },
+  { "accountId": "acct-k", "holder": "Limassol Freight (example)",   "country": "CY", "riskTier": "high",   "sendsTo": ["acct-d"] }
+]

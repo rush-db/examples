@@ -1,0 +1,18 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "deleteRecords",
+      "query": {
+        "labels": [
+          "ANALYSIS",
+          "STEP"
+        ],
+        "predicate": {
+          "analysisId": "__ANALYSIS_ID__"
+        }
+      }
+    }
+  }
+}

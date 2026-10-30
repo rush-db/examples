@@ -1,0 +1,21 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "HAS_FACT",
+        "source": {
+          "label": "ENTITY",
+          "property": "entityId"
+        },
+        "target": {
+          "label": "MEMORY_FACT",
+          "property": "profileId"
+        },
+        "direction": "out"
+      }
+    }
+  }
+}

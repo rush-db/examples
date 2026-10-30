@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "HAS_DIAGNOSIS",
+        "source": { "label": "PATIENT", "property": "patientId", "predicate": {} },
+        "target": { "label": "DIAGNOSIS", "property": "patientId", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

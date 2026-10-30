@@ -1,0 +1,29 @@
+== Seeding example data
+  CONCEPT: 8 records
+  PATIENT: 6 records
+  DIAGNOSIS: 7 records
+  COMPOUND: 3 records
+  GENE: 4 records
+  DISEASE: 3 records
+  01-link-concept-is-a-concept: 6 relationships
+  02-link-patient-has-diagnosis: 7 relationships
+  03-link-diagnosis-coded-as-concept: 7 relationships
+  04-link-compound-binds-gene: 4 relationships
+  05-link-gene-associated-with-disease: 5 relationships
+
+== Drug-target-disease: compounds that bind a gene associated with multiple sclerosis
+  CMP-101  Compound X-101 (example)  binds=IL7R
+  CMP-102  Compound X-102 (example)  binds=HLA-DRB1,TNF
+
+== Ontology expansion: patients with a diagnosis 1-6 IS_A levels under Diabetes mellitus
+  PT-001  age=64  sex=F
+  PT-002  age=23  sex=M
+  PT-005  age=49  sex=M
+  PT-006  age=33  sex=F
+
+== Same cohort plus diagnoses coded at Diabetes mellitus itself ($or branch)
+  PT-001  age=64  sex=F
+  PT-002  age=23  sex=M
+  PT-004  age=71  sex=F
+  PT-005  age=49  sex=M
+  PT-006  age=33  sex=F

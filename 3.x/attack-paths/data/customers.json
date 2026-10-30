@@ -1,0 +1,7 @@
+[
+  { "code": "CUST-01", "name": "Northwind Retail (example)", "plan": "enterprise" },
+  { "code": "CUST-02", "name": "Contoso Energy (example)",   "plan": "growth" },
+  { "code": "CUST-03", "name": "Fabrikam Solar (example)",   "plan": "growth" },
+  { "code": "CUST-04", "name": "Tailspin Travel (example)",  "plan": "enterprise" },
+  { "code": "CUST-05", "name": "Litware Labs (example)",     "plan": "starter" }
+]

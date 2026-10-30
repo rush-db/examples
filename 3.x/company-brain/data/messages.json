@@ -1,0 +1,8 @@
+[
+  { "message_id": "m-1", "channel": "payments-incidents", "author_email": "tom@acme.example",
+    "text": "EUR refunds are bouncing again, see ENG-142", "ticket_key": "ENG-142", "sent_at": "2026-03-04T09:12:00Z" },
+  { "message_id": "m-2", "channel": "payments-incidents", "author_email": "priya@acme.example",
+    "text": "Looks like the March retry change. Rolling back the double retry.", "ticket_key": "ENG-142", "sent_at": "2026-03-04T10:02:00Z" },
+  { "message_id": "m-3", "channel": "payments", "author_email": "lena@acme.example",
+    "text": "Webhook timeouts on refunds are fixed", "ticket_key": "ENG-150", "sent_at": "2026-02-21T16:40:00Z" }
+]

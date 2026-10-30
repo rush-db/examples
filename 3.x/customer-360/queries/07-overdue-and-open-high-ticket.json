@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": ["CUSTOMER"],
+        "predicate": {
+          "SUBSCRIPTION": {
+            "$relation": { "type": "HAS_SUBSCRIPTION", "direction": "out" },
+            "INVOICE": { "$relation": { "type": "HAS_INVOICE", "direction": "out" }, "status": "overdue" }
+          },
+          "TICKET": { "priority": "high", "status": "open" }
+        }
+      }
+    }
+  }
+}

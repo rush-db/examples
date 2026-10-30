@@ -1,0 +1,25 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "AUTHORED_BY",
+        "source": {
+          "label": "MESSAGE",
+          "property": "author_email"
+        },
+        "target": {
+          "label": "PERSON",
+          "property": "email"
+        },
+        "direction": "out",
+        "properties": {
+          "source": "tutorial-import",
+          "method": "key-match"
+        }
+      }
+    }
+  }
+}

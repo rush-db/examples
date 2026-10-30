@@ -1,0 +1,30 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "PART"
+        ],
+        "predicate": {
+          "PART": {
+            "$relation": {
+              "type": "CONTAINS",
+              "direction": "in",
+              "hops": {
+                "min": 1,
+                "max": 6
+              }
+            },
+            "code": "FG-100"
+          }
+        },
+        "order": {
+          "code": "asc"
+        }
+      }
+    }
+  }
+}

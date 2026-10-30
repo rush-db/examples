@@ -1,0 +1,52 @@
+== Vector index for fact embeddings (re-declaring the same index is a no-op)
+{"name":"fact-embedding","dimensions":3,"similarity":"cosine"}
+== Seed: users, references, sessions (upserts on their ids)
+{"ENTITY":2}
+{"REFERENCE":3}
+{"SESSION":3}
+== Seed: episodes (upsert on eventId) and facts (upsert on factId, with vectors)
+{"EPISODE":4}
+{"MEMORY_FACT":4}
+== Link memories to their owner, session, source turn and cited documents
+ENTITY HAD_EPISODE EPISODE           edges: 4
+SESSION HAS_EPISODE EPISODE          edges: 4
+EPISODE CITED REFERENCE              edges: 4
+ENTITY HAS_FACT MEMORY_FACT          edges: 4
+MEMORY_FACT DERIVED_FROM EPISODE     edges: 4
+MEMORY_FACT SUPERSEDES MEMORY_FACT   edges: 1
+== Retry: the same episode written again merges into the existing record
+{"episodes":4}
+== Recall: the 5 most recent episodes of user-42
+  2026-10-14T13:41:00.000Z  Lena upgraded from Team to Business; agent explained proration.
+  2026-09-02T08:21:00.000Z  Lena asked for replies in German from now on.
+  2026-09-02T08:16:00.000Z  Lena asked what the Team plan includes; agent quoted pricing v3.
+== Recall: references cited in the most recent episode
+["kb-plan-upgrades","kb-pricing-v3"]
+== Scoped recall: user-42's active facts, each with the turn it came from
+{"text":"Lena is on the Business plan (upgraded 2026-10-14).","source":[{"sessionId":"s-1002","turnIndex":1,"summary":"Lena upgraded from Team to Business; agent explained proration."}]}
+{"text":"Lena prefers replies in German.","source":[{"sessionId":"s-1001","turnIndex":2,"summary":"Lena asked for replies in German from now on."}]}
+== Why do you think Lena is on Business? Fact -> source turn -> cited documents
+["Changing your plan","Pricing v3"]
+== Audit: the plan fact's history (supersession keeps both versions)
+{"factId":"fact-42-plan-1","active":false,"supersedesFactId":null,"text":"Lena is on the Team plan."}
+{"factId":"fact-42-plan-2","active":true,"supersedesFactId":"fact-42-plan-1","text":"Lena is on the Business plan (upgraded 2026-10-14)."}
+== Vector recall without a scope prefilter (do not do this): another user's memory and a superseded fact come back
+{"profileId":"user-77","text":"Omar's Business plan is billed to the EU entity."}
+{"profileId":"user-42","text":"Lena is on the Team plan."}
+{"profileId":"user-42","text":"Lena is on the Business plan (upgraded 2026-10-14)."}
+== Vector recall with the scope prefilter applied before ranking
+{"profileId":"user-42","text":"Lena is on the Business plan (upgraded 2026-10-14)."}
+{"profileId":"user-42","text":"Lena prefers replies in German."}
+== Delete user-77: every record carrying profileId user-77, then the user entity
+{"deleted":3}
+{"deleted":1}
+== After the delete: records left for user-77, and what the unscoped vector search returns
+{"user77_records":0}
+["user-42"]
+== After the delete: relationship shapes left (none touch user-77's records)
+  ENTITY -HAD_EPISODE-> EPISODE (3)
+  ENTITY -HAS_FACT-> MEMORY_FACT (3)
+  EPISODE -CITED-> REFERENCE (3)
+  MEMORY_FACT -DERIVED_FROM-> EPISODE (3)
+  MEMORY_FACT -SUPERSEDES-> MEMORY_FACT (1)
+  SESSION -HAS_EPISODE-> EPISODE (3)

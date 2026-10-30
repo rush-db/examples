@@ -1,0 +1,23 @@
+== Seed: district and loan (example data, upserts on their ids)
+{"district":3}
+{"loan":12}
+== Check each agent query against the catalog; run only the ones that pass
+== 01-agent-prague.sql
+   SELECT COUNT(*) AS loans FROM loan l JOIN district d ON l.district_id = d.district_id WHERE d.name = 'Prague' AND l.status IN ('C', 'D')
+   REJECTED, not run:
+   - district.name stores no 'Prague'; 'Prague' is stored in ['district.region']; stored: ['Brno - mesto', 'Hl.m. Praha', 'Ostrava - mesto']
+== 02-agent-retry-stored-spelling.sql
+   SELECT COUNT(*) AS loans FROM loan l JOIN district d ON l.district_id = d.district_id WHERE d.name = 'Hl.m. Praha' AND l.status IN ('C', 'D')
+   PASSED, ran: [{"loans": 3}]
+== 03-agent-near-miss.sql
+   SELECT SUM(l.amount) AS total FROM loan l JOIN district d ON l.district_id = d.district_id WHERE d.name = 'Brno-mesto'
+   REJECTED, not run:
+   - district.name stores no 'Brno-mesto'; close stored values: ['Brno - mesto']
+== 04-agent-date-layout.sql
+   SELECT COUNT(*) AS loans FROM loan WHERE granted_month = '2013-06'
+   REJECTED, not run:
+   - loan.granted_month stores no '2013-06'; close stored values: ['201306']
+== 05-agent-unknown-column.sql
+   SELECT COUNT(*) AS loans FROM loan WHERE state = 'C'
+   REJECTED, not run:
+   - loan has no column 'state'; did you mean 'status'?

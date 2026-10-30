@@ -1,0 +1,5 @@
+[
+  {"name":"Priya Shah","email":"priya@initech.example","source":"crm","COMPANY":{"name":"Initech"}},
+  {"name":"Marco Rossi","email":"marco@globex.example","source":"crm","COMPANY":{"name":"Globex"}},
+  {"name":"Tom Becker","email":"tom@hooli.example","source":"crm","COMPANY":{"name":"Hooli"}}
+]

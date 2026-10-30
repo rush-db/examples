@@ -1,0 +1,8 @@
+[
+  { "name": "g-helpdesk",      "memberOf": ["g-it-support"],   "adminTo": [] },
+  { "name": "g-it-support",    "memberOf": ["g-server-ops"],   "adminTo": ["WS-114"] },
+  { "name": "g-server-ops",    "memberOf": ["g-tier0-admins"], "adminTo": ["FS-01"] },
+  { "name": "g-tier0-admins",  "memberOf": [],                 "adminTo": ["DC-01"] },
+  { "name": "g-domain-admins", "memberOf": ["g-tier0-admins"], "adminTo": [] },
+  { "name": "g-sales",         "memberOf": [],                 "adminTo": ["WS-201"] }
+]

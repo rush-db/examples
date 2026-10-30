@@ -1,0 +1,27 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "APPLICATION"
+        ],
+        "predicate": {
+          "status": {
+            "$ne": "confirmed_fraud"
+          },
+          "PHONE": {
+            "APPLICATION": {
+              "status": "confirmed_fraud"
+            }
+          }
+        },
+        "order": {
+          "applicationId": "asc"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "ACCOUNT"
+        ],
+        "predicate": {
+          "country": {
+            "$in": [
+              "CY",
+              "LV",
+              "MT"
+            ]
+          },
+          "riskTier": "high",
+          "$cycle": {
+            "type": "TRANSFERRED_TO",
+            "direction": "out",
+            "hops": {
+              "min": 2,
+              "max": 6
+            }
+          }
+        },
+        "order": {
+          "accountId": "asc"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+[
+  { "code": "C-DM",      "name": "Diabetes mellitus",                       "isA": [] },
+  { "code": "C-T1DM",    "name": "Type 1 diabetes mellitus",                "isA": ["C-DM"] },
+  { "code": "C-T2DM",    "name": "Type 2 diabetes mellitus",                "isA": ["C-DM"] },
+  { "code": "C-T2DM-N",  "name": "Type 2 diabetes mellitus with nephropathy", "isA": ["C-T2DM"] },
+  { "code": "C-T2DM-NR", "name": "Type 2 diabetic nephropathy, stage 3 (example)", "isA": ["C-T2DM-N"] },
+  { "code": "C-GDM",     "name": "Gestational diabetes mellitus",           "isA": ["C-DM"] },
+  { "code": "C-HTN",     "name": "Hypertension",                            "isA": [] },
+  { "code": "C-EHTN",    "name": "Essential hypertension",                  "isA": ["C-HTN"] }
+]

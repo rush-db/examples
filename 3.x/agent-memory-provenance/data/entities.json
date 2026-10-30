@@ -1,0 +1,4 @@
+[
+  { "entityId": "user-42", "type": "user", "name": "Lena Müller" },
+  { "entityId": "user-77", "type": "user", "name": "Omar Haddad" }
+]

@@ -1,0 +1,25 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "ISSUE"
+        ],
+        "predicate": {
+          "status": "open",
+          "priority": "high",
+          "MESSAGE": {
+            "$relation": {
+              "type": "MENTIONS",
+              "direction": "in"
+            },
+            "channel": "payments-incidents"
+          }
+        }
+      }
+    }
+  }
+}

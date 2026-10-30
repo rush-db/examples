@@ -1,0 +1,83 @@
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Seed: 8 people with nested employers and countries (mergeBy name dedupes every level)
+{"kind":"ingested","relationships":11}
+
+== Seed: turn the lab's parent field into a PART_OF edge
+{"kind":"linked","created":1,"skippedExisting":0}
+
+== Schema: labels and relationship shapes
+label COUNTRY: 3 records
+label ORGANIZATION: 6 records
+label PERSON: 8 records
+ORGANIZATION -LOCATED_IN-> COUNTRY: 5
+ORGANIZATION -PART_OF-> ORGANIZATION: 1
+PERSON -WORKS_AT-> ORGANIZATION: 6
+
+### Part 1: predicate completeness (article: predicate-completeness-knowledge-graph)
+
+== Catalog read: records carrying each PERSON property (no records scanned)
+born (datetime): 7
+died (datetime): 4
+name (string): 8
+nationality (string): 7
+occupation (string): 8
+
+== Denominator: PERSON records
+{"n":8}
+
+== SQL: completeness of born over the person table
+{"total":8,"with_born":7,"completeness":0.875}
+
+== Relationship predicate: people with at least one WORKS_AT edge (subjects, not edges)
+{"n":6}
+
+### Part 2: conditional completeness (article: conditional-completeness-knowledge-graph)
+
+== Filtered schema: PERSON properties among people born before 1920
+born (datetime): 4  [1815-12-10 .. 1918-08-26]
+died (datetime): 3  [1852-11-27 .. 1992-01-01]
+name (string): 4  [Ada Lovelace .. Katherine Johnson]
+nationality (string): 4  [GB .. US]
+occupation (string): 4  [computer scientist .. mathematician]
+
+== Who fails it: born before 1920 and no died value
+{"total":1,"names":["Katherine Johnson"]}
+
+== Every segment at once: died completeness per nationality (__missing__ = no nationality)
+{"nationality":"GB","people":3,"withDied":2,"diedCompleteness":0.667}
+{"nationality":"US","people":4,"withDied":1,"diedCompleteness":0.25}
+{"nationality":"__missing__","people":1,"withDied":1,"diedCompleteness":1}
+
+== SQL: born completeness per occupation
+computer scientist | 5 | 4 | 0.8
+mathematician | 3 | 3 | 1.0
+
+== Condition over related records: PERSON properties among people whose employer is in the US
+born: 2
+died: 1
+name: 3
+nationality: 3
+occupation: 3
+
+### Part 3: hierarchical predicates (article: hierarchical-predicates-graph-queries)
+
+== Super-predicate as a union: WORKS_AT or CONSULTS_FOR (no CONSULTS_FOR edges here)
+{"total":6,"names":["Alan Turing","Grace Hopper","Katherine Johnson","Margaret Hamilton","Barbara Liskov","Tim Berners-Lee"]}
+
+== Fixed path: people whose employer is LOCATED_IN the US
+{"total":3,"names":["Grace Hopper","Katherine Johnson","Barbara Liskov"]}
+
+== Variable path: employer, or an ancestor within 1-3 PART_OF hops, in the US
+{"total":4,"names":["Grace Hopper","Katherine Johnson","Margaret Hamilton","Barbara Liskov"]}
+
+== SQL anti-join: people whose employer has no LOCATED_IN edge
+Margaret Hamilton | MIT Instrumentation Laboratory
+
+== Path completeness: employer has a country, one hop
+{"n":5}
+
+== Path completeness: employer or an ancestor (PART_OF up to 3) has a country
+{"n":6}

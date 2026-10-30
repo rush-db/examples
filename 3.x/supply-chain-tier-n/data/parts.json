@@ -1,0 +1,13 @@
+[
+  { "code": "FG-100", "name": "Home battery unit", "kind": "finished-good", "contains": ["A-110", "A-120"] },
+  { "code": "FG-200", "name": "Wall charger",      "kind": "finished-good", "contains": ["A-210"] },
+  { "code": "FG-300", "name": "Portable lamp",     "kind": "finished-good", "contains": ["A-120", "P-131"] },
+  { "code": "A-110",  "name": "Battery module",    "kind": "assembly",      "contains": ["P-118", "P-119"] },
+  { "code": "A-120",  "name": "Enclosure",         "kind": "assembly",      "contains": ["P-121"] },
+  { "code": "A-210",  "name": "Charger board",     "kind": "assembly",      "contains": ["A-211", "P-119"] },
+  { "code": "A-211",  "name": "Power stage",       "kind": "assembly",      "contains": ["P-118"] },
+  { "code": "P-118",  "name": "Cell connector",    "kind": "part",          "contains": [] },
+  { "code": "P-119",  "name": "Thermistor",        "kind": "part",          "contains": [] },
+  { "code": "P-121",  "name": "Gasket",            "kind": "part",          "contains": [] },
+  { "code": "P-131",  "name": "LED strip",         "kind": "part",          "contains": [] }
+]

@@ -1,0 +1,32 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "CUSTOMER"
+        ],
+        "predicate": {
+          "SERVICE": {
+            "$relation": {
+              "type": "SERVES",
+              "direction": "in"
+            },
+            "INCIDENT": {
+              "$relation": {
+                "type": "AFFECTS",
+                "direction": "in"
+              },
+              "$id": "__INCIDENT_ID__"
+            }
+          }
+        },
+        "order": {
+          "code": "asc"
+        }
+      }
+    }
+  }
+}

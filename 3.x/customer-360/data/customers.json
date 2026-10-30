@@ -1,0 +1,14 @@
+[
+  {"email":"ana@northwind.example","name":"Ana Ruiz","plan":"pro","region":"EU","phone":"+34 600 111 222",
+   "SUBSCRIPTION":{"status":"active","mrr":490,
+     "INVOICE":[{"month":"2026-08","amount":490,"status":"paid"},
+                {"month":"2026-09","amount":490,"status":"overdue"}]},
+   "TICKET":[{"subject":"SSO login loop","priority":"high","status":"open"}]},
+  {"email":"li@contoso.example","name":"Li Wei","plan":"enterprise","region":"APAC",
+   "SUBSCRIPTION":{"status":"active","mrr":2400,
+     "INVOICE":[{"month":"2026-09","amount":2400,"status":"paid"}]},
+   "TICKET":[{"subject":"Export to CSV times out","priority":"normal","status":"closed"}]},
+  {"email":"sam@fabrikam.example","name":"Sam Okafor","plan":"pro","region":"EU","phone":"+44 7700 900123",
+   "SUBSCRIPTION":{"status":"cancelled","mrr":0}},
+  {"email":"jo@tailspin.example","name":"Jo Park","plan":"free","region":"NA"}
+]

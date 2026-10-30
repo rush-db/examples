@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "ADMIN_TO",
+        "source": { "label": "GROUP", "property": "adminTo", "predicate": {} },
+        "target": { "label": "COMPUTER", "property": "hostname", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": [
+          "REFERENCE"
+        ],
+        "predicate": {
+          "EPISODE": {
+            "$relation": {
+              "type": "CITED",
+              "direction": "in"
+            },
+            "MEMORY_FACT": {
+              "$relation": {
+                "type": "DERIVED_FROM",
+                "direction": "in"
+              },
+              "factId": "fact-42-plan-2"
+            }
+          }
+        }
+      }
+    }
+  }
+}

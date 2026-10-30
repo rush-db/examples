@@ -1,0 +1,18 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": ["ORDER"],
+        "predicate": {
+          "status": { "$in": ["refunded_full", "refunded_partial"] },
+          "CUSTOMER": { "country": "DE", "segment": "ENTERPRISE" },
+          "refundedAt": { "$gte": "2026-07-01", "$lt": "2026-10-01" }
+        },
+        "order": { "refundedAt": "asc" }
+      }
+    }
+  }
+}

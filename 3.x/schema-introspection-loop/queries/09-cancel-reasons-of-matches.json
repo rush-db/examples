@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "propertyValues",
+      "property": "cancel_reason",
+      "mode": "topK",
+      "limit": 10,
+      "query": {
+        "labels": ["CUSTOMER"],
+        "predicate": {
+          "segment": "ENTERPRISE",
+          "canceled_at": { "$gte": "2026-03-01" }
+        }
+      }
+    }
+  }
+}

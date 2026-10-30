@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "schema",
+      "query": {
+        "labels": [
+          "PERSON",
+          "DOC",
+          "SECTION",
+          "ISSUE",
+          "COMMENT",
+          "MESSAGE"
+        ]
+      }
+    }
+  }
+}

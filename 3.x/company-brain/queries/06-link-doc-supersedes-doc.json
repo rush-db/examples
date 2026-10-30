@@ -1,0 +1,25 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "SUPERSEDES",
+        "source": {
+          "label": "DOC",
+          "property": "supersedes_doc_id"
+        },
+        "target": {
+          "label": "DOC",
+          "property": "doc_id"
+        },
+        "direction": "out",
+        "properties": {
+          "source": "tutorial-import",
+          "method": "key-match"
+        }
+      }
+    }
+  }
+}

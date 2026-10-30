@@ -1,0 +1,19 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "deleteRecords",
+      "query": {
+        "labels": [
+          "SESSION",
+          "EPISODE",
+          "MEMORY_FACT"
+        ],
+        "predicate": {
+          "profileId": "user-77"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+[
+  { "sku": "PROD-001", "name": "Battery pack 5 kWh" },
+  { "sku": "PROD-002", "name": "Battery pack 10 kWh" },
+  { "sku": "PROD-003", "name": "Spare housing kit" }
+]

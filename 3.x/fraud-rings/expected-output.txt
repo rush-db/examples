@@ -1,0 +1,46 @@
+== Seeding example data
+  ACCOUNT: 11 records
+  APPLICATION: 7 records
+  PHONE: 4 records
+  DEVICE: 6 records
+  01-link-account-transferred-to-account: 11 relationships
+  02-link-application-uses-phone: 7 relationships
+  03-link-application-uses-device: 7 relationships
+
+== Circular money flow: high-risk CY/LV/MT accounts on a directed TRANSFERRED_TO ring of 2-6 hops
+  acct-a  Orion Trade Ltd (example)  CY
+  acct-b  Baltic Wave SIA (example)  LV
+  acct-c  Valletta Goods Ltd (example)  MT
+
+== Circular money flow, unscoped: every account on a directed ring of 2-6 hops
+  acct-a  CY  risk=high
+  acct-b  LV  risk=high
+  acct-c  MT  risk=high
+  acct-g  GB  risk=medium
+  acct-h  GB  risk=medium
+  acct-i  GB  risk=medium
+  acct-j  GB  risk=medium
+
+== Same, ignoring direction: acct-d, acct-e, acct-f join (d pays e and f, e pays f; no money comes back)
+  acct-a  CY  risk=high
+  acct-b  LV  risk=high
+  acct-c  MT  risk=high
+  acct-d  DE  risk=low
+  acct-e  DE  risk=low
+  acct-f  DE  risk=low
+  acct-g  GB  risk=medium
+  acct-h  GB  risk=medium
+  acct-i  GB  risk=medium
+  acct-j  GB  risk=medium
+
+== Shared identifiers: applications that share a phone with a confirmed-fraud application
+  APP-002  Lee Okafor (example)  approved  +1-555-0101
+  APP-006  Mia Chen (example)  under_review  +1-555-0177
+
+== Shared identifiers: phone or device shared with a confirmed-fraud application
+  APP-002  Lee Okafor (example)  approved
+  APP-003  Sam Ortega (example)  pending
+  APP-006  Mia Chen (example)  under_review
+
+== Before the links exist: joinPairs count of application pairs with the same phone value
+  pairs=6  (ordered: each matching pair counts once in each direction)

@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "USES_DEVICE",
+        "source": { "label": "APPLICATION", "property": "deviceId", "predicate": {} },
+        "target": { "label": "DEVICE", "property": "deviceId", "predicate": {} },
+        "direction": "out",
+        "properties": {}
+      }
+    }
+  }
+}

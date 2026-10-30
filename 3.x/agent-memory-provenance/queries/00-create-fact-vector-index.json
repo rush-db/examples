@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "index",
+    "index": {
+      "kind": "createVector",
+      "definition": {
+        "name": "fact-embedding",
+        "label": "MEMORY_FACT",
+        "property": "embedding",
+        "dimensions": 3,
+        "similarity": "cosine"
+      }
+    }
+  }
+}

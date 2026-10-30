@@ -1,0 +1,25 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "policy",
+    "policy": {
+      "kind": "put",
+      "enforced": true,
+      "policy": {
+        "allowedLabels": [
+          "PERSON",
+          "ISSUE",
+          "MESSAGE"
+        ],
+        "deniedRelTypes": [],
+        "visibleProperties": {
+          "PERSON": [
+            "name",
+            "team"
+          ]
+        },
+        "maxResults": 100
+      }
+    }
+  }
+}
