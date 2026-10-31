@@ -1,0 +1,6 @@
+[
+  {"product_no": 10, "name": "Espresso grinder", "price": 189.0},
+  {"product_no": 11, "name": "Pour-over kettle", "price": 64.5},
+  {"product_no": 12, "name": "Paper filters", "price": 6.0},
+  {"product_no": 13, "name": "Scale", "price": 32.0}
+]

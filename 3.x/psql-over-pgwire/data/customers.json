@@ -1,0 +1,17 @@
+[
+  {"name": "Ada Brandt", "city": "Berlin",
+   "ORDER": [
+     {"order_no": "A-100", "total": 195.0, "PRODUCT": [{"sku": "GR-1", "name": "Espresso grinder", "price": 189.0}, {"sku": "PF-3", "name": "Paper filters", "price": 6.0}]},
+     {"order_no": "A-102", "total": 32.0, "PRODUCT": [{"sku": "SC-4", "name": "Scale", "price": 32.0}]}
+   ]},
+  {"name": "Bo Lindqvist", "city": "Stockholm",
+   "ORDER": [
+     {"order_no": "B-101", "total": 102.5, "PRODUCT": [{"sku": "KT-2", "name": "Pour-over kettle", "price": 64.5}, {"sku": "PF-3", "name": "Paper filters", "price": 6.0}, {"sku": "SC-4", "name": "Scale", "price": 32.0}]},
+     {"order_no": "B-104", "total": 189.0, "PRODUCT": [{"sku": "GR-1", "name": "Espresso grinder", "price": 189.0}]}
+   ]},
+  {"name": "Chen Wei", "city": "Lisbon",
+   "ORDER": [
+     {"order_no": "C-103", "total": 6.0, "PRODUCT": [{"sku": "PF-3", "name": "Paper filters", "price": 6.0}]}
+   ]},
+  {"name": "Dara Okafor", "city": "Amsterdam"}
+]

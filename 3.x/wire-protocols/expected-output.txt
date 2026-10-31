@@ -1,0 +1,15 @@
+== Seed (HTTP): reset SUPPLIER, ingest 7 suppliers as nested JSON
+{'kind': 'ingested', 'count': 7, 'relationships': 5}
+== One question, four transports
+HTTP   sql    [{'n': 2}]
+gRPC   sql    [{'n': 2}]
+pgwire sql    [(2,)]
+Bolt   cypher [{'n': 2}]
+HTTP   cypher [{'n': 2}]
+== Round trips: 3000 sequential calls each after 300 warm-up, one connection, loopback
+HTTP   sql     p50    775 us   p99   1111 us
+gRPC   sql     p50    755 us   p99   1276 us
+HTTP   cypher  p50    482 us   p99    672 us
+gRPC   cypher  p50    482 us   p99    696 us
+pgwire sql     p50    610 us   p99    924 us
+Bolt   cypher  p50    524 us   p99    848 us

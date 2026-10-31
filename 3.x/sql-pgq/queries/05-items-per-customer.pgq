@@ -1,0 +1,7 @@
+SELECT customer, COUNT(*) AS items
+FROM GRAPH_TABLE (
+  MATCH (c:customers)-[:customer_orders]->(o:orders)-[:order_items]->(p:products)
+  COLUMNS (c.name AS customer, p.name AS product)
+) AS g
+GROUP BY customer
+ORDER BY items DESC

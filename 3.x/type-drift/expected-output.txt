@@ -1,0 +1,84 @@
+
+== Reset: delete PRODUCT records left by an earlier run
+done
+
+== Seed: 8 products from extractor v1 (price is a number, in_stock a boolean)
+{"kind":"ingested","count":8}
+
+== Seed: 4 products from extractor v2 (price is text, in_stock is "yes"/"no"); nothing is rejected
+{"kind":"ingested","count":4}
+
+== The catalog: one entry per stored type, with siblingTypes naming the other one
+  in_stock (boolean): 8 records, siblingTypes utf8, sample true | false
+  in_stock (string): 4 records, siblingTypes boolean, sample yes | no
+  price (number): 8 records, siblingTypes utf8, sample 89 | 39 | 45 | 179 | 19 | 64 | 24.5 | 12.99
+  price (string): 4 records, siblingTypes float64,int64, sample 249.00 | $59.99 | 189 | 9.50
+  gate: DRIFT in in_stock, price
+
+== Filter price > 30: the numeric filter skips the text prices (gold: 8 products cost more than 30)
+{"total":5,"skus":["HS-330","KB-101","SP-250","LT-115","HD-310"]}
+  gold count from the raw files: 8
+
+== Aggregates: $sum and $max use the numeric values only; $count of price counts all 12
+{"products":12,"withPrice":12,"priceSum":472.49,"maxPrice":179.0}
+
+== propertyValues range: numbers only (the 249.00 monitor is not the max)
+{"min":12.99,"max":179,"distinctCount":12}
+
+== Sort by price, descending: numbers first, then text
+[["HS-330",179],["KB-101",89],["SP-250",64],["LT-115",45],["HD-310",39],["MS-204",24.5],["PD-140",19],["CB-220",12.99],["MP-702","9.50"],["MN-412","249.00"],["DK-605","189"],["CM-518","$59.99"]]
+
+== $type string finds the drifted records
+{"total":4,"skus":["MN-412","CM-518","DK-605","MP-702"]}
+
+== $type number matches all 12: for scalar names it reads the catalog's type for the property
+{"total":12}
+
+== SQL: a column with numbers and text reads as text
+{"sku":"CB-220","price":"12.99","in_stock":"true"}
+{"sku":"CM-518","price":"$59.99","in_stock":"no"}
+{"sku":"DK-605","price":"189","in_stock":"yes"}
+{"sku":"HD-310","price":"39","in_stock":"false"}
+{"sku":"HS-330","price":"179","in_stock":"false"}
+{"sku":"KB-101","price":"89","in_stock":"true"}
+{"sku":"LT-115","price":"45","in_stock":"true"}
+{"sku":"MN-412","price":"249.00","in_stock":"yes"}
+{"sku":"MP-702","price":"9.50","in_stock":"yes"}
+{"sku":"MS-204","price":"24.5","in_stock":"true"}
+{"sku":"PD-140","price":"19","in_stock":"true"}
+{"sku":"SP-250","price":"64","in_stock":"true"}
+
+== SQL: price > 30 against the text column fails
+{"error":{"code":"execution_failed","message":"internal execution error","retryable":false}}
+
+== SQL: price > '30' runs, but compares text ("249.00" < "30")
+["HD-310","KB-101","LT-115","MP-702","SP-250"]
+
+== SQL: try_cast reads the numbers; "$59.99" becomes NULL
+{"sku":"CM-518","price":null}
+{"sku":"DK-605","price":189.0}
+{"sku":"HD-310","price":39.0}
+{"sku":"HS-330","price":179.0}
+{"sku":"KB-101","price":89.0}
+{"sku":"LT-115","price":45.0}
+{"sku":"MN-412","price":249.0}
+{"sku":"SP-250","price":64.0}
+
+== Repair 1: re-ingest v2 with convertNumericValuesToNumbers, upserting by sku
+{"kind":"ingested","count":4}
+  in_stock (boolean): 8 records, siblingTypes utf8, sample true | false
+  in_stock (string): 4 records, siblingTypes boolean, sample yes | no
+  price (number): 11 records, siblingTypes utf8, sample 89 | 39 | 45 | 179 | 19 | 64 | 189 | 24.5 | 12.99 | 249.0
+  price (string): 1 records, siblingTypes float64,int64, sample $59.99
+
+== What is still text: values the converter cannot parse
+[{"sku":"CM-518","price":"$59.99"}]
+
+== Repair 2: clean the leftovers in the pipeline (strip "$", map yes/no to booleans) and upsert
+{"kind":"ingested","count":4}
+  in_stock (boolean): 12 records, sample true | false
+  price (number): 12 records, sample 89 | 39 | 45 | 179 | 19 | 64 | 189 | 24.5 | 12.99 | 249.0
+  gate: no property is split across types
+
+== Filter price > 30 again
+{"total":8,"skus":["MN-412","DK-605","HS-330","KB-101","SP-250","CM-518","LT-115","HD-310"]}

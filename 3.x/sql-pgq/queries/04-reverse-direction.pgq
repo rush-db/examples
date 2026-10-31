@@ -1,0 +1,6 @@
+SELECT order_id, customer_name
+FROM GRAPH_TABLE (
+  MATCH (o:orders)<-[:customer_orders]-(c:customers)
+  COLUMNS (o.order_id AS order_id, c.name AS customer_name)
+) AS g
+ORDER BY order_id

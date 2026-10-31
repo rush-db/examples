@@ -1,0 +1,4 @@
+{"protocolVersion":1,"operation":{"kind":"mutate","mutation":{"kind":"linkRecords","command":{
+  "relationType":"order_items","direction":"out","properties":{},
+  "source":{"label":"orders","property":"product_nos","predicate":{}},
+  "target":{"label":"products","property":"product_no","predicate":{}}}}}}

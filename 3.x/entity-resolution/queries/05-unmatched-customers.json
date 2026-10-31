@@ -1,0 +1,15 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "records",
+      "query": {
+        "labels": ["CUSTOMER"],
+        "predicate": { "$not": { "ACCOUNT": {} } },
+        "select": { "company": "$record.company", "tax_id": "$record.tax_id", "email": "$record.email" },
+        "order": { "company": "asc" }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{"labels": ["CUSTOMER"], "predicate": {"ORDER": {"$alias": "$order"}},
+ "select": {"orders": {"$count": "$order"}, "spent": {"$sum": "$order.total"}},
+ "groupBy": ["$record.name"], "order": {"spent": "desc"}}

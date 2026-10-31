@@ -1,0 +1,80 @@
+
+== Reset: delete ARTICLE records and the two indexes left by an earlier run
+done
+
+== Indexes: a 384-d cosine vector index and an immediate BM25 text index on ARTICLE.text
+{"kind":"vectorIndex","name":"kb-embedding","state":"awaiting_vectors"}
+{"kind":"index","name":"kb-text","state":"building"}
+
+== Seed: 20 articles, each with its embedding inline ($vectors)
+{"kind":"ingested","count":20}
+
+### Query q2: "rotating credentials"
+
+== Text leg alone: BM25 finds only the two articles that contain "credentials" (no stemming: "rotating" is not "rotate")
+{"textSearch":{"matches":2,"pending":0}}
+  self-hosted-secrets     score 2.055124  vector -  bm25 2.0551  lexical:0
+  revoke-leaked-token     score 1.954419  vector -  bm25 1.9544  lexical:1
+
+== Vector leg alone: cosine similarity ranks rotate-api-key first
+  rotate-api-key          score 0.699247  vector 0.6992  bm25 -  vector:0
+  self-hosted-secrets     score 0.686601  vector 0.6866  bm25 -  vector:1
+  webhook-signatures      score 0.639035  vector 0.6390  bm25 -  vector:2
+  revoke-leaked-token     score 0.621902  vector 0.6219  bm25 -  vector:3
+  audit-log               score 0.578271  vector 0.5782  bm25 -  vector:4
+  self-hosted-env-key     score 0.574666  vector 0.5746  bm25 -  vector:5
+
+== RRF (k = 60): records found by both legs win; rotate-api-key, found by one leg, drops to third
+  self-hosted-secrets     score 0.032522  vector 0.6866  bm25 2.0551  vector:1 lexical:0
+  revoke-leaked-token     score 0.031754  vector 0.6219  bm25 1.9544  vector:3 lexical:1
+  rotate-api-key          score 0.016393  vector 0.6992  bm25 -  vector:0
+  webhook-signatures      score 0.015873  vector 0.6390  bm25 -  vector:2
+  audit-log               score 0.015384  vector 0.5782  bm25 -  vector:4
+  self-hosted-env-key     score 0.015151  vector 0.5746  bm25 -  vector:5
+
+### Query q3: "change the api key without downtime"
+
+== RRF: self-hosted-env-key first (vector rank 0, BM25 rank 1)
+  self-hosted-env-key     score 0.032522  vector 0.7775  bm25 5.5427  vector:0 lexical:1
+  self-hosted-secrets     score 0.032266  vector 0.7165  bm25 7.2346  vector:2 lexical:0
+  rotate-api-key          score 0.031754  vector 0.7762  bm25 3.6798  vector:1 lexical:3
+  api-key-scopes          score 0.031257  vector 0.6680  bm25 3.7692  vector:4 lexical:2
+  python-client           score 0.031009  vector 0.6684  bm25 3.3857  vector:3 lexical:4
+  rate-limits             score 0.030303  vector 0.6474  bm25 3.0427  vector:5 lexical:5
+
+== RRF by hand: 1/(60 + rank + 1) per leg, summed
+  self-hosted-env-key: vector:0 + lexical:1 = 0.03252247488101534   engine: 0.03252247488101534
+  self-hosted-secrets: vector:2 + lexical:0 = 0.032266458495966696   engine: 0.032266458495966696
+  rotate-api-key: vector:1 + lexical:3 = 0.031754032258064516   engine: 0.031754032258064516
+
+== DBSF: the order of the top two flips; self-hosted-secrets has the clearest BM25 lead
+  self-hosted-secrets     score 1.622035  vector 0.7165  bm25 7.2346  vector:2 lexical:0
+  self-hosted-env-key     score 1.595482  vector 0.7775  bm25 5.5427  vector:0 lexical:1
+  rotate-api-key          score 1.443652  vector 0.7762  bm25 3.6798  vector:1 lexical:3
+  api-key-scopes          score 1.256906  vector 0.6680  bm25 3.7692  vector:4 lexical:2
+  python-client           score 1.226673  vector 0.6684  bm25 3.3857  vector:3 lexical:4
+  rate-limits             score 1.161469  vector 0.6474  bm25 3.0427  vector:5 lexical:5
+
+== DBSF by hand: each leg's scores mapped by its own mean +/- 3 standard deviations to [0, 1], then summed
+  vector leg: 20 scores, mean 0.5917, sd 0.0929
+  text leg:   15 scores, mean 2.2747, sd 2.0749
+  self-hosted-secrets: 1.6220359849914374   engine: 1.6220359849914374
+  self-hosted-env-key: 1.5954829966200523   engine: 1.5954829966200523
+  rotate-api-key: 1.443652509417455   engine: 1.443652509417455
+
+== A filter runs before both legs: product = self-hosted (BM25 matches drop from 15 to 5)
+{"textSearch":{"matches":5,"pending":0}}
+  self-hosted-env-key     score 0.032522  vector 0.7775  bm25 5.5427  vector:0 lexical:1
+  self-hosted-secrets     score 0.032522  vector 0.7165  bm25 7.2346  vector:1 lexical:0
+  self-hosted-tls         score 0.031746  vector 0.6416  bm25 1.4844  vector:2 lexical:2
+  self-hosted-upgrade     score 0.03125  vector 0.5894  bm25 0.4772  vector:3 lexical:3
+  self-hosted-backups     score 0.030769  vector 0.5299  bm25 0.2983  vector:4 lexical:4
+
+== The fixed analyzer: what the BM25 leg matches for each query string
+  rotate       2 matches: webhook-signatures, rotate-api-key
+  rotation     2 matches: audit-log, rotate-api-key
+  rotating     0 matches: 
+  rotat*       0 matches: 
+  credentials  2 matches: self-hosted-secrets, revoke-leaked-token
+  credential   0 matches: 
+  the          15 matches: self-hosted-env-key, audit-log, python-client, self-hosted-upgrade, ...

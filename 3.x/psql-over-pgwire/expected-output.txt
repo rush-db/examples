@@ -1,0 +1,95 @@
+== Reset and seed over HTTP
+{"kind":"mutation"}
+{"kind":"ingested","count":17,"relationships":13}
+
+== 1. Who am I talking to?
+      version       
+--------------------
+ RushDB pgwire 0.40
+(1 row)
+
+ server_version 
+----------------
+ 16.0-rushdb
+(1 row)
+
+== 2. Tables come from labels and relationship types
+ table_schema | table_name 
+--------------+------------
+ public       | CUSTOMER
+ public       | ORDER
+ public       | PRODUCT
+ rushdb_edges | contains
+ rushdb_edges | placed
+(5 rows)
+
+ column_name | data_type 
+-------------+-----------
+ name        | Utf8
+ price       | Float64
+ sku         | Utf8
+ __id        | Utf8
+(4 rows)
+
+== 3. Plain SQL over a label
+       name       | price 
+------------------+-------
+ Espresso grinder | 189.0
+ Pour-over kettle |  64.5
+ Scale            |  32.0
+ Paper filters    |   6.0
+(4 rows)
+
+== 4. Traverse by joining relationship tables
+   customer   | orders | spent 
+--------------+--------+-------
+ Bo Lindqvist |      2 | 291.5
+ Ada Brandt   |      2 | 227.0
+ Chen Wei     |      1 |   6.0
+(3 rows)
+
+== 5. Extended protocol: a bound parameter
+       name       
+------------------
+ Espresso grinder
+ Pour-over kettle
+(2 rows)
+
+== 6. Session guards
+SET
+ statement_timeout 
+-------------------
+ 5000ms
+(1 row)
+
+SET
+psql:queries/session-1.sql:32: ERROR:  unindexed walk refused: the filter on `city` would check 4 records of [CUSTOMER], over the unindexed-walk limit (0); declare an ordered index on the property
+CREATE INDEX
+== 6b. Same filter once the index is ready
+SET
+    name    
+------------
+ Ada Brandt
+(1 row)
+
+RESET
+== 7. Single-statement writes commit on their own
+UPDATE 1
+ name  | price 
+-------+-------
+ Scale |  30.0
+(1 row)
+
+UPDATE 1
+== 8. What does not work, and the SQLSTATE you get
+-- BEGIN (explicit transaction)
+psql:queries/session-2.sql:15: ERROR:  0A000
+-- SET application_name (what Metabase sends on connect)
+psql:queries/session-2.sql:17: ERROR:  42601
+-- the describe-tables meta-command (reads pg_catalog)
+psql:queries/session-2.sql:19: ERROR:  42P01
+-- GRAPH_TABLE over pgwire
+psql:queries/session-2.sql:21: ERROR:  42601
+-- COPY
+psql:queries/session-2.sql:23: ERROR:  42601
+DROP INDEX

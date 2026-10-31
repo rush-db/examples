@@ -1,0 +1,2 @@
+{ "kind": "put", "enforced": true,
+  "policy": { "allowedLabels": ["Ticket"], "visibleProperties": { "Ticket": ["subject", "status"] } } }

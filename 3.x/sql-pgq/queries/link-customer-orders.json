@@ -1,0 +1,4 @@
+{"protocolVersion":1,"operation":{"kind":"mutate","mutation":{"kind":"linkRecords","command":{
+  "relationType":"customer_orders","direction":"out","properties":{},
+  "source":{"label":"customers","property":"customer_id","predicate":{}},
+  "target":{"label":"orders","property":"customer_id","predicate":{}}}}}}

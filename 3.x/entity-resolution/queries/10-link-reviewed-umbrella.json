@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "SAME_AS",
+        "source": { "label": "ACCOUNT", "predicate": { "vat_id": "DE299876543" } },
+        "target": { "label": "CUSTOMER", "predicate": { "tax_id": "DE 299 876 543" } },
+        "allowCartesian": true,
+        "direction": "out",
+        "properties": { "rule": "reviewed: tax id with spaces" }
+      }
+    }
+  }
+}

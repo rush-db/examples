@@ -1,0 +1,8 @@
+SELECT also_bought_by, product
+FROM GRAPH_TABLE (
+  MATCH (a:customers)-[:customer_orders]->(o1:orders)-[:order_items]->(p:products)
+        <-[:order_items]-(o2:orders)<-[:customer_orders]-(b:customers)
+  WHERE a.name = 'Chen Wei' AND b.name <> 'Chen Wei'
+  COLUMNS (b.name AS also_bought_by, p.name AS product)
+) AS g
+ORDER BY also_bought_by

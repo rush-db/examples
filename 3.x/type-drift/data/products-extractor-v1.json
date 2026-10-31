@@ -1,0 +1,10 @@
+[
+ {"sku":"KB-101","name":"Mechanical keyboard","price":89,"in_stock":true,"extractor":"v1"},
+ {"sku":"MS-204","name":"Wireless mouse","price":24.5,"in_stock":true,"extractor":"v1"},
+ {"sku":"HD-310","name":"USB-C hub","price":39,"in_stock":false,"extractor":"v1"},
+ {"sku":"LT-115","name":"Laptop stand","price":45,"in_stock":true,"extractor":"v1"},
+ {"sku":"CB-220","name":"Braided USB-C cable","price":12.99,"in_stock":true,"extractor":"v1"},
+ {"sku":"HS-330","name":"Noise-cancelling headset","price":179,"in_stock":false,"extractor":"v1"},
+ {"sku":"PD-140","name":"Desk pad","price":19,"in_stock":true,"extractor":"v1"},
+ {"sku":"SP-250","name":"Bluetooth speaker","price":64,"in_stock":true,"extractor":"v1"}
+]

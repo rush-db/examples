@@ -1,0 +1,57 @@
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Seed: 6 CRM accounts and 8 billing customers (made-up companies)
+{"kind":"ingested","count":6}
+{"kind":"ingested","count":8}
+
+== 1. Which property pairs share values? (exact value dictionaries)
+{"pair":"ACCOUNT.vat_id -> CUSTOMER.tax_id","sourceDistinct":6,"matchedDistinct":4,"coverage":0.67,"sourceUniqueness":1.0,"targetUniqueness":1.0}
+{"pair":"ACCOUNT.name -> CUSTOMER.company","sourceDistinct":6,"matchedDistinct":2,"coverage":0.33,"sourceUniqueness":1.0,"targetUniqueness":1.0}
+{"pair":"ACCOUNT.country -> CUSTOMER.country","sourceDistinct":5,"matchedDistinct":0,"coverage":0,"sourceUniqueness":0.8333333333333334,"targetUniqueness":0.625}
+
+== 2. How many account-customer pairs share a tax id?
+{"kind":"count","value":4}
+
+== 3. Link the certain matches: equal tax id -> SAME_AS
+{"kind":"linked","created":4,"skippedExisting":0}
+
+== 4. Accounts left without a match
+{"name":"Umbrella Health GmbH","vat_id":"DE299876543"}
+{"name":"Soylent Foods","vat_id":"BE0123456789"}
+
+== 5. Billing customers left without a match
+{"company":"Globex Corporation","email":"finance@globex.example"}
+{"company":"Initrode","tax_id":"DE277654321","email":"ap@initrode.example"}
+{"company":"Soylent Foods","tax_id":"BE0987654321","email":"pay@soylent-be.example"}
+{"company":"Umbrella Health","tax_id":"DE 299 876 543","email":"invoices@umbrella.example"}
+
+== 6a. Near matches: billing tax ids spelled like DE299876543
+{"values":["DE 299 876 543"],"distinctCount":1}
+
+== 6b. Near matches: billing names spelled like 'Globex Corporation' (minSimilarity 0.4)
+{"values":["Globex Corporation","Globex Corp."],"distinctCount":2}
+
+== 6c. Same name, different key: the billing record named 'Soylent Foods'
+{"company":"Soylent Foods","tax_id":"BE0987654321","email":"pay@soylent-be.example"}
+
+== 7. A filter value that is not stored: CUSTOMER.country = 'Germany'?
+{"values":["DE","FR","BE","IE","NL"],"counts":[3,2,1,1,1],"distinctCount":5,"searchMissed":true}
+
+== 8. After review: link Umbrella Health (same tax id, spaces) and Globex Corporation (same name and email domain)
+{"kind":"linked","created":1,"skippedExisting":0}
+{"kind":"linked","created":1,"skippedExisting":0}
+
+== 9. Resolved entities in SQL: one row per SAME_AS link
+Globex Corporation | Globex Corp. | FR40123456789 | exact tax id
+Globex Corporation | Globex Corporation | - | reviewed: same name and email domain
+Hooli Inc | Hooli | IE6388047V | exact tax id
+Initech LLC | Initech | DE811234567 | exact tax id
+Umbrella Health GmbH | Umbrella Health | DE 299 876 543 | reviewed: tax id with spaces
+Vandelay Industries | Vandelay Import Export | NL859123456B01 | exact tax id
+
+== 10. Catalog after resolution: labels and relationship shapes
+label ACCOUNT: 6 records
+label CUSTOMER: 8 records
+ACCOUNT -SAME_AS-> CUSTOMER: 6

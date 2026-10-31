@@ -1,0 +1,4 @@
+{"protocolVersion":1,"operation":{"kind":"query","query":{"kind":"hybrid","query":{
+  "labels":["ARTICLE"],
+  "text":{"index":"kb-text","query":"@text"},
+  "limit":24}}}}

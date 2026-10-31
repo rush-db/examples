@@ -1,0 +1,4 @@
+SELECT name, count(*) AS orders, sum(total) AS spent FROM GRAPH_TABLE (
+  MATCH (c:CUSTOMER)-[:PLACED]->(o:"ORDER")
+  COLUMNS (c.name AS name, o.total AS total)
+) AS g GROUP BY name ORDER BY spent DESC

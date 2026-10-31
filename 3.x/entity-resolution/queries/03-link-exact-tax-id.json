@@ -1,0 +1,16 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "SAME_AS",
+        "source": { "label": "ACCOUNT", "property": "vat_id", "predicate": {} },
+        "target": { "label": "CUSTOMER", "property": "tax_id", "predicate": {} },
+        "direction": "out",
+        "properties": { "rule": "exact tax id" }
+      }
+    }
+  }
+}

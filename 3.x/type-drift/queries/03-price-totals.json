@@ -1,0 +1,3 @@
+{"protocolVersion":1,"operation":{"kind":"query","query":{"kind":"records","query":{
+  "labels":["PRODUCT"],
+  "select":{"products":{"$count":"*"},"withPrice":{"$count":"$record.price"},"priceSum":{"$sum":"$record.price"},"maxPrice":{"$max":"$record.price"}}}}}}

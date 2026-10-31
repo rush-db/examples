@@ -1,0 +1,5 @@
+{"protocolVersion":1,"operation":{"kind":"query","query":{"kind":"records","query":{
+  "labels": ["TICKET"],
+  "predicate": {"tags": "billing", "REQUESTER": {"ORGANIZATION": {"domain": "northwind.example"}}},
+  "select": {"ticket": "$record.ticket_id", "subject": "$record.subject", "plan": "$record.plan"},
+  "order": {"ticket": "asc"}}}}}

@@ -1,0 +1,78 @@
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Import A: the export as-is (labels upper-cased, nothing else)
+{"kind":"ingested","count":15,"relationships":12}
+
+== A. Catalog: labels and relationship shapes
+label COMMENTS: 3
+label CUSTOM_FIELDS: 3
+label ORGANIZATION: 3
+label REQUESTER: 3
+label TICKET: 3
+REQUESTER -__RUSHDB__RELATION__DEFAULT__-> ORGANIZATION: 3
+TICKET -__RUSHDB__RELATION__DEFAULT__-> COMMENTS: 3
+TICKET -__RUSHDB__RELATION__DEFAULT__-> CUSTOM_FIELDS: 3
+TICKET -__RUSHDB__RELATION__DEFAULT__-> REQUESTER: 3
+
+== A. TICKET properties: one name with two types, an empty array stored as a property
+{"name":"comments","type":"string","recordsCount":1,"isArray":true}
+{"name":"created_at","type":"datetime","recordsCount":3,"isArray":false}
+{"name":"priority","type":"string","recordsCount":2,"isArray":false,"siblingTypes":["int64"]}
+{"name":"priority","type":"number","recordsCount":1,"isArray":false,"siblingTypes":["utf8"]}
+{"name":"status","type":"string","recordsCount":3,"isArray":false}
+{"name":"subject","type":"string","recordsCount":3,"isArray":false}
+{"name":"tags","type":"string","recordsCount":3,"isArray":true}
+{"name":"ticket_id","type":"string","recordsCount":3,"isArray":false}
+
+== A. The drift in values: priority holds text and a number
+{"values":["high","normal",2],"counts":[1,1,1],"distinctCount":3}
+
+== A. custom_fields became its own label, one record per ticket
+T-1001 | pro | eu
+T-1002 | enterprise | us
+T-1003 | pro | eu
+
+== Reset before the second import
+{"kind":"mutation"}
+
+== Import B: reshape (queries/reshape.jq), name relationships, merge identical children
+{"kind":"ingested","count":12,"relationships":9}
+
+== B. Catalog: Maya and Northwind are stored once; relationships carry names
+label COMMENTS: 3
+label ORGANIZATION: 2
+label REQUESTER: 2
+label TICKET: 3
+REQUESTER -MEMBER_OF-> ORGANIZATION: 2
+TICKET -HAS_COMMENT-> COMMENTS: 3
+TICKET -REQUESTED_BY-> REQUESTER: 3
+
+== B. TICKET properties: plan and region are columns now; priority has one type
+{"name":"created_at","type":"datetime","recordsCount":3,"isArray":false}
+{"name":"plan","type":"string","recordsCount":3,"isArray":false}
+{"name":"priority","type":"string","recordsCount":3,"isArray":false}
+{"name":"region","type":"string","recordsCount":3,"isArray":false}
+{"name":"status","type":"string","recordsCount":3,"isArray":false}
+{"name":"subject","type":"string","recordsCount":3,"isArray":false}
+{"name":"tags","type":"string","recordsCount":3,"isArray":true}
+{"name":"ticket_id","type":"string","recordsCount":3,"isArray":false}
+
+== B. Import the same export again: merge keeps the counts
+{"kind":"ingested","count":12,"relationships":9}
+label COMMENTS: 3
+label ORGANIZATION: 2
+label REQUESTER: 2
+label TICKET: 3
+REQUESTER -MEMBER_OF-> ORGANIZATION: 2
+TICKET -HAS_COMMENT-> COMMENTS: 3
+TICKET -REQUESTED_BY-> REQUESTER: 3
+
+== B. Filter across two relationships: Northwind's billing tickets
+{"ticket":"T-1001","subject":"Refund for duplicate charge","plan":"pro"}
+{"ticket":"T-1003","subject":"Invoice address change","plan":"pro"}
+
+== B. Same graph from SQL: tickets per organization
+Northwind | 2
+Contoso | 1

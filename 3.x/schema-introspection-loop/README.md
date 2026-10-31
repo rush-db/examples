@@ -12,7 +12,7 @@ precise query (native query document or SQL over label and `rushdb_edges` tables
 Articles:
 
 - [Agentic data analytics you can trust: the introspection loop](https://rushdb.com/blog/trustworthy-agentic-data-analytics) (question A)
-- [AI agent schema: why agents should read the schema before they query](https://rushdb.com/blog/ai-agent-schema)
+- [AI agent schema: why agents should read it before they query](https://rushdb.com/blog/ai-agent-schema)
 
 ## Prerequisites
 

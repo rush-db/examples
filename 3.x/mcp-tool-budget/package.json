@@ -1,0 +1,6 @@
+{
+  "name": "rushdb-example-mcp-tool-budget",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@rushdb/mcp-server": "3.0.1" }
+}

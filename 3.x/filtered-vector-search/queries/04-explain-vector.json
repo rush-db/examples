@@ -1,0 +1,5 @@
+{"protocolVersion":1,"operation":{"kind":"describe","describe":{"kind":"explainVector","query":{
+  "labels":["DOC"],"property":"embedding","index":"doc-embedding",
+  "vector":[1.0,0.1,0.0],
+  "predicate":{"year":{"$gte":2025},"AUTHOR":{"team":"search"}},
+  "limit":3}}}}

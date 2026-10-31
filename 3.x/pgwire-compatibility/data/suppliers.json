@@ -1,0 +1,13 @@
+[
+  { "code": "S-101", "name": "Apex Components (example)", "tier": 1, "region": "coastal-02", "onboardedAt": "2024-03-01T00:00:00Z", "certifications": ["ISO9001"],
+    "SUPPLIER": [
+      { "code": "S-201", "name": "Harbor Plastics (example)", "tier": 2, "region": "coastal-02", "onboardedAt": "2024-06-12T00:00:00Z", "certifications": ["ISO9001", "ISO14001"],
+        "SUPPLIER": [ { "code": "S-301", "name": "Delta Resins (example)", "tier": 3, "region": "flood-zone-07", "onboardedAt": "2025-01-20T00:00:00Z", "certifications": [] } ] }
+    ] },
+  { "code": "S-102", "name": "Brightline Electronics (example)", "tier": 1, "region": "inland-04", "onboardedAt": "2023-11-05T00:00:00Z", "certifications": ["ISO9001"],
+    "SUPPLIER": [
+      { "code": "S-202", "name": "Northfield Metals (example)", "tier": 2, "region": "inland-04", "onboardedAt": "2024-09-30T00:00:00Z", "certifications": ["ISO14001"],
+        "SUPPLIER": [ { "code": "S-302", "name": "Riverbend Chemicals (example)", "tier": 3, "region": "flood-zone-07", "onboardedAt": "2025-04-02T00:00:00Z", "certifications": [] } ] },
+      { "code": "S-203", "name": "Granite Wire (example)", "tier": 2, "region": "inland-04", "onboardedAt": "2025-02-14T00:00:00Z", "certifications": ["ISO9001"] }
+    ] }
+]

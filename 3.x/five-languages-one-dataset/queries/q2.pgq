@@ -1,0 +1,5 @@
+SELECT DISTINCT name FROM GRAPH_TABLE (
+  MATCH (c:CUSTOMER)-[:PLACED]->(o:"ORDER")-[:CONTAINS]->(p:PRODUCT)
+  WHERE p.name = 'Paper filters'
+  COLUMNS (c.name AS name)
+) AS g ORDER BY name

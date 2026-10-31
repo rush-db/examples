@@ -1,0 +1,2 @@
+{"protocolVersion":1,"operation":{"kind":"index","index":{"kind":"createVector","definition":{
+  "name":"doc-embedding","label":"DOC","property":"embedding","dimensions":3,"similarity":"cosine"}}}}

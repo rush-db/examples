@@ -1,0 +1,1 @@
+SELECT g.customer_name, p.price FROM GRAPH_TABLE (MATCH (c:customers)-[:customer_orders]->(o:orders) COLUMNS (c.name AS customer_name)) AS g JOIN products p ON p.product_no = 10

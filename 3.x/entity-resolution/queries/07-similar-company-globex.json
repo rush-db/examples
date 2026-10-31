@@ -1,0 +1,13 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "propertyValues",
+      "property": "company",
+      "mode": "values",
+      "search": { "text": "Globex Corporation", "match": "similar", "minSimilarity": 0.4 },
+      "query": { "labels": ["CUSTOMER"] }
+    }
+  }
+}

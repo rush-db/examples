@@ -1,0 +1,3 @@
+{"protocolVersion":1,"operation":{"kind":"query","query":{"kind":"vector","query":{
+  "labels":["DOC"],"property":"embedding","index":"doc-embedding",
+  "vector":[1.0,0.1,0.0],"predicate":{"lang":"de","year":2023},"limit":3,"mode":"ann"}}}}

@@ -1,0 +1,7 @@
+[
+  {"order_id": 100, "ordered_when": "2026-10-28", "customer_id": 1, "product_nos": [10, 12]},
+  {"order_id": 101, "ordered_when": "2026-10-29", "customer_id": 2, "product_nos": [11, 12, 13]},
+  {"order_id": 102, "ordered_when": "2026-10-30", "customer_id": 1, "product_nos": [13]},
+  {"order_id": 103, "ordered_when": "2026-10-30", "customer_id": 3, "product_nos": [12]},
+  {"order_id": 104, "ordered_when": "2026-10-30", "customer_id": 2, "product_nos": [10]}
+]

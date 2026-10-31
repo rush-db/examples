@@ -1,0 +1,1 @@
+SELECT * FROM GRAPH_TABLE (MATCH (c:customers)-[:customer_orders]->(o:orders WHERE o.order_id > 101) COLUMNS (c.name AS customer_name)) AS g

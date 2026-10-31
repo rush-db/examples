@@ -1,0 +1,1 @@
+{"protocolVersion":1,"operation":{"kind":"query","query":{"kind":"propertyValues","property":"price","mode":"range","query":{"labels":["PRODUCT"]}}}}

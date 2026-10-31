@@ -1,0 +1,51 @@
+
+== Enabled languages and their status, as the server reports them
+sql: stable, readWrite
+gql: release_candidate, readWrite
+cypher: release_candidate, readWrite
+gremlin: stable, readWrite
+sqlPgq: stable, readOnly
+mongo: stable, readWrite
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Seed: nested customers -> orders -> products (products merged on sku)
+{"kind":"ingested","count":17,"relationships":13}
+label CUSTOMER: 4
+label ORDER: 5
+label PRODUCT: 4
+CUSTOMER -PLACED-> ORDER: 5
+ORDER -CONTAINS-> PRODUCT: 8
+
+== Q1. Products over 50, most expensive first
+sql          [{"name":"Espresso grinder","price":189.0},{"name":"Pour-over kettle","price":64.5}]
+cypher       [{"name":"Espresso grinder","price":189.0},{"name":"Pour-over kettle","price":64.5}]
+gql          [{"name":"Espresso grinder","price":189.0},{"name":"Pour-over kettle","price":64.5}]
+sql-pgq      [{"name":"Espresso grinder","price":189.0},{"name":"Pour-over kettle","price":64.5}]
+gremlin      [{"name":"Espresso grinder","price":189.0},{"name":"Pour-over kettle","price":64.5}]
+searchquery  [{"name":"Espresso grinder","price":189.0},{"name":"Pour-over kettle","price":64.5}]
+
+== Q2. Which customers bought Paper filters? (two hops)
+sql          [{"name":"Ada Brandt"},{"name":"Bo Lindqvist"},{"name":"Chen Wei"}]
+cypher       [{"name":"Ada Brandt"},{"name":"Bo Lindqvist"},{"name":"Chen Wei"}]
+gql          [{"name":"Ada Brandt"},{"name":"Bo Lindqvist"},{"name":"Chen Wei"}]
+sql-pgq      [{"name":"Ada Brandt"},{"name":"Bo Lindqvist"},{"name":"Chen Wei"}]
+gremlin      [{"name":"Ada Brandt"},{"name":"Bo Lindqvist"},{"name":"Chen Wei"}]
+searchquery  [{"name":"Ada Brandt"},{"name":"Bo Lindqvist"},{"name":"Chen Wei"}]
+
+== Q3. Orders and spend per customer (does the customer with no orders appear?)
+sql          [{"name":"Bo Lindqvist","orders":2,"spent":291.5},{"name":"Ada Brandt","orders":2,"spent":227.0},{"name":"Chen Wei","orders":1,"spent":6.0},{"name":"Dara Okafor","orders":0,"spent":0.0}]
+cypher       [{"name":"Bo Lindqvist","orders":2,"spent":291.5},{"name":"Ada Brandt","orders":2,"spent":227.0},{"name":"Chen Wei","orders":1,"spent":6.0},{"name":"Dara Okafor","orders":0,"spent":0}]
+gql          [{"name":"Bo Lindqvist","orders":2,"spent":291.5},{"name":"Ada Brandt","orders":2,"spent":227.0},{"name":"Chen Wei","orders":1,"spent":6.0},{"name":"Dara Okafor","orders":0,"spent":0}]
+sql-pgq      [{"name":"Bo Lindqvist","orders":2,"spent":291.5},{"name":"Ada Brandt","orders":2,"spent":227.0},{"name":"Chen Wei","orders":1,"spent":6.0}]
+gremlin      [{"_groupCount":{"Ada Brandt":2,"Bo Lindqvist":2,"Chen Wei":1}}]
+searchquery  [{"name":"Bo Lindqvist","orders":2,"spent":291.5},{"name":"Ada Brandt","orders":2,"spent":227.0},{"name":"Chen Wei","orders":1,"spent":6.0}]
+
+== Q4. Customers who bought Paper filters also bought... (four hops, distinct customers)
+sql          [{"product":"Espresso grinder","customers":2},{"product":"Scale","customers":2},{"product":"Pour-over kettle","customers":1}]
+cypher       [{"product":"Espresso grinder","customers":2},{"product":"Scale","customers":2},{"product":"Pour-over kettle","customers":1}]
+gql          [{"product":"Espresso grinder","customers":2},{"product":"Scale","customers":2},{"product":"Pour-over kettle","customers":1}]
+sql-pgq      [{"product":"Espresso grinder","customers":2},{"product":"Scale","customers":2},{"product":"Pour-over kettle","customers":1}]
+gremlin      [{"_groupCount":{"Espresso grinder":2,"Pour-over kettle":1,"Scale":2}}]
+searchquery  [{"product":"Espresso grinder"},{"product":"Pour-over kettle"},{"product":"Scale"}]

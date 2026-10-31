@@ -1,0 +1,23 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "describe",
+    "describe": {
+      "kind": "valueOverlap",
+      "pairs": [
+        {
+          "source": { "label": "ACCOUNT", "property": "vat_id" },
+          "target": { "label": "CUSTOMER", "property": "tax_id" }
+        },
+        {
+          "source": { "label": "ACCOUNT", "property": "name" },
+          "target": { "label": "CUSTOMER", "property": "company" }
+        },
+        {
+          "source": { "label": "ACCOUNT", "property": "country" },
+          "target": { "label": "CUSTOMER", "property": "country" }
+        }
+      ]
+    }
+  }
+}

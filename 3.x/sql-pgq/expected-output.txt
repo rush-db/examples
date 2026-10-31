@@ -1,0 +1,53 @@
+
+== Reset: delete records left by an earlier run of this example
+{"kind":"mutation"}
+
+== Seed: three vertex tables as labels
+{"label":"customers","count":4}
+{"label":"orders","count":5}
+{"label":"products","count":4}
+
+== Seed: the two edge tables become relationships (joined on the foreign-key values)
+{"type":"customer_orders","created":5}
+{"type":"order_items","created":8}
+
+== 1. The PG19 docs query, verbatim
+{"code":"unsupported","message":"SqlPgq query failed: syntax error: [SQL/PGQ] Expected Match, found Identifier"}
+
+== 2. Same question in RushDB's profile: customers with an order on or after 2026-10-30
+Ada Brandt | 102
+Chen Wei | 103
+Bo Lindqvist | 104
+
+== 3. The relational form from the same docs page, over rushdb_edges tables
+Ada Brandt | 102
+Chen Wei | 103
+Bo Lindqvist | 104
+
+== 4. Reverse edge direction
+100 | Ada Brandt
+101 | Bo Lindqvist
+102 | Ada Brandt
+103 | Chen Wei
+104 | Bo Lindqvist
+
+== 5. Two hops, grouped and counted by the outer SELECT
+Bo Lindqvist | 4
+Ada Brandt | 3
+Chen Wei | 1
+
+== 6. Four hops: who bought a product Chen Wei bought
+Ada Brandt | Paper filters
+Bo Lindqvist | Paper filters
+
+== 7. PG19 constructs outside the profile (each fails with an explicit error)
+a-is-label-syntax: "unsupported"
+b-element-where: "unsupported"
+c-current-date: "invalid_request"
+d-label-alternation: "unsupported"
+e-quantifier: "unsupported"
+f-join-with-table: "unsupported"
+g-create-property-graph: "unsupported"
+
+== 8. A GRAPH_TABLE query sent as a write is refused: the profile is read-only
+{"code":"invalid_request","message":"SQL/PGQ is a read-only profile"}

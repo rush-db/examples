@@ -1,0 +1,15 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "joinPairs",
+      "left": { "label": "ACCOUNT", "filter": {} },
+      "right": { "label": "CUSTOMER", "filter": {} },
+      "predicate": { "kind": "propertyOverlap", "leftProperty": "vat_id", "rightProperty": "tax_id" },
+      "excludeSameRecord": false,
+      "projection": "count",
+      "limit": 100
+    }
+  }
+}

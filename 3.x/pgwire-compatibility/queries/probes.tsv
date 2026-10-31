@@ -1,0 +1,30 @@
+version	SELECT version()
+server_version	SHOW server_version
+current_database	SELECT current_database()
+current_database_and_user	SELECT current_database(), current_user
+filter	SELECT code, name, tier FROM supplier WHERE region = 'flood-zone-07' ORDER BY code
+group_by	SELECT region, count(*) AS suppliers FROM supplier GROUP BY region ORDER BY suppliers DESC
+join_edges	SELECT a.code AS buyer, b.code AS supplier FROM supplier a JOIN rushdb_edges.buys_from e ON a.__id = e.__source_id JOIN supplier b ON b.__id = e.__target_id ORDER BY 1, 2
+cte_window	WITH r AS (SELECT code, region, tier, rank() OVER (PARTITION BY region ORDER BY tier DESC) AS rk FROM supplier) SELECT region, code, tier FROM r WHERE rk = 1 ORDER BY region, code
+camelcase_quoted	SELECT code, "onboardedAt", certifications FROM supplier WHERE tier = 3 ORDER BY code
+camelcase_unquoted	SELECT code, onboardedAt FROM supplier LIMIT 1
+unknown_column	SELECT nosuchcol FROM supplier LIMIT 1
+unknown_table	SELECT * FROM suplier
+information_schema	SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'SUPPLIER' ORDER BY ordinal_position
+psql_dt	\dt
+psql_d	\d supplier
+begin	BEGIN
+multi_statement	SELECT 1; SELECT 2
+copy	COPY supplier TO STDOUT
+set_search_path	SET search_path = public
+prepare_sql	PREPARE q(text) AS SELECT code FROM supplier WHERE region = $1
+extended_bind	SELECT code FROM supplier WHERE region = $1 ORDER BY code \bind 'flood-zone-07' \g
+cast_jsonb	SELECT '{"a":1}'::jsonb
+cast_regclass	SELECT 'supplier'::regclass
+create_table	CREATE TABLE foo (id int)
+listen	LISTEN changes
+cursor	DECLARE c CURSOR FOR SELECT code FROM supplier
+graph_table	SELECT * FROM GRAPH_TABLE (g MATCH (a:SUPPLIER)-[:BUYS_FROM]->(b:SUPPLIER) COLUMNS (a.code AS a, b.code AS b))
+explain	EXPLAIN SELECT code FROM supplier WHERE tier = 1
+row_cap_ok	SELECT count(*) FROM (SELECT * FROM generate_series(1, 100000)) t
+row_cap_hit	SELECT * FROM generate_series(1, 100001)

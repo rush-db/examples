@@ -1,0 +1,15 @@
+[
+  ["tools/list", {}],
+  ["tools/call", {"name": "findLabels", "arguments": {}}],
+  ["tools/call", {"name": "getSchemaMarkdown", "arguments": {}}],
+  ["tools/call", {"name": "getSchema", "arguments": {}}],
+  ["tools/call", {"name": "findProperties", "arguments": {}}],
+  ["tools/call", {"name": "findProperties", "arguments": {"limit": 5}}],
+  ["tools/call", {"name": "propertyValues", "arguments": {"propertyId": "REGION_PROPERTY_ID"}}],
+  ["tools/call", {"name": "findRecords", "arguments": {"labels": ["SUPPLIER"], "where": {"region": "flood-zone-07"}}}],
+  ["tools/call", {"name": "findRecords", "arguments": {"labels": ["SUPPLIER"], "where": {"region": "flood-zone-07"}, "select": {"code": "$record.code", "name": "$record.name"}}}],
+  ["tools/call", {"name": "findRecords", "arguments": {"labels": ["SUPPLIER"]}}],
+  ["tools/call", {"name": "findRecords", "arguments": {"labels": ["SUPPLIER"], "select": {"suppliers": {"$count": "*"}}, "groupBy": ["region"]}}],
+  ["tools/call", {"name": "getSearchQuerySpec", "arguments": {}}],
+  ["tools/call", {"name": "getQueryBuilderPrompt", "arguments": {}}]
+]

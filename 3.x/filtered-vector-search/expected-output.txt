@@ -1,0 +1,33 @@
+
+== Reset: delete AUTHOR and DOC records and the vector index left by an earlier run
+done
+
+== Seed: a 3-d cosine index, then 3 authors with 9 docs (AUTHOR -WROTE-> DOC), vectors inline
+{"kind":"vectorIndex","name":"doc-embedding","status":"awaiting_vectors"}
+{"kind":"ingested","count":12,"relationships":9}
+
+== No filter: the 3 nearest docs to [1.0, 0.1, 0.0]
+  0.9961  Tuning HNSW ef for recall  [en, 2026]
+  0.9874  Approximate nearest neighbours, explained  [en, 2026]
+  0.9756  Exact search below 5,000 vectors  [en, 2025]
+
+== Post-filter: keep the German docs from that top 3 (what an unfiltered ANN plus a client-side filter returns)
+{"kept":0}
+
+== Pre-filter: the same search with predicate lang = de (filter first, rank the candidates)
+  0.6876  Vektorsuche mit Filtern  [de, 2026]
+  0.6213  Gefilterte Vektorsuche in der Praxis  [de, 2025]
+  0.3900  Index-Wartung  [de, 2023]
+{"vectorSearch":{"mode":"exact","pool":9}}
+
+== Across a relationship: docs since 2025 whose AUTHOR is on the search team
+  0.9961  Tuning HNSW ef for recall  [en, 2026]
+  0.9756  Exact search below 5,000 vectors  [en, 2025]
+  0.9427  Filtered ANN without losing results  [en, 2026]
+
+== explainVector: the candidate set the ranking will see
+{"accessPath":"vector_index","candidateCount":5,"k":3}
+
+== mode ann with a filter that leaves one candidate: answered exactly, and the response says why
+  0.3900  Index-Wartung  [de, 2023]
+{"vectorSearch":{"mode":"exact","fallback":"lowConfidence","pool":9}}

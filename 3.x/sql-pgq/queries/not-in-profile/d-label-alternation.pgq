@@ -1,0 +1,1 @@
+SELECT * FROM GRAPH_TABLE (MATCH (o:orders)-[:order_items]->(p:products|customers) COLUMNS (p.name AS name)) AS g

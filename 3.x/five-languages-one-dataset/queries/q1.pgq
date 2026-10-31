@@ -1,0 +1,4 @@
+SELECT name, price FROM GRAPH_TABLE (
+  MATCH (p:PRODUCT) WHERE p.price > 50
+  COLUMNS (p.name AS name, p.price AS price)
+) AS g ORDER BY price DESC

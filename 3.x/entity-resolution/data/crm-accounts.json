@@ -1,0 +1,8 @@
+[
+  { "name": "Initech LLC", "domain": "initech.example", "vat_id": "DE811234567", "country": "Germany" },
+  { "name": "Globex Corporation", "domain": "globex.example", "vat_id": "FR40123456789", "country": "France" },
+  { "name": "Hooli Inc", "domain": "hooli.example", "vat_id": "IE6388047V", "country": "Ireland" },
+  { "name": "Umbrella Health GmbH", "domain": "umbrella.example", "vat_id": "DE299876543", "country": "Germany" },
+  { "name": "Vandelay Industries", "domain": "vandelay.example", "vat_id": "NL859123456B01", "country": "Netherlands" },
+  { "name": "Soylent Foods", "domain": "soylent.example", "vat_id": "BE0123456789", "country": "Belgium" }
+]

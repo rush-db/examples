@@ -1,0 +1,42 @@
+seeded 20000 DOC records (128-d, 50 clusters) and 100 AUTHOR records in 2 s
+ANN graph built by first ann search in 1.0 s; vectorSearch={"mode": "ann", "ef": 64, "pool": 20000}
+
+bucket < 1000 (100% selectivity, uncorrelated with the vectors)  (candidates: 20000 of 20000)
+  pre-filter ANN : recall 1.000, results 10.0/10, p50   1.6 ms   fallback: {"none": 50}
+  post-filter k10: recall 1.000, results 10.0/10, p50   1.3 ms
+  post-filter k100: recall 1.000, results 10.0/10, p50   3.0 ms
+
+bucket < 500 (50% selectivity, uncorrelated with the vectors)  (candidates: 10122 of 20000)
+  pre-filter ANN : recall 0.998, results 10.0/10, p50  16.1 ms   fallback: {"none": 50}
+  post-filter k10: recall 0.500, results  5.0/10, p50   1.6 ms
+  post-filter k100: recall 1.000, results 10.0/10, p50   3.2 ms
+
+bucket < 100 (10% selectivity, uncorrelated with the vectors)  (candidates: 2039 of 20000)
+  pre-filter ANN : recall 1.000, results 10.0/10, p50  16.0 ms   fallback: {"none": 50}
+  post-filter k10: recall 0.108, results  1.1/10, p50   1.6 ms
+  post-filter k100: recall 0.914, results  9.1/10, p50   3.2 ms
+
+bucket < 10 (1% selectivity, uncorrelated with the vectors)  (candidates: 216 of 20000)
+  pre-filter ANN : recall 1.000, results 10.0/10, p50  17.6 ms   fallback: {"none": 50}
+  post-filter k10: recall 0.016, results  0.2/10, p50   1.5 ms
+  post-filter k100: recall 0.110, results  1.1/10, p50   3.2 ms
+
+bucket < 1 (0.1% selectivity, uncorrelated with the vectors)  (candidates: 20 of 20000)
+  pre-filter ANN : recall 1.000, results 10.0/10, p50  22.1 ms   fallback: {"lowConfidence": 14, "none": 36}
+  post-filter k10: recall 0.004, results  0.0/10, p50   1.6 ms
+  post-filter k100: recall 0.014, results  0.1/10, p50   3.2 ms
+
+Correlated filter: cluster = a cluster other than the query's own (2% of docs, far from the query)
+  pre-filter ANN : recall 0.992, results 10.0/10   fallback: {"lowConfidence": 44, "none": 6}
+  post-filter k10: recall 0.000, results  0.0/10
+  post-filter k100: recall 0.000, results  0.0/10
+
+Across a relationship: DOC whose AUTHOR has team = team-3 (10% of docs)
+  pre-filter ANN : recall 1.000, p50 174.2 ms   fallback: {"none": 50}
+  exact          : recall 1.000, p50 185.5 ms
+
+With an ordered index on DOC.bucket (status ['ready']): pre-filter ANN
+  bucket < 500 : recall 0.998, p50   5.9 ms
+  bucket < 100 : recall 1.000, p50   2.3 ms
+  bucket < 10  : recall 1.000, p50   2.8 ms
+  bucket < 1   : recall 1.000, p50   6.9 ms

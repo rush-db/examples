@@ -1,0 +1,4 @@
+{"protocolVersion":1,"operation":{"kind":"query","query":{"kind":"hybrid","query":{
+  "labels":["ARTICLE"],
+  "vector":{"property":"embedding","vector":"@vector","index":"kb-embedding"},
+  "limit":6}}}}

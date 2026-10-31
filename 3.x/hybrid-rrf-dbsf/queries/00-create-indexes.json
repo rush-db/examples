@@ -1,0 +1,4 @@
+[
+ {"protocolVersion":1,"operation":{"kind":"index","index":{"kind":"createVector","definition":{"name":"kb-embedding","label":"ARTICLE","property":"embedding","dimensions":384,"similarity":"cosine","model":"BAAI/bge-small-en-v1.5"}}}},
+ {"protocolVersion":1,"operation":{"kind":"index","index":{"kind":"create","definition":{"name":"kb-text","label":"ARTICLE","property":"text","kind":"text","consistency":"immediate"}}}}
+]

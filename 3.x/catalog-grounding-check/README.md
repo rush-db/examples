@@ -5,7 +5,7 @@ every table and column against the RushDB catalog, and compares each string lite
 `IN` against the values the column stores. On a miss it rejects the query and says what is stored instead:
 close spellings, other columns that hold the literal, or the column's whole domain when it is small.
 
-Article: [Text-to-SQL hallucination: grounding agents in what is stored](https://rushdb.com/blog/grounding-analytics-agents)
+Article: [Text-to-SQL hallucination: grounding agents in stored data](https://rushdb.com/blog/grounding-analytics-agents)
 (this is the article's sqlglot sketch with `STORED` backed by the engine's catalog).
 
 > **This is not RushDB's checked submission.** RushDB is building a server-side check, SQL first; it is not a

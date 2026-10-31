@@ -1,0 +1,1 @@
+g.V().hasLabel('PRODUCT').has('name', 'Paper filters').in('CONTAINS').in('PLACED').dedup().values('name').order()

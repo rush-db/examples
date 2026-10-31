@@ -1,0 +1,1 @@
+SELECT * FROM GRAPH_TABLE (MATCH (c IS customers)-[IS customer_orders]->(o IS orders) COLUMNS (c.name AS customer_name)) AS g

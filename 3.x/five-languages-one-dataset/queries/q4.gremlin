@@ -1,0 +1,1 @@
+g.V().hasLabel('PRODUCT').has('name', 'Paper filters').in('CONTAINS').in('PLACED').dedup().out('PLACED').out('CONTAINS').has('name', P.neq('Paper filters')).groupCount().by('name')

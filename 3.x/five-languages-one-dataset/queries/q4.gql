@@ -1,0 +1,5 @@
+MATCH (p:PRODUCT)<-[:CONTAINS]-(o1:ORDER)<-[:PLACED]-(c:CUSTOMER)
+      -[:PLACED]->(o2:ORDER)-[:CONTAINS]->(other:PRODUCT)
+WHERE p.name = 'Paper filters' AND other.name <> 'Paper filters'
+RETURN other.name AS product, count(DISTINCT c) AS customers
+ORDER BY customers DESC, product

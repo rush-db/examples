@@ -1,0 +1,52 @@
+[
+  {
+    "ticket_id": "T-1001",
+    "subject": "Refund for duplicate charge",
+    "status": "open",
+    "priority": "high",
+    "created_at": "2026-10-27T09:12:00Z",
+    "tags": ["billing", "refund"],
+    "custom_fields": { "plan": "pro", "region": "eu" },
+    "requester": {
+      "email": "maya@northwind.example",
+      "name": "Maya Ortiz",
+      "organization": { "name": "Northwind", "domain": "northwind.example" }
+    },
+    "comments": [
+      { "author": "maya@northwind.example", "body": "We were charged twice in October.", "created_at": "2026-10-27T09:12:00Z" },
+      { "author": "agent@support.example", "body": "Refund issued, 3-5 days.", "created_at": "2026-10-27T11:40:00Z" }
+    ]
+  },
+  {
+    "ticket_id": "T-1002",
+    "subject": "SSO login loop",
+    "status": "pending",
+    "priority": "normal",
+    "created_at": "2026-10-28T14:03:00Z",
+    "tags": ["sso", "login"],
+    "custom_fields": { "plan": "enterprise", "region": "us" },
+    "requester": {
+      "email": "li@contoso.example",
+      "name": "Li Na",
+      "organization": { "name": "Contoso", "domain": "contoso.example" }
+    },
+    "comments": [
+      { "author": "li@contoso.example", "body": "Okta redirects back to the login page.", "created_at": "2026-10-28T14:03:00Z" }
+    ]
+  },
+  {
+    "ticket_id": "T-1003",
+    "subject": "Invoice address change",
+    "status": "open",
+    "priority": 2,
+    "created_at": "2026-10-29T08:30:00Z",
+    "tags": ["billing"],
+    "custom_fields": { "plan": "pro", "region": "eu" },
+    "requester": {
+      "email": "maya@northwind.example",
+      "name": "Maya Ortiz",
+      "organization": { "name": "Northwind", "domain": "northwind.example" }
+    },
+    "comments": []
+  }
+]

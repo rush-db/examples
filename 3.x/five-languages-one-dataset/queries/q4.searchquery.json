@@ -1,0 +1,4 @@
+{"labels": ["PRODUCT"],
+ "predicate": {"name": {"$ne": "Paper filters"},
+               "ORDER": {"CUSTOMER": {"ORDER": {"PRODUCT": {"name": "Paper filters"}}}}},
+ "select": {"product": "$record.name"}, "order": {"product": "asc"}}

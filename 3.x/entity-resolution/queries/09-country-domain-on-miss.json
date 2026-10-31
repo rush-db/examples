@@ -1,0 +1,13 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "propertyValues",
+      "property": "country",
+      "mode": "topK",
+      "search": { "text": "Germany", "domainOnMiss": 20 },
+      "query": { "labels": ["CUSTOMER"] }
+    }
+  }
+}

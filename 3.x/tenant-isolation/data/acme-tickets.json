@@ -1,0 +1,8 @@
+[
+  { "subject": "Refund for order 1182", "status": "open", "priority": "high",
+    "customer": { "name": "Dana Ortiz (example)", "plan": "pro" } },
+  { "subject": "Login loop on Safari", "status": "open", "priority": "medium",
+    "customer": { "name": "Lee Park (example)", "plan": "free" } },
+  { "subject": "Invoice address change", "status": "closed", "priority": "low",
+    "customer": { "name": "Ana Silva (example)", "plan": "pro" } }
+]

@@ -7,7 +7,7 @@ evidence the article walks through (relationship shapes, shared endpoint pairs i
 relationship types with `retypeRelations` and re-reads the counts. The engine counts; deciding that two
 names mean the same thing is left to you.
 
-Article: [Semantically equivalent relations: finding duplicate edges in a graph](https://rushdb.com/blog/semantically-equivalent-relations-knowledge-graph)
+Article: [Semantically equivalent relations in a knowledge graph](https://rushdb.com/blog/semantically-equivalent-relations-knowledge-graph)
 
 ## Prerequisites
 

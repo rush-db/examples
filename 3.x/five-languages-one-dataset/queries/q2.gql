@@ -1,0 +1,3 @@
+MATCH (c:CUSTOMER)-[:PLACED]->(o:ORDER)-[:CONTAINS]->(p:PRODUCT)
+WHERE p.name = 'Paper filters'
+RETURN DISTINCT c.name AS name ORDER BY name

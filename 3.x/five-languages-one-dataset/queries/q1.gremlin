@@ -1,0 +1,1 @@
+g.V().hasLabel('PRODUCT').has('price', P.gt(50)).order().by('price', desc).valueMap('name', 'price')

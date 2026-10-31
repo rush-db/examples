@@ -1,0 +1,7 @@
+SELECT customer_name, order_id
+FROM GRAPH_TABLE (
+  MATCH (c:customers)-[:customer_orders]->(o:orders)
+  WHERE o.ordered_when >= 1793318400000
+  COLUMNS (c.name AS customer_name, o.order_id AS order_id)
+) AS g
+ORDER BY order_id

@@ -1,0 +1,6 @@
+[
+  {"customer_id": 1, "name": "Ada Brandt", "address": "Linienstrasse 4, Berlin"},
+  {"customer_id": 2, "name": "Bo Lindqvist", "address": "Sveavagen 12, Stockholm"},
+  {"customer_id": 3, "name": "Chen Wei", "address": "Rua Augusta 90, Lisbon"},
+  {"customer_id": 4, "name": "Dara Okafor", "address": "Keizersgracht 7, Amsterdam"}
+]

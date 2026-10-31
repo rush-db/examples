@@ -1,0 +1,17 @@
+server instructions (initialize): 1819 tokens
+tools/list: 37 tools {'Read': 22, 'Write': 7, 'Destructive': 8}, 14517 tokens (descriptions alone 2889)
+  largest definitions: vectorSearch 1225, findRecords 945, semanticSearch 761, createEmbeddingIndex 632, findRelationships 591
+  smallest definitions: deleteTextIndex 157, getQueryBuilderPrompt 141, helpAddToClient 134
+tool results (text content the model reads):
+  findLabels {}: 48 tokens
+  getSchemaMarkdown {}: 1598 tokens
+  getSchema {}: 3396 tokens
+  findProperties {}: 1339 tokens, 24 items
+  findProperties {"limit":5}: 1339 tokens, 24 items
+  propertyValues {"propertyId":"p0000000000000003"}: 31 tokens
+  findRecords {"labels":["SUPPLIER"],"where":{"region":"flood-zone-07"}}: 485 tokens, 3 items
+  findRecords {"labels":["SUPPLIER"],"where":{"region":"flood-zone-07"},"select":{"code":"$record.code","name":"$record.name"}}: 88 tokens, 3 items
+  findRecords {"labels":["SUPPLIER"]}: 2514 tokens, 16 items
+  findRecords {"labels":["SUPPLIER"],"select":{"suppliers":{"$count":"*"}},"groupBy":["region"]}: 83 tokens, 3 items
+  getSearchQuerySpec {}: 8951 tokens
+  getQueryBuilderPrompt {}: 1819 tokens

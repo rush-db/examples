@@ -1,0 +1,132 @@
+######## ./run.sh .../dev_databases/california_schools (fresh in-memory node)
+
+== Load california_schools: one label per table, one record per row (and write the DDL files)
+  frpm: 9986 records
+  satscores: 2269 records
+  schools: 17686 records
+
+== getSchemaMarkdown (JavaScript SDK, direct mode; the same Markdown as the MCP tool)
+125 lines
+
+== describe.schemaSummary, every label (fewValues 10), compact JSON as returned
+  frpm: 29 properties
+  satscores: 11 properties
+  schools: 49 properties
+  narrow reads use label schools, property "FundingType", value "Directly funded"
+
+== describe.schemaSummary for one label (schools)
+
+== Filtered describe.properties: schools records where FundingType = Directly funded
+  49 property entries
+
+== propertyValues topK 10 for schools.FundingType
+{"kind":"propertyValues","property":"fundingtype","values":["Directly funded","Locally funded","Not in CS funding model"],"distinctCount":3,"counts":[1176,460,6]}
+
+== Tokens
+file                                            bytes    o200k   cl100k
+out/california_schools/ddl.sql                   3943      905      927
+out/california_schools/ddl-with-3-rows.sql       7758     2281     2324
+out/california_schools/ddl-with-descriptions.txt    18669     4070     4126
+out/california_schools/schema-markdown.md        6131     2084     2112
+out/california_schools/schema-summary.json       8886     2554     2567
+out/california_schools/schema-summary-one-label.json     4448     1241     1253
+out/california_schools/properties-filtered.json    14341     4530     4473
+out/california_schools/properties-filtered-trimmed.json     2734      736      746
+out/california_schools/values-top10.json          163       43       42
+
+######## ./run.sh .../dev_databases/student_club (fresh in-memory node)
+
+== Load student_club: one label per table, one record per row (and write the DDL files)
+  attendance: 326 records
+  budget: 52 records
+  event: 42 records
+  expense: 32 records
+  income: 36 records
+  major: 113 records
+  member: 33 records
+  zip_code: 41877 records
+
+== getSchemaMarkdown (JavaScript SDK, direct mode; the same Markdown as the MCP tool)
+134 lines
+
+== describe.schemaSummary, every label (fewValues 10), compact JSON as returned
+  attendance: 2 properties
+  budget: 7 properties
+  event: 7 properties
+  expense: 7 properties
+  income: 6 properties
+  major: 4 properties
+  member: 9 properties
+  zip_code: 6 properties
+  narrow reads use label zip_code, property "type", value "Standard"
+
+== describe.schemaSummary for one label (zip_code)
+
+== Filtered describe.properties: zip_code records where type = Standard
+  6 property entries
+
+== propertyValues topK 10 for zip_code.type
+{"kind":"propertyValues","property":"type","values":["Standard","PO Box","Unique"],"distinctCount":3,"counts":[29973,9438,2466]}
+
+== Tokens
+file                                            bytes    o200k   cl100k
+out/student_club/ddl.sql                         2230      489      489
+out/student_club/ddl-with-3-rows.sql             4882     1519     1540
+out/student_club/ddl-with-descriptions.txt       7894     1675     1682
+out/student_club/schema-markdown.md              7030     2514     2559
+out/student_club/schema-summary.json             5405     1434     1430
+out/student_club/schema-summary-one-label.json      607      163      161
+out/student_club/properties-filtered.json        1571      459      462
+out/student_club/properties-filtered-trimmed.json      349       91       90
+out/student_club/values-top10.json                129       36       35
+
+######## ./run.sh .../dev_databases/superhero (fresh in-memory node)
+
+== Load superhero: one label per table, one record per row (and write the DDL files)
+  alignment: 4 records
+  attribute: 6 records
+  colour: 35 records
+  gender: 3 records
+  hero_attribute: 3738 records
+  hero_power: 5825 records
+  publisher: 25 records
+  race: 61 records
+  superhero: 750 records
+  superpower: 167 records
+
+== getSchemaMarkdown (JavaScript SDK, direct mode; the same Markdown as the MCP tool)
+137 lines
+
+== describe.schemaSummary, every label (fewValues 10), compact JSON as returned
+  alignment: 2 properties
+  attribute: 2 properties
+  colour: 2 properties
+  gender: 2 properties
+  hero_attribute: 3 properties
+  hero_power: 2 properties
+  publisher: 2 properties
+  race: 2 properties
+  superhero: 12 properties
+  superpower: 2 properties
+  narrow reads use label superhero, property "full_name", value "-"
+
+== describe.schemaSummary for one label (superhero)
+
+== Filtered describe.properties: superhero records where full_name = -
+  12 property entries
+
+== propertyValues topK 10 for superhero.full_name
+{"kind":"propertyValues","property":"full_name","values":["-","Bartholomew Allen II","Richard John Grayson","Angel Salvadore Bohusk","Barbara Gordon","Benjamin Reilly","Dmitri Anatoly Nikolayevich Smerdyakov","Edward Charles Allan Brock","Erik Stephan Josten","Helena Rosa Bertinelli"],"distinctCount":483,"counts":[125,3,3,2,2,2,2,2,2,2]}
+
+== Tokens
+file                                            bytes    o200k   cl100k
+out/superhero/ddl.sql                            2275      457      457
+out/superhero/ddl-with-3-rows.sql                3313      830      834
+out/superhero/ddl-with-descriptions.txt          7760     1544     1542
+out/superhero/schema-markdown.md                 3593     1111     1113
+out/superhero/schema-summary.json                3505     1019     1008
+out/superhero/schema-summary-one-label.json      1221      357      355
+out/superhero/properties-filtered.json           2238      766      752
+out/superhero/properties-filtered-trimmed.json      705      177      176
+out/superhero/values-top10.json                   340      101      103
+

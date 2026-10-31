@@ -1,0 +1,10 @@
+[
+  { "company": "Initech", "tax_id": "DE811234567", "email": "ap@initech.example", "country": "DE" },
+  { "company": "Globex Corp.", "tax_id": "FR40123456789", "email": "billing@globex.example", "country": "FR" },
+  { "company": "Globex Corporation", "email": "finance@globex.example", "country": "FR" },
+  { "company": "Hooli", "tax_id": "IE6388047V", "email": "ar@hooli.example", "country": "IE" },
+  { "company": "Umbrella Health", "tax_id": "DE 299 876 543", "email": "invoices@umbrella.example", "country": "DE" },
+  { "company": "Vandelay Import Export", "tax_id": "NL859123456B01", "email": "art@vandelay.example", "country": "NL" },
+  { "company": "Soylent Foods", "tax_id": "BE0987654321", "email": "pay@soylent-be.example", "country": "BE" },
+  { "company": "Initrode", "tax_id": "DE277654321", "email": "ap@initrode.example", "country": "DE" }
+]

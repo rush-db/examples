@@ -1,0 +1,6 @@
+SELECT product, count(DISTINCT customer) AS customers FROM GRAPH_TABLE (
+  MATCH (p:PRODUCT)<-[:CONTAINS]-(o1:"ORDER")<-[:PLACED]-(c:CUSTOMER)
+        -[:PLACED]->(o2:"ORDER")-[:CONTAINS]->(other:PRODUCT)
+  WHERE p.name = 'Paper filters' AND other.name <> 'Paper filters'
+  COLUMNS (other.name AS product, c.name AS customer)
+) AS g GROUP BY product ORDER BY customers DESC, product

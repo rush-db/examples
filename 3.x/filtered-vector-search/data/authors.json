@@ -1,0 +1,14 @@
+[
+ {"name":"Ann","team":"search","DOC":[
+   {"title":"Tuning HNSW ef for recall","lang":"en","year":2026,"$vectors":[{"propertyName":"embedding","vector":[0.98,0.17,0.05],"index":"doc-embedding"}]},
+   {"title":"Exact search below 5,000 vectors","lang":"en","year":2025,"$vectors":[{"propertyName":"embedding","vector":[0.95,0.30,0.08],"index":"doc-embedding"}]},
+   {"title":"Vektorsuche mit Filtern","lang":"de","year":2026,"$vectors":[{"propertyName":"embedding","vector":[0.62,0.70,0.35],"index":"doc-embedding"}]}]},
+ {"name":"Bob","team":"billing","DOC":[
+   {"title":"Approximate nearest neighbours, explained","lang":"en","year":2026,"$vectors":[{"propertyName":"embedding","vector":[0.97,0.22,0.10],"index":"doc-embedding"}]},
+   {"title":"Invoice exports","lang":"en","year":2024,"$vectors":[{"propertyName":"embedding","vector":[0.05,0.20,0.98],"index":"doc-embedding"}]},
+   {"title":"Rechnungen exportieren","lang":"de","year":2024,"$vectors":[{"propertyName":"embedding","vector":[0.10,0.25,0.96],"index":"doc-embedding"}]}]},
+ {"name":"Cy","team":"search","DOC":[
+   {"title":"Filtered ANN without losing results","lang":"en","year":2026,"$vectors":[{"propertyName":"embedding","vector":[0.90,0.40,0.12],"index":"doc-embedding"}]},
+   {"title":"Gefilterte Vektorsuche in der Praxis","lang":"de","year":2025,"$vectors":[{"propertyName":"embedding","vector":[0.55,0.75,0.37],"index":"doc-embedding"}]},
+   {"title":"Index-Wartung","lang":"de","year":2023,"$vectors":[{"propertyName":"embedding","vector":[0.30,0.90,0.30],"index":"doc-embedding"}]}]}
+]

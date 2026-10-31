@@ -1,0 +1,8 @@
+{
+  "name": "rushdb-example-schema-tokens",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@rushdb/javascript-sdk": "^3.0.0"
+  }
+}

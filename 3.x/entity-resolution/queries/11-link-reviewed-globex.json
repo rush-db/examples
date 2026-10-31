@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "mutate",
+    "mutation": {
+      "kind": "linkRecords",
+      "command": {
+        "relationType": "SAME_AS",
+        "source": { "label": "ACCOUNT", "predicate": { "name": "Globex Corporation" } },
+        "target": { "label": "CUSTOMER", "predicate": { "company": "Globex Corporation", "email": { "$endsWith": "@globex.example" } } },
+        "allowCartesian": true,
+        "direction": "out",
+        "properties": { "rule": "reviewed: same name and email domain" }
+      }
+    }
+  }
+}

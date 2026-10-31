@@ -1,0 +1,13 @@
+{
+  "protocolVersion": 1,
+  "operation": {
+    "kind": "query",
+    "query": {
+      "kind": "propertyValues",
+      "property": "tax_id",
+      "mode": "values",
+      "search": { "text": "DE299876543", "match": "similar" },
+      "query": { "labels": ["CUSTOMER"] }
+    }
+  }
+}

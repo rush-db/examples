@@ -1,0 +1,6 @@
+{"protocolVersion":1,"operation":{"kind":"query","query":{"kind":"hybrid","query":{
+  "labels":["ARTICLE"],
+  "vector":{"property":"embedding","vector":"@vector","index":"kb-embedding"},
+  "text":{"index":"kb-text","query":"@text"},
+  "fusion":"rrf","rrfK":60,
+  "limit":6}}}}

@@ -1,0 +1,1 @@
+SELECT * FROM GRAPH_TABLE (MATCH (c:customers)-[:customer_orders]->(o:orders) COLUMNS (c.name AS customer_name, o.ordered_when AS ordered_when)) AS g WHERE ordered_when = current_date
