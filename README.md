@@ -91,7 +91,7 @@ docker run -p 3000:3000 \
   rushdb/platform:2.13.3
 ```
 
-Self-hosting 2.x requires Neo4j 5.25.1 or higher with the APOC plugin, plus the Graph Data Science plugin for vector search.
+Self-hosting 2.x requires Neo4j 2026.01.4 or later with the APOC plugin (the requirement stated in the 2.x README).
 
 ## Getting help
 
