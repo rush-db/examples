@@ -2,7 +2,7 @@
 
 [![RushDB Logo](https://raw.githubusercontent.com/rush-db/rushdb/main/rushdb-logo.svg)](https://rushdb.com)
 
-> **RushDB — the open-source database for AI**
+> **RushDB — the database for AI**
 >
 > One database for your records, their relationships, and search over them.
 
