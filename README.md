@@ -1,62 +1,86 @@
-# RushDB Examples
+# RushDB examples
 
 [![RushDB Logo](https://raw.githubusercontent.com/rush-db/rushdb/main/rushdb-logo.svg)](https://rushdb.com)
 
-> **The Instant Graph Database for Modern Apps**
+> **RushDB — the open-source database for AI**
+>
+> One database for your records, their relationships, and search over them.
 
-This repository contains comprehensive code samples and projects demonstrating quick integration with [RushDB](https://rushdb.com) across various use cases and programming languages.
+Runnable examples for RushDB. [`3.x/`](3.x) is current. The older folders at the repository root target RushDB 2.x (legacy): see [RushDB 2.x (legacy) examples](#rushdb-2x-legacy-examples).
 
-## About RushDB
+- [Website](https://rushdb.com) · [Documentation](https://docs.rushdb.com) · [RushDB Cloud](https://app.rushdb.com) · [RushDB on GitHub](https://github.com/rush-db/rushdb)
 
-RushDB transforms how you work with graph data — no schema required, no complex queries, just push your data and go. Built on top of Neo4j, RushDB provides:
+## Quick start (RushDB 3.x)
 
-- **🚀 Instant Setup**: Be productive in seconds, not days
-- **📝 Push Any JSON**: Nested objects are automatically normalized into a graph
-- **🔄 Fractal API**: Same query syntax everywhere - learn once, use everywhere
-- **🔍 Vector Search**: Comprehensive similarity search for AI-powered applications
-- **⚡ Zero Schema Headaches**: We handle the data structure so you can focus on building
+Install and start RushDB with one of:
 
-### Key Links
+```bash
+curl -fsSL https://rushdb.com/install.sh | sh && rushdb up
+brew install rush-db/tap/rushdb
+docker run -p 3000:3000 -e RUSHDB_TOKEN=change-me rushdb/rushdb:3
+```
 
-- [🌐 Website](https://rushdb.com/)
-- [📖 Documentation](https://docs.rushdb.com/)
-- [☁️ Cloud Platform](https://app.rushdb.com/)
-- [🐙 GitHub Repository](https://github.com/rush-db/rushdb)
-- [🐦 Follow on X (Twitter)](https://x.com/RushDatabase)
+Then run an example against it:
 
-## Prerequisites
+```bash
+git clone https://github.com/rush-db/examples.git && cd examples
+export RUSHDB_URL=http://127.0.0.1:3000 RUSHDB_TOKEN=change-me
+cd 3.x/<example> && ./run.sh
+```
 
-Before running any examples, you'll need to obtain a RushDB API token:
+Each example seeds a small dataset and runs every query from its article over the HTTP protocol with `curl` and `jq`. Some also use pgwire, Bolt, gRPC or MCP, or need Python, Node.js, `psql` or `openssl`: each folder's README lists its prerequisites and engine flags. Run each example on an empty node, since several share label names. See [`3.x/README.md`](3.x/README.md) for details.
 
-### 1. Get Your RushDB API Token
+## RushDB 3.x examples
 
-1. **Sign up for RushDB Cloud** (Free tier available):
+| Example | What it shows | Article |
+|---|---|---|
+| [`agent-memory-provenance`](3.x/agent-memory-provenance) | Agent memories as linked records with their source turn: scoped recall, supersession, vector recall with and without a scope filter, and deleting one user's memories. | [rushdb.com/blog/ai-agent-memory-database](https://rushdb.com/blog/ai-agent-memory-database) |
+| [`analytics-trace`](3.x/analytics-trace) | An inspectable analytics answer: a read-only capability token, catalog evidence per filter value, a stored trace, and a rerun that tells "same result" from "data moved". | [rushdb.com/blog/inspectable-analytics-agent](https://rushdb.com/blog/inspectable-analytics-agent) |
+| [`attack-paths`](3.x/attack-paths) | Identity attack paths: transitive group membership, merged scanner and EDR host records, and incident blast radius. | [rushdb.com/blog/graph-database-cybersecurity](https://rushdb.com/blog/graph-database-cybersecurity) |
+| [`beneficial-ownership`](3.x/beneficial-ownership) | Ownership chains with a percent on each link, sanctions exposure through ownership layers, circular ownership, and effective stake computed in jq. | [rushdb.com/blog/graph-database-financial-services](https://rushdb.com/blog/graph-database-financial-services) |
+| [`catalog-grounding-check`](3.x/catalog-grounding-check) | A client-side check for agent-written SQL (Python + sqlglot): unknown tables, columns and stored values are rejected with the stored alternatives. | [rushdb.com/blog/grounding-analytics-agents](https://rushdb.com/blog/grounding-analytics-agents) |
+| [`clinical-ontology`](3.x/clinical-ontology) | A concept hierarchy with coded diagnoses: cohort queries over ontology hops and compound to gene to disease paths. | [rushdb.com/blog/graph-database-healthcare-life-sciences](https://rushdb.com/blog/graph-database-healthcare-life-sciences) |
+| [`company-brain`](3.x/company-brain) | HR-, Notion-, Jira- and Slack-style JSON linked on matching keys, queried with SearchQuery and SQL, BM25 search, and a data-access policy. | [rushdb.com/blog/build-company-brain-rushdb](https://rushdb.com/blog/build-company-brain-rushdb) |
+| [`customer-360`](3.x/customer-360) | CRM, billing, support and product events as linked records: value overlap, filtered schema, facets and a SQL join over relationships. | [rushdb.com/blog/customer-360-analytics-graph](https://rushdb.com/blog/customer-360-analytics-graph) |
+| [`entity-resolution`](3.x/entity-resolution) | Two exports of the same companies matched on exact stored values: normalized tax ids, name collisions with conflicting ids, and records with no key. | [rushdb.com/blog/entity-resolution-property-graph](https://rushdb.com/blog/entity-resolution-property-graph) |
+| [`equivalent-relations`](3.x/equivalent-relations) | Two sources naming the same relation differently: name similarity, value overlap, similar-value search, and merging the relationship types. | [rushdb.com/blog/semantically-equivalent-relations-knowledge-graph](https://rushdb.com/blog/semantically-equivalent-relations-knowledge-graph) |
+| [`filtered-vector-search`](3.x/filtered-vector-search) | Post-filter vs pre-filter on a tiny vector set where every score is readable, filters across relationships, and a recall measurement script. | [rushdb.com/blog/filtered-vector-search](https://rushdb.com/blog/filtered-vector-search) |
+| [`five-languages-one-dataset`](3.x/five-languages-one-dataset) | One shop dataset, four questions, each asked in SQL, openCypher, GQL, SQL/PGQ, Gremlin and SearchQuery. | [rushdb.com/blog/gremlin-cypher-gql-sql-pgq-compared](https://rushdb.com/blog/gremlin-cypher-gql-sql-pgq-compared) |
+| [`fraud-rings`](3.x/fraud-rings) | Shared-identifier rings, circular money flows with $cycle, and why direction matters. | [rushdb.com/blog/best-graph-database-fraud-detection](https://rushdb.com/blog/best-graph-database-fraud-detection) |
+| [`hybrid-rrf-dbsf`](3.x/hybrid-rrf-dbsf) | BM25 and vector legs over 20 help-center articles fused with RRF and DBSF, with both fusions recomputed by hand in jq. | [rushdb.com/blog/hybrid-search-rrf-vs-dbsf](https://rushdb.com/blog/hybrid-search-rrf-vs-dbsf) |
+| [`json-to-graph`](3.x/json-to-graph) | A nested helpdesk export imported as-is and then reshaped: what the catalog shows before and after, and the queries each shape allows. | [rushdb.com/blog/json-to-graph-database](https://rushdb.com/blog/json-to-graph-database) |
+| [`kg-predicate-completeness`](3.x/kg-predicate-completeness) | Predicate completeness per label, conditional completeness under a filter, and completeness across linked records. | [rushdb.com/blog/predicate-completeness-knowledge-graph](https://rushdb.com/blog/predicate-completeness-knowledge-graph) |
+| [`mcp-tool-budget`](3.x/mcp-tool-budget) | Token counts for the RushDB MCP server: instructions, every tool definition and ten tool results, measured over stdio. | [rushdb.com/blog/mcp-database-tools-design](https://rushdb.com/blog/mcp-database-tools-design) |
+| [`neo4j-driver-bolt`](3.x/neo4j-driver-bolt) | The official Neo4j Python driver against RushDB's Bolt listener: what works, what is refused, and the errors you get. | [rushdb.com/blog/neo4j-driver-bolt-compatibility](https://rushdb.com/blog/neo4j-driver-bolt-compatibility) |
+| [`pgwire-compatibility`](3.x/pgwire-compatibility) | About 30 psql probes over the PostgreSQL wire listener, with the SQLSTATE of every failure. | [rushdb.com/blog/postgres-wire-protocol-compatibility](https://rushdb.com/blog/postgres-wire-protocol-compatibility) |
+| [`psql-over-pgwire`](3.x/psql-over-pgwire) | A psql session: information_schema, SQL over label tables, traversal through rushdb_edges joins, bound parameters and session guards. | [rushdb.com/blog/query-graph-database-with-sql](https://rushdb.com/blog/query-graph-database-with-sql) |
+| [`schema-introspection-loop`](3.x/schema-introspection-loop) | The agent loop: read the shape, filter on stored values, read the shape of what matched, then ask the precise SQL question. | [rushdb.com/blog/trustworthy-agentic-data-analytics](https://rushdb.com/blog/trustworthy-agentic-data-analytics) |
+| [`schema-tokens`](3.x/schema-tokens) | One BIRD database described nine ways, from DDL to RushDB's catalog, with the token cost of each. | [rushdb.com/blog/schema-tokens-for-agents](https://rushdb.com/blog/schema-tokens-for-agents) |
+| [`sql-pgq`](3.x/sql-pgq) | The PostgreSQL 19 docs' SQL/PGQ examples run against RushDB's read-only GRAPH_TABLE profile, plus the relational equivalent. | [rushdb.com/blog/sql-pgq-graph-queries-today](https://rushdb.com/blog/sql-pgq-graph-queries-today) |
+| [`structured-recall-test`](3.x/structured-recall-test) | Twelve count, sum, latest and filter questions over 107 agent memories, answered three ways. | [rushdb.com/blog/structured-recall-test](https://rushdb.com/blog/structured-recall-test) |
+| [`supply-chain-tier-n`](3.x/supply-chain-tier-n) | Tier-N supplier exposure with hops, recall tracing, bill-of-materials where-used and single-source dependencies. | [rushdb.com/blog/best-graph-database-supply-chain](https://rushdb.com/blog/best-graph-database-supply-chain) |
+| [`tenant-isolation`](3.x/tenant-isolation) | Two tenants on one multitenant engine and every attempt to cross between them: queries, tokens, prompt injection and data-access policies. | [rushdb.com/blog/multi-tenant-database-design-ai](https://rushdb.com/blog/multi-tenant-database-design-ai) |
+| [`type-drift`](3.x/type-drift) | Two extractor versions writing the same property as a number and as text: both stored, one typed definition each, and how to query across them. | [rushdb.com/blog/type-drift-agent-pipelines](https://rushdb.com/blog/type-drift-agent-pipelines) |
+| [`wire-protocols`](3.x/wire-protocols) | One question asked over HTTP, gRPC, pgwire and Bolt, returning the same count, with optional loopback timings. | [rushdb.com/blog/one-binary-five-protocols](https://rushdb.com/blog/one-binary-five-protocols) |
 
-   - Visit [app.rushdb.com](https://app.rushdb.com/)
-   - Create a new account or sign in with Google OAuth
-   - Navigate to your workspace dashboard
+## RushDB 2.x (legacy) examples
 
-2. **Create API Token**:
+> **RushDB 2.x (legacy, Neo4j-based).** Security fixes only until 2027-10-28.
+> New projects: use [RushDB 3](https://github.com/rush-db/rushdb), a standalone Rust database for AI.
 
-   - Go to your workspace settings
-   - Generate a new API token
-   - Copy the token (format: `rushdb_***`)
+Every folder at the repository root, outside `3.x/`, was written for RushDB 2.x: the Neo4j-based TypeScript stack (the `2.x` branch of rush-db/rushdb and the `rushdb/platform` image). They were written against the 1.x and 2.x SDKs and the 2.x REST API, and are kept as they are for existing 2.x projects. To run one, install the 2.x SDK (`npm i @rushdb/javascript-sdk@2` or `pip install "rushdb<3"`).
 
-3. **Set Environment Variable**:
+| Group | Folders | What is there |
+|---|---|---|
+| Framework starters | `express-rushdb-sdk`, `express-books-rag`, `nextjs-cms`, `nextjs-ecommerce-example`, `nextjs-filters-rushdb-sdk`, `nextjs-simple-waitlist`, `nuxt-auth-rushdb-sdk`, `vite-react-useForm`, `python-simple-rag`, `python-books-rag`, `python-import-csv`, `jupyter-examples` | Small apps with the JavaScript and Python SDKs: an Express REST API, Next.js CMS, e-commerce, filters and waitlist apps, Nuxt auth, a React form, RAG APIs in Python and Express, CSV import and a Jupyter notebook. |
+| Tutorials | 126 folders ending in `-tutorial` | Step-by-step Python scripts (a few in TypeScript), one per topic: ingestion patterns, relationship modeling, RAG retrieval and reranking, agent memory, multi-agent coordination, conversation state and graph traversal. |
+| Use cases | 55 folders ending in `-usecase` | Single-scenario Python demos (a few in TypeScript): production RAG pipelines, citation tracking, semantic caching, code search, research assistants and similar applications. |
 
-   ```bash
-   export RUSHDB_API_TOKEN="your_token_here"
-   ```
+Each folder's README has its own setup steps.
 
-   Or create a `.env` file in your project:
+### Running RushDB 2.x
 
-   ```env
-   RUSHDB_API_TOKEN=your_token_here
-   ```
-
-### 2. Alternative: Self-Hosted Setup
-
-If you prefer to self-host RushDB:
+Self-host the 2.x image against your own Neo4j instance:
 
 ```bash
 docker run -p 3000:3000 \
@@ -64,214 +88,13 @@ docker run -p 3000:3000 \
   -e NEO4J_URL='neo4j+s://your-instance.neo4j.io' \
   -e NEO4J_USERNAME='neo4j' \
   -e NEO4J_PASSWORD='password' \
-  rushdb/platform
+  rushdb/platform:2.13.3
 ```
 
-**Requirements for self-hosting:**
+Self-hosting 2.x requires Neo4j 5.25.1 or higher with the APOC plugin, plus the Graph Data Science plugin for vector search.
 
-- Neo4j version 5.25.1 or higher
-- APOC Plugin (required)
-- Graph Data Science Plugin (for vector search)
+## Getting help
 
-## Available Examples
-
-### Backend APIs
-
-- **[Express REST API](./express-rushdb-sdk)** | [📝 README](./express-rushdb-sdk/README.md)
-
-  Complete REST API built with Express and TypeScript showcasing RushDB SDK integration.
-  Features hierarchical data modeling (Company → Department → Employee), CRUD operations, advanced aggregation queries, and comprehensive endpoint examples with Postman collection.
-
-### Frontend Applications
-
-- **[Next.js Dynamic Filters Demo](./nextjs-filters-rushdb-sdk)** | [📝 README](./nextjs-filters-rushdb-sdk/README.md)
-
-  Interactive Next.js application demonstrating dynamic UI components with RushDB integration.
-  Features real-time filtering, search functionality, server-side pagination, data grid visualization, and debug tools for tracking RushDB operations.
-
-- **[Next.js CMS](./nextjs-cms)** | [📝 README](./nextjs-cms/README.md)
-
-  Content Management System built with Next.js and RushDB.
-  Features page management, post creation, media handling, and administrative dashboard functionality.
-
-- **[Next.js Simple Waitlist](./nextjs-simple-waitlist)** | [📝 README](./nextjs-simple-waitlist/README.md)
-
-  Clean and responsive waitlist application built with Next.js and RushDB.
-  Features email validation, duplicate prevention, RushDB integration for data storage.
-
-- **[Vite React Form](./vite-react-useForm)** | [📝 README](./vite-react-useForm/README.md)
-
-  Professional registration form built with Vite, React, and TypeScript using React Hook Form and Zod validation.
-  Features comprehensive form validation, dynamic skill management, complex nested data structures, mock data filling, and seamless RushDB integration for data storage.
-
-- **[Nuxt Auth](./nuxt-auth-rushdb-sdk)** | [📝 README](./nuxt-auth-rushdb-sdk/README.md)
-
-  A minimal Nuxt 3 application demonstrating user registration, login, protected routes, and data persistence using RushDB.
-  Passwords are salted with HMAC-SHA256 (using an environment secret) and stored in RushDB. JWT tokens are set as HTTP-only cookies.
-
-### AI & RAG Applications
-
-- **[Simple Python RAG](./python-simple-rag)** | [📝 README](./python-simple-rag/README.md)
-
-  Minimal RAG (Retrieval-Augmented Generation) implementation using RushDB for vector storage.
-  Features document ingestion, automatic chunking, vector embeddings with sentence transformers, semantic search, and FastAPI interface.
-
-- **[Generic Books RAG API](./python-books-rag)** | [📝 README](./python-books-rag/README.md)
-
-  Advanced RAG system for processing any text records in RushDB.
-  Features generic record vectorization, embedding integration directly into existing records, vector similarity search, and scalable FastAPI architecture.
-
-- **[Express.js Generic Books RAG API](./express-books-rag)** | [📝 README](./express-books-rag/README.md)
-
-  Advanced RAG system for processing any text records in RushDB based on TypeScript & Express.js.
-  Features generic record vectorization, embedding integration directly into existing records, vector similarity search, and scalable FastAPI architecture.
-
-### Data Import Utilities
-
-- **[Python CSV Import](./python-import-csv)** | [📝 README](./python-import-csv/README.md)
-
-  Simple utility for importing CSV data into RushDB.
-  Demonstrates bulk data import functionality and basic RushDB Python SDK usage.
-
-## Technology Stack Coverage
-
-### Languages & Frameworks
-
-- **Backend**: TypeScript, JavaScript, Python
-- **Frontend**: Next.js, React, Vite
-- **API**: Express.js, FastAPI, REST APIs
-- **Database**: RushDB (Neo4j-based Graph Database)
-
-### Key Features Demonstrated
-
-- **🔄 CRUD Operations**: Complete Create, Read, Update, Delete workflows
-- **🔍 Vector Search**: AI-powered similarity search and embeddings
-- **🤖 RAG Systems**: Retrieval-Augmented Generation implementations
-- **📊 Data Import**: Bulk data import and CSV processing
-- **⚡ Real-time Filtering**: Dynamic UI components with live data
-- **✅ Form Validation**: React Hook Form with Zod schema validation
-- **📝 Content Management**: Full CMS with page and post management
-
-### Tools & Libraries
-
-- **SDKs**: [@rushdb/javascript-sdk](https://www.npmjs.com/package/@rushdb/javascript-sdk), [rushdb-python](https://pypi.org/project/rushdb/)
-- **Testing**: Postman Collections included
-- **Package Management**: npm, pnpm, UV Package Manager
-- **Validation**: React Hook Form, Zod
-- **AI/ML**: Sentence Transformers, Vector Embeddings
-- **UI**: Tailwind CSS, shadcn/ui components
-
-## Quick Start Example
-
-Here's how simple it is to get started with RushDB:
-
-### TypeScript/JavaScript
-
-```typescript
-import RushDB from "@rushdb/javascript-sdk";
-
-const db = new RushDB(process.env.RUSHDB_API_TOKEN);
-
-// Push nested JSON - auto-normalized into graph
-await db.records.createMany({
-  label: "COMPANY",
-  payload: {
-    name: "Tech Corp",
-    DEPARTMENT: [
-      {
-        name: "Engineering",
-        EMPLOYEE: [
-          {
-            name: "Alice Smith",
-            role: "Senior Developer",
-          },
-        ],
-      },
-    ],
-  },
-});
-
-// Query with relationship traversal
-const developers = await db.records.find({
-  labels: ["EMPLOYEE"],
-  where: {
-    role: { $contains: "Developer" },
-    DEPARTMENT: { COMPANY: { name: "Tech Corp" } },
-  },
-});
-```
-
-### Python
-
-```python
-from rushdb import RushDB
-
-db = RushDB(os.getenv("RUSHDB_API_TOKEN"))
-
-# Same data structure, same simplicity
-db.records.create_many("COMPANY", {
-    "name": "Tech Corp",
-    "DEPARTMENT": [{
-        "name": "Engineering",
-        "EMPLOYEE": [{
-            "name": "Alice Smith",
-            "role": "Senior Developer"
-        }]
-    }]
-})
-
-# Consistent query syntax across languages
-developers = db.records.find({
-    "labels": ["EMPLOYEE"],
-    "where": {
-        "role": {"$contains": "Developer"},
-        "DEPARTMENT": {"COMPANY": {"name": "Tech Corp"}}
-    }
-})
-```
-
-## Getting Started
-
-Each example includes its own README with detailed setup instructions, API documentation, and usage examples. Most examples include:
-
-- **📋 Prerequisites**: Required dependencies and environment setup
-- **⚙️ Environment Configuration**: `.env` file templates and variable explanations
-- **📦 Installation Instructions**: Step-by-step dependency installation
-- **🚀 Usage Guides**: How to run and test the application
-- **📖 API Documentation**: Endpoint descriptions and request/response examples
-- **📮 Postman Collections**: Ready-to-import API testing collections (where applicable)
-- **🎯 Sample Data**: Test datasets and example records for immediate experimentation
-
-### Recommended Learning Path
-
-1. **Start Simple**: Begin with [Python CSV Import](./python-import-csv) to understand basic RushDB operations
-2. **Build APIs**: Explore [Express REST API](./express-rushdb-sdk) for comprehensive backend development
-3. **Create UIs**: Try [Next.js Dynamic Filters](./nextjs-filters-rushdb-sdk) for interactive frontend development
-4. **Add AI**: Implement [Python RAG Systems](./python-simple-rag) for AI-powered applications
-5. **Go Advanced**: Build a complete [CMS](./nextjs-cms) or complex [forms](./vite-react-useForm)
-
-### Common Setup Steps
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/rush-db/examples.git
-   cd examples
-   ```
-
-2. **Navigate to your chosen example**:
-
-   ```bash
-   cd express-rushdb-sdk  # or any other example
-   ```
-
-3. **Follow the example-specific README** for detailed setup instructions
-
-### Getting Help
-
-- **📖 Documentation**: [docs.rushdb.com](https://docs.rushdb.com/)
-- **💬 Community**: [GitHub Discussions](https://github.com/rush-db/rushdb/discussions)
-- **🐛 Issues**: [Report bugs or request features](https://github.com/rush-db/rushdb/issues)
-- **📧 Support**: Contact support through [app.rushdb.com](https://app.rushdb.com/)
-
-Feel free to explore each example to see how RushDB can simplify data modeling, querying, and AI-powered applications for modern development.
+- Documentation: [docs.rushdb.com](https://docs.rushdb.com)
+- Discussions: [github.com/rush-db/rushdb/discussions](https://github.com/rush-db/rushdb/discussions)
+- Issues: [github.com/rush-db/rushdb/issues](https://github.com/rush-db/rushdb/issues)
