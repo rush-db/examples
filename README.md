@@ -24,8 +24,9 @@ Then run an example against it:
 
 ```bash
 git clone https://github.com/rush-db/examples.git && cd examples
-export RUSHDB_URL=http://127.0.0.1:3000 RUSHDB_TOKEN=change-me
-cd 3.x/<example> && ./run.sh
+export RUSHDB_URL=http://127.0.0.1:3000
+export RUSHDB_TOKEN=change-me      # the token RushDB runs with; `rushdb up` uses local-token
+cd 3.x/company-brain && ./run.sh   # or any other folder under 3.x/
 ```
 
 Each example seeds a small dataset and runs every query from its article over the HTTP protocol with `curl` and `jq`. Some also use pgwire, Bolt, gRPC or MCP, or need Python, Node.js, `psql` or `openssl`: each folder's README lists its prerequisites and engine flags. Run each example on an empty node, since several share label names. See [`3.x/README.md`](3.x/README.md) for details.
