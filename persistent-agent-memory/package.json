@@ -1,0 +1,9 @@
+{
+  "name": "rushdb-example-persistent-agent-memory",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@rushdb/agent-memory-contract": "0.3.0",
+    "@rushdb/javascript-sdk": "3.0.1"
+  }
+}
