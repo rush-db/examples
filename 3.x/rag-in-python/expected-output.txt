@@ -1,0 +1,63 @@
+$ python rag.py
+indexed 11 articles
+
+Q: Can I change the currency on an invoice I already sent?
+  [1] 0.7938  Correct a sent invoice           https://help.example.com/correct-sent-invoice
+  [2] 0.7852  Bill in several currencies       https://help.example.com/multi-currency
+  [3] 0.7426  Send an invoice                  https://help.example.com/send-invoice
+  (prompt: 1005 characters; set OPENAI_API_KEY to generate an answer)
+
+Q: Why do I get INV-412?
+  [1] 0.8047  Error INV-412                    https://help.example.com/error-inv-412
+  [2] 0.7390  Error INV-409                    https://help.example.com/error-inv-409
+  [3] 0.5808  Correct a sent invoice           https://help.example.com/correct-sent-invoice
+  (prompt: 997 characters; set OPENAI_API_KEY to generate an answer)
+
+$ python compare_retrieval.py
+
+Q: Can I change the currency on an invoice I already sent?
+  vector        correct-sent-invoice 0.7938, multi-currency 0.7852, send-invoice 0.7426
+  bm25          multi-currency 6.024, error-inv-409 4.822, payment-reminders 4.502  (11 of 11 articles match)
+  rrf, text 1   multi-currency 0.03252, correct-sent-invoice 0.03154, error-inv-409 0.03128
+  rrf, text 0.5 multi-currency 0.02433, correct-sent-invoice 0.02397, send-invoice 0.02357
+
+Q: Why do I get INV-412?
+  vector        error-inv-412 0.8047, error-inv-409 0.739, correct-sent-invoice 0.5808
+  bm25          error-inv-412 3.563, payment-reminders 2.126  (2 of 11 articles match)
+  rrf, text 1   error-inv-412 0.03279, payment-reminders 0.03083, error-inv-409 0.01613
+  rrf, text 0.5 error-inv-412 0.02459, payment-reminders 0.02277, error-inv-409 0.01613
+
+Q: How do I fix error 409?
+  vector        error-inv-409 0.7499, error-inv-412 0.6323, correct-sent-invoice 0.5314
+  bm25          correct-sent-invoice 2.031, error-inv-409 2.009  (2 of 11 articles match)
+  rrf, text 1   error-inv-409 0.03252, correct-sent-invoice 0.03227, error-inv-412 0.01613
+  rrf, text 0.5 error-inv-409 0.02446, correct-sent-invoice 0.02407, error-inv-412 0.01613
+
+$ python rag.py   # second run: the records are already stored
+
+Q: Can I change the currency on an invoice I already sent?
+  [1] 0.7938  Correct a sent invoice           https://help.example.com/correct-sent-invoice
+  [2] 0.7852  Bill in several currencies       https://help.example.com/multi-currency
+  [3] 0.7426  Send an invoice                  https://help.example.com/send-invoice
+  (prompt: 1005 characters; set OPENAI_API_KEY to generate an answer)
+
+Q: Why do I get INV-412?
+  [1] 0.8047  Error INV-412                    https://help.example.com/error-inv-412
+  [2] 0.7390  Error INV-409                    https://help.example.com/error-inv-409
+  [3] 0.5808  Correct a sent invoice           https://help.example.com/correct-sent-invoice
+  (prompt: 997 characters; set OPENAI_API_KEY to generate an answer)
+
+# With OPENAI_API_KEY set (OpenRouter, MODEL=openai/gpt-4o-mini, 2026-11-06). Answers vary by model and run.
+indexed 11 articles
+
+Q: Can I change the currency on an invoice I already sent?
+  [1] 0.7938  Correct a sent invoice           https://help.example.com/correct-sent-invoice
+  [2] 0.7852  Bill in several currencies       https://help.example.com/multi-currency
+  [3] 0.7426  Send an invoice                  https://help.example.com/send-invoice
+A: No, you cannot change the currency on an invoice you already sent, as sent invoices are locked and cannot be edited [3].
+
+Q: Why do I get INV-412?
+  [1] 0.8047  Error INV-412                    https://help.example.com/error-inv-412
+  [2] 0.7390  Error INV-409                    https://help.example.com/error-inv-409
+  [3] 0.5808  Correct a sent invoice           https://help.example.com/correct-sent-invoice
+A: You get INV-412 because the invoice total does not match the sum of its lines after rounding. This error typically occurs with imported invoices that carry their own totals. To resolve it, you should recalculate the draft or remove the imported total, then send it again [1].
