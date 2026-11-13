@@ -51,12 +51,12 @@ with driver.session() as session:
     session.execute_write(promote)
     print("committed")
 
-    step("4b. Creating a relationship inside a transaction is refused on this build")
+    step("4b. Creating a relationship inside a managed write transaction")
     try:
         session.execute_write(lambda tx: tx.run(
             "MATCH (t:Team {name: 'Storage'}) CREATE (t)-[:EMPLOYS {since: 2026}]->(:Engineer {name: 'Lena'})"
         ).consume())
-    except Exception as error:  # DatabaseError: Neo.DatabaseError.Execution.Failed
+    except Exception as error:
         print(f"{type(error).__name__}: {error.code}")
     print("Lena records:", session.run("MATCH (e:Engineer {name: 'Lena'}) RETURN count(e) AS n").single()["n"])
 

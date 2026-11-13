@@ -33,4 +33,4 @@ The script deletes every `PRODUCT` record first.
 
 - `data/`: 12 made-up products, 8 from extractor v1 and 4 from v2
 - `queries/`: every request the script sends (`.json` envelopes, `.sql` statements wrapped in `query.statement`)
-- `expected-output.txt`: a real run against the engine build of 2026-10-27 (`rushdb 3.0.1`)
+- `expected-output.txt`: a real run against RushDB 3.0.10

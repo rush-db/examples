@@ -6,7 +6,7 @@ Two parts, both against a local RushDB 3.x engine:
   to follow. It shows an unfiltered top 3, the same top 3 post-filtered in the client (nothing left),
   the pre-filtered search (`predicate` before ranking), a filter on a related record's property
   (`"AUTHOR": {"team": "search"}`), `describe.explainVector`, and an `ann` search whose filter leaves
-  one candidate (answered exactly, `fallback: lowConfidence`).
+  one candidate (answered exactly, `fallback: smallCandidateSet`).
 - `measure/measure.py` (Python standard library): recall@10 against selectivity on 20,000 synthetic
   128-d vectors in 50 Gaussian clusters (seed 7), 50 queries per filter. It compares RushDB's filtered
   ANN with post-filtering at k = 10 and k = 100, adds a filter correlated with the vectors, a filter
@@ -43,5 +43,5 @@ python3 measure/measure.py       # about 3 minutes on a laptop
 
 - `data/authors.json`: example data for `run.sh`
 - `queries/`: every request `run.sh` sends after seeding
-- `expected-output.txt`, `measure/expected-output.txt`: real runs against the engine build of 2026-10-27
-  (`rushdb 3.0.1`, in-memory, i9-12900H laptop)
+- `expected-output.txt`: a real run against RushDB 3.0.10; `measure/expected-output.txt`: a real run
+  against the engine build of 2026-10-27 (`rushdb 3.0.1`, in-memory, i9-12900H laptop)

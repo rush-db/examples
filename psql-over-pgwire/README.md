@@ -27,6 +27,7 @@ export RUSHDB_URL=http://127.0.0.1:3000 RUSHDB_TOKEN=local-token PGHOST=127.0.0.
 
 - `data/customers.json`: nested customers → orders → products (made-up data)
 - `queries/session-1.sql`, `queries/session-2.sql`: the psql session
-- `expected-output.txt`: output of a real run (psql 18.6) against the engine build of 2026-10-27
+- `expected-output.txt`: output of a real run (psql 18.6) against RushDB 3.0.10
 
-The listener is cleartext (`sslmode=disable`) and autocommit only. Keep it on loopback.
+The listener is cleartext without `--tls-cert` (`sslmode=disable`), and every write commits on its own: a
+`BEGIN` block is read-only. Keep a cleartext listener on loopback.

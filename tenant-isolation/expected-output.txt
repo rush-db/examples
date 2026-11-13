@@ -19,7 +19,7 @@ HTTP 403 {"protocolVersion":1,"error":{"code":"missing_scope","message":"X-RushD
 HTTP 403 {"protocolVersion":1,"error":{"code":"scope_mismatch","message":"protocol scope does not match the authenticated transport scope","retryable":false}}
 
 == Naming the other tenant inside the query: there is no such table
-HTTP 404 {"protocolVersion":1,"error":{"code":"not_found","message":"SQL engine failed: Error during planning: table 'datafusion.globex.ticket' not found","retryable":false}}
+HTTP 404 {"protocolVersion":1,"error":{"code":"not_found","message":"SQL planning failed: table 'datafusion.globex.ticket' not found","retryable":false}}
 
 == A tenant name with a typo: a new, empty tenant (not an error)
 HTTP 200 {"kind":"labels","labels":[]}
@@ -48,10 +48,10 @@ HTTP 401 {"error":"unauthorized"}
 {"http":"200","policy":{"allowedLabels":["Ticket"],"visibleProperties":{"Ticket":["subject","status"]}}}
 
 == Under the policy: SELECT * returns only the visible columns
-HTTP 200 {"kind":"rows","rows":[{"subject":"Invoice address change","status":"closed","__id":"01a18ec3-98f3-7de1-b2c4-3b3e0223ffdd"},{"subject":"Login loop on Safari","status":"open","__id":"01a18ec3-98f3-7de1-b2c4-3b2831d3d172"},{"subject":"Refund for order 1182","status":"open","__id":"01a18ec3-98f3-7de1-b2c4-3b1abbe649fd"}],"total":3}
+HTTP 200 {"kind":"rows","rows":[{"subject":"Invoice address change","status":"closed","__id":"01a1d6de-c1eb-7323-8148-319bd242e985"},{"subject":"Login loop on Safari","status":"open","__id":"01a1d6de-c1eb-7323-8148-318feb2c330e"},{"subject":"Refund for order 1182","status":"open","__id":"01a1d6de-c1eb-7323-8148-3179c7b2fa18"}],"total":3}
 
 == Under the policy: the customer label is not visible at all
-HTTP 404 {"protocolVersion":1,"error":{"code":"not_found","message":"SQL engine failed: Error during planning: table 'datafusion.public.customer' not found","retryable":false}}
+HTTP 404 {"protocolVersion":1,"error":{"code":"not_found","message":"SQL planning failed: table 'datafusion.public.customer' not found","retryable":false}}
 HTTP 200 {"kind":"labels","labels":["Ticket"]}
 
 == Under the policy: Cypher cannot apply it yet, so it fails closed

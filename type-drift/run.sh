@@ -62,7 +62,7 @@ send 05-sorted-by-price.json | jq -c '[.records[].properties | [.sku, .price]]'
 
 heading "\$type string finds the drifted records"
 send 06-price-type-string.json | jq -c '{total, skus: [.records[].properties.sku]}'
-heading "\$type number matches all 12: for scalar names it reads the catalog's type for the property"
+heading "\$type number matches the 8 records whose price is stored as a number"
 send 07-price-type-number.json | jq -c '{total}'
 
 heading "SQL: a column with numbers and text reads as text"

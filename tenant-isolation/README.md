@@ -62,11 +62,12 @@ rerun: both example tenants (`example-acme`, `example-globex`; override with `AC
 
 ## Over the PostgreSQL wire (not in run.sh)
 
-On a multitenant server the pgwire `database` startup parameter is the tenant, and the password is the
-boot token (capability tokens are refused as passwords). Two things worth knowing, both checked on the
-engine build of 2026-10-27:
+On a multitenant server the pgwire `database` startup parameter is the tenant. The password is the boot
+token or a capability token bound to that tenant (`mint` in `lib.sh`); a capability for another tenant is
+refused (`Password authentication failed`). Two things worth knowing, both checked on RushDB 3.0.10:
 
 - libpq defaults `dbname` to the user name, so `psql "host=127.0.0.1 user=rushdb"` without `dbname` opens a
   tenant called `rushdb`, not an error.
-- The engine refuses to start pgwire, gRPC or Bolt on a non-loopback multitenant listener, even with
-  `--allow-insecure-listen`: `refusing to bind pgwire/gRPC/Bolt on a non-loopback multitenant listener`.
+- On a non-loopback multitenant listener the engine starts pgwire only with TLS and tenant-bound
+  credentials (`--tls-cert`, `--tls-key`, `--capability-secret`); without them it refuses to start:
+  `refusing to bind pgwire on a non-loopback multitenant listener without TLS and --capability-secret`.

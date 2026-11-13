@@ -9,14 +9,19 @@ UPDATE product SET price = 30.0 WHERE name = 'Scale';
 SELECT name, price FROM product WHERE name = 'Scale';
 UPDATE product SET price = 32.0 WHERE name = 'Scale';
 
-\echo '== 8. What does not work, and the SQLSTATE you get'
-\set VERBOSITY sqlstate
-\echo '-- BEGIN (explicit transaction)'
-BEGIN;
+\echo '== 8. What BI tools send on connect: settings, the catalog, a transaction block'
 \echo '-- SET application_name (what Metabase sends on connect)'
 SET application_name = 'metabase';
 \echo '-- the describe-tables meta-command (reads pg_catalog)'
 \dt
+\echo '-- BEGIN opens a read-only block: reads work, a write is refused'
+BEGIN;
+SELECT count(*) FROM product;
+UPDATE product SET price = 31.0 WHERE name = 'Scale';
+COMMIT;
+
+\echo '== 9. What does not work, and the SQLSTATE you get'
+\set VERBOSITY sqlstate
 \echo '-- GRAPH_TABLE over pgwire'
 SELECT * FROM GRAPH_TABLE (MATCH (c:CUSTOMER) COLUMNS (c.name AS name)) AS g;
 \echo '-- COPY'

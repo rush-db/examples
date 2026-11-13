@@ -23,12 +23,12 @@
  rushdb_edges | placed
 (5 rows)
 
- column_name | data_type 
--------------+-----------
- name        | Utf8
- price       | Float64
- sku         | Utf8
- __id        | Utf8
+ column_name |    data_type     
+-------------+------------------
+ name        | text
+ sku         | text
+ price       | double precision
+ __id        | text
 (4 rows)
 
 == 3. Plain SQL over a label
@@ -81,15 +81,32 @@ UPDATE 1
 (1 row)
 
 UPDATE 1
-== 8. What does not work, and the SQLSTATE you get
--- BEGIN (explicit transaction)
-psql:queries/session-2.sql:15: ERROR:  0A000
+== 8. What BI tools send on connect: settings, the catalog, a transaction block
 -- SET application_name (what Metabase sends on connect)
-psql:queries/session-2.sql:17: ERROR:  42601
+SET
 -- the describe-tables meta-command (reads pg_catalog)
-psql:queries/session-2.sql:19: ERROR:  42P01
+              List of tables
+    Schema    |   Name   | Type  | Owner  
+--------------+----------+-------+--------
+ public       | CUSTOMER | table | rushdb
+ public       | ORDER    | table | rushdb
+ public       | PRODUCT  | table | rushdb
+ rushdb_edges | contains | table | rushdb
+ rushdb_edges | placed   | table | rushdb
+(5 rows)
+
+-- BEGIN opens a read-only block: reads work, a write is refused
+BEGIN
+ count(*) 
+----------
+        4
+(1 row)
+
+psql:queries/session-2.sql:20: ERROR:  cannot execute UPDATE inside a transaction block: every write commits on its own; send it in autocommit mode
+COMMIT
+== 9. What does not work, and the SQLSTATE you get
 -- GRAPH_TABLE over pgwire
-psql:queries/session-2.sql:21: ERROR:  42601
+psql:queries/session-2.sql:26: ERROR:  42601
 -- COPY
-psql:queries/session-2.sql:23: ERROR:  42601
+psql:queries/session-2.sql:28: ERROR:  42601
 DROP INDEX
