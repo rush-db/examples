@@ -31,6 +31,6 @@ examples (for example a `CUSTOMER` label) adds suggestions that are not in `expe
 - `data/`: the HR and CRM exports, orders and invoices (fake people, `.example` domains)
 - `queries/`: every request the script sends after seeding, one file each (`.json` envelopes for
   `POST /protocol/v1/execute`, `.sql` statements the script wraps in `query.statement`)
-- `expected-output.txt`: output of a real run against the engine build of 2026-10-27
+- `expected-output.txt`: output of a real run against RushDB 3.0.10
 
 Query 07 (`retypeRelations`) changes data. The script re-seeds on every run, so you can run it again.

@@ -32,7 +32,7 @@ can be re-run.
   (`passage_embed` for articles, `query_embed` for queries), rounded to 5 decimals. You only need it
   to change the data: `uv run --with fastembed==0.9.1 python scripts/embed.py in.json out.json text passage`
 - `queries/`: request templates; `run.sh` fills `"@text"` and `"@vector"` from `data/queries.json`
-- `expected-output.txt`: a real run against the engine build of 2026-10-27 (`rushdb 3.0.1`)
+- `expected-output.txt`: a real run against RushDB 3.0.10
 
 ## Formulas the script checks
 

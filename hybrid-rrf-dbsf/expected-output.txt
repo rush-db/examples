@@ -58,9 +58,9 @@ done
 == DBSF by hand: each leg's scores mapped by its own mean +/- 3 standard deviations to [0, 1], then summed
   vector leg: 20 scores, mean 0.5917, sd 0.0929
   text leg:   15 scores, mean 2.2747, sd 2.0749
-  self-hosted-secrets: 1.6220359849914374   engine: 1.6220359849914374
-  self-hosted-env-key: 1.5954829966200523   engine: 1.5954829966200523
-  rotate-api-key: 1.443652509417455   engine: 1.443652509417455
+  self-hosted-secrets: 1.622035982585168   engine: 1.622035982585168
+  self-hosted-env-key: 1.5954829945990856   engine: 1.5954829945990856
+  rotate-api-key: 1.4436525078207627   engine: 1.4436525078207627
 
 == A filter runs before both legs: product = self-hosted (BM25 matches drop from 15 to 5)
 {"textSearch":{"matches":5,"pending":0}}

@@ -7,19 +7,19 @@ done
 
 == 3. Auto-commit writes with parameters (relationships included)
 3 EMPLOYS relationships
-summary of the last write: query_type='r' nodes_created=0 contains_updates=False
+summary of the last write: query_type='w' nodes_created=0 contains_updates=True
 
 == 4. Managed write transaction: property updates commit together
 committed
 
-== 4b. Creating a relationship inside a transaction is refused on this build
-DatabaseError: Neo.DatabaseError.Execution.Failed
-Lena records: 0
+== 4b. Creating a relationship inside a managed write transaction
+Lena records: 1
 
 == 5. Read typed columns (booleans and floats come back as Python bool and float)
 Ines  level=3 remote=True  rating=4.5 since=2021  types=(bool, float)
 Kofi  level=3 remote=False rating=3.9 since=2023  types=(bool, float)
 Mei   level=4 remote=True  rating=4.8 since=2024  types=(bool, float)
+Lena  level=None remote=None  rating=None since=2026  types=(NoneType, NoneType)
 
 == 6. Managed read transaction with an aggregate
 remote engineers: 2
@@ -32,7 +32,7 @@ Temp engineers after rollback: 0
 
 == 9. A syntax error comes back as a Neo4j client error, and the session keeps working
 code=Neo.ClientError.Statement.SyntaxError
-after error: 3
+after error: 4
 
 == 10. execute_query (driver-level API)
 ['name'] ['Ines', 'Kofi', 'Mei']

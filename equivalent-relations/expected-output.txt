@@ -39,7 +39,7 @@ EMPLOYEE -WORKS_AT-> COMPANY: 3
 {"label":"INVOICE","property":"cust_id","value":"C-17","count":1}
 
 == Merge: retype EMPLOYED_BY to WORKS_AT between EMPLOYEE and COMPANY
-{"kind":"mutation","affected":1}
+{"kind":"mutation","affected":3,"merged":2,"propertyConflicts":0}
 
 == Re-read the shapes: one type left; the 2 shared pairs did not become duplicate edges
 EMPLOYEE -WORKS_AT-> COMPANY: 4

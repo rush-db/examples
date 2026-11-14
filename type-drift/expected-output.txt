@@ -31,8 +31,8 @@ done
 == $type string finds the drifted records
 {"total":4,"skus":["MN-412","CM-518","DK-605","MP-702"]}
 
-== $type number matches all 12: for scalar names it reads the catalog's type for the property
-{"total":12}
+== $type number matches the 8 records whose price is stored as a number
+{"total":8}
 
 == SQL: a column with numbers and text reads as text
 {"sku":"CB-220","price":"12.99","in_stock":"true"}
@@ -49,7 +49,7 @@ done
 {"sku":"SP-250","price":"64","in_stock":"true"}
 
 == SQL: price > 30 against the text column fails
-{"error":{"code":"execution_failed","message":"internal execution error","retryable":false}}
+{"error":{"code":"invalid_request","message":"SQL value is invalid: Cannot cast string '24.5' to value of Int64 type; text compared with a number is cast to a number. A column whose values have more than one type reads as text: compare it with text, or skip the values that are not numbers with TRY_CAST(column AS BIGINT). A datetime column reads as epoch milliseconds: compare to_timestamp_millis(column) with a TIMESTAMP","retryable":false}}
 
 == SQL: price > '30' runs, but compares text ("249.00" < "30")
 ["HD-310","KB-101","LT-115","MP-702","SP-250"]

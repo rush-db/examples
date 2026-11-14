@@ -23,7 +23,7 @@ export RUSHDB_URL=http://127.0.0.1:3000 RUSHDB_TOKEN=local-token
 ./run.sh
 ```
 
-`expected-output.txt` is a real run against the engine build of 2026-10-27. Token counts use tiktoken's
+`expected-output.txt` is a real run against RushDB 3.0.10. Token counts use tiktoken's
 `o200k_base` encoding, which approximates but does not equal any particular model's tokenizer; compare the
 rows with each other rather than reading them as exact bills. Only the text content of each result is
 counted. The server also returns the same data as `structuredContent`; a client that forwards both pays

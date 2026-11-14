@@ -1,10 +1,10 @@
-== Reset: delete SUPPLIER records and the indexes an earlier run created
+== Reset: delete SUPPLIER records and the index an earlier run created
 {"kind":"mutation"}
 == Seed: 7 suppliers as nested JSON over HTTP (each nested SUPPLIER is linked with BUYS_FROM)
 {"kind":"ingested","count":7,"relationships":5}
-== Startup: TLS is refused, a wrong token is refused
-psql: error: connection to server at "127.0.0.1", port 39462 failed: server does not support SSL, but SSL was required
-psql: error: connection to server at "127.0.0.1", port 39462 failed: FATAL:  Password authentication failed for user "rushdb"
+== Startup: TLS is refused (the engine runs without --tls-cert), a wrong token is refused
+psql: error: connection to server at "127.0.0.1", port 15432 failed: server does not support SSL, but SSL was required
+psql: error: connection to server at "127.0.0.1", port 15432 failed: FATAL:  Password authentication failed for user "rushdb"
 == Probes (one connection each; ERROR lines carry the SQLSTATE)
 -- version: SELECT version()
       version       
@@ -25,7 +25,11 @@ psql: error: connection to server at "127.0.0.1", port 39462 failed: FATAL:  Pas
 (1 row)
 
 -- current_database_and_user: SELECT current_database(), current_user
-ERROR:  XX000: internal execution error
+ current_database | current_user 
+------------------+--------------
+ rushdb           | rushdb
+(1 row)
+
 -- filter: SELECT code, name, tier FROM supplier WHERE region = 'flood-zone-07' ORDER BY code
  code  |             name              | tier 
 -------+-------------------------------+------
@@ -69,37 +73,43 @@ ERROR:  XX000: internal execution error
 (2 rows)
 
 -- camelcase_unquoted: SELECT code, onboardedAt FROM supplier LIMIT 1
-ERROR:  XX000: internal execution error
+ERROR:  42703: SQL planning failed: No field named onboardedat. Did you mean 'supplier.onboardedAt'?.
 -- unknown_column: SELECT nosuchcol FROM supplier LIMIT 1
-ERROR:  XX000: internal execution error
+ERROR:  42703: SQL planning failed: No field named nosuchcol. Valid fields are supplier.code, supplier.name, supplier.tier, supplier.region, supplier."onboardedAt", supplier.certifications, supplier.__id.
 -- unknown_table: SELECT * FROM suplier
-ERROR:  42P01: SQL engine failed: Error during planning: table 'datafusion.public.suplier' not found. Did you mean 'SUPPLIER'?
+ERROR:  42P01: SQL planning failed: table 'datafusion.public.suplier' not found. Did you mean 'SUPPLIER'?
 -- information_schema: SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'SUPPLIER' ORDER BY ordinal_position
-  column_name   | data_type  
-----------------+------------
- code           | Utf8
- name           | Utf8
- tier           | Int64
- region         | Utf8
- onboardedAt    | Int64
- certifications | List(Utf8)
- __id           | Utf8
+  column_name   | data_type 
+----------------+-----------
+ code           | text
+ name           | text
+ tier           | bigint
+ region         | text
+ onboardedAt    | bigint
+ certifications | jsonb
+ __id           | text
 (7 rows)
 
 -- psql_dt: \dt
-ERROR:  42P01: SQL engine failed: Error during planning: table 'datafusion.pg_catalog.pg_class' not found
+              List of tables
+    Schema    |   Name    | Type  | Owner  
+--------------+-----------+-------+--------
+ public       | SUPPLIER  | table | rushdb
+ rushdb_edges | buys_from | table | rushdb
+(2 rows)
+
 -- psql_d: \d supplier
-ERROR:  42P01: SQL engine failed: Error during planning: table 'datafusion.pg_catalog.pg_class' not found
+ERROR:  0A000: SQL statement is not supported: Unsupported ast node in sqltorel: Collate { expr: Value(ValueWithSpan { value: SingleQuotedString("^(supplier)$"), span: Span(Location(1,164)..Location(1,178)) }), collation: ObjectName([Identifier(Ident { value: "pg_catalog", quote_style: None, span: Span(Location(1,187)..Location(1,197)) }), Identifier(Ident { value: "default", quote_style: None, span: Span(Location(1,198)..Location(1,205)) })]) }
 -- begin: BEGIN
-ERROR:  0A000: explicit transactions are not supported over the PostgreSQL wire: every statement commits on its own; use the client's autocommit mode
+BEGIN
 -- multi_statement: SELECT 1; SELECT 2
-ERROR:  XX000: internal execution error
+ERROR:  0A000: SQL statement is not supported: The context currently only supports a single SQL statement
 -- copy: COPY supplier TO STDOUT
 ERROR:  42601: SQL parse failed: SQL error: ParserError("Expected: literal string, found: STDOUT at Line: 1, Column: 18")
 -- set_search_path: SET search_path = public
-ERROR:  42601: SQL statement is not read-only: SET search_path = public; send writes as mutate.statement
+SET
 -- prepare_sql: PREPARE q(text) AS SELECT code FROM supplier WHERE region = $1
-ERROR:  42601: SQL statement is not read-only: PREPARE q (TEXT) AS SELECT code FROM supplier WHERE region = $1; send writes as mutate.statement
+ERROR:  0A000: SQL statement is not supported: PREPARE: prepared statements are made with the extended query protocol (Parse/Bind) or bound parameters, not with SQL PREPARE
 -- extended_bind: SELECT code FROM supplier WHERE region = $1 ORDER BY code \bind 'flood-zone-07' \g
  code  
 -------
@@ -108,22 +118,26 @@ ERROR:  42601: SQL statement is not read-only: PREPARE q (TEXT) AS SELECT code F
 (2 rows)
 
 -- cast_jsonb: SELECT '{"a":1}'::jsonb
-ERROR:  XX000: internal execution error
+ERROR:  0A000: SQL statement is not supported: Unsupported SQL type JSONB
 -- cast_regclass: SELECT 'supplier'::regclass
-ERROR:  XX000: internal execution error
+ NULL 
+------
+ 
+(1 row)
+
 -- create_table: CREATE TABLE foo (id int)
-ERROR:  42601: SQL statement is not read-only: CREATE TABLE foo (id INT); send writes as mutate.statement
+ERROR:  0A000: SQL statement is not supported: CREATE TABLE: tables are record labels, made by writing records; the only DDL is CREATE INDEX and DROP INDEX
 -- listen: LISTEN changes
-ERROR:  42601: SQL statement is not read-only: LISTEN changes; send writes as mutate.statement
+ERROR:  0A000: SQL statement is not supported: LISTEN: change notifications are not offered
 -- cursor: DECLARE c CURSOR FOR SELECT code FROM supplier
-ERROR:  42601: SQL statement is not read-only: DECLARE c CURSOR FOR SELECT code FROM supplier; send writes as mutate.statement
+ERROR:  0A000: SQL statement is not supported: DECLARE: cursors are not offered; page with ORDER BY … LIMIT … OFFSET
 -- graph_table: SELECT * FROM GRAPH_TABLE (g MATCH (a:SUPPLIER)-[:BUYS_FROM]->(b:SUPPLIER) COLUMNS (a.code AS a, b.code AS b))
 ERROR:  42601: SQL parse failed: SQL error: ParserError("No infix parser for token Word(Word { value: \"MATCH\", quote_style: None, keyword: MATCH }) at Line: 1, Column: 30")
 -- explain: EXPLAIN SELECT code FROM supplier WHERE tier = 1
-   plan_type   |                                      plan                                      
----------------+--------------------------------------------------------------------------------
+   plan_type   |                                        plan                                        
+---------------+------------------------------------------------------------------------------------
  logical_plan  | TableScan: supplier projection=[code], full_filters=[supplier.tier = Int64(1)]
- physical_plan | StreamingTableExec: partition_sizes=1, projection=[code]                      +
+ physical_plan | RushScan: label=SUPPLIER, StreamingTableExec: partition_sizes=1, projection=[code]+
                | 
 (2 rows)
 
@@ -134,8 +148,8 @@ ERROR:  42601: SQL parse failed: SQL error: ParserError("No infix parser for tok
 (1 row)
 
 -- row_cap_hit: SELECT * FROM generate_series(1, 100001)
-ERROR:  53200: SQL snapshot exceeds the 100000 row safety limit: 100001
-== One session: SET/SHOW/RESET, refusing unindexed filters, two indexes (built in the background; the script waits), a statement timeout
+ERROR:  53200: SQL result exceeds the 100000 row safety limit (100001 rows); add a LIMIT or narrow the query
+== One session: SET/SHOW/RESET, refusing unindexed filters, an index (built in the background; the script waits), a statement timeout
 SET statement_timeout = '30s';
 SET
 SHOW statement_timeout;
@@ -148,11 +162,7 @@ SET disallow_full_table_scans = on;
 SET
 SELECT code FROM supplier WHERE region = 'flood-zone-07' ORDER BY code;
 psql:queries/session-settings.sql:4: ERROR:  42601: unindexed walk refused: the filter on `region` would check 7 records of [SUPPLIER], over the unindexed-walk limit (0); declare an ordered index on the property
-CREATE INDEX supplier_region_lower ON supplier (region);
-CREATE INDEX
-SELECT code FROM supplier WHERE region = 'flood-zone-07' ORDER BY code;
-psql:queries/session-settings.sql:7: ERROR:  42601: unindexed walk refused: the filter on `region` would check 7 records of [SUPPLIER], over the unindexed-walk limit (0); declare an ordered index on the property
-CREATE INDEX supplier_region ON SUPPLIER (region);
+CREATE INDEX supplier_region ON supplier (region);
 CREATE INDEX
 SELECT code FROM supplier WHERE region = 'flood-zone-07' ORDER BY code;
  code  
@@ -170,7 +180,7 @@ SELECT count(*) FROM supplier;
 SET statement_timeout = '50ms';
 SET
 SELECT count(*) FROM generate_series(1, 2000000000);
-psql:queries/session-settings.sql:13: ERROR:  57014: SQL execution cancelled
+psql:queries/session-settings.sql:10: ERROR:  57014: SQL execution cancelled
 RESET ALL;
 RESET
 SHOW disallow_full_table_scans;
@@ -179,13 +189,11 @@ SHOW disallow_full_table_scans;
  off
 (1 row)
 
-== The two indexes the session created: the lowercase label name made an index on a label 'supplier' that has no records
-{"name":"supplier_region_lower","label":"supplier","property":"region","state":"ready"}
+== The index the session created: CREATE INDEX resolves the label name as SELECT does (supplier is SUPPLIER)
 {"name":"supplier_region","label":"SUPPLIER","property":"region","state":"ready"}
 == One session: single-statement writes (each commits on its own)
 INSERT INTO supplier (code, name, tier, region) VALUES ('S-401', 'Marsh Polymers (example)', 4, 'flood-zone-07');
-INSERT 1
-psql:queries/writes.sql:1: could not interpret result from server: INSERT 1
+INSERT 0 1
 UPDATE supplier SET tier = 3 WHERE code = 'S-401';
 UPDATE 1
 SELECT code, tier FROM supplier WHERE code = 'S-401';

@@ -18,7 +18,7 @@ done
   0.6876  Vektorsuche mit Filtern  [de, 2026]
   0.6213  Gefilterte Vektorsuche in der Praxis  [de, 2025]
   0.3900  Index-Wartung  [de, 2023]
-{"vectorSearch":{"mode":"exact","pool":9}}
+{"vectorSearch":{"mode":"exact","pool":4}}
 
 == Across a relationship: docs since 2025 whose AUTHOR is on the search team
   0.9961  Tuning HNSW ef for recall  [en, 2026]
@@ -30,4 +30,4 @@ done
 
 == mode ann with a filter that leaves one candidate: answered exactly, and the response says why
   0.3900  Index-Wartung  [de, 2023]
-{"vectorSearch":{"mode":"exact","fallback":"lowConfidence","pool":9}}
+{"vectorSearch":{"mode":"exact","fallback":"smallCandidateSet","pool":1}}

@@ -1,11 +1,12 @@
 == psycopg 3.3.6
-autocommit off: 0A000 explicit transactions are not supported over the PostgreSQL wire: every statement commits on its own; use the client's autocommit mode
+autocommit off: read in a BEGIN block: [('S-101',)]
 select: [('S-301', 3), ('S-302', 3)]
-insert rowcount: -1 status: INSERT 1
+insert rowcount: 1 status: INSERT 0 1
 delete rowcount: 1
 datetime column: int 1709251200000
 == node-postgres 8.23.1
 select: [{"code":"S-301","tier":"3"},{"code":"S-302","tier":"3"}] (INT8 arrives as a string)
 insert: INSERT rowCount 1
 delete: DELETE rowCount 1
-BEGIN: 0A000 explicit transactions are not supported over the PostgreSQL wire: every statement commits on its own; use the client's autocommit mode
+BEGIN block read: [{"n":"7"}]
+write in BEGIN: 0A000 cannot execute UPDATE inside a transaction block: every write commits on its own; send it in autocommit mode
